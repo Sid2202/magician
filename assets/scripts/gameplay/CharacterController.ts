@@ -64,6 +64,10 @@ export class CharacterController extends Component {
     // ── Allocation-free Vec3 ──────────────────────────────────────────────
     private _pos: Vec3 = new Vec3();
 
+    // ── Spawn point captured at onLoad, used on respawn ───────────────────
+    private _spawnX = 0;
+    private _spawnY = 0;
+
     // ─────────────────────────────────────────────────────────────────────
     onLoad(): void {
         // CharacterView must be on the SAME node (PF_Character root)
@@ -89,7 +93,12 @@ export class CharacterController extends Component {
         touchArea.on(Input.EventType.TOUCH_END,    this._onTouchEnd,   this);
         touchArea.on(Input.EventType.TOUCH_CANCEL, this._onTouchEnd,   this);
 
-        GameEventsBus.get().on(GameEvents.GameOver, this._onGameOver, this);
+        // Capture spawn position so PlayerRespawn can return us here.
+        this._spawnX = this._model.x;
+        this._spawnY = this._model.y;
+
+        GameEventsBus.get().on(GameEvents.GameOver,     this._onGameOver,    this);
+        GameEventsBus.get().on(GameEvents.PlayerRespawn, this._onRespawn,    this);
     }
 
     onDestroy(): void {
@@ -102,7 +111,8 @@ export class CharacterController extends Component {
         touchArea.off(Input.EventType.TOUCH_END,    this._onTouchEnd,   this);
         touchArea.off(Input.EventType.TOUCH_CANCEL, this._onTouchEnd,   this);
 
-        GameEventsBus.get().off(GameEvents.GameOver, this._onGameOver, this);
+        GameEventsBus.get().off(GameEvents.GameOver,     this._onGameOver, this);
+        GameEventsBus.get().off(GameEvents.PlayerRespawn, this._onRespawn,  this);
     }
 
     update(dt: number): void {
@@ -241,6 +251,20 @@ export class CharacterController extends Component {
         this._model.vx = 0;
         this._model.vy = 0;
         this._view?.applyState(CharacterState.Hit);
+    }
+
+    private _onRespawn(): void {
+        // Reset velocity and position; clear keyboard buffer so a held key
+        // doesn't immediately fling the player back into the obstacle.
+        this._model.vx = 0;
+        this._model.vy = 0;
+        this._model.x = this._spawnX;
+        this._model.y = this._spawnY;
+        this._model.isAlive = true;
+        this._keys.clear();
+        this._isTouching = false;
+        this._pushToNode();
+        this._view?.applyState(CharacterState.Idle);
     }
 }
 

@@ -38,10 +38,13 @@
       },
       {
         "__id__": 24
+      },
+      {
+        "__id__": 26
       }
     ],
     "_prefab": {
-      "__id__": 26
+      "__id__": 28
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -583,6 +586,37 @@
     "fileId": "4bcdZ+FrhAN5v3buAPhnvX"
   },
   {
+    "__type__": "40008GTz2pCjabzNiT5tLYh",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 27
+    },
+    "maxHearts": 3,
+    "heartNodes": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 8
+      },
+      {
+        "__id__": 14
+      }
+    ],
+    "obstacleSpawn": null,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "a1gXcKnBVJFbjWB/jDQ1vi"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -591,6 +625,7 @@
       "__id__": 0
     },
     "fileId": "73967D7HJHta+RVcUC41tE",
+    "instance": null,
     "targetOverrides": null
   }
 ]

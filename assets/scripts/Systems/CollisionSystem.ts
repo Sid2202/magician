@@ -1,9 +1,12 @@
 import { _decorator, Component, Node, Vec3, BoxCollider2D } from "cc";
 import { SpawnSystem } from "./SpawnSystem";
+import { ObstacleSpawnSystem } from "./ObstacleSpawnSystem";
 import { CharacterController } from "../gameplay/CharacterController";
 import { EventBus, CoinEvents } from "../core/EventBus";
 import { CoinController } from "../Controllers/CoinController";
 import { GameManager } from "../Managers/GameManager";
+import { GameEventsBus } from "../common/event/GlobalEventTarget";
+import { GameEvents } from "../gameplay/input/GameEvents";
 
 const { ccclass, property } = _decorator;
 
@@ -16,10 +19,15 @@ const { ccclass, property } = _decorator;
 @ccclass("CollisionSystem")
 export class CollisionSystem extends Component {
   @property(Node) characterNode: Node = null;
+  @property(ObstacleSpawnSystem) obstacleSpawn: ObstacleSpawnSystem = null;
+
+  /** Brief invulnerability window after a hit, so a single contact does not eat all hearts. */
+  @property invulnerabilitySeconds: number = 1.2;
 
   private _charCtrl: CharacterController | null = null;
   private _spawn: SpawnSystem | null = null;
   private _hits: CoinController[] = [];
+  private _invulnTimer = 0;
 
   // Reused Vec3 — avoids per-frame allocation for character world pos
   private readonly _charWP = new Vec3();
@@ -38,6 +46,7 @@ export class CollisionSystem extends Component {
   update(_dt: number): void {
     if (!this._charCtrl || !this._spawn) return;
     if (!this._charCtrl.getModel().isAlive) return;
+    if (this._invulnTimer > 0) this._invulnTimer -= _dt;
 
     // World position — valid regardless of node hierarchy
     this.characterNode.getWorldPosition(this._charWP);
@@ -95,6 +104,40 @@ export class CollisionSystem extends Component {
 
       coin.deactivate();
     });
+
+    // ── Obstacles ──────────────────────────────────────────────────────
+    if (this._invulnTimer > 0) return;
+    if (!this.obstacleSpawn) return;
+
+    const obstacles = this.obstacleSpawn.activeObstacles;
+    for (let i = 0, n = obstacles.length; i < n; i++) {
+      const o = obstacles[i];
+      if (!o.model.active) continue;
+      // Obstacles live in the same local space as coins (same parent), so
+      // we can compare against character world position via the same offset
+      // logic — but here we approximate by using their local x/y directly,
+      // matching how coin AABB is computed (worldPosition of the node).
+      const owp = o.node.worldPosition;
+      const oScale = o.node.worldScale;
+      let ox = owp.x;
+      let oy = owp.y;
+      let ohw = o.model.halfW * Math.abs(oScale.x);
+      let ohh = o.model.halfH * Math.abs(oScale.y);
+
+      const oCol = o.node.getComponent(BoxCollider2D);
+      if (oCol) {
+        ox += oCol.offset.x * Math.abs(oScale.x);
+        oy += oCol.offset.y * Math.abs(oScale.y);
+        ohw = (oCol.size.width  / 2) * Math.abs(oScale.x);
+        ohh = (oCol.size.height / 2) * Math.abs(oScale.y);
+      }
+
+      if (aabb(cx, cy, chw, chh, ox, oy, ohw, ohh)) {
+        this._invulnTimer = this.invulnerabilitySeconds;
+        GameEventsBus.get().emit(GameEvents.PlayerHit, { x: ox, y: oy });
+        break;
+      }
+    }
   }
 }
 

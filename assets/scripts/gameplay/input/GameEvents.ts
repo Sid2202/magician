@@ -17,6 +17,11 @@ export class GameEvents {
 
     // ── Light Progression ─────────────────────────────────────────────────
     static readonly LightRestored   = 'LightRestored';  // payload: number (0–1)
+
+    // ── Player damage / hearts ────────────────────────────────────────────
+    static readonly PlayerHit       = 'PlayerHit';       // payload: { x, y } world hit point
+    static readonly PlayerRespawn   = 'PlayerRespawn';   // emitted after a hit when hearts > 0 remain
+    static readonly HeartsChanged   = 'HeartsChanged';   // payload: number remaining
 }
 
 /** All collectible item types. */

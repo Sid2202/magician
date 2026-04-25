@@ -17,7 +17,8 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(git reset *)",
-      "Bash(xargs cat *)"
+      "Bash(xargs cat *)",
+      "Bash(npx -y typescript@5 --noEmit -p .)"
     ]
   },
   "mcpServers": {

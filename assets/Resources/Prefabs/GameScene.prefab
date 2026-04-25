@@ -59,10 +59,13 @@
       },
       {
         "__id__": 196
+      },
+      {
+        "__id__": 198
       }
     ],
     "_prefab": {
-      "__id__": 198
+      "__id__": 200
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3357,6 +3360,8 @@
     "bgMoveNode": {
       "__id__": 2
     },
+    "obstacleSpawn": null,
+    "coinObstacleAvoidPadding": 40,
     "poolWarmupCount": 30,
     "visibleWidth": 1920,
     "bufferAhead": 900,
@@ -3386,11 +3391,87 @@
     "characterNode": {
       "__id__": 58
     },
+    "obstacleSpawn": {
+      "__id__": 198
+    },
+    "invulnerabilitySeconds": 1.2,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "ceAnIglgtJMrbnZs2YIFXa"
+  },
+  {
+    "__type__": "aef24LSTDtOWpshynY5qXNh",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 199
+    },
+    "ghostPrefab": {
+      "__uuid__": "cc416195-9c4d-48e2-aa61-dcc4a4fc56bd",
+      "__expectedType__": "cc.Prefab"
+    },
+    "barrelPrefab": {
+      "__uuid__": "87030485-1030-444a-be5d-5170713e3c8e",
+      "__expectedType__": "cc.Prefab"
+    },
+    "plantPrefab": {
+      "__uuid__": "2554c9b5-8ecb-4d1d-9b0b-1b4029d18625",
+      "__expectedType__": "cc.Prefab"
+    },
+    "rockPrefab": null,
+    "spiderPrefab": {
+      "__uuid__": "db3b477d-bed1-4d75-9617-c7dba424b1cf",
+      "__expectedType__": "cc.Prefab"
+    },
+    "vine01Prefab": {
+      "__uuid__": "04405c3a-a80b-4420-82fa-cc172d271578",
+      "__expectedType__": "cc.Prefab"
+    },
+    "vine02Prefab": {
+      "__uuid__": "aa8d987a-edd9-4f89-a4b6-830f6ad91bce",
+      "__expectedType__": "cc.Prefab"
+    },
+    "vine03Prefab": {
+      "__uuid__": "123b3e00-4594-47e6-9c68-f1a7d389c664",
+      "__expectedType__": "cc.Prefab"
+    },
+    "bgMoveNode": {
+      "__id__": 2
+    },
+    "spawnSystem": {
+      "__id__": 194
+    },
+    "colliderTop": {
+      "__id__": 122
+    },
+    "colliderBottom": {
+      "__id__": 112
+    },
+    "poolWarmupCount": 6,
+    "visibleWidth": 1920,
+    "bufferAhead": 1200,
+    "cullBehindX": -1200,
+    "cullAheadX": 4000,
+    "groupBaseSpacing": 1100,
+    "groupSpacingVariance": 700,
+    "coinAvoidPadding": 60,
+    "groundInset": 80,
+    "ceilingInset": 80,
+    "airLowExtra": 110,
+    "fallbackTopY": 300,
+    "fallbackBottomY": -300,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "981BPW0o5DLYzH9CboA2EB"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -3404,10 +3485,10 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 199
+        "__id__": 201
       },
       {
-        "__id__": 201
+        "__id__": 203
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -3450,7 +3531,7 @@
       "__id__": 58
     },
     "targetInfo": {
-      "__id__": 200
+      "__id__": 202
     }
   },
   {
@@ -3472,7 +3553,7 @@
       "__id__": 58
     },
     "targetInfo": {
-      "__id__": 202
+      "__id__": 204
     }
   },
   {

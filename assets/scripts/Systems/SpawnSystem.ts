@@ -2,6 +2,7 @@ import { _decorator, Component, Node, Prefab } from 'cc';
 import { PoolKey, PoolingSystem }              from './PoolingSystem';
 import { CoinController }                      from '../Controllers/CoinController';
 import { BgMoving }                            from '../gameplay/BgMoving';
+import { ObstacleSpawnSystem }                 from './ObstacleSpawnSystem';
 
 export const enum SpawnPattern { LINE = 'LINE', ZIGZAG = 'ZIGZAG', GRID = 'GRID', SINE = 'SINE', ARC = 'ARC' }
 
@@ -31,6 +32,10 @@ export class SpawnSystem extends Component {
     @property(Prefab) coinPrefab:      Prefab = null;
     @property(Prefab) flyingCoinPrefab: Prefab = null;
     @property(Node)   bgMoveNode:      Node   = null;   // ← wire BgMove node here
+    /** Optional — when wired, coins won't spawn on top of active obstacles. */
+    @property(ObstacleSpawnSystem) obstacleSpawn: ObstacleSpawnSystem = null;
+    /** Padding around obstacles when avoiding them with coins. */
+    @property coinObstacleAvoidPadding: number = 40;
     @property         poolWarmupCount: number = 30;
     @property         visibleWidth:    number = 1920;
     @property         bufferAhead:     number = 900;
@@ -138,6 +143,10 @@ export class SpawnSystem extends Component {
     // ── Internals ─────────────────────────────────────────────────────────
 
     private _place(x: number, y: number): void {
+        // Skip placement if it would land on an obstacle — leaves a natural gap in the pattern.
+        if (this.obstacleSpawn && this.obstacleSpawn.isAreaBlocked(x, y, 24, 24, this.coinObstacleAvoidPadding)) {
+            return;
+        }
         const node = PoolingSystem.get(PoolKey.Coin);
         if (!node) return;
         this.node.addChild(node);
