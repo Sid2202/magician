@@ -1,21 +1,22 @@
-import { ItemType } from '../core/Constants';
+import { ItemType } from '../gameplay/input/GameEvents';
 
-/** Pure data — no Cocos imports. */
+/** Pure data — no Cocos imports. Counter-based inventory for the 3 item types. */
 export class InventoryModel {
     private _counts: Map<ItemType, number> = new Map([
-        [ItemType.SHARD, 0],
-        [ItemType.FOOD,  0],
-        [ItemType.TOOL,  0],
+        [ItemType.Shard, 0],
+        [ItemType.Food,  0],
+        [ItemType.Tool,  0],
     ]);
 
     addItem(type: ItemType): void {
         this._counts.set(type, (this._counts.get(type) ?? 0) + 1);
     }
 
+    /** Returns false if the item isn't available. */
     consumeItem(type: ItemType): boolean {
-        const count = this._counts.get(type) ?? 0;
-        if (count <= 0) return false;
-        this._counts.set(type, count - 1);
+        const n = this._counts.get(type) ?? 0;
+        if (n <= 0) return false;
+        this._counts.set(type, n - 1);
         return true;
     }
 
@@ -28,8 +29,8 @@ export class InventoryModel {
     }
 
     reset(): void {
-        this._counts.set(ItemType.SHARD, 0);
-        this._counts.set(ItemType.FOOD,  0);
-        this._counts.set(ItemType.TOOL,  0);
+        this._counts.set(ItemType.Shard, 0);
+        this._counts.set(ItemType.Food,  0);
+        this._counts.set(ItemType.Tool,  0);
     }
 }
