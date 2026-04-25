@@ -46,6 +46,7 @@ export class CoinFXSystem extends Component {
         node.setParent(this.node, true);
         node.setPosition(data.x + offsetX, data.y + offsetY);
         node.setScale(0.6, 0.6, 1);
+        node.setRotationFromEuler(0, 0, (Math.random() - 0.5) * 30);
         node.active = true;
 
         const bouncePos = new Vec3(data.x, data.y + 60, 0);

@@ -35,13 +35,13 @@ export class SpawnSystem extends Component {
     @property         spawnAheadX:     number = 800;
     @property         cullBehindX:     number = -900;
     @property         cullAheadX:      number = 1200;
-    @property         spawnInterval:   number = 3.0;
     @property         patternSpacing:  number = 80;
+    @property         spawnDistanceThreshold: number = 1000;
 
     readonly activeCoins: CoinController[] = [];
 
     private _bgMoving: BgMoving | null       = null;
-    private _timer     = 0;
+    private _distanceAccum = 0;
     private _cull:    CoinController[]       = [];
 
     onLoad(): void {
@@ -59,14 +59,16 @@ export class SpawnSystem extends Component {
         // Coins only scroll when BG is moving — same direction, same speed
         const dirX = this._bgMoving?.getScrollDirX() ?? 0;
         if (dirX !== 0) {
+            const speed = this._bgMoving!.speed;
+            const distance = Math.abs(dirX * speed * dt);
+            this._distanceAccum += distance;
             this._scrollAndCull(dirX, dt);
-        }
 
-        // Auto-spawn on timer regardless of movement
-        this._timer += dt;
-        if (this._timer >= this.spawnInterval) {
-            this._timer = 0;
-            this.spawnNow(this._randomConfig());
+            // Spawn based on distance traveled, only when moving
+            if (this._distanceAccum >= this.spawnDistanceThreshold) {
+                this._distanceAccum = 0;
+                this.spawnNow(this._randomConfig());
+            }
         }
     }
 
