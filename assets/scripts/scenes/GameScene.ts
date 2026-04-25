@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, Light2D } from 'cc';
 import { GameManager } from '../Managers/GameManager';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents } from '../gameplay/input/GameEvents';
@@ -26,12 +26,26 @@ export class GameScene extends Component {
     /** Drag Base_Parent node here (direct child of this prefab root). */
     @property(Node) gameWorldNode: Node = null;
 
-    private _candles: { node: Node, isLit: boolean, lastRelativeX: number | null, lastX: number | null }[] = [];
+    /** Optional: Light2D on the player character for exploration. */
+    @property(Light2D) playerLight: Light2D = null;
+
+    private _candles: {
+        node: Node,
+        isLit: boolean,
+        lastRelativeX: number | null,
+        lastX: number | null,
+        light: Light2D | null
+    }[] = [];
 
     onLoad(): void {
         this._validate();
         this._subscribeEvents();
         GameManager.startSession(1);  // temp until GameController exists
+
+        // Try to find player light on character if not wired
+        if (!this.playerLight && this.characterNode) {
+            this.playerLight = this.characterNode.getComponent(Light2D);
+        }
 
         this._findCandles(this.node);
     }
@@ -66,6 +80,10 @@ export class GameScene extends Component {
             const glow = candle.node.getChildByName('Magician_Glow');
             if (glow && glow.active !== candle.isLit) {
                 glow.active = candle.isLit;
+            }
+
+            if (candle.light) {
+                candle.light.intensity = candle.isLit ? 0.8 : 0;
             }
         }
     }
@@ -109,7 +127,8 @@ export class GameScene extends Component {
 
     private _findCandles(node: Node): void {
         if (node.name.startsWith('PF_Collectible_Candle')) {
-            this._candles.push({ node, isLit: false, lastRelativeX: null, lastX: null });
+            const light = node.getComponent(Light2D);
+            this._candles.push({ node, isLit: false, lastRelativeX: null, lastX: null, light });
         }
         for (const child of node.children) {
             this._findCandles(child);
