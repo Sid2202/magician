@@ -49,11 +49,15 @@ export class CharacterView extends Component {
     /** Left / right movement animation. Drag the motion AnimationClip here. */
     @property(AnimationClip) clipMotion: AnimationClip = null;
 
+    /** Vanish animation when hit or dead. Drag the vanish AnimationClip here. */
+    @property(AnimationClip) clipVanish: AnimationClip = null;
+
     // ── Internal ──────────────────────────────────────────────────────────
 
     private _anim:         Animation     | null = null;
     private _currentClip:  AnimationClip | null = null;
     private _currentState: CharacterState        = CharacterState.Idle;
+    private _onAnimationFinished: (() => void) | null = null;
 
     // ─────────────────────────────────────────────────────────────────────
     onLoad(): void {
@@ -62,12 +66,22 @@ export class CharacterView extends Component {
         if (!this._anim) {
             console.warn('[CharacterView] No Animation component found on PF_Character. ' +
                          'Add an Animation component and assign clips.');
+        } else {
+            // Listen for vanish animation completion (used during death sequence)
+            this._anim.on('finished', this._onVanishFinished, this);
         }
+
         if (!this.effectNode)   console.warn('[CharacterView] effectNode not wired.');
         if (!this.megicianNode) console.warn('[CharacterView] megicianNode not wired.');
 
         // Effects always start hidden
         this._setEffectsVisible(false);
+    }
+
+    onDestroy(): void {
+        if (this._anim) {
+            this._anim.off('finished', this._onVanishFinished, this);
+        }
     }
 
     // ── Public API called by CharacterController ──────────────────────────
@@ -98,6 +112,12 @@ export class CharacterView extends Component {
             case CharacterState.Hit:
                 // Stop everything
                 this._anim?.stop();
+                // Play vanish animation if assigned
+                if (this.clipVanish) {
+                    this.animation.play(this.clipVanish.name);
+                } else {
+                    this.animation.stop();
+                }
                 this._setEffectsVisible(false);
                 this._currentClip = null;
                 break;
@@ -118,6 +138,14 @@ export class CharacterView extends Component {
         this.megicianNode.setScale(wantX, s.y, s.z);
     }
 
+    /**
+     * Register a callback for when the current animation finishes.
+     * Used during death sequence (vanish animation completion → respawn).
+     */
+    onAnimationFinished(cb: () => void): void {
+        this._onAnimationFinished = cb;
+    }
+
     // ── Internal helpers ──────────────────────────────────────────────────
 
     private _setEffectsVisible(visible: boolean): void {
@@ -130,5 +158,12 @@ export class CharacterView extends Component {
         if (!this._anim || !clip || this._currentClip === clip) return;
         this._currentClip = clip;
         this._anim.play(clip.name);
+    }
+
+    private _onVanishFinished(): void {
+        if (this._onAnimationFinished) {
+            this._onAnimationFinished();
+            this._onAnimationFinished = null;
+        }
     }
 }

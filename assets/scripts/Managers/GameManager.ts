@@ -66,4 +66,14 @@ export class GameManager {
         this._state.phase = GamePhase.GameOver;
         GameEventsBus.get().emit(GameEvents.GameOver);
     }
+
+    pauseGame(): void {
+        this._state.phase = GamePhase.Paused;
+    }
+
+    resumeGame(): void {
+        if (this._state.phase === GamePhase.Paused) {
+            this._state.phase = GamePhase.Playing;
+        }
+    }
 }

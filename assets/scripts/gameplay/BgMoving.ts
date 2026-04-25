@@ -1,4 +1,5 @@
 import { _decorator, Component, Node, Vec3, input, Input, EventKeyboard, KeyCode, UITransform } from 'cc';
+import { GameManager } from '../Managers/GameManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('BgMoving')
@@ -58,6 +59,8 @@ export class BgMoving extends Component {
             return;
         }
 
+        if (!GameManager.getInstance()?.state.isPlaying) return;
+
         const displacement = this.direction.x * this.speed * deltaTime;
         if (displacement === 0) {
             return;
@@ -86,39 +89,35 @@ export class BgMoving extends Component {
     }
 
     private onKeyDown(event: EventKeyboard) {
-        console.log('BgMoving: key down', event.keyCode);
+        if (!GameManager.getInstance()?.state.isPlaying) return;
         switch (event.keyCode) {
             case KeyCode.ARROW_LEFT:
             case KeyCode.KEY_A:
                 this.direction.x = 1;
-                console.log('BgMoving: moving right (reverse input)');
                 break;
             case KeyCode.ARROW_RIGHT:
             case KeyCode.KEY_D:
                 this.direction.x = -1;
-                console.log('BgMoving: moving left (reverse input)');
                 break;
         }
     }
 
     private onKeyUp(event: EventKeyboard) {
-        console.log('BgMoving: key up', event.keyCode);
         switch (event.keyCode) {
             case KeyCode.ARROW_LEFT:
             case KeyCode.KEY_A:
-                if (this.direction.x > 0) {
-                    this.direction.x = 0;
-                    console.log('BgMoving: stop moving right');
-                }
+                if (this.direction.x > 0) this.direction.x = 0;
                 break;
             case KeyCode.ARROW_RIGHT:
             case KeyCode.KEY_D:
-                if (this.direction.x < 0) {
-                    this.direction.x = 0;
-                    console.log('BgMoving: stop moving left');
-                }
+                if (this.direction.x < 0) this.direction.x = 0;
                 break;
         }
+    }
+
+    /** Called by CharacterController on death to immediately stop scrolling. */
+    public stopScroll(): void {
+        this.direction.x = 0;
     }
 
     public setBgWidth(width: number) {

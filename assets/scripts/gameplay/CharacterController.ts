@@ -1,12 +1,13 @@
 import {
-    _decorator, Component, Vec2, Vec3,
+    _decorator, Component, Node, Vec2, Vec3,
     input, Input, KeyCode, EventTouch,
 } from 'cc';
-import { CharacterModel }  from '../Models/CharacterModel';
+import { CharacterModel }  from '../models/CharacterModel';
 import { CharacterView, CharacterState } from '../Views/CharacterView';
 import { GameManager }     from '../Managers/GameManager';
 import { GameEventsBus }   from '../common/event/GlobalEventTarget';
 import { GameEvents }      from './input/GameEvents';
+import { BgMoving }        from './BgMoving';
 
 const { ccclass, property } = _decorator;
 
@@ -69,6 +70,18 @@ export class CharacterController extends Component {
     private _spawnX = 0;
     private _spawnY = 0;
 
+    // ── Screen shake on hit ───────────────────────────────────────────────
+    @property shakeIntensity: number = 12;  // pixels
+    @property shakeDuration: number = 0.4;  // seconds
+
+    // ── Respawn safety ────────────────────────────────────────────────────
+    @property respawnBackOffset: number = 250;  // pixels to the left when respawning, so player has space
+
+    /** Wire the BgMove node so we can stop scrolling immediately on death. */
+    @property(Node) bgMoveNode: Node = null;
+
+    private _bgMoving: BgMoving | null = null;
+
     // ─────────────────────────────────────────────────────────────────────
     onLoad(): void {
         // CharacterView must be on the SAME node (PF_Character root)
@@ -76,6 +89,11 @@ export class CharacterController extends Component {
         if (!this._view) {
             console.warn('[CharacterController] CharacterView not found on this node. ' +
                          'Attach CharacterView.ts to PF_Character root.');
+        }
+
+        // Get BgMoving component so we can hard-stop scrolling on death
+        if (this.bgMoveNode) {
+            this._bgMoving = this.bgMoveNode.getComponent(BgMoving);
         }
 
         // Sync model to editor-placed position
@@ -98,8 +116,9 @@ export class CharacterController extends Component {
         this._spawnX = this._model.x;
         this._spawnY = this._model.y;
 
-        GameEventsBus.get().on(GameEvents.GameOver,     this._onGameOver,    this);
-        GameEventsBus.get().on(GameEvents.PlayerRespawn, this._onRespawn,    this);
+        GameEventsBus.get().on(GameEvents.PlayerHit,     this._onPlayerHit, this);
+        GameEventsBus.get().on(GameEvents.GameOver,     this._onGameOver, this);
+        GameEventsBus.get().on(GameEvents.PlayerRespawn, this._onRespawn, this);
     }
 
     onDestroy(): void {
@@ -112,6 +131,7 @@ export class CharacterController extends Component {
         touchArea.off(Input.EventType.TOUCH_END,    this._onTouchEnd,   this);
         touchArea.off(Input.EventType.TOUCH_CANCEL, this._onTouchEnd,   this);
 
+        GameEventsBus.get().off(GameEvents.PlayerHit,     this._onPlayerHit, this);
         GameEventsBus.get().off(GameEvents.GameOver,     this._onGameOver, this);
         GameEventsBus.get().off(GameEvents.PlayerRespawn, this._onRespawn,  this);
     }
@@ -254,18 +274,87 @@ export class CharacterController extends Component {
         this._view?.applyState(CharacterState.Hit);
     }
 
+    private _onPlayerHit(): void {
+        // Death sequence: pause → shake → vanish → respawn → resume
+        this._model.isAlive = false;
+        this._model.vx = 0;
+        this._model.vy = 0;
+
+        // Hard-stop the scroll immediately — BgMoving won't respond to keys during pause
+        this._bgMoving?.stopScroll();
+        GameManager.getInstance().pauseGame();
+
+        // Shake the gameplay content node (not camera) to avoid black border issue
+        this._shakeScreen();
+
+        // Start vanish animation after shake settles
+        this.scheduleOnce(() => {
+            this._view?.applyState(CharacterState.Hit);
+            this._view?.onAnimationFinished(() => {
+                this._deathSequenceReady();
+            });
+        }, 0.1);
+    }
+
+    private _deathSequenceReady(): void {
+        // Vanish animation finished. Brief delay so player sees "death" moment,
+        // then emit respawn event (HeartCounter handles logic).
+        this.scheduleOnce(() => {
+            GameEventsBus.get().emit(GameEvents.PlayerRespawn);
+        }, 0.3);
+    }
+
     private _onRespawn(): void {
         // Reset velocity and position; clear keyboard buffer so a held key
         // doesn't immediately fling the player back into the obstacle.
         this._model.vx = 0;
         this._model.vy = 0;
-        this._model.x = this._spawnX;
+        // Respawn slightly behind (to the left) of spawn point so player has space before next obstacle
+        this._model.x = this._spawnX - this.respawnBackOffset;
         this._model.y = this._spawnY;
         this._model.isAlive = true;
         this._keys.clear();
         this._isTouching = false;
         this._pushToNode();
         this._view?.applyState(CharacterState.Idle);
+
+        // Resume game after brief respawn appearance so player sees character return
+        this.scheduleOnce(() => {
+            GameManager.getInstance().resumeGame();
+        }, 0.2);
+    }
+
+    private _shakeScreen(): void {
+        // Shake the GameScene root (parent of PF_Character) — camera stays fixed,
+        // so the viewport never moves and no black borders appear.
+        const shakeTarget = this.node.parent;
+        if (!shakeTarget) return;
+
+        const origPos = shakeTarget.position.clone();
+        const intensity = this.shakeIntensity;
+        const frameCount = Math.ceil(this.shakeDuration * 60);
+        let frame = 0;
+
+        const shake = () => {
+            if (!this.isValid) {
+                // Component destroyed mid-shake — restore and bail
+                shakeTarget.setPosition(origPos);
+                return;
+            }
+            if (frame >= frameCount) {
+                shakeTarget.setPosition(origPos);
+                return;
+            }
+            // Dampen shake over time so it fades out naturally
+            const progress = 1 - frame / frameCount;
+            const offsetX = (Math.random() - 0.5) * intensity * 2 * progress;
+            const offsetY = (Math.random() - 0.5) * intensity * 2 * progress;
+            shakeTarget.setPosition(origPos.x + offsetX, origPos.y + offsetY, origPos.z);
+            frame++;
+            this.scheduleOnce(() => shake(), 1 / 60);
+        };
+
+        shake();
     }
 }
 
