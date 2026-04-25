@@ -1,1 +1,6 @@
 .venv/
+.creator/
+library/
+/temp/
+/profiles/
+
