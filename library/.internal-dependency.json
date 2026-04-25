@@ -2659,14 +2659,14 @@
         "chunks/reflect-map-fs.chunk",
         "chunks/shading-entries/main-functions/render-to-reflectmap/fs.chunk"
       ],
-      "default_fonts/builtin-bitmap/OpenSans-Italic.fnt": [
-        "default_fonts/builtin-bitmap/OpenSans-Italic_0.png"
-      ],
       "default_fonts/builtin-bitmap/OpenSans-BoldItalic.fnt": [
         "default_fonts/builtin-bitmap/OpenSans-BoldItalic_0.png"
       ],
       "default_fonts/builtin-bitmap/OpenSans-Bold.fnt": [
         "default_fonts/builtin-bitmap/OpenSans-Bold_0.png"
+      ],
+      "default_fonts/builtin-bitmap/OpenSans-Italic.fnt": [
+        "default_fonts/builtin-bitmap/OpenSans-Italic_0.png"
       ],
       "default_ui/atom.plist": [
         "default_ui/atom.png"

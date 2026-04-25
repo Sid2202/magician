@@ -16,6 +16,9 @@
       ],
       "db://assets/*": [
         "/Users/bombayplay/sid/source/magician/assets/*"
+      ],
+      "db://cocos-components/*": [
+        "/Users/bombayplay/sid/source/magician/extensions/cocos3-components/scripts/*"
       ]
     },
     "experimentalDecorators": true,

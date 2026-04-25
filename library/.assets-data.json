@@ -1,162 +1,545 @@
 {
+  "0792b929-6054-44be-ac08-e4503fad11d4": {
+    "url": "db://assets/Resources",
+    "value": {},
+    "versionCode": 1
+  },
+  "2a2664f1-e108-43a6-966f-d788d7750541": {
+    "url": "db://assets/Scenes",
+    "value": {},
+    "versionCode": 1
+  },
   "0f6f1915-f5d1-4d98-907a-743b473bb7ea": {
     "url": "db://assets/scripts",
     "value": {},
     "versionCode": 1
   },
-  "92f67dba-0a5c-43b0-8f38-f707fab36d05": {
-    "url": "db://assets/scripts/controllers",
+  "562376c3-898e-419c-8cc8-0c4e1de669d1": {
+    "url": "db://assets/Resources/Animations",
     "value": {},
     "versionCode": 1
   },
-  "d32c24be-2b9c-41d6-8f76-eb7ab02aee25": {
-    "url": "db://assets/scripts/core",
+  "0a3c1fd8-0c69-4ee6-a366-f3d38c74d0e7": {
+    "url": "db://assets/Resources/Prefabs",
     "value": {},
     "versionCode": 1
   },
-  "2d9ec85f-2229-4e21-82ca-6ba89104586e": {
-    "url": "db://assets/scripts/models",
+  "f4f8f0ef-c0d1-4aaa-a219-948b9451ece4": {
+    "url": "db://assets/Resources/Textures",
     "value": {},
     "versionCode": 1
   },
-  "306bb750-e374-4614-bb06-a14430d68b76": {
-    "url": "db://assets/scripts/systems",
+  "4b361ef1-a457-480a-a942-36e36462f603": {
+    "url": "db://assets/scripts/Managers",
     "value": {},
     "versionCode": 1
   },
-  "23fdc062-f85b-4e46-a331-a386a37d7792": {
-    "url": "db://assets/scripts/utils",
+  "ce393bfc-284d-4e1d-ae5c-48153f5d0863": {
+    "url": "db://assets/scripts/Models",
     "value": {},
     "versionCode": 1
   },
-  "be85f226-60ed-450a-8fa5-208cfe0d43d6": {
-    "url": "db://assets/scripts/views",
+  "8d0249f7-7853-4f55-ac6b-6d052cc763d7": {
+    "url": "db://assets/scripts/Views",
     "value": {},
     "versionCode": 1
   },
-  "8ef01e98-54ce-42f1-840d-a2ca826f70f6": {
-    "url": "db://assets/scripts/controllers/GameController.ts",
+  "b4742cd6-1a09-485f-b626-90eecece6114": {
+    "url": "db://assets/scripts/common",
     "value": {},
     "versionCode": 1
   },
-  "727f45c1-7c3a-42f4-939a-739f1fa70f47": {
-    "url": "db://assets/scripts/controllers/ItemController.ts",
+  "23adbaf4-5b6d-4c53-95b0-5aa495d9b86b": {
+    "url": "db://assets/scripts/gameplay",
     "value": {},
     "versionCode": 1
   },
-  "666ac370-a1f2-4bfd-a08a-55f16ed179b9": {
-    "url": "db://assets/scripts/controllers/NPCController.ts",
+  "8352db14-1043-4c7e-ae4e-609f58635591": {
+    "url": "db://assets/scripts/scenes",
     "value": {},
     "versionCode": 1
   },
-  "96276308-afb9-4500-bac6-79b773ea7451": {
-    "url": "db://assets/scripts/controllers/PlayerController.ts",
+  "b1a8f1d5-7d32-46c5-ab64-b71cc24019d5": {
+    "url": "db://assets/scripts/common/event",
     "value": {},
     "versionCode": 1
   },
-  "f484c66e-dba1-46da-8435-e56f297a77b0": {
-    "url": "db://assets/scripts/core/Constants.ts",
+  "e1dc03bc-7efb-4340-affa-0c62c4282e7a": {
+    "url": "db://assets/scripts/gameplay/input",
     "value": {},
     "versionCode": 1
   },
-  "b53dd54f-a161-4718-bb36-272d8693daa2": {
-    "url": "db://assets/scripts/core/EventBus.ts",
+  "cf60cfac-17ad-4fca-9a65-de1368a79574": {
+    "url": "db://assets/scripts/Managers/GameManager.ts",
     "value": {},
     "versionCode": 1
   },
-  "a5f9b173-33f7-469c-b9ee-7b1e1a47d689": {
-    "url": "db://assets/scripts/core/GameManager.ts",
+  "957b4edb-0329-4223-87a6-9a64fdea0be7": {
+    "url": "db://assets/scripts/Models/CharacterModel.ts",
     "value": {},
     "versionCode": 1
   },
-  "38e1a277-4f16-4427-b4a4-ef4d65cf9f00": {
-    "url": "db://assets/scripts/models/GameStateModel.ts",
+  "31616806-ee18-4d91-bf6b-5dfdbb0d44fc": {
+    "url": "db://assets/scripts/Models/GameStateModel.ts",
     "value": {},
     "versionCode": 1
   },
-  "ee6b838f-dd5f-49ff-8e42-ac93f478f5bd": {
-    "url": "db://assets/scripts/models/InventoryModel.ts",
+  "452e78be-8619-4439-bdaa-2efa58aebc90": {
+    "url": "db://assets/scripts/Models/InventoryModel.ts",
     "value": {},
     "versionCode": 1
   },
-  "7bbb3503-9b1d-4a7d-bae8-d695c53ea6b7": {
-    "url": "db://assets/scripts/models/ItemModel.ts",
+  "fdcacf80-b5b7-4430-ab8c-cf78f7357b9c": {
+    "url": "db://assets/scripts/Views/CharacterView.ts",
     "value": {},
     "versionCode": 1
   },
-  "23a72d83-320c-4183-80b7-6e49f734f001": {
-    "url": "db://assets/scripts/models/LightPointModel.ts",
+  "d8824f61-a5a7-4591-8a1b-ac715adbb200": {
+    "url": "db://assets/scripts/gameplay/CharacterController.ts",
     "value": {},
     "versionCode": 1
   },
-  "e805c70e-e6c3-480a-b67e-bd6e6ad17b1c": {
-    "url": "db://assets/scripts/models/NPCModel.ts",
+  "261e712c-07e2-4c42-a285-05ddb05d6889": {
+    "url": "db://assets/scripts/gameplay/GameController.ts",
     "value": {},
     "versionCode": 1
   },
-  "a04e42bc-d044-49ec-8739-677fc5ca3ffe": {
-    "url": "db://assets/scripts/models/PlayerModel.ts",
+  "fa0d6d46-5019-4bbd-9e6e-4e3f6d340891": {
+    "url": "db://assets/scripts/gameplay/PathController.ts",
     "value": {},
     "versionCode": 1
   },
-  "93845404-45e9-44ff-8bd6-33810bb53dd3": {
-    "url": "db://assets/scripts/systems/CollisionSystem.ts",
+  "b659dec2-d9ec-4ab2-992c-02043c8dc035": {
+    "url": "db://assets/scripts/scenes/GameScene.ts",
     "value": {},
     "versionCode": 1
   },
-  "29184918-6382-4d1f-8d52-165e4fe4a4c5": {
-    "url": "db://assets/scripts/systems/InputSystem.ts",
+  "a1aeccd7-f284-45fc-b2b9-2116f3ea2df0": {
+    "url": "db://assets/scripts/common/event/GlobalEventTarget.ts",
     "value": {},
     "versionCode": 1
   },
-  "30e679b7-9201-4bc3-9159-26eb50fc720a": {
-    "url": "db://assets/scripts/systems/LightSystem.ts",
+  "9299b1d5-de1a-46c2-8fb9-a8b08a81ad71": {
+    "url": "db://assets/scripts/gameplay/input/GameEvents.ts",
     "value": {},
     "versionCode": 1
   },
-  "5c0a93e4-d46e-41ee-b7c4-0e21602e68c7": {
-    "url": "db://assets/scripts/systems/MovementSystem.ts",
-    "value": {},
+  "948e3cd3-6d4b-4531-ac12-400e061df37d": {
+    "url": "db://assets/Scenes/GameScene.scene",
+    "value": {
+      "depends": [
+        "08941bba-ca7a-4bc8-99e3-5f91e2dd201e"
+      ],
+      "dependScripts": [
+        "CC3eba29-7abb-723a-f7ab-ae275e2277e8"
+      ]
+    },
+    "versionCode": 2
+  },
+  "9187d849-7b86-41c9-864f-48ec003ba4cf": {
+    "url": "db://assets/Resources/Animations/Character_Mgician_Fly.anim",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 2
+  },
+  "de8ddbeb-f807-4326-b892-ffa46f1a6efb": {
+    "url": "db://assets/Resources/Animations/Character_Mgician_Idle.anim",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 2
+  },
+  "08941bba-ca7a-4bc8-99e3-5f91e2dd201e": {
+    "url": "db://assets/Resources/Prefabs/GameScene.prefab",
+    "value": {
+      "depends": [
+        "2064f728-b55c-4fd6-9004-c3d794a3466e",
+        "1c4d9ebe-16f1-4c42-b10a-ff39df7a03d1"
+      ],
+      "dependScripts": [
+        "d8824f61-a5a7-4591-8a1b-ac715adbb200",
+        "CC3eba29-7abb-723a-f7ab-ae275e2277e8",
+        "b659dec2-d9ec-4ab2-992c-02043c8dc035"
+      ]
+    },
+    "versionCode": 2
+  },
+  "2064f728-b55c-4fd6-9004-c3d794a3466e": {
+    "url": "db://assets/Resources/Prefabs/PF_Character.prefab",
+    "value": {
+      "depends": [
+        "2157467d-5cad-410b-aa83-a7cebbc720bc@f9941",
+        "98109418-9c0d-4bde-aa11-65e21f8b5b62@f9941",
+        "dc0cabae-09a2-425b-9a32-5ef60123d014@f9941",
+        "a94b4c7c-e47d-4400-9c55-9a2454ce4864@f9941",
+        "8328c8b7-3b58-4926-ab7a-8562eff2b6f1@f9941",
+        "5fa91145-fe9b-4aab-912c-bde1f5955f0c@f9941",
+        "de8ddbeb-f807-4326-b892-ffa46f1a6efb",
+        "9187d849-7b86-41c9-864f-48ec003ba4cf"
+      ],
+      "dependScripts": []
+    },
+    "versionCode": 2
+  },
+  "1c4d9ebe-16f1-4c42-b10a-ff39df7a03d1": {
+    "url": "db://assets/Resources/Prefabs/PF_Path.prefab",
+    "value": {
+      "depends": [
+        "22413be3-9bb8-4141-96f8-e322f3b217eb@f9941"
+      ],
+      "dependScripts": []
+    },
+    "versionCode": 2
+  },
+  "2e459216-518b-4c35-ad8a-0be04eba48ce": {
+    "url": "db://assets/Resources/Textures/DR_Circle01.png",
+    "value": {
+      "depends": []
+    },
     "versionCode": 1
   },
-  "80c21bc9-3d46-4533-b851-961828bc0427": {
-    "url": "db://assets/scripts/systems/PoolingSystem.ts",
-    "value": {},
+  "9cf3bd0d-3e2c-446c-8f3d-0e7fa954e6c3": {
+    "url": "db://assets/Resources/Textures/DR_CommonTextures_WhiteGlow.png",
+    "value": {
+      "depends": []
+    },
     "versionCode": 1
   },
-  "5d075ebb-b80a-4ed3-8fd6-63c4de8fa80a": {
-    "url": "db://assets/scripts/systems/SpawnSystem.ts",
-    "value": {},
+  "a94b4c7c-e47d-4400-9c55-9a2454ce4864": {
+    "url": "db://assets/Resources/Textures/Magician_Body.png",
+    "value": {
+      "depends": []
+    },
     "versionCode": 1
   },
-  "a0801b95-f177-4556-95fd-ed68072d831a": {
-    "url": "db://assets/scripts/systems/TradeSystem.ts",
-    "value": {},
+  "8328c8b7-3b58-4926-ab7a-8562eff2b6f1": {
+    "url": "db://assets/Resources/Textures/Magician_Cape.png",
+    "value": {
+      "depends": []
+    },
     "versionCode": 1
   },
-  "b764b9ba-3dee-43aa-99fe-9bcad99342e0": {
-    "url": "db://assets/scripts/utils/MathUtil.ts",
-    "value": {},
+  "2157467d-5cad-410b-aa83-a7cebbc720bc": {
+    "url": "db://assets/Resources/Textures/Magician_Effect_Fly_01.png",
+    "value": {
+      "depends": []
+    },
     "versionCode": 1
   },
-  "b2f6addf-b5ab-4fb7-8319-47064a1916d5": {
-    "url": "db://assets/scripts/views/ItemView.ts",
-    "value": {},
+  "9cf3bd0d-3e2c-446c-8f3d-0e7fa954e6c3@6c48a": {
+    "url": "db://assets/Resources/Textures/DR_CommonTextures_WhiteGlow.png@6c48a",
+    "value": {
+      "depends": [
+        "9cf3bd0d-3e2c-446c-8f3d-0e7fa954e6c3"
+      ]
+    },
     "versionCode": 1
   },
-  "8f1e2d5f-7cdc-4588-b84e-7a1d0952eeff": {
-    "url": "db://assets/scripts/views/LightPointView.ts",
-    "value": {},
+  "2e459216-518b-4c35-ad8a-0be04eba48ce@6c48a": {
+    "url": "db://assets/Resources/Textures/DR_Circle01.png@6c48a",
+    "value": {
+      "depends": [
+        "2e459216-518b-4c35-ad8a-0be04eba48ce"
+      ]
+    },
     "versionCode": 1
   },
-  "7d6528ea-874e-4f09-8172-5cb99c479c1b": {
-    "url": "db://assets/scripts/views/NPCView.ts",
-    "value": {},
+  "a94b4c7c-e47d-4400-9c55-9a2454ce4864@6c48a": {
+    "url": "db://assets/Resources/Textures/Magician_Body.png@6c48a",
+    "value": {
+      "depends": [
+        "a94b4c7c-e47d-4400-9c55-9a2454ce4864"
+      ]
+    },
     "versionCode": 1
   },
-  "11b8ad05-aa9e-4ddb-b0be-525a6fed1013": {
-    "url": "db://assets/scripts/views/PlayerView.ts",
-    "value": {},
+  "8328c8b7-3b58-4926-ab7a-8562eff2b6f1@6c48a": {
+    "url": "db://assets/Resources/Textures/Magician_Cape.png@6c48a",
+    "value": {
+      "depends": [
+        "8328c8b7-3b58-4926-ab7a-8562eff2b6f1"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2157467d-5cad-410b-aa83-a7cebbc720bc@6c48a": {
+    "url": "db://assets/Resources/Textures/Magician_Effect_Fly_01.png@6c48a",
+    "value": {
+      "depends": [
+        "2157467d-5cad-410b-aa83-a7cebbc720bc"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9cf3bd0d-3e2c-446c-8f3d-0e7fa954e6c3@f9941": {
+    "url": "db://assets/Resources/Textures/DR_CommonTextures_WhiteGlow.png@f9941",
+    "value": {
+      "depends": [
+        "9cf3bd0d-3e2c-446c-8f3d-0e7fa954e6c3@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "98109418-9c0d-4bde-aa11-65e21f8b5b62": {
+    "url": "db://assets/Resources/Textures/Magician_Effect_Star_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "a94b4c7c-e47d-4400-9c55-9a2454ce4864@f9941": {
+    "url": "db://assets/Resources/Textures/Magician_Body.png@f9941",
+    "value": {
+      "depends": [
+        "a94b4c7c-e47d-4400-9c55-9a2454ce4864@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5fa91145-fe9b-4aab-912c-bde1f5955f0c": {
+    "url": "db://assets/Resources/Textures/Magician_Head.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "8328c8b7-3b58-4926-ab7a-8562eff2b6f1@f9941": {
+    "url": "db://assets/Resources/Textures/Magician_Cape.png@f9941",
+    "value": {
+      "depends": [
+        "8328c8b7-3b58-4926-ab7a-8562eff2b6f1@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "dc0cabae-09a2-425b-9a32-5ef60123d014": {
+    "url": "db://assets/Resources/Textures/Magician_Staff.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2157467d-5cad-410b-aa83-a7cebbc720bc@f9941": {
+    "url": "db://assets/Resources/Textures/Magician_Effect_Fly_01.png@f9941",
+    "value": {
+      "depends": [
+        "2157467d-5cad-410b-aa83-a7cebbc720bc@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b075c368-2f96-49f4-808f-df4df7b001e8": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_Glow01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "98109418-9c0d-4bde-aa11-65e21f8b5b62@6c48a": {
+    "url": "db://assets/Resources/Textures/Magician_Effect_Star_01.png@6c48a",
+    "value": {
+      "depends": [
+        "98109418-9c0d-4bde-aa11-65e21f8b5b62"
+      ]
+    },
+    "versionCode": 1
+  },
+  "dc0cabae-09a2-425b-9a32-5ef60123d014@6c48a": {
+    "url": "db://assets/Resources/Textures/Magician_Staff.png@6c48a",
+    "value": {
+      "depends": [
+        "dc0cabae-09a2-425b-9a32-5ef60123d014"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5fa91145-fe9b-4aab-912c-bde1f5955f0c@6c48a": {
+    "url": "db://assets/Resources/Textures/Magician_Head.png@6c48a",
+    "value": {
+      "depends": [
+        "5fa91145-fe9b-4aab-912c-bde1f5955f0c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b075c368-2f96-49f4-808f-df4df7b001e8@6c48a": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_Glow01.png@6c48a",
+    "value": {
+      "depends": [
+        "b075c368-2f96-49f4-808f-df4df7b001e8"
+      ]
+    },
+    "versionCode": 1
+  },
+  "98109418-9c0d-4bde-aa11-65e21f8b5b62@f9941": {
+    "url": "db://assets/Resources/Textures/Magician_Effect_Star_01.png@f9941",
+    "value": {
+      "depends": [
+        "98109418-9c0d-4bde-aa11-65e21f8b5b62@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "075d0741-902e-4528-8e33-3b24380722c6": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_RSquare8px.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2e459216-518b-4c35-ad8a-0be04eba48ce@f9941": {
+    "url": "db://assets/Resources/Textures/DR_Circle01.png@f9941",
+    "value": {
+      "depends": [
+        "2e459216-518b-4c35-ad8a-0be04eba48ce@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2e044d2c-96fa-4059-b99c-8d0db318c726": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_Sheen.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "dc0cabae-09a2-425b-9a32-5ef60123d014@f9941": {
+    "url": "db://assets/Resources/Textures/Magician_Staff.png@f9941",
+    "value": {
+      "depends": [
+        "dc0cabae-09a2-425b-9a32-5ef60123d014@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b075c368-2f96-49f4-808f-df4df7b001e8@f9941": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_Glow01.png@f9941",
+    "value": {
+      "depends": [
+        "b075c368-2f96-49f4-808f-df4df7b001e8@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "22413be3-9bb8-4141-96f8-e322f3b217eb": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_Square.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "3ca056d3-826e-4d3f-96f0-4d4fb88b5cd0": {
+    "url": "db://assets/Resources/Textures/Reference_Mimi.jpg",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "5fa91145-fe9b-4aab-912c-bde1f5955f0c@f9941": {
+    "url": "db://assets/Resources/Textures/Magician_Head.png@f9941",
+    "value": {
+      "depends": [
+        "5fa91145-fe9b-4aab-912c-bde1f5955f0c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d66f1c18-6329-4184-b9b3-81fc5320463e": {
+    "url": "db://assets/Resources/Textures/SB_Spinner.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2e044d2c-96fa-4059-b99c-8d0db318c726@6c48a": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_Sheen.png@6c48a",
+    "value": {
+      "depends": [
+        "2e044d2c-96fa-4059-b99c-8d0db318c726"
+      ]
+    },
+    "versionCode": 1
+  },
+  "075d0741-902e-4528-8e33-3b24380722c6@6c48a": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_RSquare8px.png@6c48a",
+    "value": {
+      "depends": [
+        "075d0741-902e-4528-8e33-3b24380722c6"
+      ]
+    },
+    "versionCode": 1
+  },
+  "22413be3-9bb8-4141-96f8-e322f3b217eb@6c48a": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_Square.png@6c48a",
+    "value": {
+      "depends": [
+        "22413be3-9bb8-4141-96f8-e322f3b217eb"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2e044d2c-96fa-4059-b99c-8d0db318c726@f9941": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_Sheen.png@f9941",
+    "value": {
+      "depends": [
+        "2e044d2c-96fa-4059-b99c-8d0db318c726@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d66f1c18-6329-4184-b9b3-81fc5320463e@6c48a": {
+    "url": "db://assets/Resources/Textures/SB_Spinner.png@6c48a",
+    "value": {
+      "depends": [
+        "d66f1c18-6329-4184-b9b3-81fc5320463e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3ca056d3-826e-4d3f-96f0-4d4fb88b5cd0@6c48a": {
+    "url": "db://assets/Resources/Textures/Reference_Mimi.jpg@6c48a",
+    "value": {
+      "depends": [
+        "3ca056d3-826e-4d3f-96f0-4d4fb88b5cd0"
+      ]
+    },
+    "versionCode": 1
+  },
+  "22413be3-9bb8-4141-96f8-e322f3b217eb@f9941": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_Square.png@f9941",
+    "value": {
+      "depends": [
+        "22413be3-9bb8-4141-96f8-e322f3b217eb@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "075d0741-902e-4528-8e33-3b24380722c6@f9941": {
+    "url": "db://assets/Resources/Textures/RB_CommonTextures_RSquare8px.png@f9941",
+    "value": {
+      "depends": [
+        "075d0741-902e-4528-8e33-3b24380722c6@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d66f1c18-6329-4184-b9b3-81fc5320463e@f9941": {
+    "url": "db://assets/Resources/Textures/SB_Spinner.png@f9941",
+    "value": {
+      "depends": [
+        "d66f1c18-6329-4184-b9b3-81fc5320463e@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3ca056d3-826e-4d3f-96f0-4d4fb88b5cd0@f9941": {
+    "url": "db://assets/Resources/Textures/Reference_Mimi.jpg@f9941",
+    "value": {
+      "depends": [
+        "3ca056d3-826e-4d3f-96f0-4d4fb88b5cd0@6c48a"
+      ]
+    },
     "versionCode": 1
   }
 }

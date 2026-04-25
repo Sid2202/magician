@@ -1,12 +1,2128 @@
-4-25-2026 13:34:15 - log: Load engine in /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine
-4-25-2026 13:34:15 - log: Register native engine in /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/native
-4-25-2026 13:34:16 - log: Request namespace: device-list
-4-25-2026 13:34:28 - log: waiting the ready of builder worker...
-4-25-2026 13:34:29 - log: [Scene] [box2d]:box2d wasm lib loaded.
-4-25-2026 13:34:29 - log: [Scene] [bullet]:bullet wasm lib loaded.
-4-25-2026 13:34:29 - log: [Scene] meshopt wasm decoder initialized
-4-25-2026 13:34:29 - log: [Scene] [PHYSICS]: using builtin.
-4-25-2026 13:34:29 - log: [Scene] Cocos Creator v3.8.8
-4-25-2026 13:34:29 - log: [Scene] Using custom pipeline: Builtin
-4-25-2026 13:34:29 - log: [Scene] [PHYSICS]: switch from builtin to bullet.
-4-25-2026 13:34:29 - log: [Scene] [PHYSICS2D]: switch from builtin to box2d.
+4-25-2026 15:31:06 - log: Load engine in /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine
+4-25-2026 15:31:06 - log: Register native engine in /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/native
+4-25-2026 15:31:06 - log: Request namespace: device-list
+4-25-2026 15:31:09 - log: Cocos components package loaded
+4-25-2026 15:31:20 - log: waiting the ready of builder worker...
+4-25-2026 15:31:20 - info: [Window] Download the Vue Devtools extension for a better development experience:
+https://github.com/vuejs/vue-devtools
+4-25-2026 15:31:20 - info: [Window] You are running Vue in development mode.
+Make sure to turn on production mode when deploying for production.
+See more tips at https://vuejs.org/guide/deployment.html
+4-25-2026 15:31:21 - log: [Scene] meshopt wasm decoder initialized
+4-25-2026 15:31:21 - log: [Scene] [box2d]:box2d wasm lib loaded.
+4-25-2026 15:31:21 - log: [Scene] [bullet]:bullet wasm lib loaded.
+4-25-2026 15:31:21 - log: [Scene] [PHYSICS]: using builtin.
+4-25-2026 15:31:21 - log: [Scene] Cocos Creator v3.8.8
+4-25-2026 15:31:21 - log: [Scene] Using custom pipeline: Builtin
+4-25-2026 15:31:21 - log: [Scene] [PHYSICS]: switch from builtin to bullet.
+4-25-2026 15:31:21 - log: [Scene] [PHYSICS2D]: switch from builtin to box2d.
+4-25-2026 15:31:58 - warn: [Scene] Component attached to node:GameScene is corruptedError: [Scene] Component attached to node:GameScene is corrupted
+    at console.warn (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at Node._registerIfAttached (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:52415:25)
+    at Scene.Node._registerIfAttached (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:52436:17)
+    at Scene._activate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:59186:18)
+    at Director.runSceneImmediate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:82681:17)
+    at /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1253
+    at new Promise (<anonymous>)
+    at SceneUtil.loadSceneByNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1021)
+    at PrefabSceneProxy._loadPrefabById (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:2613)
+    at PrefabSceneProxy.open (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:1055)
+    at PrefabSceneFacade.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:1422)
+    at PrefabSceneFacade.enter (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:945)
+    at SceneFacadeFSM.issueCommand (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/utils/state-machine/finite-state-machine.ccc:1:1021)
+    at SceneFacadeFSM.toPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-fsm.ccc:1:2032)
+    at SceneFacadeManager.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-manager.ccc:1:7814)
+4-25-2026 15:31:58 - warn: [Scene] Component attached to node:Base_Parent is corruptedError: [Scene] Component attached to node:Base_Parent is corrupted
+    at console.warn (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at Node._registerIfAttached (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:52415:25)
+    at Node._registerIfAttached (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:52436:17)
+    at Scene.Node._registerIfAttached (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:52436:17)
+    at Scene._activate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:59186:18)
+    at Director.runSceneImmediate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:82681:17)
+    at /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1253
+    at new Promise (<anonymous>)
+    at SceneUtil.loadSceneByNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1021)
+    at PrefabSceneProxy._loadPrefabById (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:2613)
+    at PrefabSceneProxy.open (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:1055)
+    at PrefabSceneFacade.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:1422)
+    at PrefabSceneFacade.enter (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:945)
+    at SceneFacadeFSM.issueCommand (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/utils/state-machine/finite-state-machine.ccc:1:1021)
+    at SceneFacadeFSM.toPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-fsm.ccc:1:2032)
+    at SceneFacadeManager.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-manager.ccc:1:7814)
+4-25-2026 15:31:58 - warn: [Scene] Component attached to node:Base_Parent is corruptedError: [Scene] Component attached to node:Base_Parent is corrupted
+    at console.warn (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at Node._registerIfAttached (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:52415:25)
+    at Node._registerIfAttached (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:52436:17)
+    at Scene.Node._registerIfAttached (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:52436:17)
+    at Scene._activate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:59186:18)
+    at Director.runSceneImmediate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:82681:17)
+    at /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1253
+    at new Promise (<anonymous>)
+    at SceneUtil.loadSceneByNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1021)
+    at PrefabSceneProxy._loadPrefabById (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:2613)
+    at PrefabSceneProxy.open (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:1055)
+    at PrefabSceneFacade.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:1422)
+    at PrefabSceneFacade.enter (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:945)
+    at SceneFacadeFSM.issueCommand (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/utils/state-machine/finite-state-machine.ccc:1:1021)
+    at SceneFacadeFSM.toPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-fsm.ccc:1:2032)
+    at SceneFacadeManager.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-manager.ccc:1:7814)
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Scene._activate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:59188:44)
+    at Director.runSceneImmediate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:82681:17)
+    at /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1253
+    at new Promise (<anonymous>)
+    at SceneUtil.loadSceneByNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1021)
+    at PrefabSceneProxy._loadPrefabById (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:2613)
+    at PrefabSceneProxy.open (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:1055)
+    at PrefabSceneFacade.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:1422)
+    at PrefabSceneFacade.enter (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:945)
+    at SceneFacadeFSM.issueCommand (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/utils/state-machine/finite-state-machine.ccc:1:1021)
+    at SceneFacadeFSM.toPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-fsm.ccc:1:2032)
+    at SceneFacadeManager.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-manager.ccc:1:7814)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: <ref *2> Node {
+  _objFlags: 0,
+  _name: 'Base_Parent',
+  __editorExtras__: {},
+  _parent: <ref *3> Node {
+    _objFlags: 0,
+    _name: 'GameScene',
+    __editorExtras__: {},
+    _parent: <ref *1> Scene {
+      _objFlags: 0,
+      _name: 'GameScene-scene',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [],
+      _prefab: null,
+      _scene: [Circular *1],
+      _activeInHierarchy: true,
+      _id: '21oS1LR5VCq5bcVbIOB+LN',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4],
+      autoReleaseAssets: false,
+      _globals: [SceneGlobals],
+      dependAssets: null,
+      _renderScene: [RenderScene],
+      _prefabSyncedInLiveReload: false,
+      _inited: true
+    },
+    _children: [ [Node], [Circular *2] ],
+    _active: true,
+    _components: [ [Circular *2], [PrefabInfo] ],
+    _prefab: PropertyOverrideInfo {
+      targetInfo: [TargetInfo],
+      propertyPath: [Array],
+      value: 'PF_Path'
+    },
+    _scene: <ref *1> Scene {
+      _objFlags: 0,
+      _name: 'GameScene-scene',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [],
+      _prefab: null,
+      _scene: [Circular *1],
+      _activeInHierarchy: true,
+      _id: '21oS1LR5VCq5bcVbIOB+LN',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4],
+      autoReleaseAssets: false,
+      _globals: [SceneGlobals],
+      dependAssets: null,
+      _renderScene: [RenderScene],
+      _prefabSyncedInLiveReload: false,
+      _inited: true
+    },
+    _activeInHierarchy: true,
+    _id: '14EYqAL9dMlJFN9IT0wPXv',
+    _eventProcessor: NodeEventProcessor {
+      claimedTouchIdList: [],
+      maskList: null,
+      cachedCameraPriority: 0,
+      previousMouseIn: false,
+      bubblingTarget: null,
+      capturingTarget: null,
+      shouldHandleEventMouse: false,
+      shouldHandleEventTouch: false,
+      _dispatchingTouch: null,
+      _isEnabled: false,
+      _isMouseLeaveWindow: false,
+      _node: [Circular *3]
+    },
+    _eventMask: 0,
+    _siblingIndex: 0,
+    _originalSceneId: '',
+    _uiProps: NodeUIProperties {
+      _uiComp: null,
+      _opacity: 1,
+      _localOpacity: 1,
+      colorDirty: true,
+      _uiTransformComp: null,
+      _uiSkewComp: null,
+      _node: [Circular *3]
+    },
+    _static: false,
+    _lpos: Vec3 { x: 0, y: 0, z: 0 },
+    _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _lscale: Vec3 { x: 1, y: 1, z: 1 },
+    _mobility: 0,
+    _layer: 33554432,
+    _euler: Vec3 { x: 0, y: 0, z: 0 },
+    _transformFlags: 15,
+    _eulerDirty: false,
+    _flagChangeVersion: 25,
+    _hasChangedFlags: 7,
+    _pos: Vec3 { x: 0, y: 0, z: 0 },
+    _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _scale: Vec3 { x: 1, y: 1, z: 1 },
+    _mat: Mat4 {
+      m00: 1,
+      m01: 0,
+      m02: 0,
+      m03: 0,
+      m04: 0,
+      m05: 1,
+      m06: 0,
+      m07: 0,
+      m08: 0,
+      m09: 0,
+      m10: 1,
+      m11: 0,
+      m12: 0,
+      m13: 0,
+      m14: 0,
+      m15: 1
+    }
+  },
+  _children: [
+    Node {
+      _objFlags: 0,
+      _name: 'New Node',
+      __editorExtras__: {},
+      _parent: [Circular *2],
+      _children: [],
+      _active: true,
+      _components: [],
+      _prefab: [PrefabInfo],
+      _scene: [Scene],
+      _activeInHierarchy: false,
+      _id: '31TVmgE1tNWIfp3Fl/cRPk',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 25,
+      _hasChangedFlags: 7,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    }
+  ],
+  _active: true,
+  _components: [
+    PropertyOverrideInfo {
+      targetInfo: [TargetInfo],
+      propertyPath: [Array],
+      value: 'PF_Character'
+    },
+    PropertyOverrideInfo {
+      targetInfo: [TargetInfo],
+      propertyPath: [Array],
+      value: [Vec3]
+    }
+  ],
+  _prefab: PropertyOverrideInfo {
+    targetInfo: TargetInfo { localID: [Array] },
+    propertyPath: [ '_euler' ],
+    value: Vec3 { x: 0, y: 0, z: 0 }
+  },
+  _scene: <ref *1> Scene {
+    _objFlags: 0,
+    _name: 'GameScene-scene',
+    __editorExtras__: {},
+    _parent: null,
+    _children: [ [Node], [Node], [Node] ],
+    _active: true,
+    _components: [],
+    _prefab: null,
+    _scene: [Circular *1],
+    _activeInHierarchy: true,
+    _id: '21oS1LR5VCq5bcVbIOB+LN',
+    _eventProcessor: NodeEventProcessor {
+      claimedTouchIdList: [],
+      maskList: null,
+      cachedCameraPriority: 0,
+      previousMouseIn: false,
+      bubblingTarget: null,
+      capturingTarget: null,
+      shouldHandleEventMouse: false,
+      shouldHandleEventTouch: false,
+      _dispatchingTouch: null,
+      _isEnabled: false,
+      _isMouseLeaveWindow: false,
+      _node: [Circular *1]
+    },
+    _eventMask: 0,
+    _siblingIndex: 0,
+    _originalSceneId: '',
+    _uiProps: NodeUIProperties {
+      _uiComp: null,
+      _opacity: 1,
+      _localOpacity: 1,
+      colorDirty: true,
+      _uiTransformComp: null,
+      _uiSkewComp: null,
+      _node: [Circular *1]
+    },
+    _static: false,
+    _lpos: Vec3 { x: 0, y: 0, z: 0 },
+    _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _lscale: Vec3 { x: 1, y: 1, z: 1 },
+    _mobility: 0,
+    _layer: 1073741824,
+    _euler: Vec3 { x: 0, y: 0, z: 0 },
+    _transformFlags: 15,
+    _eulerDirty: false,
+    _flagChangeVersion: 0,
+    _hasChangedFlags: 0,
+    _pos: Vec3 { x: 0, y: 0, z: 0 },
+    _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _scale: Vec3 { x: 1, y: 1, z: 1 },
+    _mat: Mat4 {
+      m00: 1,
+      m01: 0,
+      m02: 0,
+      m03: 0,
+      m04: 0,
+      m05: 1,
+      m06: 0,
+      m07: 0,
+      m08: 0,
+      m09: 0,
+      m10: 1,
+      m11: 0,
+      m12: 0,
+      m13: 0,
+      m14: 0,
+      m15: 1
+    },
+    autoReleaseAssets: false,
+    _globals: SceneGlobals {
+      ambient: [AmbientInfo],
+      shadows: [ShadowsInfo],
+      _skybox: [SkyboxInfo],
+      fog: [FogInfo],
+      octree: [OctreeInfo],
+      skin: [SkinInfo],
+      lightProbeInfo: [LightProbeInfo],
+      postSettings: [PostSettingsInfo],
+      bakedWithStationaryMainLight: false,
+      bakedWithHighpLightmap: false,
+      disableLightmap: false
+    },
+    dependAssets: null,
+    _renderScene: RenderScene {
+      _name: undefined,
+      _cameras: [],
+      _models: [],
+      _lodGroups: [],
+      _batches: [],
+      _directionalLights: [],
+      _sphereLights: [],
+      _spotLights: [],
+      _pointLights: [],
+      _rangedDirLights: [],
+      _mainLight: null,
+      _modelId: 0,
+      _lodStateCache: [LodStateCache],
+      _root: [Root]
+    },
+    _prefabSyncedInLiveReload: false,
+    _inited: true
+  },
+  _activeInHierarchy: false,
+  _id: '3f+a73vvdHmbDq3BM58xZu',
+  _eventProcessor: NodeEventProcessor {
+    claimedTouchIdList: [],
+    maskList: null,
+    cachedCameraPriority: 0,
+    previousMouseIn: false,
+    bubblingTarget: null,
+    capturingTarget: null,
+    shouldHandleEventMouse: false,
+    shouldHandleEventTouch: false,
+    _dispatchingTouch: null,
+    _isEnabled: false,
+    _isMouseLeaveWindow: false,
+    _node: [Circular *2]
+  },
+  _eventMask: 0,
+  _siblingIndex: 1,
+  _originalSceneId: '',
+  _uiProps: NodeUIProperties {
+    _uiComp: null,
+    _opacity: 1,
+    _localOpacity: 1,
+    colorDirty: true,
+    _uiTransformComp: null,
+    _uiSkewComp: null,
+    _node: [Circular *2]
+  },
+  _static: false,
+  _lpos: Vec3 { x: 0, y: -412, z: 0 },
+  _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+  _lscale: Vec3 { x: 1, y: 1, z: 1 },
+  _mobility: 0,
+  _layer: 33554432,
+  _euler: Vec3 { x: 0, y: 0, z: 0 },
+  _transformFlags: 15,
+  _eulerDirty: false,
+  _flagChangeVersion: 25,
+  _hasChangedFlags: 7,
+  _pos: Vec3 { x: 0, y: 0, z: 0 },
+  _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+  _scale: Vec3 { x: 1, y: 1, z: 1 },
+  _mat: Mat4 {
+    m00: 1,
+    m01: 0,
+    m02: 0,
+    m03: 0,
+    m04: 0,
+    m05: 1,
+    m06: 0,
+    m07: 0,
+    m08: 0,
+    m09: 0,
+    m10: 1,
+    m11: 0,
+    m12: 0,
+    m13: 0,
+    m14: 0,
+    m15: 1
+  }
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Scene._activate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:59188:44)
+    at Director.runSceneImmediate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:82681:17)
+    at /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1253
+    at new Promise (<anonymous>)
+    at SceneUtil.loadSceneByNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1021)
+    at PrefabSceneProxy._loadPrefabById (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:2613)
+    at PrefabSceneProxy.open (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:1055)
+    at PrefabSceneFacade.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:1422)
+    at PrefabSceneFacade.enter (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:945)
+    at SceneFacadeFSM.issueCommand (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/utils/state-machine/finite-state-machine.ccc:1:1021)
+    at SceneFacadeFSM.toPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-fsm.ccc:1:2032)
+    at SceneFacadeManager.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-manager.ccc:1:7814)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: <ref *1> PrefabInfo {
+  root: <ref *3> Node {
+    _objFlags: 0,
+    _name: 'New Node',
+    __editorExtras__: {},
+    _parent: Node {
+      _objFlags: 0,
+      _name: 'Base_Parent',
+      __editorExtras__: {},
+      _parent: [Node],
+      _children: [Array],
+      _active: true,
+      _components: [Array],
+      _prefab: [PropertyOverrideInfo],
+      _scene: [Scene],
+      _activeInHierarchy: false,
+      _id: '3f+a73vvdHmbDq3BM58xZu',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 1,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 33554432,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 25,
+      _hasChangedFlags: 7,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    },
+    _children: [],
+    _active: true,
+    _components: [],
+    _prefab: [Circular *1],
+    _scene: <ref *2> Scene {
+      _objFlags: 0,
+      _name: 'GameScene-scene',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [],
+      _prefab: null,
+      _scene: [Circular *2],
+      _activeInHierarchy: true,
+      _id: '21oS1LR5VCq5bcVbIOB+LN',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4],
+      autoReleaseAssets: false,
+      _globals: [SceneGlobals],
+      dependAssets: null,
+      _renderScene: [RenderScene],
+      _prefabSyncedInLiveReload: false,
+      _inited: true
+    },
+    _activeInHierarchy: false,
+    _id: '31TVmgE1tNWIfp3Fl/cRPk',
+    _eventProcessor: NodeEventProcessor {
+      claimedTouchIdList: [],
+      maskList: null,
+      cachedCameraPriority: 0,
+      previousMouseIn: false,
+      bubblingTarget: null,
+      capturingTarget: null,
+      shouldHandleEventMouse: false,
+      shouldHandleEventTouch: false,
+      _dispatchingTouch: null,
+      _isEnabled: false,
+      _isMouseLeaveWindow: false,
+      _node: [Circular *3]
+    },
+    _eventMask: 0,
+    _siblingIndex: 0,
+    _originalSceneId: '',
+    _uiProps: NodeUIProperties {
+      _uiComp: null,
+      _opacity: 1,
+      _localOpacity: 1,
+      colorDirty: true,
+      _uiTransformComp: null,
+      _uiSkewComp: null,
+      _node: [Circular *3]
+    },
+    _static: false,
+    _lpos: Vec3 { x: 0, y: 0, z: 0 },
+    _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _lscale: Vec3 { x: 1, y: 1, z: 1 },
+    _mobility: 0,
+    _layer: 1073741824,
+    _euler: Vec3 { x: 0, y: 0, z: 0 },
+    _transformFlags: 15,
+    _eulerDirty: false,
+    _flagChangeVersion: 25,
+    _hasChangedFlags: 7,
+    _pos: Vec3 { x: 0, y: 0, z: 0 },
+    _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _scale: Vec3 { x: 1, y: 1, z: 1 },
+    _mat: Mat4 {
+      m00: 1,
+      m01: 0,
+      m02: 0,
+      m03: 0,
+      m04: 0,
+      m05: 1,
+      m06: 0,
+      m07: 0,
+      m08: 0,
+      m09: 0,
+      m10: 1,
+      m11: 0,
+      m12: 0,
+      m13: 0,
+      m14: 0,
+      m15: 1
+    }
+  },
+  asset: Prefab {
+    _objFlags: 0,
+    _name: 'PF_Path',
+    __editorExtras__: {},
+    _callbackTable: [Object: null prototype] {},
+    loaded: true,
+    _native: '',
+    _nativeUrl: '',
+    _file: null,
+    _ref: 1,
+    data: Node {
+      _objFlags: 0,
+      _name: 'PF_Path',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [Array],
+      _prefab: [PrefabInfo],
+      _scene: null,
+      _activeInHierarchy: false,
+      _id: '9d1RjqrSdHuYiMAOJSbqb0',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 33554432,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    },
+    optimizationPolicy: 0,
+    persistent: false,
+    _createFunction: null,
+    _instantiatedTimes: 0
+  },
+  fileId: '17IJZIS2FI7JaX/wVYA1Ri',
+  instance: PrefabInstance {
+    fileId: 'e18dd1o9FIMK/5GP/Wr4Hj',
+    prefabRootNode: Node {
+      _objFlags: 0,
+      _name: 'GameScene',
+      __editorExtras__: {},
+      _parent: [Scene],
+      _children: [Array],
+      _active: true,
+      _components: [Array],
+      _prefab: [PropertyOverrideInfo],
+      _scene: [Scene],
+      _activeInHierarchy: true,
+      _id: '14EYqAL9dMlJFN9IT0wPXv',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 33554432,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 25,
+      _hasChangedFlags: 7,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    },
+    mountedChildren: [],
+    mountedComponents: [],
+    propertyOverrides: [
+      [PropertyOverrideInfo],
+      [PropertyOverrideInfo],
+      [PropertyOverrideInfo],
+      [PropertyOverrideInfo]
+    ],
+    removedComponents: [],
+    targetMap: {},
+    expanded: false
+  },
+  targetOverrides: null,
+  nestedPrefabInstanceRoots: null
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Scene._activate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:59188:44)
+    at Director.runSceneImmediate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:82681:17)
+    at /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1253
+    at new Promise (<anonymous>)
+    at SceneUtil.loadSceneByNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1021)
+    at PrefabSceneProxy._loadPrefabById (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:2613)
+    at PrefabSceneProxy.open (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:1055)
+    at PrefabSceneFacade.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:1422)
+    at PrefabSceneFacade.enter (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:945)
+    at SceneFacadeFSM.issueCommand (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/utils/state-machine/finite-state-machine.ccc:1:1021)
+    at SceneFacadeFSM.toPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-fsm.ccc:1:2032)
+    at SceneFacadeManager.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-manager.ccc:1:7814)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: PropertyOverrideInfo {
+  targetInfo: TargetInfo { localID: [ '352wQd31lL65hJiPOM4qh4' ] },
+  propertyPath: [ '_name' ],
+  value: 'PF_Character'
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Scene._activate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:59188:44)
+    at Director.runSceneImmediate (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:82681:17)
+    at /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1253
+    at new Promise (<anonymous>)
+    at SceneUtil.loadSceneByNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/utils.ccc:1:1021)
+    at PrefabSceneProxy._loadPrefabById (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:2613)
+    at PrefabSceneProxy.open (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/scene/proxy/prefab-scene-proxy.ccc:1:1055)
+    at PrefabSceneFacade.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:1422)
+    at PrefabSceneFacade.enter (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/prefab-scene-facade.ccc:1:945)
+    at SceneFacadeFSM.issueCommand (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/utils/state-machine/finite-state-machine.ccc:1:1021)
+    at SceneFacadeFSM.toPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-fsm.ccc:1:2032)
+    at SceneFacadeManager.openScene (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/facade/scene-facade-manager.ccc:1:7814)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: PropertyOverrideInfo {
+  targetInfo: TargetInfo { localID: [ '352wQd31lL65hJiPOM4qh4' ] },
+  propertyPath: [ '_lpos' ],
+  value: Vec3 { x: 0, y: 0, z: 0 }
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Node._onHierarchyChangedBase (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54071:46)
+    at Node._onHierarchyChanged (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54637:16)
+    at Node.setParent (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53159:16)
+    at Scene.addChild (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53240:17)
+    at PrefabPreview.setPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/preview/prefab-preview/index.ccc:1:1495)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: <ref *2> Node {
+  _objFlags: 0,
+  _name: 'Base_Parent',
+  __editorExtras__: {},
+  _parent: <ref *3> Node {
+    _objFlags: 0,
+    _name: 'GameScene',
+    __editorExtras__: {},
+    _parent: <ref *1> Scene {
+      _objFlags: 0,
+      _name: 'scene:prefab-preview',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [],
+      _prefab: null,
+      _scene: [Circular *1],
+      _activeInHierarchy: true,
+      _id: 'd34MWvPsBOE7WBH5w9bRxM',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 0,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4],
+      autoReleaseAssets: false,
+      _globals: [SceneGlobals],
+      dependAssets: null,
+      _renderScene: [RenderScene],
+      _prefabSyncedInLiveReload: false,
+      _inited: true
+    },
+    _children: [ [Node], [Circular *2] ],
+    _active: true,
+    _components: [ [Circular *2], [PrefabInfo] ],
+    _prefab: PropertyOverrideInfo {
+      targetInfo: [TargetInfo],
+      propertyPath: [Array],
+      value: 'PF_Path'
+    },
+    _scene: <ref *1> Scene {
+      _objFlags: 0,
+      _name: 'scene:prefab-preview',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [],
+      _prefab: null,
+      _scene: [Circular *1],
+      _activeInHierarchy: true,
+      _id: 'd34MWvPsBOE7WBH5w9bRxM',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 0,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4],
+      autoReleaseAssets: false,
+      _globals: [SceneGlobals],
+      dependAssets: null,
+      _renderScene: [RenderScene],
+      _prefabSyncedInLiveReload: false,
+      _inited: true
+    },
+    _activeInHierarchy: true,
+    _id: '172dgsEzhMwoi7mTiR0IVR',
+    _eventProcessor: NodeEventProcessor {
+      claimedTouchIdList: [],
+      maskList: null,
+      cachedCameraPriority: 0,
+      previousMouseIn: false,
+      bubblingTarget: null,
+      capturingTarget: null,
+      shouldHandleEventMouse: false,
+      shouldHandleEventTouch: false,
+      _dispatchingTouch: null,
+      _isEnabled: false,
+      _isMouseLeaveWindow: false,
+      _node: [Circular *3]
+    },
+    _eventMask: 0,
+    _siblingIndex: 5,
+    _originalSceneId: '',
+    _uiProps: NodeUIProperties {
+      _uiComp: null,
+      _opacity: 1,
+      _localOpacity: 1,
+      colorDirty: true,
+      _uiTransformComp: null,
+      _uiSkewComp: null,
+      _node: [Circular *3]
+    },
+    _static: false,
+    _lpos: Vec3 { x: 0, y: 0, z: 0 },
+    _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _lscale: Vec3 { x: 1, y: 1, z: 1 },
+    _mobility: 0,
+    _layer: 33554432,
+    _euler: Vec3 { x: 0, y: 0, z: 0 },
+    _transformFlags: 15,
+    _eulerDirty: false,
+    _flagChangeVersion: 26,
+    _hasChangedFlags: 7,
+    _pos: Vec3 { x: 0, y: 0, z: 0 },
+    _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _scale: Vec3 { x: 1, y: 1, z: 1 },
+    _mat: Mat4 {
+      m00: 1,
+      m01: 0,
+      m02: 0,
+      m03: 0,
+      m04: 0,
+      m05: 1,
+      m06: 0,
+      m07: 0,
+      m08: 0,
+      m09: 0,
+      m10: 1,
+      m11: 0,
+      m12: 0,
+      m13: 0,
+      m14: 0,
+      m15: 1
+    }
+  },
+  _children: [
+    Node {
+      _objFlags: 0,
+      _name: 'New Node',
+      __editorExtras__: {},
+      _parent: [Circular *2],
+      _children: [],
+      _active: true,
+      _components: [],
+      _prefab: [PrefabInfo],
+      _scene: [Scene],
+      _activeInHierarchy: false,
+      _id: 'e1VLgHwfVA8ZaxX6pwPEij',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 26,
+      _hasChangedFlags: 7,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    }
+  ],
+  _active: true,
+  _components: [
+    PropertyOverrideInfo {
+      targetInfo: [TargetInfo],
+      propertyPath: [Array],
+      value: 'PF_Character'
+    },
+    PropertyOverrideInfo {
+      targetInfo: [TargetInfo],
+      propertyPath: [Array],
+      value: [Vec3]
+    }
+  ],
+  _prefab: PropertyOverrideInfo {
+    targetInfo: TargetInfo { localID: [Array] },
+    propertyPath: [ '_euler' ],
+    value: Vec3 { x: 0, y: 0, z: 0 }
+  },
+  _scene: <ref *1> Scene {
+    _objFlags: 0,
+    _name: 'scene:prefab-preview',
+    __editorExtras__: {},
+    _parent: null,
+    _children: [ [Node], [Node], [Node], [Node], [Node], [Node] ],
+    _active: true,
+    _components: [],
+    _prefab: null,
+    _scene: [Circular *1],
+    _activeInHierarchy: true,
+    _id: 'd34MWvPsBOE7WBH5w9bRxM',
+    _eventProcessor: NodeEventProcessor {
+      claimedTouchIdList: [],
+      maskList: null,
+      cachedCameraPriority: 0,
+      previousMouseIn: false,
+      bubblingTarget: null,
+      capturingTarget: null,
+      shouldHandleEventMouse: false,
+      shouldHandleEventTouch: false,
+      _dispatchingTouch: null,
+      _isEnabled: false,
+      _isMouseLeaveWindow: false,
+      _node: [Circular *1]
+    },
+    _eventMask: 0,
+    _siblingIndex: 0,
+    _originalSceneId: '',
+    _uiProps: NodeUIProperties {
+      _uiComp: null,
+      _opacity: 1,
+      _localOpacity: 1,
+      colorDirty: true,
+      _uiTransformComp: null,
+      _uiSkewComp: null,
+      _node: [Circular *1]
+    },
+    _static: false,
+    _lpos: Vec3 { x: 0, y: 0, z: 0 },
+    _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _lscale: Vec3 { x: 1, y: 1, z: 1 },
+    _mobility: 0,
+    _layer: 1073741824,
+    _euler: Vec3 { x: 0, y: 0, z: 0 },
+    _transformFlags: 0,
+    _eulerDirty: false,
+    _flagChangeVersion: 0,
+    _hasChangedFlags: 0,
+    _pos: Vec3 { x: 0, y: 0, z: 0 },
+    _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _scale: Vec3 { x: 1, y: 1, z: 1 },
+    _mat: Mat4 {
+      m00: 1,
+      m01: 0,
+      m02: 0,
+      m03: 0,
+      m04: 0,
+      m05: 1,
+      m06: 0,
+      m07: 0,
+      m08: 0,
+      m09: 0,
+      m10: 1,
+      m11: 0,
+      m12: 0,
+      m13: 0,
+      m14: 0,
+      m15: 1
+    },
+    autoReleaseAssets: false,
+    _globals: SceneGlobals {
+      ambient: [AmbientInfo],
+      shadows: [ShadowsInfo],
+      _skybox: [SkyboxInfo],
+      fog: [FogInfo],
+      octree: [OctreeInfo],
+      skin: [SkinInfo],
+      lightProbeInfo: [LightProbeInfo],
+      postSettings: [PostSettingsInfo],
+      bakedWithStationaryMainLight: false,
+      bakedWithHighpLightmap: false,
+      disableLightmap: false
+    },
+    dependAssets: null,
+    _renderScene: RenderScene {
+      _name: undefined,
+      _cameras: [Array],
+      _models: [Array],
+      _lodGroups: [],
+      _batches: [],
+      _directionalLights: [Array],
+      _sphereLights: [],
+      _spotLights: [],
+      _pointLights: [],
+      _rangedDirLights: [],
+      _mainLight: [DirectionalLight],
+      _modelId: 0,
+      _lodStateCache: [LodStateCache],
+      _root: [Root]
+    },
+    _prefabSyncedInLiveReload: false,
+    _inited: true
+  },
+  _activeInHierarchy: false,
+  _id: 'd9Fd/dfqdBi6PhI+FzpL9Q',
+  _eventProcessor: NodeEventProcessor {
+    claimedTouchIdList: [],
+    maskList: null,
+    cachedCameraPriority: 0,
+    previousMouseIn: false,
+    bubblingTarget: null,
+    capturingTarget: null,
+    shouldHandleEventMouse: false,
+    shouldHandleEventTouch: false,
+    _dispatchingTouch: null,
+    _isEnabled: false,
+    _isMouseLeaveWindow: false,
+    _node: [Circular *2]
+  },
+  _eventMask: 0,
+  _siblingIndex: 1,
+  _originalSceneId: '',
+  _uiProps: NodeUIProperties {
+    _uiComp: null,
+    _opacity: 1,
+    _localOpacity: 1,
+    colorDirty: true,
+    _uiTransformComp: null,
+    _uiSkewComp: null,
+    _node: [Circular *2]
+  },
+  _static: false,
+  _lpos: Vec3 { x: 0, y: -412, z: 0 },
+  _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+  _lscale: Vec3 { x: 1, y: 1, z: 1 },
+  _mobility: 0,
+  _layer: 33554432,
+  _euler: Vec3 { x: 0, y: 0, z: 0 },
+  _transformFlags: 15,
+  _eulerDirty: false,
+  _flagChangeVersion: 26,
+  _hasChangedFlags: 7,
+  _pos: Vec3 { x: 0, y: 0, z: 0 },
+  _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+  _scale: Vec3 { x: 1, y: 1, z: 1 },
+  _mat: Mat4 {
+    m00: 1,
+    m01: 0,
+    m02: 0,
+    m03: 0,
+    m04: 0,
+    m05: 1,
+    m06: 0,
+    m07: 0,
+    m08: 0,
+    m09: 0,
+    m10: 1,
+    m11: 0,
+    m12: 0,
+    m13: 0,
+    m14: 0,
+    m15: 1
+  }
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Node._onHierarchyChangedBase (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54071:46)
+    at Node._onHierarchyChanged (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54637:16)
+    at Node.setParent (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53159:16)
+    at Scene.addChild (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53240:17)
+    at PrefabPreview.setPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/preview/prefab-preview/index.ccc:1:1495)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: <ref *1> PrefabInfo {
+  root: <ref *3> Node {
+    _objFlags: 0,
+    _name: 'New Node',
+    __editorExtras__: {},
+    _parent: Node {
+      _objFlags: 0,
+      _name: 'Base_Parent',
+      __editorExtras__: {},
+      _parent: [Node],
+      _children: [Array],
+      _active: true,
+      _components: [Array],
+      _prefab: [PropertyOverrideInfo],
+      _scene: [Scene],
+      _activeInHierarchy: false,
+      _id: 'd9Fd/dfqdBi6PhI+FzpL9Q',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 1,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 33554432,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 26,
+      _hasChangedFlags: 7,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    },
+    _children: [],
+    _active: true,
+    _components: [],
+    _prefab: [Circular *1],
+    _scene: <ref *2> Scene {
+      _objFlags: 0,
+      _name: 'scene:prefab-preview',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [],
+      _prefab: null,
+      _scene: [Circular *2],
+      _activeInHierarchy: true,
+      _id: 'd34MWvPsBOE7WBH5w9bRxM',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 0,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4],
+      autoReleaseAssets: false,
+      _globals: [SceneGlobals],
+      dependAssets: null,
+      _renderScene: [RenderScene],
+      _prefabSyncedInLiveReload: false,
+      _inited: true
+    },
+    _activeInHierarchy: false,
+    _id: 'e1VLgHwfVA8ZaxX6pwPEij',
+    _eventProcessor: NodeEventProcessor {
+      claimedTouchIdList: [],
+      maskList: null,
+      cachedCameraPriority: 0,
+      previousMouseIn: false,
+      bubblingTarget: null,
+      capturingTarget: null,
+      shouldHandleEventMouse: false,
+      shouldHandleEventTouch: false,
+      _dispatchingTouch: null,
+      _isEnabled: false,
+      _isMouseLeaveWindow: false,
+      _node: [Circular *3]
+    },
+    _eventMask: 0,
+    _siblingIndex: 0,
+    _originalSceneId: '',
+    _uiProps: NodeUIProperties {
+      _uiComp: null,
+      _opacity: 1,
+      _localOpacity: 1,
+      colorDirty: true,
+      _uiTransformComp: null,
+      _uiSkewComp: null,
+      _node: [Circular *3]
+    },
+    _static: false,
+    _lpos: Vec3 { x: 0, y: 0, z: 0 },
+    _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _lscale: Vec3 { x: 1, y: 1, z: 1 },
+    _mobility: 0,
+    _layer: 1073741824,
+    _euler: Vec3 { x: 0, y: 0, z: 0 },
+    _transformFlags: 15,
+    _eulerDirty: false,
+    _flagChangeVersion: 26,
+    _hasChangedFlags: 7,
+    _pos: Vec3 { x: 0, y: 0, z: 0 },
+    _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _scale: Vec3 { x: 1, y: 1, z: 1 },
+    _mat: Mat4 {
+      m00: 1,
+      m01: 0,
+      m02: 0,
+      m03: 0,
+      m04: 0,
+      m05: 1,
+      m06: 0,
+      m07: 0,
+      m08: 0,
+      m09: 0,
+      m10: 1,
+      m11: 0,
+      m12: 0,
+      m13: 0,
+      m14: 0,
+      m15: 1
+    }
+  },
+  asset: Prefab {
+    _objFlags: 0,
+    _name: 'PF_Path',
+    __editorExtras__: {},
+    _callbackTable: [Object: null prototype] {},
+    loaded: true,
+    _native: '',
+    _nativeUrl: '',
+    _file: null,
+    _ref: 1,
+    data: Node {
+      _objFlags: 0,
+      _name: 'PF_Path',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [Array],
+      _prefab: [PrefabInfo],
+      _scene: null,
+      _activeInHierarchy: false,
+      _id: '9d1RjqrSdHuYiMAOJSbqb0',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 33554432,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    },
+    optimizationPolicy: 0,
+    persistent: false,
+    _createFunction: null,
+    _instantiatedTimes: 0
+  },
+  fileId: '17IJZIS2FI7JaX/wVYA1Ri',
+  instance: PrefabInstance {
+    fileId: 'e18dd1o9FIMK/5GP/Wr4Hj',
+    prefabRootNode: Node {
+      _objFlags: 0,
+      _name: 'GameScene',
+      __editorExtras__: {},
+      _parent: [Scene],
+      _children: [Array],
+      _active: true,
+      _components: [Array],
+      _prefab: [PropertyOverrideInfo],
+      _scene: [Scene],
+      _activeInHierarchy: true,
+      _id: '172dgsEzhMwoi7mTiR0IVR',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 5,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 33554432,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 26,
+      _hasChangedFlags: 7,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    },
+    mountedChildren: [],
+    mountedComponents: [],
+    propertyOverrides: [
+      [PropertyOverrideInfo],
+      [PropertyOverrideInfo],
+      [PropertyOverrideInfo],
+      [PropertyOverrideInfo]
+    ],
+    removedComponents: [],
+    targetMap: {},
+    expanded: false
+  },
+  targetOverrides: null,
+  nestedPrefabInstanceRoots: null
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Node._onHierarchyChangedBase (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54071:46)
+    at Node._onHierarchyChanged (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54637:16)
+    at Node.setParent (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53159:16)
+    at Scene.addChild (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53240:17)
+    at PrefabPreview.setPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/preview/prefab-preview/index.ccc:1:1495)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: PropertyOverrideInfo {
+  targetInfo: TargetInfo { localID: [ '352wQd31lL65hJiPOM4qh4' ] },
+  propertyPath: [ '_name' ],
+  value: 'PF_Character'
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Node._onHierarchyChangedBase (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54071:46)
+    at Node._onHierarchyChanged (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54637:16)
+    at Node.setParent (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53159:16)
+    at Scene.addChild (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53240:17)
+    at PrefabPreview.setPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/preview/prefab-preview/index.ccc:1:1495)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: PropertyOverrideInfo {
+  targetInfo: TargetInfo { localID: [ '352wQd31lL65hJiPOM4qh4' ] },
+  propertyPath: [ '_lpos' ],
+  value: Vec3 { x: 0, y: 0, z: 0 }
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Node._onHierarchyChangedBase (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54071:46)
+    at Node._onHierarchyChanged (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54637:16)
+    at Node.setParent (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53159:16)
+    at Scene.addChild (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53240:17)
+    at PrefabPreview.setPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/preview/prefab-preview/index.ccc:1:1495)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: <ref *2> Node {
+  _objFlags: 0,
+  _name: 'Base_Parent',
+  __editorExtras__: {},
+  _parent: <ref *3> Node {
+    _objFlags: 0,
+    _name: 'GameScene',
+    __editorExtras__: {},
+    _parent: <ref *1> Scene {
+      _objFlags: 0,
+      _name: 'scene:prefab-preview',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [],
+      _prefab: null,
+      _scene: [Circular *1],
+      _activeInHierarchy: true,
+      _id: 'd34MWvPsBOE7WBH5w9bRxM',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 0,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4],
+      autoReleaseAssets: false,
+      _globals: [SceneGlobals],
+      dependAssets: null,
+      _renderScene: [RenderScene],
+      _prefabSyncedInLiveReload: false,
+      _inited: true
+    },
+    _children: [ [Node], [Circular *2] ],
+    _active: true,
+    _components: [ [Circular *2], [PrefabInfo] ],
+    _prefab: PropertyOverrideInfo {
+      targetInfo: [TargetInfo],
+      propertyPath: [Array],
+      value: 'PF_Path'
+    },
+    _scene: <ref *1> Scene {
+      _objFlags: 0,
+      _name: 'scene:prefab-preview',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [],
+      _prefab: null,
+      _scene: [Circular *1],
+      _activeInHierarchy: true,
+      _id: 'd34MWvPsBOE7WBH5w9bRxM',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 0,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4],
+      autoReleaseAssets: false,
+      _globals: [SceneGlobals],
+      dependAssets: null,
+      _renderScene: [RenderScene],
+      _prefabSyncedInLiveReload: false,
+      _inited: true
+    },
+    _activeInHierarchy: true,
+    _id: 'b4aHgqmFlOfKSAlIHXT+R3',
+    _eventProcessor: NodeEventProcessor {
+      claimedTouchIdList: [],
+      maskList: null,
+      cachedCameraPriority: 0,
+      previousMouseIn: false,
+      bubblingTarget: null,
+      capturingTarget: null,
+      shouldHandleEventMouse: false,
+      shouldHandleEventTouch: false,
+      _dispatchingTouch: null,
+      _isEnabled: false,
+      _isMouseLeaveWindow: false,
+      _node: [Circular *3]
+    },
+    _eventMask: 0,
+    _siblingIndex: 5,
+    _originalSceneId: '',
+    _uiProps: NodeUIProperties {
+      _uiComp: null,
+      _opacity: 1,
+      _localOpacity: 1,
+      colorDirty: true,
+      _uiTransformComp: null,
+      _uiSkewComp: null,
+      _node: [Circular *3]
+    },
+    _static: false,
+    _lpos: Vec3 { x: 0, y: 0, z: 0 },
+    _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _lscale: Vec3 { x: 1, y: 1, z: 1 },
+    _mobility: 0,
+    _layer: 33554432,
+    _euler: Vec3 { x: 0, y: 0, z: 0 },
+    _transformFlags: 15,
+    _eulerDirty: false,
+    _flagChangeVersion: 27,
+    _hasChangedFlags: 7,
+    _pos: Vec3 { x: 0, y: 0, z: 0 },
+    _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _scale: Vec3 { x: 1, y: 1, z: 1 },
+    _mat: Mat4 {
+      m00: 1,
+      m01: 0,
+      m02: 0,
+      m03: 0,
+      m04: 0,
+      m05: 1,
+      m06: 0,
+      m07: 0,
+      m08: 0,
+      m09: 0,
+      m10: 1,
+      m11: 0,
+      m12: 0,
+      m13: 0,
+      m14: 0,
+      m15: 1
+    }
+  },
+  _children: [
+    Node {
+      _objFlags: 0,
+      _name: 'New Node',
+      __editorExtras__: {},
+      _parent: [Circular *2],
+      _children: [],
+      _active: true,
+      _components: [],
+      _prefab: [PrefabInfo],
+      _scene: [Scene],
+      _activeInHierarchy: false,
+      _id: 'faXdmJ1jVAf6SDj2R58bO6',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 27,
+      _hasChangedFlags: 7,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    }
+  ],
+  _active: true,
+  _components: [
+    PropertyOverrideInfo {
+      targetInfo: [TargetInfo],
+      propertyPath: [Array],
+      value: 'PF_Character'
+    },
+    PropertyOverrideInfo {
+      targetInfo: [TargetInfo],
+      propertyPath: [Array],
+      value: [Vec3]
+    }
+  ],
+  _prefab: PropertyOverrideInfo {
+    targetInfo: TargetInfo { localID: [Array] },
+    propertyPath: [ '_euler' ],
+    value: Vec3 { x: 0, y: 0, z: 0 }
+  },
+  _scene: <ref *1> Scene {
+    _objFlags: 0,
+    _name: 'scene:prefab-preview',
+    __editorExtras__: {},
+    _parent: null,
+    _children: [ [Node], [Node], [Node], [Node], [Node], [Node] ],
+    _active: true,
+    _components: [],
+    _prefab: null,
+    _scene: [Circular *1],
+    _activeInHierarchy: true,
+    _id: 'd34MWvPsBOE7WBH5w9bRxM',
+    _eventProcessor: NodeEventProcessor {
+      claimedTouchIdList: [],
+      maskList: null,
+      cachedCameraPriority: 0,
+      previousMouseIn: false,
+      bubblingTarget: null,
+      capturingTarget: null,
+      shouldHandleEventMouse: false,
+      shouldHandleEventTouch: false,
+      _dispatchingTouch: null,
+      _isEnabled: false,
+      _isMouseLeaveWindow: false,
+      _node: [Circular *1]
+    },
+    _eventMask: 0,
+    _siblingIndex: 0,
+    _originalSceneId: '',
+    _uiProps: NodeUIProperties {
+      _uiComp: null,
+      _opacity: 1,
+      _localOpacity: 1,
+      colorDirty: true,
+      _uiTransformComp: null,
+      _uiSkewComp: null,
+      _node: [Circular *1]
+    },
+    _static: false,
+    _lpos: Vec3 { x: 0, y: 0, z: 0 },
+    _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _lscale: Vec3 { x: 1, y: 1, z: 1 },
+    _mobility: 0,
+    _layer: 1073741824,
+    _euler: Vec3 { x: 0, y: 0, z: 0 },
+    _transformFlags: 0,
+    _eulerDirty: false,
+    _flagChangeVersion: 0,
+    _hasChangedFlags: 0,
+    _pos: Vec3 { x: 0, y: 0, z: 0 },
+    _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _scale: Vec3 { x: 1, y: 1, z: 1 },
+    _mat: Mat4 {
+      m00: 1,
+      m01: 0,
+      m02: 0,
+      m03: 0,
+      m04: 0,
+      m05: 1,
+      m06: 0,
+      m07: 0,
+      m08: 0,
+      m09: 0,
+      m10: 1,
+      m11: 0,
+      m12: 0,
+      m13: 0,
+      m14: 0,
+      m15: 1
+    },
+    autoReleaseAssets: false,
+    _globals: SceneGlobals {
+      ambient: [AmbientInfo],
+      shadows: [ShadowsInfo],
+      _skybox: [SkyboxInfo],
+      fog: [FogInfo],
+      octree: [OctreeInfo],
+      skin: [SkinInfo],
+      lightProbeInfo: [LightProbeInfo],
+      postSettings: [PostSettingsInfo],
+      bakedWithStationaryMainLight: false,
+      bakedWithHighpLightmap: false,
+      disableLightmap: false
+    },
+    dependAssets: null,
+    _renderScene: RenderScene {
+      _name: undefined,
+      _cameras: [Array],
+      _models: [Array],
+      _lodGroups: [],
+      _batches: [],
+      _directionalLights: [Array],
+      _sphereLights: [],
+      _spotLights: [],
+      _pointLights: [],
+      _rangedDirLights: [],
+      _mainLight: [DirectionalLight],
+      _modelId: 0,
+      _lodStateCache: [LodStateCache],
+      _root: [Root]
+    },
+    _prefabSyncedInLiveReload: false,
+    _inited: true
+  },
+  _activeInHierarchy: false,
+  _id: '85G8y+TTdBQ4mrGOkeCxMF',
+  _eventProcessor: NodeEventProcessor {
+    claimedTouchIdList: [],
+    maskList: null,
+    cachedCameraPriority: 0,
+    previousMouseIn: false,
+    bubblingTarget: null,
+    capturingTarget: null,
+    shouldHandleEventMouse: false,
+    shouldHandleEventTouch: false,
+    _dispatchingTouch: null,
+    _isEnabled: false,
+    _isMouseLeaveWindow: false,
+    _node: [Circular *2]
+  },
+  _eventMask: 0,
+  _siblingIndex: 1,
+  _originalSceneId: '',
+  _uiProps: NodeUIProperties {
+    _uiComp: null,
+    _opacity: 1,
+    _localOpacity: 1,
+    colorDirty: true,
+    _uiTransformComp: null,
+    _uiSkewComp: null,
+    _node: [Circular *2]
+  },
+  _static: false,
+  _lpos: Vec3 { x: 0, y: -412, z: 0 },
+  _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+  _lscale: Vec3 { x: 1, y: 1, z: 1 },
+  _mobility: 0,
+  _layer: 33554432,
+  _euler: Vec3 { x: 0, y: 0, z: 0 },
+  _transformFlags: 15,
+  _eulerDirty: false,
+  _flagChangeVersion: 27,
+  _hasChangedFlags: 7,
+  _pos: Vec3 { x: 0, y: 0, z: 0 },
+  _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+  _scale: Vec3 { x: 1, y: 1, z: 1 },
+  _mat: Mat4 {
+    m00: 1,
+    m01: 0,
+    m02: 0,
+    m03: 0,
+    m04: 0,
+    m05: 1,
+    m06: 0,
+    m07: 0,
+    m08: 0,
+    m09: 0,
+    m10: 1,
+    m11: 0,
+    m12: 0,
+    m13: 0,
+    m14: 0,
+    m15: 1
+  }
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'GameScene' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Node._onHierarchyChangedBase (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54071:46)
+    at Node._onHierarchyChanged (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54637:16)
+    at Node.setParent (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53159:16)
+    at Scene.addChild (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53240:17)
+    at PrefabPreview.setPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/preview/prefab-preview/index.ccc:1:1495)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: <ref *1> PrefabInfo {
+  root: <ref *3> Node {
+    _objFlags: 0,
+    _name: 'New Node',
+    __editorExtras__: {},
+    _parent: Node {
+      _objFlags: 0,
+      _name: 'Base_Parent',
+      __editorExtras__: {},
+      _parent: [Node],
+      _children: [Array],
+      _active: true,
+      _components: [Array],
+      _prefab: [PropertyOverrideInfo],
+      _scene: [Scene],
+      _activeInHierarchy: false,
+      _id: '85G8y+TTdBQ4mrGOkeCxMF',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 1,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 33554432,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 27,
+      _hasChangedFlags: 7,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    },
+    _children: [],
+    _active: true,
+    _components: [],
+    _prefab: [Circular *1],
+    _scene: <ref *2> Scene {
+      _objFlags: 0,
+      _name: 'scene:prefab-preview',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [],
+      _prefab: null,
+      _scene: [Circular *2],
+      _activeInHierarchy: true,
+      _id: 'd34MWvPsBOE7WBH5w9bRxM',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 1073741824,
+      _euler: [Vec3],
+      _transformFlags: 0,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4],
+      autoReleaseAssets: false,
+      _globals: [SceneGlobals],
+      dependAssets: null,
+      _renderScene: [RenderScene],
+      _prefabSyncedInLiveReload: false,
+      _inited: true
+    },
+    _activeInHierarchy: false,
+    _id: 'faXdmJ1jVAf6SDj2R58bO6',
+    _eventProcessor: NodeEventProcessor {
+      claimedTouchIdList: [],
+      maskList: null,
+      cachedCameraPriority: 0,
+      previousMouseIn: false,
+      bubblingTarget: null,
+      capturingTarget: null,
+      shouldHandleEventMouse: false,
+      shouldHandleEventTouch: false,
+      _dispatchingTouch: null,
+      _isEnabled: false,
+      _isMouseLeaveWindow: false,
+      _node: [Circular *3]
+    },
+    _eventMask: 0,
+    _siblingIndex: 0,
+    _originalSceneId: '',
+    _uiProps: NodeUIProperties {
+      _uiComp: null,
+      _opacity: 1,
+      _localOpacity: 1,
+      colorDirty: true,
+      _uiTransformComp: null,
+      _uiSkewComp: null,
+      _node: [Circular *3]
+    },
+    _static: false,
+    _lpos: Vec3 { x: 0, y: 0, z: 0 },
+    _lrot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _lscale: Vec3 { x: 1, y: 1, z: 1 },
+    _mobility: 0,
+    _layer: 1073741824,
+    _euler: Vec3 { x: 0, y: 0, z: 0 },
+    _transformFlags: 15,
+    _eulerDirty: false,
+    _flagChangeVersion: 27,
+    _hasChangedFlags: 7,
+    _pos: Vec3 { x: 0, y: 0, z: 0 },
+    _rot: Quat { x: 0, y: 0, z: 0, w: 1 },
+    _scale: Vec3 { x: 1, y: 1, z: 1 },
+    _mat: Mat4 {
+      m00: 1,
+      m01: 0,
+      m02: 0,
+      m03: 0,
+      m04: 0,
+      m05: 1,
+      m06: 0,
+      m07: 0,
+      m08: 0,
+      m09: 0,
+      m10: 1,
+      m11: 0,
+      m12: 0,
+      m13: 0,
+      m14: 0,
+      m15: 1
+    }
+  },
+  asset: Prefab {
+    _objFlags: 0,
+    _name: 'PF_Path',
+    __editorExtras__: {},
+    _callbackTable: [Object: null prototype] {},
+    loaded: true,
+    _native: '',
+    _nativeUrl: '',
+    _file: null,
+    _ref: 1,
+    data: Node {
+      _objFlags: 0,
+      _name: 'PF_Path',
+      __editorExtras__: {},
+      _parent: null,
+      _children: [Array],
+      _active: true,
+      _components: [Array],
+      _prefab: [PrefabInfo],
+      _scene: null,
+      _activeInHierarchy: false,
+      _id: '9d1RjqrSdHuYiMAOJSbqb0',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 0,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 33554432,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 0,
+      _hasChangedFlags: 0,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    },
+    optimizationPolicy: 0,
+    persistent: false,
+    _createFunction: null,
+    _instantiatedTimes: 0
+  },
+  fileId: '17IJZIS2FI7JaX/wVYA1Ri',
+  instance: PrefabInstance {
+    fileId: 'e18dd1o9FIMK/5GP/Wr4Hj',
+    prefabRootNode: Node {
+      _objFlags: 0,
+      _name: 'GameScene',
+      __editorExtras__: {},
+      _parent: [Scene],
+      _children: [Array],
+      _active: true,
+      _components: [Array],
+      _prefab: [PropertyOverrideInfo],
+      _scene: [Scene],
+      _activeInHierarchy: true,
+      _id: 'b4aHgqmFlOfKSAlIHXT+R3',
+      _eventProcessor: [NodeEventProcessor],
+      _eventMask: 0,
+      _siblingIndex: 5,
+      _originalSceneId: '',
+      _uiProps: [NodeUIProperties],
+      _static: false,
+      _lpos: [Vec3],
+      _lrot: [Quat],
+      _lscale: [Vec3],
+      _mobility: 0,
+      _layer: 33554432,
+      _euler: [Vec3],
+      _transformFlags: 15,
+      _eulerDirty: false,
+      _flagChangeVersion: 27,
+      _hasChangedFlags: 7,
+      _pos: [Vec3],
+      _rot: [Quat],
+      _scale: [Vec3],
+      _mat: [Mat4]
+    },
+    mountedChildren: [],
+    mountedComponents: [],
+    propertyOverrides: [
+      [PropertyOverrideInfo],
+      [PropertyOverrideInfo],
+      [PropertyOverrideInfo],
+      [PropertyOverrideInfo]
+    ],
+    removedComponents: [],
+    targetMap: {},
+    expanded: false
+  },
+  targetOverrides: null,
+  nestedPrefabInstanceRoots: null
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Node._onHierarchyChangedBase (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54071:46)
+    at Node._onHierarchyChanged (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54637:16)
+    at Node.setParent (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53159:16)
+    at Scene.addChild (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53240:17)
+    at PrefabPreview.setPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/preview/prefab-preview/index.ccc:1:1495)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: PropertyOverrideInfo {
+  targetInfo: TargetInfo { localID: [ '352wQd31lL65hJiPOM4qh4' ] },
+  propertyPath: [ '_name' ],
+  value: 'PF_Character'
+}
+4-25-2026 15:31:58 - error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.Error: [Scene] Sorry, the component of 'Base_Parent' which with an index of 0 is corrupted! It has been removed.
+    at console.error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/node_modules/@sentry/core/src/utils-hoist/instrument/console.ts:40:14)
+    at error (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153771:12)
+    at errorID (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:153949:5)
+    at _componentCorrupted (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51130:5)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51373:15)
+    at NodeActivator._activateNodeRecursively (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51383:20)
+    at NodeActivator.activateNode (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:51269:20)
+    at Node._onHierarchyChangedBase (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54071:46)
+    at Node._onHierarchyChanged (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:54637:16)
+    at Node.setParent (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53159:16)
+    at Scene.addChild (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/resources/3d/engine/bin/.cache/dev/editor/bundled/index.js:53240:17)
+    at PrefabPreview.setPrefab (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/scene/dist/script/3d/manager/preview/prefab-preview/index.ccc:1:1495)
+4-25-2026 15:31:58 - log: [Scene] Corrupted component value: PropertyOverrideInfo {
+  targetInfo: TargetInfo { localID: [ '352wQd31lL65hJiPOM4qh4' ] },
+  propertyPath: [ '_lpos' ],
+  value: Vec3 { x: 0, y: 0, z: 0 }
+}
+4-25-2026 15:31:59 - error: [Window] parameter errorError: parameter error
+    at AssetManager.queryAssetInfo (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/asset-db/dist/worker/manager/asset-manager.ccc:1:2181)
+    at Object.query-asset-info (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/asset-db/dist/worker/messages/query.ccc:1:1585)
+    at /Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/asset-db/dist/worker/index.ccc:1:552
+    at Ipc.<anonymous> (/Applications/Cocos/Creator/3.8.8/CocosCreator.app/Contents/Resources/app.asar/builtin/asset-db/dist/worker/ipc.ccc:1:561)
+    (Target: asset-db, Message: query-asset-info)
