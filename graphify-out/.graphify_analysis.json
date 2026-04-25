@@ -1,0 +1,301 @@
+{
+  "communities": {
+    "0": [
+      "collisionsystem_collisionsystem",
+      "collisionsystem_collisionsystem_aabb",
+      "collisionsystem_collisionsystem_checkplayervsitems",
+      "collisionsystem_collisionsystem_checkplayervsnpcs",
+      "core_eventbus_ts",
+      "eventbus_eventbus",
+      "eventbus_eventbus_get",
+      "eventbus_eventbus_reset",
+      "gamecontroller_gamecontroller_onitemcollected",
+      "gamecontroller_gamecontroller_tryactivatelightpoints",
+      "inventorymodel_inventorymodel",
+      "inventorymodel_inventorymodel_additem",
+      "inventorymodel_inventorymodel_consumeitem",
+      "inventorymodel_inventorymodel_getcount",
+      "inventorymodel_inventorymodel_hasitem",
+      "inventorymodel_inventorymodel_reset",
+      "lightpointmodel_lightpointmodel",
+      "lightpointmodel_lightpointmodel_canactivatewithshards",
+      "lightpointmodel_lightpointmodel_reset",
+      "models_inventorymodel_ts",
+      "models_lightpointmodel_ts",
+      "systems_collisionsystem_ts",
+      "systems_tradesystem_ts",
+      "tradesystem_tradesystem",
+      "tradesystem_tradesystem_destroy",
+      "tradesystem_tradesystem_init",
+      "tradesystem_tradesystem_onnpcinteract"
+    ],
+    "1": [
+      "controllers_gamecontroller_ts",
+      "gamecontroller_gamecontroller",
+      "gamecontroller_gamecontroller_activatelightpoint",
+      "gamecontroller_gamecontroller_getinventory",
+      "gamecontroller_gamecontroller_initlightpoints",
+      "gamecontroller_gamecontroller_ondestroy",
+      "gamecontroller_gamecontroller_onitemconsumed",
+      "gamecontroller_gamecontroller_onload",
+      "gamecontroller_gamecontroller_ontradesuccess",
+      "gamecontroller_gamecontroller_subscribeevents",
+      "gamecontroller_gamecontroller_tryactivatelightpointsbytrade",
+      "gamemanager_gamemanager_getinstance",
+      "lightpointmodel_lightpointmodel_canactivatewithtrade",
+      "lightpointview_lightpointview",
+      "lightpointview_lightpointview_playrestoreeffect",
+      "lightpointview_lightpointview_setposition",
+      "lightpointview_lightpointview_setrestored",
+      "lightsystem_lightsystem",
+      "lightsystem_lightsystem_onlightpointrestored",
+      "systems_lightsystem_ts",
+      "views_lightpointview_ts"
+    ],
+    "2": [
+      "controllers_npccontroller_ts",
+      "mathutil_mathutil_randomrange",
+      "npccontroller_npccontroller",
+      "npccontroller_npccontroller_activate",
+      "npccontroller_npccontroller_deactivate",
+      "npccontroller_npccontroller_getmodel",
+      "npccontroller_npccontroller_onload",
+      "npccontroller_npccontroller_scrollx",
+      "poolingsystem_poolingsystem_getfrompool",
+      "spawnsystem_spawnsystem",
+      "spawnsystem_spawnsystem_init",
+      "spawnsystem_spawnsystem_recyclecollecteditem",
+      "spawnsystem_spawnsystem_recycleitem",
+      "spawnsystem_spawnsystem_recyclenpc",
+      "spawnsystem_spawnsystem_resettimers",
+      "spawnsystem_spawnsystem_scrollactiveobjects",
+      "spawnsystem_spawnsystem_spawnitem",
+      "spawnsystem_spawnsystem_spawnnpc",
+      "spawnsystem_spawnsystem_tick",
+      "systems_spawnsystem_ts"
+    ],
+    "3": [
+      "controllers_itemcontroller_ts",
+      "gamemanager_gamemanager_ondestroy",
+      "itemcontroller_itemcontroller",
+      "itemcontroller_itemcontroller_activate",
+      "itemcontroller_itemcontroller_deactivate",
+      "itemcontroller_itemcontroller_getmodel",
+      "itemcontroller_itemcontroller_onload",
+      "itemcontroller_itemcontroller_scrollx",
+      "models_npcmodel_ts",
+      "npccontroller_npccontroller_marktraded",
+      "npcmodel_npcmodel",
+      "npcmodel_npcmodel_deactivate",
+      "npcmodel_npcmodel_reset",
+      "npcview_npcview",
+      "npcview_npcview_playtradeeffect",
+      "npcview_npcview_setvisible",
+      "views_npcview_ts"
+    ],
+    "4": [
+      "core_gamemanager_ts",
+      "gamemanager_gamemanager",
+      "gamemanager_gamemanager_collision",
+      "gamemanager_gamemanager_lightsystem",
+      "gamemanager_gamemanager_ongameover",
+      "gamemanager_gamemanager_onlightrestored",
+      "gamemanager_gamemanager_onload",
+      "gamemanager_gamemanager_pooling",
+      "gamemanager_gamemanager_spawn",
+      "gamemanager_gamemanager_start",
+      "gamemanager_gamemanager_startgame",
+      "gamemanager_gamemanager_state",
+      "gamemanager_gamemanager_subscribeevents",
+      "lightsystem_lightsystem_init",
+      "playercontroller_playercontroller_onload",
+      "spawnsystem_spawnsystem_stop"
+    ],
+    "5": [
+      "inputsystem_inputsystem_readinto",
+      "movementsystem_movementsystem",
+      "movementsystem_movementsystem_clearparallaxlayers",
+      "movementsystem_movementsystem_registerparallaxlayer",
+      "movementsystem_movementsystem_setscrollspeed",
+      "movementsystem_movementsystem_updateplayer",
+      "movementsystem_movementsystem_updateworld",
+      "npcview_npcview_setposition",
+      "playercontroller_playercontroller_update",
+      "playerview_playerview",
+      "playerview_playerview_setfacingdirection",
+      "playerview_playerview_setposition",
+      "systems_movementsystem_ts",
+      "views_playerview_ts"
+    ],
+    "6": [
+      "controllers_playercontroller_ts",
+      "inputsystem_inputsystem",
+      "inputsystem_inputsystem_destroy",
+      "inputsystem_inputsystem_init",
+      "inputsystem_inputsystem_onkeydown",
+      "inputsystem_inputsystem_onkeyup",
+      "inputsystem_inputsystem_setjoystickaxis",
+      "playercontroller_playercontroller",
+      "playercontroller_playercontroller_getmodel",
+      "playercontroller_playercontroller_ondestroy",
+      "playercontroller_playercontroller_ongameover",
+      "systems_inputsystem_ts"
+    ],
+    "7": [
+      "poolingsystem_poolingsystem",
+      "poolingsystem_poolingsystem_getorcreatepool",
+      "poolingsystem_poolingsystem_init",
+      "poolingsystem_poolingsystem_registerprefab",
+      "poolingsystem_poolingsystem_returntopool",
+      "poolingsystem_poolingsystem_seed",
+      "systems_poolingsystem_ts"
+    ],
+    "8": [
+      "mathutil_mathutil",
+      "mathutil_mathutil_approachzero",
+      "mathutil_mathutil_clamp",
+      "mathutil_mathutil_lerp",
+      "mathutil_mathutil_randomint",
+      "mathutil_mathutil_remap",
+      "utils_mathutil_ts"
+    ],
+    "9": [
+      "constants_collisionconstants",
+      "constants_lightconstants",
+      "constants_playerconstants",
+      "constants_spawnconstants",
+      "constants_worldconstants",
+      "core_constants_ts"
+    ],
+    "10": [
+      "models_playermodel_ts",
+      "playermodel_playermodel",
+      "playermodel_playermodel_hasinput",
+      "playermodel_playermodel_reset"
+    ],
+    "11": [
+      "itemmodel_itemmodel",
+      "itemmodel_itemmodel_deactivate",
+      "itemmodel_itemmodel_reset",
+      "models_itemmodel_ts"
+    ],
+    "12": [
+      "gamestatemodel_gamestatemodel",
+      "gamestatemodel_gamestatemodel_isplaying",
+      "gamestatemodel_gamestatemodel_reset",
+      "models_gamestatemodel_ts"
+    ],
+    "13": [
+      "itemview_itemview",
+      "itemview_itemview_setposition",
+      "itemview_itemview_setvisible",
+      "views_itemview_ts"
+    ]
+  },
+  "cohesion": {
+    "0": 0.11,
+    "1": 0.12,
+    "2": 0.18,
+    "3": 0.12,
+    "4": 0.14,
+    "5": 0.15,
+    "6": 0.17,
+    "7": 0.38,
+    "8": 0.29,
+    "9": 0.33,
+    "10": 0.5,
+    "11": 0.5,
+    "12": 0.5,
+    "13": 0.5
+  },
+  "gods": [
+    {
+      "id": "gamemanager_gamemanager",
+      "label": "GameManager",
+      "degree": 14
+    },
+    {
+      "id": "gamecontroller_gamecontroller",
+      "label": "GameController",
+      "degree": 12
+    },
+    {
+      "id": "spawnsystem_spawnsystem",
+      "label": "SpawnSystem",
+      "degree": 11
+    },
+    {
+      "id": "mathutil_mathutil",
+      "label": "MathUtil",
+      "degree": 7
+    },
+    {
+      "id": "poolingsystem_poolingsystem",
+      "label": "PoolingSystem",
+      "degree": 7
+    },
+    {
+      "id": "inputsystem_inputsystem",
+      "label": "InputSystem",
+      "degree": 7
+    },
+    {
+      "id": "npccontroller_npccontroller",
+      "label": "NPCController",
+      "degree": 7
+    },
+    {
+      "id": "inventorymodel_inventorymodel",
+      "label": "InventoryModel",
+      "degree": 6
+    },
+    {
+      "id": "movementsystem_movementsystem",
+      "label": "MovementSystem",
+      "degree": 6
+    },
+    {
+      "id": "itemcontroller_itemcontroller",
+      "label": "ItemController",
+      "degree": 6
+    }
+  ],
+  "surprises": [],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `GameManager` connect `Community 4` to `Community 1`, `Community 3`?",
+      "why": "High betweenness centrality (0.110) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `GameController` connect `Community 1` to `Community 0`?",
+      "why": "High betweenness centrality (0.068) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `PlayerController` connect `Community 6` to `Community 4`, `Community 5`?",
+      "why": "High betweenness centrality (0.065) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `PlayerConstants`, `WorldConstants`, `LightConstants` to the rest of the system?",
+      "why": "5 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 3` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

@@ -1,0 +1,3875 @@
+{
+  "nodes": [
+    {
+      "id": "core_gamemanager_ts",
+      "label": "GameManager.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "gamemanager_gamemanager",
+      "label": "GameManager",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "gamemanager_gamemanager_getinstance",
+      "label": ".getInstance()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "gamemanager_gamemanager_pooling",
+      "label": ".pooling()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "gamemanager_gamemanager_spawn",
+      "label": ".spawn()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "gamemanager_gamemanager_collision",
+      "label": ".collision()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "gamemanager_gamemanager_lightsystem",
+      "label": ".lightSystem()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "gamemanager_gamemanager_state",
+      "label": ".state()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "gamemanager_gamemanager_onload",
+      "label": ".onLoad()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "gamemanager_gamemanager_start",
+      "label": ".start()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "gamemanager_gamemanager_ondestroy",
+      "label": ".onDestroy()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L49"
+    },
+    {
+      "id": "gamemanager_gamemanager_startgame",
+      "label": "._startGame()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L54"
+    },
+    {
+      "id": "gamemanager_gamemanager_subscribeevents",
+      "label": "._subscribeEvents()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L59"
+    },
+    {
+      "id": "gamemanager_gamemanager_ongameover",
+      "label": "._onGameOver()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L65"
+    },
+    {
+      "id": "gamemanager_gamemanager_onlightrestored",
+      "label": "._onLightRestored()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L70"
+    },
+    {
+      "id": "core_eventbus_ts",
+      "label": "EventBus.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/EventBus.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "eventbus_eventbus",
+      "label": "EventBus",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/EventBus.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "eventbus_eventbus_get",
+      "label": ".get()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/EventBus.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "eventbus_eventbus_reset",
+      "label": ".reset()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/EventBus.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "core_constants_ts",
+      "label": "Constants.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "constants_playerconstants",
+      "label": "PlayerConstants",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "constants_worldconstants",
+      "label": "WorldConstants",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "constants_lightconstants",
+      "label": "LightConstants",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L44"
+    },
+    {
+      "id": "constants_spawnconstants",
+      "label": "SpawnConstants",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "constants_collisionconstants",
+      "label": "CollisionConstants",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L56"
+    },
+    {
+      "id": "utils_mathutil_ts",
+      "label": "MathUtil.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "mathutil_mathutil",
+      "label": "MathUtil",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L2"
+    },
+    {
+      "id": "mathutil_mathutil_clamp",
+      "label": ".clamp()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "mathutil_mathutil_lerp",
+      "label": ".lerp()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "mathutil_mathutil_randomrange",
+      "label": ".randomRange()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "mathutil_mathutil_randomint",
+      "label": ".randomInt()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "mathutil_mathutil_approachzero",
+      "label": ".approachZero()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "mathutil_mathutil_remap",
+      "label": ".remap()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "models_lightpointmodel_ts",
+      "label": "LightPointModel.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lightpointmodel_lightpointmodel",
+      "label": "LightPointModel",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "lightpointmodel_lightpointmodel_reset",
+      "label": ".reset()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "lightpointmodel_lightpointmodel_canactivatewithshards",
+      "label": ".canActivateWithShards()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "lightpointmodel_lightpointmodel_canactivatewithtrade",
+      "label": ".canActivateWithTrade()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "models_playermodel_ts",
+      "label": "PlayerModel.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/PlayerModel.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "playermodel_playermodel",
+      "label": "PlayerModel",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/PlayerModel.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "playermodel_playermodel_hasinput",
+      "label": ".hasInput()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/PlayerModel.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "playermodel_playermodel_reset",
+      "label": ".reset()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/PlayerModel.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "models_itemmodel_ts",
+      "label": "ItemModel.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/ItemModel.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "itemmodel_itemmodel",
+      "label": "ItemModel",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/ItemModel.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "itemmodel_itemmodel_reset",
+      "label": ".reset()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/ItemModel.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "itemmodel_itemmodel_deactivate",
+      "label": ".deactivate()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/ItemModel.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "models_gamestatemodel_ts",
+      "label": "GameStateModel.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/GameStateModel.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "gamestatemodel_gamestatemodel",
+      "label": "GameStateModel",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/GameStateModel.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "gamestatemodel_gamestatemodel_isplaying",
+      "label": ".isPlaying()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/GameStateModel.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "gamestatemodel_gamestatemodel_reset",
+      "label": ".reset()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/GameStateModel.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "models_inventorymodel_ts",
+      "label": "InventoryModel.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "inventorymodel_inventorymodel",
+      "label": "InventoryModel",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "inventorymodel_inventorymodel_additem",
+      "label": ".addItem()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "inventorymodel_inventorymodel_consumeitem",
+      "label": ".consumeItem()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "inventorymodel_inventorymodel_hasitem",
+      "label": ".hasItem()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "inventorymodel_inventorymodel_getcount",
+      "label": ".getCount()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "inventorymodel_inventorymodel_reset",
+      "label": ".reset()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "models_npcmodel_ts",
+      "label": "NPCModel.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/NPCModel.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "npcmodel_npcmodel",
+      "label": "NPCModel",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/NPCModel.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "npcmodel_npcmodel_reset",
+      "label": ".reset()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/NPCModel.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "npcmodel_npcmodel_deactivate",
+      "label": ".deactivate()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/NPCModel.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "systems_collisionsystem_ts",
+      "label": "CollisionSystem.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "collisionsystem_collisionsystem",
+      "label": "CollisionSystem",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "collisionsystem_collisionsystem_checkplayervsitems",
+      "label": ".checkPlayerVsItems()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "collisionsystem_collisionsystem_checkplayervsnpcs",
+      "label": ".checkPlayerVsNPCs()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "collisionsystem_collisionsystem_aabb",
+      "label": "._aabb()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "systems_tradesystem_ts",
+      "label": "TradeSystem.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tradesystem_tradesystem",
+      "label": "TradeSystem",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "tradesystem_tradesystem_init",
+      "label": ".init()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "tradesystem_tradesystem_destroy",
+      "label": ".destroy()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "tradesystem_tradesystem_onnpcinteract",
+      "label": "._onNPCInteract()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "systems_poolingsystem_ts",
+      "label": "PoolingSystem.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "poolingsystem_poolingsystem",
+      "label": "PoolingSystem",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "poolingsystem_poolingsystem_init",
+      "label": ".init()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "poolingsystem_poolingsystem_registerprefab",
+      "label": ".registerPrefab()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "poolingsystem_poolingsystem_seed",
+      "label": ".seed()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "poolingsystem_poolingsystem_getfrompool",
+      "label": ".getFromPool()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L42"
+    },
+    {
+      "id": "poolingsystem_poolingsystem_returntopool",
+      "label": ".returnToPool()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L58"
+    },
+    {
+      "id": "poolingsystem_poolingsystem_getorcreatepool",
+      "label": "._getOrCreatePool()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L63"
+    },
+    {
+      "id": "systems_inputsystem_ts",
+      "label": "InputSystem.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "inputsystem_inputsystem",
+      "label": "InputSystem",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "inputsystem_inputsystem_init",
+      "label": ".init()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "inputsystem_inputsystem_destroy",
+      "label": ".destroy()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "inputsystem_inputsystem_setjoystickaxis",
+      "label": ".setJoystickAxis()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "inputsystem_inputsystem_readinto",
+      "label": ".readInto()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "inputsystem_inputsystem_onkeydown",
+      "label": "._onKeyDown()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "inputsystem_inputsystem_onkeyup",
+      "label": "._onKeyUp()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "systems_spawnsystem_ts",
+      "label": "SpawnSystem.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "spawnsystem_spawnsystem",
+      "label": "SpawnSystem",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_init",
+      "label": ".init()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_stop",
+      "label": ".stop()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_tick",
+      "label": ".tick()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_scrollactiveobjects",
+      "label": ".scrollActiveObjects()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L70"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_recyclecollecteditem",
+      "label": ".recycleCollectedItem()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L86"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_recyclenpc",
+      "label": ".recycleNPC()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L90"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_spawnitem",
+      "label": "._spawnItem()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L94"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_spawnnpc",
+      "label": "._spawnNPC()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L109"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_recycleitem",
+      "label": "._recycleItem()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L125"
+    },
+    {
+      "id": "spawnsystem_spawnsystem_resettimers",
+      "label": "._resetTimers()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L141"
+    },
+    {
+      "id": "systems_lightsystem_ts",
+      "label": "LightSystem.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lightsystem_lightsystem",
+      "label": "LightSystem",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "lightsystem_lightsystem_init",
+      "label": ".init()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "lightsystem_lightsystem_onlightpointrestored",
+      "label": ".onLightPointRestored()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "systems_movementsystem_ts",
+      "label": "MovementSystem.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "movementsystem_movementsystem",
+      "label": "MovementSystem",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "movementsystem_movementsystem_registerparallaxlayer",
+      "label": ".registerParallaxLayer()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "movementsystem_movementsystem_clearparallaxlayers",
+      "label": ".clearParallaxLayers()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "movementsystem_movementsystem_setscrollspeed",
+      "label": ".setScrollSpeed()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "movementsystem_movementsystem_updateplayer",
+      "label": ".updatePlayer()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "movementsystem_movementsystem_updateworld",
+      "label": ".updateWorld()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L67"
+    },
+    {
+      "id": "controllers_gamecontroller_ts",
+      "label": "GameController.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "gamecontroller_gamecontroller",
+      "label": "GameController",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_onload",
+      "label": ".onLoad()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_ondestroy",
+      "label": ".onDestroy()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_getinventory",
+      "label": ".getInventory()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L36"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_initlightpoints",
+      "label": "._initLightPoints()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_subscribeevents",
+      "label": "._subscribeEvents()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L53"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_onitemcollected",
+      "label": "._onItemCollected()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L60"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_onitemconsumed",
+      "label": "._onItemConsumed()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L68"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_ontradesuccess",
+      "label": "._onTradeSuccess()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L72"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_tryactivatelightpoints",
+      "label": "._tryActivateLightPoints()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L76"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_tryactivatelightpointsbytrade",
+      "label": "._tryActivateLightPointsByTrade()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L85"
+    },
+    {
+      "id": "gamecontroller_gamecontroller_activatelightpoint",
+      "label": "._activateLightPoint()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L93"
+    },
+    {
+      "id": "controllers_itemcontroller_ts",
+      "label": "ItemController.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "itemcontroller_itemcontroller",
+      "label": "ItemController",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "itemcontroller_itemcontroller_onload",
+      "label": ".onLoad()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "itemcontroller_itemcontroller_activate",
+      "label": ".activate()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "itemcontroller_itemcontroller_deactivate",
+      "label": ".deactivate()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "itemcontroller_itemcontroller_scrollx",
+      "label": ".scrollX()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "itemcontroller_itemcontroller_getmodel",
+      "label": ".getModel()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "controllers_playercontroller_ts",
+      "label": "PlayerController.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "playercontroller_playercontroller",
+      "label": "PlayerController",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "playercontroller_playercontroller_onload",
+      "label": ".onLoad()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "playercontroller_playercontroller_ondestroy",
+      "label": ".onDestroy()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "playercontroller_playercontroller_update",
+      "label": ".update()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "playercontroller_playercontroller_getmodel",
+      "label": ".getModel()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L50"
+    },
+    {
+      "id": "playercontroller_playercontroller_ongameover",
+      "label": "._onGameOver()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "controllers_npccontroller_ts",
+      "label": "NPCController.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "npccontroller_npccontroller",
+      "label": "NPCController",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "npccontroller_npccontroller_onload",
+      "label": ".onLoad()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "npccontroller_npccontroller_activate",
+      "label": ".activate()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "npccontroller_npccontroller_deactivate",
+      "label": ".deactivate()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "npccontroller_npccontroller_scrollx",
+      "label": ".scrollX()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "npccontroller_npccontroller_marktraded",
+      "label": ".markTraded()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "npccontroller_npccontroller_getmodel",
+      "label": ".getModel()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "views_itemview_ts",
+      "label": "ItemView.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/ItemView.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "itemview_itemview",
+      "label": "ItemView",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/ItemView.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "itemview_itemview_setposition",
+      "label": ".setPosition()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/ItemView.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "itemview_itemview_setvisible",
+      "label": ".setVisible()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/ItemView.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "views_lightpointview_ts",
+      "label": "LightPointView.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lightpointview_lightpointview",
+      "label": "LightPointView",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "lightpointview_lightpointview_setposition",
+      "label": ".setPosition()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "lightpointview_lightpointview_playrestoreeffect",
+      "label": ".playRestoreEffect()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "lightpointview_lightpointview_setrestored",
+      "label": ".setRestored()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "views_playerview_ts",
+      "label": "PlayerView.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/PlayerView.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "playerview_playerview",
+      "label": "PlayerView",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/PlayerView.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "playerview_playerview_setposition",
+      "label": ".setPosition()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/PlayerView.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "playerview_playerview_setfacingdirection",
+      "label": ".setFacingDirection()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/PlayerView.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "views_npcview_ts",
+      "label": "NPCView.ts",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "npcview_npcview",
+      "label": "NPCView",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "npcview_npcview_setposition",
+      "label": ".setPosition()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "npcview_npcview_setvisible",
+      "label": ".setVisible()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "npcview_npcview_playtradeeffect",
+      "label": ".playTradeEffect()",
+      "file_type": "code",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L24"
+    }
+  ],
+  "edges": [
+    {
+      "source": "core_gamemanager_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "core_gamemanager_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_eventbus",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "core_gamemanager_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "core_gamemanager_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_gamestatemodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "core_gamemanager_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_systems_lightsystem",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "core_gamemanager_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_systems_poolingsystem",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "core_gamemanager_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_systems_spawnsystem",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "core_gamemanager_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_systems_collisionsystem",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "core_gamemanager_ts",
+      "target": "gamemanager_gamemanager",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_getinstance",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_pooling",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_spawn",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_collision",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_lightsystem",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_state",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_onload",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_start",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_ondestroy",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_startgame",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_subscribeevents",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_ongameover",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager",
+      "target": "gamemanager_gamemanager_onlightrestored",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager_onload",
+      "target": "gamemanager_gamemanager_subscribeevents",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager_start",
+      "target": "gamemanager_gamemanager_startgame",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "core_eventbus_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/EventBus.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "core_eventbus_ts",
+      "target": "eventbus_eventbus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/EventBus.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "eventbus_eventbus",
+      "target": "eventbus_eventbus_get",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/EventBus.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "eventbus_eventbus",
+      "target": "eventbus_eventbus_reset",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/EventBus.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "core_constants_ts",
+      "target": "constants_playerconstants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "core_constants_ts",
+      "target": "constants_worldconstants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "core_constants_ts",
+      "target": "constants_lightconstants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "core_constants_ts",
+      "target": "constants_spawnconstants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "core_constants_ts",
+      "target": "constants_collisionconstants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/Constants.ts",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "utils_mathutil_ts",
+      "target": "mathutil_mathutil",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "mathutil_mathutil",
+      "target": "mathutil_mathutil_clamp",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "mathutil_mathutil",
+      "target": "mathutil_mathutil_lerp",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "mathutil_mathutil",
+      "target": "mathutil_mathutil_randomrange",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "mathutil_mathutil",
+      "target": "mathutil_mathutil_randomint",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "mathutil_mathutil",
+      "target": "mathutil_mathutil_approachzero",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "mathutil_mathutil",
+      "target": "mathutil_mathutil_remap",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "mathutil_mathutil_randomint",
+      "target": "mathutil_mathutil_randomrange",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/utils/MathUtil.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "models_lightpointmodel_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "models_lightpointmodel_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "models_lightpointmodel_ts",
+      "target": "lightpointmodel_lightpointmodel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "lightpointmodel_lightpointmodel",
+      "target": "lightpointmodel_lightpointmodel_reset",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "lightpointmodel_lightpointmodel",
+      "target": "lightpointmodel_lightpointmodel_canactivatewithshards",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "lightpointmodel_lightpointmodel",
+      "target": "lightpointmodel_lightpointmodel_canactivatewithtrade",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/LightPointModel.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "models_playermodel_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/PlayerModel.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "models_playermodel_ts",
+      "target": "playermodel_playermodel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/PlayerModel.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "playermodel_playermodel",
+      "target": "playermodel_playermodel_hasinput",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/PlayerModel.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "playermodel_playermodel",
+      "target": "playermodel_playermodel_reset",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/PlayerModel.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "models_itemmodel_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/ItemModel.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "models_itemmodel_ts",
+      "target": "itemmodel_itemmodel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/ItemModel.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "itemmodel_itemmodel",
+      "target": "itemmodel_itemmodel_reset",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/ItemModel.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "itemmodel_itemmodel",
+      "target": "itemmodel_itemmodel_deactivate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/ItemModel.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "models_gamestatemodel_ts",
+      "target": "gamestatemodel_gamestatemodel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/GameStateModel.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "gamestatemodel_gamestatemodel",
+      "target": "gamestatemodel_gamestatemodel_isplaying",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/GameStateModel.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "gamestatemodel_gamestatemodel",
+      "target": "gamestatemodel_gamestatemodel_reset",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/GameStateModel.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "models_inventorymodel_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "models_inventorymodel_ts",
+      "target": "inventorymodel_inventorymodel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "inventorymodel_inventorymodel",
+      "target": "inventorymodel_inventorymodel_additem",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "inventorymodel_inventorymodel",
+      "target": "inventorymodel_inventorymodel_consumeitem",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "inventorymodel_inventorymodel",
+      "target": "inventorymodel_inventorymodel_hasitem",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "inventorymodel_inventorymodel",
+      "target": "inventorymodel_inventorymodel_getcount",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "inventorymodel_inventorymodel",
+      "target": "inventorymodel_inventorymodel_reset",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "models_npcmodel_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/NPCModel.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "models_npcmodel_ts",
+      "target": "npcmodel_npcmodel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/NPCModel.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "npcmodel_npcmodel",
+      "target": "npcmodel_npcmodel_reset",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/NPCModel.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "npcmodel_npcmodel",
+      "target": "npcmodel_npcmodel_deactivate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/NPCModel.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_collisionsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_eventbus",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_collisionsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_collisionsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_playermodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_collisionsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_itemmodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_collisionsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_npcmodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_collisionsystem_ts",
+      "target": "collisionsystem_collisionsystem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "collisionsystem_collisionsystem",
+      "target": "collisionsystem_collisionsystem_checkplayervsitems",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "collisionsystem_collisionsystem",
+      "target": "collisionsystem_collisionsystem_checkplayervsnpcs",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "collisionsystem_collisionsystem",
+      "target": "collisionsystem_collisionsystem_aabb",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "collisionsystem_collisionsystem_checkplayervsitems",
+      "target": "collisionsystem_collisionsystem_aabb",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "collisionsystem_collisionsystem_checkplayervsnpcs",
+      "target": "collisionsystem_collisionsystem_aabb",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_tradesystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_eventbus",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_tradesystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_tradesystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_npcmodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_tradesystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_inventorymodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_tradesystem_ts",
+      "target": "tradesystem_tradesystem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tradesystem_tradesystem",
+      "target": "tradesystem_tradesystem_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "tradesystem_tradesystem",
+      "target": "tradesystem_tradesystem_destroy",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "tradesystem_tradesystem",
+      "target": "tradesystem_tradesystem_onnpcinteract",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_poolingsystem_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_poolingsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_poolingsystem_ts",
+      "target": "poolingsystem_poolingsystem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem",
+      "target": "poolingsystem_poolingsystem_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem",
+      "target": "poolingsystem_poolingsystem_registerprefab",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem",
+      "target": "poolingsystem_poolingsystem_seed",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem",
+      "target": "poolingsystem_poolingsystem_getfrompool",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem",
+      "target": "poolingsystem_poolingsystem_returntopool",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem",
+      "target": "poolingsystem_poolingsystem_getorcreatepool",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem_seed",
+      "target": "poolingsystem_poolingsystem_getorcreatepool",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem_returntopool",
+      "target": "poolingsystem_poolingsystem_getorcreatepool",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_inputsystem_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_inputsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_playermodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_inputsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_inputsystem_ts",
+      "target": "inputsystem_inputsystem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "inputsystem_inputsystem",
+      "target": "inputsystem_inputsystem_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "inputsystem_inputsystem",
+      "target": "inputsystem_inputsystem_destroy",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "inputsystem_inputsystem",
+      "target": "inputsystem_inputsystem_setjoystickaxis",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "inputsystem_inputsystem",
+      "target": "inputsystem_inputsystem_readinto",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "inputsystem_inputsystem",
+      "target": "inputsystem_inputsystem_onkeydown",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "inputsystem_inputsystem",
+      "target": "inputsystem_inputsystem_onkeyup",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/InputSystem.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_spawnsystem_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_spawnsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_systems_poolingsystem",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_spawnsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_controllers_itemcontroller",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_spawnsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_controllers_npccontroller",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_spawnsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_spawnsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_utils_mathutil",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_spawnsystem_ts",
+      "target": "spawnsystem_spawnsystem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_stop",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_tick",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_scrollactiveobjects",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_recyclecollecteditem",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_recyclenpc",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_spawnitem",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_spawnnpc",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_recycleitem",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_recyclenpc",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem",
+      "target": "spawnsystem_spawnsystem_resettimers",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_init",
+      "target": "spawnsystem_spawnsystem_resettimers",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_tick",
+      "target": "spawnsystem_spawnsystem_spawnitem",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_tick",
+      "target": "spawnsystem_spawnsystem_spawnnpc",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_scrollactiveobjects",
+      "target": "spawnsystem_spawnsystem_recycleitem",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_recyclecollecteditem",
+      "target": "spawnsystem_spawnsystem_recycleitem",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_lightsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_eventbus",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_lightsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_lightsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_gamestatemodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_lightsystem_ts",
+      "target": "lightsystem_lightsystem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "lightsystem_lightsystem",
+      "target": "lightsystem_lightsystem_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "lightsystem_lightsystem",
+      "target": "lightsystem_lightsystem_onlightpointrestored",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_movementsystem_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_movementsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_playermodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_movementsystem_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "systems_movementsystem_ts",
+      "target": "movementsystem_movementsystem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "movementsystem_movementsystem",
+      "target": "movementsystem_movementsystem_registerparallaxlayer",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "movementsystem_movementsystem",
+      "target": "movementsystem_movementsystem_clearparallaxlayers",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "movementsystem_movementsystem",
+      "target": "movementsystem_movementsystem_setscrollspeed",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "movementsystem_movementsystem",
+      "target": "movementsystem_movementsystem_updateplayer",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "movementsystem_movementsystem",
+      "target": "movementsystem_movementsystem_updateworld",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_gamecontroller_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_gamecontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_eventbus",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_gamecontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_gamecontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_inventorymodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_gamecontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_views_lightpointview",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_gamecontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_lightpointmodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_gamecontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_gamemanager",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_gamecontroller_ts",
+      "target": "gamecontroller_gamecontroller",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_onload",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_ondestroy",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_getinventory",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_initlightpoints",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_subscribeevents",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_onitemcollected",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_onitemconsumed",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_ontradesuccess",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_tryactivatelightpoints",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_tryactivatelightpointsbytrade",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller",
+      "target": "gamecontroller_gamecontroller_activatelightpoint",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_onload",
+      "target": "gamecontroller_gamecontroller_initlightpoints",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_onload",
+      "target": "gamecontroller_gamecontroller_subscribeevents",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_onitemcollected",
+      "target": "gamecontroller_gamecontroller_tryactivatelightpoints",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_ontradesuccess",
+      "target": "gamecontroller_gamecontroller_tryactivatelightpointsbytrade",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_tryactivatelightpoints",
+      "target": "gamecontroller_gamecontroller_activatelightpoint",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L80",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_tryactivatelightpointsbytrade",
+      "target": "gamecontroller_gamecontroller_activatelightpoint",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_itemcontroller_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_itemcontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_itemmodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_itemcontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_views_itemview",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_itemcontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_itemcontroller_ts",
+      "target": "itemcontroller_itemcontroller",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller",
+      "target": "itemcontroller_itemcontroller_onload",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller",
+      "target": "itemcontroller_itemcontroller_activate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller",
+      "target": "itemcontroller_itemcontroller_deactivate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller",
+      "target": "itemcontroller_itemcontroller_scrollx",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller",
+      "target": "itemcontroller_itemcontroller_getmodel",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_playercontroller_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_playercontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_playermodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_playercontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_views_playerview",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_playercontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_systems_inputsystem",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_playercontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_systems_movementsystem",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_playercontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_eventbus",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_playercontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_playercontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_gamemanager",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_playercontroller_ts",
+      "target": "playercontroller_playercontroller",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller",
+      "target": "playercontroller_playercontroller_onload",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller",
+      "target": "playercontroller_playercontroller_ondestroy",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller",
+      "target": "playercontroller_playercontroller_update",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller",
+      "target": "playercontroller_playercontroller_getmodel",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller",
+      "target": "playercontroller_playercontroller_ongameover",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_npccontroller_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_npccontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_models_npcmodel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_npccontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_views_npcview",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_npccontroller_ts",
+      "target": "users_bombayplay_sid_source_magician_assets_scripts_core_constants",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "controllers_npccontroller_ts",
+      "target": "npccontroller_npccontroller",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller",
+      "target": "npccontroller_npccontroller_onload",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller",
+      "target": "npccontroller_npccontroller_activate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller",
+      "target": "npccontroller_npccontroller_deactivate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller",
+      "target": "npccontroller_npccontroller_scrollx",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller",
+      "target": "npccontroller_npccontroller_marktraded",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller",
+      "target": "npccontroller_npccontroller_getmodel",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "views_itemview_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/ItemView.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "views_itemview_ts",
+      "target": "itemview_itemview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/ItemView.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "itemview_itemview",
+      "target": "itemview_itemview_setposition",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/ItemView.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "itemview_itemview",
+      "target": "itemview_itemview_setvisible",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/ItemView.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "views_lightpointview_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "views_lightpointview_ts",
+      "target": "lightpointview_lightpointview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "lightpointview_lightpointview",
+      "target": "lightpointview_lightpointview_setposition",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "lightpointview_lightpointview",
+      "target": "lightpointview_lightpointview_playrestoreeffect",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "lightpointview_lightpointview",
+      "target": "lightpointview_lightpointview_setrestored",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/LightPointView.ts",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "views_playerview_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/PlayerView.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "views_playerview_ts",
+      "target": "playerview_playerview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/PlayerView.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "playerview_playerview",
+      "target": "playerview_playerview_setposition",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/PlayerView.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "playerview_playerview",
+      "target": "playerview_playerview_setfacingdirection",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/PlayerView.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "views_npcview_ts",
+      "target": "cc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "views_npcview_ts",
+      "target": "npcview_npcview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "npcview_npcview",
+      "target": "npcview_npcview_setposition",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "npcview_npcview",
+      "target": "npcview_npcview_setvisible",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "npcview_npcview",
+      "target": "npcview_npcview_playtradeeffect",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/views/NPCView.ts",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager_onload",
+      "target": "lightsystem_lightsystem_init",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager_ondestroy",
+      "target": "npcmodel_npcmodel_reset",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager_startgame",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager_subscribeevents",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "gamemanager_gamemanager_ongameover",
+      "target": "spawnsystem_spawnsystem_stop",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/core/GameManager.ts",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "inventorymodel_inventorymodel_additem",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "inventorymodel_inventorymodel_consumeitem",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "inventorymodel_inventorymodel_hasitem",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "inventorymodel_inventorymodel_getcount",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/models/InventoryModel.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "collisionsystem_collisionsystem_checkplayervsitems",
+      "target": "npccontroller_npccontroller_deactivate",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "collisionsystem_collisionsystem_checkplayervsitems",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "collisionsystem_collisionsystem_checkplayervsnpcs",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/CollisionSystem.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "tradesystem_tradesystem_init",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "tradesystem_tradesystem_destroy",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "tradesystem_tradesystem_onnpcinteract",
+      "target": "inventorymodel_inventorymodel_hasitem",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "tradesystem_tradesystem_onnpcinteract",
+      "target": "inventorymodel_inventorymodel_consumeitem",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "tradesystem_tradesystem_onnpcinteract",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/TradeSystem.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem_seed",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem_getfrompool",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "poolingsystem_poolingsystem_getorcreatepool",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/PoolingSystem.ts",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_tick",
+      "target": "mathutil_mathutil_randomrange",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_scrollactiveobjects",
+      "target": "npccontroller_npccontroller_scrollx",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_scrollactiveobjects",
+      "target": "npccontroller_npccontroller_getmodel",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_spawnitem",
+      "target": "poolingsystem_poolingsystem_getfrompool",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_spawnitem",
+      "target": "mathutil_mathutil_randomrange",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_spawnitem",
+      "target": "npccontroller_npccontroller_activate",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_spawnnpc",
+      "target": "poolingsystem_poolingsystem_getfrompool",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_spawnnpc",
+      "target": "mathutil_mathutil_randomrange",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L120",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_spawnnpc",
+      "target": "npccontroller_npccontroller_activate",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_recycleitem",
+      "target": "npccontroller_npccontroller_deactivate",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_recycleitem",
+      "target": "npccontroller_npccontroller_getmodel",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L129",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_recycleitem",
+      "target": "poolingsystem_poolingsystem_returntopool",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L131",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_recyclenpc",
+      "target": "npccontroller_npccontroller_deactivate",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_recyclenpc",
+      "target": "poolingsystem_poolingsystem_returntopool",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L138",
+      "weight": 1.0
+    },
+    {
+      "source": "spawnsystem_spawnsystem_resettimers",
+      "target": "mathutil_mathutil_randomrange",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/SpawnSystem.ts",
+      "source_location": "L143",
+      "weight": 1.0
+    },
+    {
+      "source": "lightsystem_lightsystem_onlightpointrestored",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/LightSystem.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "movementsystem_movementsystem_updateworld",
+      "target": "npcview_npcview_setposition",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/systems/MovementSystem.ts",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_ondestroy",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_initlightpoints",
+      "target": "gamemanager_gamemanager_getinstance",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_initlightpoints",
+      "target": "npcmodel_npcmodel_reset",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_subscribeevents",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_onitemcollected",
+      "target": "inventorymodel_inventorymodel_additem",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_onitemconsumed",
+      "target": "inventorymodel_inventorymodel_consumeitem",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_tryactivatelightpoints",
+      "target": "inventorymodel_inventorymodel_getcount",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_tryactivatelightpoints",
+      "target": "lightpointmodel_lightpointmodel_canactivatewithshards",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_tryactivatelightpointsbytrade",
+      "target": "lightpointmodel_lightpointmodel_canactivatewithtrade",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_activatelightpoint",
+      "target": "lightpointview_lightpointview_playrestoreeffect",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_activatelightpoint",
+      "target": "lightpointview_lightpointview_setrestored",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_activatelightpoint",
+      "target": "gamemanager_gamemanager_getinstance",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "gamecontroller_gamecontroller_activatelightpoint",
+      "target": "lightsystem_lightsystem_onlightpointrestored",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/GameController.ts",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller_activate",
+      "target": "npcmodel_npcmodel_reset",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller_activate",
+      "target": "npcview_npcview_setvisible",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller_activate",
+      "target": "npcview_npcview_setposition",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller_deactivate",
+      "target": "npcview_npcview_setvisible",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "itemcontroller_itemcontroller_scrollx",
+      "target": "npcview_npcview_setposition",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/ItemController.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller_onload",
+      "target": "lightsystem_lightsystem_init",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller_onload",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller_ondestroy",
+      "target": "inputsystem_inputsystem_destroy",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller_ondestroy",
+      "target": "eventbus_eventbus_get",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller_update",
+      "target": "gamemanager_gamemanager_getinstance",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller_update",
+      "target": "inputsystem_inputsystem_readinto",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller_update",
+      "target": "movementsystem_movementsystem_updateplayer",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller_update",
+      "target": "npcview_npcview_setposition",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "playercontroller_playercontroller_update",
+      "target": "playerview_playerview_setfacingdirection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/PlayerController.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller_activate",
+      "target": "npcmodel_npcmodel_reset",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller_activate",
+      "target": "npcview_npcview_setvisible",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller_activate",
+      "target": "npcview_npcview_setposition",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller_deactivate",
+      "target": "npcview_npcview_setvisible",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller_scrollx",
+      "target": "npcview_npcview_setposition",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "npccontroller_npccontroller_marktraded",
+      "target": "npcview_npcview_playtradeeffect",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "/Users/bombayplay/sid/source/magician/assets/scripts/controllers/NPCController.ts",
+      "source_location": "L40",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

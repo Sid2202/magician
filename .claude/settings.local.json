@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "graphify": {
+      "command": "/Users/bombayplay/sid/source/magician/.venv/bin/python3",
+      "args": ["-m", "graphify.serve", "graphify-out/graph.json"]
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "Bash(pip3 --version)",
+      "Bash(command -v brew)",
+      "Bash(brew list *)",
+      "Bash(true ls *)",
+      "Bash(/opt/homebrew/bin/python3.11 -m pip install graphifyy -q)",
+      "Bash(/opt/homebrew/bin/python3.11 -c \"import graphify; print\\('graphify OK:', graphify.__version__\\)\")",
+      "Bash(/opt/homebrew/bin/python3.11 -c \"import graphify; print\\('graphify imported OK'\\)\")",
+      "Bash(/opt/homebrew/bin/python3.11 -c \"import sys; open\\('graphify-out/.graphify_python', 'w'\\).write\\(sys.executable\\)\")"
+    ]
+  }
+}
