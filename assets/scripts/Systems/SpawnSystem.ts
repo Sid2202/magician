@@ -3,7 +3,7 @@ import { PoolKey, PoolingSystem }              from './PoolingSystem';
 import { CoinController }                      from '../Controllers/CoinController';
 import { BgMoving }                            from '../gameplay/BgMoving';
 
-export const enum SpawnPattern { LINE = 'LINE', ZIGZAG = 'ZIGZAG', GRID = 'GRID' }
+export const enum SpawnPattern { LINE = 'LINE', ZIGZAG = 'ZIGZAG', GRID = 'GRID', SINE = 'SINE', ARC = 'ARC' }
 
 export interface GridConfig  { cols: number; rows: number; }
 export interface SpawnConfig {
@@ -44,6 +44,7 @@ export class SpawnSystem extends Component {
 
     private _bgMoving: BgMoving | null       = null;
     private _cull:    CoinController[]       = [];
+    private _highestSpawnX: number = -Infinity;
 
     onLoad(): void {
         if (!this.coinPrefab) { console.error('[SpawnSystem] coinPrefab not wired'); return; }
@@ -76,6 +77,8 @@ export class SpawnSystem extends Component {
             case SpawnPattern.LINE:   this._spawnLine(cfg);   break;
             case SpawnPattern.ZIGZAG: this._spawnZigzag(cfg); break;
             case SpawnPattern.GRID:   this._spawnGrid(cfg);   break;
+            case SpawnPattern.SINE:   this._spawnSine(cfg);   break;
+            case SpawnPattern.ARC:    this._spawnArc(cfg);    break;
         }
     }
 
@@ -109,6 +112,29 @@ export class SpawnSystem extends Component {
         }
     }
 
+    private _spawnSine(cfg: SpawnConfig): void {
+        const amp = 120;
+        const count = 10;
+        const period = Math.PI * 2;
+        const spacingX = cfg.spacing * 1.5; // wider spread for smoother curves
+        for (let i = 0; i < count; i++) {
+            const angle = (i / (count - 1)) * period;
+            this._place(cfg.originX + i * spacingX, cfg.originY + Math.sin(angle) * amp);
+        }
+    }
+
+    private _spawnArc(cfg: SpawnConfig): void {
+        const count = 8;
+        const height = 150;
+        const isUp = Math.random() > 0.5;
+        const spacingX = cfg.spacing * 1.5; // wider spread for smoother curves
+        for (let i = 0; i < count; i++) {
+            const t = (i / (count - 1)) * 2 - 1;
+            const yOffset = (1 - t * t) * height;
+            this._place(cfg.originX + i * spacingX, cfg.originY + (isUp ? yOffset : -yOffset));
+        }
+    }
+
     // ── Internals ─────────────────────────────────────────────────────────
 
     private _place(x: number, y: number): void {
@@ -125,17 +151,24 @@ export class SpawnSystem extends Component {
         const speed = this._bgMoving!.speed;
         // Coins move in the SAME direction as the BG tiles (dirX * speed)
         const dx = dirX * speed * dt;
+
+        if (this._highestSpawnX !== -Infinity) {
+            this._highestSpawnX += dx;
+        }
+
         this._cull.length = 0;
 
         const screenLeftX = -this.visibleWidth * 0.5;
         const safeCullMargin = 200;
         const cullLeftX = screenLeftX - safeCullMargin;
+        // Make sure we do not cull coins we just spawned!
+        const dynamicCullAheadX = Math.max(this.cullAheadX, this.visibleWidth + this.bufferAhead + 2000);
 
         for (let i = 0, n = this.activeCoins.length; i < n; i++) {
             const c = this.activeCoins[i];
             c.scrollBy(-dx);   // scrollBy subtracts, so pass positive = scroll left
             const x = c.model.x;
-            if (x < cullLeftX || x > this.cullAheadX) this._cull.push(c);
+            if (x < cullLeftX || x > dynamicCullAheadX) this._cull.push(c);
         }
 
         for (const c of this._cull) {
@@ -147,23 +180,29 @@ export class SpawnSystem extends Component {
     private _fillAhead(): void {
         const coverageStartX = -this.visibleWidth * 0.5;
         const coverageEndX = this.visibleWidth + this.bufferAhead;
-        let furthestX = this._getFurthestCoinX();
-        if (furthestX < coverageStartX) {
+        
+        let furthestX = Math.max(this._getFurthestCoinX(), this._highestSpawnX);
+        if (furthestX === -Infinity || furthestX < coverageStartX) {
             furthestX = 0;
         }
 
         while (furthestX < coverageEndX) {
             const cfg = this._randomConfig();
-            const groupSpacing = this.groupBaseSpacing + Math.random() * this.groupSpacingVariance;
+            // Increase base spacing between coin groups
+            const groupSpacing = Math.max(400, this.groupBaseSpacing * 1.5) + Math.random() * this.groupSpacingVariance;
             cfg.originX = furthestX + groupSpacing;
+            const oldFurthest = furthestX;
             this.spawnNow(cfg);
-            furthestX = cfg.originX + groupSpacing;
+            const newFurthest = this._getFurthestCoinX();
+            // ensure we always advance even if pool was exhausted
+            furthestX = Math.max(newFurthest, oldFurthest + groupSpacing);
+            this._highestSpawnX = furthestX;
         }
     }
 
     private _getFurthestCoinX(): number {
         if (this.activeCoins.length === 0) {
-            return 0;
+            return -Infinity;
         }
 
         let maxX = -Infinity;
@@ -178,16 +217,20 @@ export class SpawnSystem extends Component {
         let pattern: SpawnPattern;
         let grid: GridConfig | undefined;
 
-        if (roll < 0.33) {
+        if (roll < 0.2) {
             pattern = SpawnPattern.LINE;
-        } else if (roll < 0.66) {
+        } else if (roll < 0.4) {
             pattern = SpawnPattern.ZIGZAG;
+        } else if (roll < 0.6) {
+            pattern = SpawnPattern.SINE;
+        } else if (roll < 0.8) {
+            pattern = SpawnPattern.ARC;
         } else {
             pattern = SpawnPattern.GRID;
             const shapes: GridConfig[] = [
+                { cols: 2, rows: 2 },
+                { cols: 3, rows: 2 },
                 { cols: 2, rows: 3 },
-                { cols: 3, rows: 3 },
-                { cols: 2, rows: 5 },
             ];
             grid = shapes[Math.floor(Math.random() * shapes.length)];
         }
@@ -195,8 +238,8 @@ export class SpawnSystem extends Component {
         return {
             pattern,
             originX: 0,
-            originY: randRange(-150, 150),
-            spacing: this.patternSpacing,
+            originY: randRange(-120, 120),
+            spacing: Math.max(100, this.patternSpacing * 1.2), // Increase spacing between individual coins
             grid,
         };
     }
