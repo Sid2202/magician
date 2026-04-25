@@ -1,67 +1,131 @@
-import { _decorator, Component, Animation, Vec3 } from 'cc';
+import { _decorator, Component, Node, Animation, AnimationClip } from 'cc';
 
 const { ccclass, property } = _decorator;
 
+/** All possible character visual states. Exported so CharacterController can use it. */
+export enum CharacterState {
+    Idle   = 'Idle',    // hovering — idle clip, effects hidden
+    MoveV  = 'MoveV',  // moving up or down — idle clip, effects hidden
+    MoveH  = 'MoveH',  // moving left or right — motion clip, effects VISIBLE
+    Hit    = 'Hit',     // took damage / died — stop all
+}
+
 /**
- * Attach to Chr_Pose_Side (the sprite/visual child of PF_Character).
+ * Attach to: PF_Character ROOT NODE (same node as CharacterController).
  *
- * This is the VIEW layer — owns nothing but visuals.
- * CharacterController calls the public methods below; this script
- * never reads input or touches game state.
+ * This is the VIEW layer — owns all visual concerns, zero game logic.
+ * CharacterController calls applyState() and setFacing() every frame.
  *
- * Animation clip names are expected on the Animation component:
- *   'idle'   → hovering, no input
- *   'fly'    → active movement (any direction)
- *   'hit'    → took damage / game over
+ * Node wiring (drag in Inspector):
+ *   effectNode   → the "Effect" child node (parent of Fly/Star effects)
+ *   megicianNode → the "Megician" child node (body parts, used for sprite flip)
  *
- * The artist wires the Animation component and clip names here.
- * If no Animation component is present, all calls are no-ops.
+ * Animation clips (drag in Inspector):
+ *   clipIdle   → "idle" AnimationClip  (hovering, up, down)
+ *   clipMotion → "motion" AnimationClip (left/right movement)
+ *
+ * The Animation component must be on this same node (PF_Character root).
+ * Artist adds clips to the Animation component; drag them into these properties.
  */
 @ccclass('CharacterView')
 export class CharacterView extends Component {
 
-    /** If true, the node scaleX is flipped to face movement direction. */
-    @property canFlip: boolean = true;
+    // ── Node refs ─────────────────────────────────────────────────────────
 
-    private _anim: Animation | null = null;
-    private _currentClip: string    = '';
+    /** Drag the "Effect" child node here. Contains all Fly/Star particles. */
+    @property(Node) effectNode:   Node = null;
 
-    onLoad(): void {
-        this._anim = this.getComponent(Animation);
-    }
+    /** Drag the "Megician" child node here. Flipped to change facing direction. */
+    @property(Node) megicianNode: Node = null;
 
-    // ── Animation state triggers ──────────────────────────────────────────
+    // ── Animation clips ───────────────────────────────────────────────────
 
-    playIdle(): void {
-        this._play('idle');
-    }
+    /** Hovering / up / down animation. Drag the idle AnimationClip here. */
+    @property(AnimationClip) clipIdle:   AnimationClip = null;
 
-    playFly(): void {
-        this._play('fly');
-    }
-
-    playHit(): void {
-        this._play('hit');
-    }
-
-    // ── Sprite flip ───────────────────────────────────────────────────────
-
-    /**
-     * Called by CharacterController each frame when vx changes.
-     * @param movingRight  true = face right (default), false = face left
-     */
-    setFacing(movingRight: boolean): void {
-        if (!this.canFlip) return;
-        const s = this.node.scale;
-        const absX = Math.abs(s.x);
-        this.node.setScale(movingRight ? absX : -absX, s.y, s.z);
-    }
+    /** Left / right movement animation. Drag the motion AnimationClip here. */
+    @property(AnimationClip) clipMotion: AnimationClip = null;
 
     // ── Internal ──────────────────────────────────────────────────────────
 
-    private _play(clipName: string): void {
-        if (!this._anim || this._currentClip === clipName) return;
-        this._currentClip = clipName;
-        this._anim.play(clipName);
+    private _anim:         Animation     | null = null;
+    private _currentClip:  AnimationClip | null = null;
+    private _currentState: CharacterState        = CharacterState.Idle;
+
+    // ─────────────────────────────────────────────────────────────────────
+    onLoad(): void {
+        this._anim = this.getComponent(Animation);
+
+        if (!this._anim) {
+            console.warn('[CharacterView] No Animation component found on PF_Character. ' +
+                         'Add an Animation component and assign clips.');
+        }
+        if (!this.effectNode)   console.warn('[CharacterView] effectNode not wired.');
+        if (!this.megicianNode) console.warn('[CharacterView] megicianNode not wired.');
+
+        // Effects always start hidden
+        this._setEffectsVisible(false);
+    }
+
+    // ── Public API called by CharacterController ──────────────────────────
+
+    /**
+     * Apply the current movement state.
+     * Switches animation clip and shows/hides effects accordingly.
+     * Only acts when state actually changes — no redundant animation calls.
+     */
+    applyState(state: CharacterState): void {
+        if (this._currentState === state) return;
+        this._currentState = state;
+
+        switch (state) {
+            case CharacterState.Idle:
+            case CharacterState.MoveV:
+                // Hovering or vertical-only → idle clip, no effects
+                this._playClip(this.clipIdle);
+                this._setEffectsVisible(false);
+                break;
+
+            case CharacterState.MoveH:
+                // Horizontal movement → motion clip + show all effects
+                this._playClip(this.clipMotion);
+                this._setEffectsVisible(true);
+                break;
+
+            case CharacterState.Hit:
+                // Stop everything
+                this._anim?.stop();
+                this._setEffectsVisible(false);
+                this._currentClip = null;
+                break;
+        }
+    }
+
+    /**
+     * Flip the Megician body to face movement direction.
+     * Called every frame by CharacterController; internally skips if no change.
+     */
+    setFacing(movingRight: boolean): void {
+        if (!this.megicianNode) return;
+        const s    = this.megicianNode.scale;
+        const absX = Math.abs(s.x);
+        const wantX = movingRight ? absX : -absX;
+        // Avoid redundant setScale calls
+        if (Math.abs(s.x - wantX) < 0.001) return;
+        this.megicianNode.setScale(wantX, s.y, s.z);
+    }
+
+    // ── Internal helpers ──────────────────────────────────────────────────
+
+    private _setEffectsVisible(visible: boolean): void {
+        if (this.effectNode && this.effectNode.active !== visible) {
+            this.effectNode.active = visible;
+        }
+    }
+
+    private _playClip(clip: AnimationClip | null): void {
+        if (!this._anim || !clip || this._currentClip === clip) return;
+        this._currentClip = clip;
+        this._anim.play(clip.name);
     }
 }

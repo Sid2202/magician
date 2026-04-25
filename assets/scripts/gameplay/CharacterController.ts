@@ -1,63 +1,79 @@
-import { _decorator, Component, Vec2, Vec3, input, Input, KeyCode, EventTouch } from 'cc';
-import { CharacterModel } from '../Models/CharacterModel';
-import { CharacterView } from '../Views/CharacterView';
-import { GameManager } from '../Managers/GameManager';
-import { GameEventsBus } from '../common/event/GlobalEventTarget';
-import { GameEvents } from './input/GameEvents';
+import {
+    _decorator, Component, Vec2, Vec3,
+    input, Input, KeyCode, EventTouch,
+} from 'cc';
+import { CharacterModel }  from '../Models/CharacterModel';
+import { CharacterView, CharacterState } from '../Views/CharacterView';
+import { GameManager }     from '../Managers/GameManager';
+import { GameEventsBus }   from '../common/event/GlobalEventTarget';
+import { GameEvents }      from './input/GameEvents';
 
 const { ccclass, property } = _decorator;
 
 /**
- * Attach to the ROOT NODE of PF_Character prefab.
+ * Attach to: PF_Character (root node of the character prefab).
  *
- * This is the CONTROLLER layer for the character.
- * It owns the CharacterModel (data) and drives CharacterView (visuals).
+ * This is the CONTROLLER layer.
+ * It owns CharacterModel (data) and drives CharacterView (visuals).
  *
- * Responsibilities:
- *   - Reads keyboard (WASD / arrows) and touch drag input
- *   - Integrates velocity + hover damping each frame
- *   - Clamps position inside screen bounds
- *   - Tells CharacterView which animation to play and which way to face
+ * Movement rules:
+ *   - Arrow keys (← → ↑ ↓) on desktop / browser
+ *   - Touch drag anywhere in the gameplay area on mobile
+ *   - No input → character hovers (velocity damps to zero)
+ *   - Left / Right movement → MoveH state (effects shown, motion clip)
+ *   - Up / Down only       → MoveV state (effects hidden, idle clip)
+ *   - No velocity          → Idle state  (effects hidden, idle clip)
  *
- * The character does NOT scroll with the world — it moves freely within
- * screen bounds while the world (paths, items, NPCs) scrolls past it.
+ * Bounds:
+ *   Wire colliderTop + colliderBottom from the GameScene root level.
+ *   Their Y position (in GameScene root space) is used as the vertical clamp.
+ *   They update automatically with Widget when screen resizes → responsive bounds.
+ *   If not wired, fallback values are used.
  */
 @ccclass('CharacterController')
 export class CharacterController extends Component {
 
-    /** Drag boundsX/Y to tune how far the character can travel from center. */
-    @property boundsX:        number = 460;
-    @property boundsYTop:     number = 480;
-    @property boundsYBottom:  number = -480;
+    // ── Boundary nodes ────────────────────────────────────────────────────
+    /** Drag Collider_Top node here (must be at GameScene root level, NOT inside PF_Character). */
+    @property colliderTop:    any = null;
+    @property colliderBottom: any = null;
 
-    // Model — pure data, no Cocos
+    // ── Fallback bounds (used when colliders are not wired) ───────────────
+    @property fallbackBoundsX:       number = 460;
+    @property fallbackBoundsYTop:    number = 300;
+    @property fallbackBoundsYBottom: number = -300;
+
+    // ── Model (pure data) ─────────────────────────────────────────────────
     private _model: CharacterModel = new CharacterModel();
 
-    // View — on Chr_Pose_Side child, fetched in onLoad
+    // ── View (visual layer, on same node) ─────────────────────────────────
     private _view: CharacterView | null = null;
 
-    // ── Input state ───────────────────────────────────────────────────────
-    private _keys:          Set<number> = new Set();
-    private _isTouching:    boolean     = false;
-    private _touchStart:    Vec2        = new Vec2();
-    private _touchCurrent:  Vec2        = new Vec2();
+    // ── State ─────────────────────────────────────────────────────────────
+    private _state:          CharacterState = CharacterState.Idle;
+    private _lastFacingRight: boolean        = true;
 
-    // Reusable — avoids per-frame Vec3 allocation
+    // ── Keyboard ──────────────────────────────────────────────────────────
+    private _keys: Set<number> = new Set();
+
+    // ── Touch ─────────────────────────────────────────────────────────────
+    private _isTouching:   boolean = false;
+    private _touchStart:   Vec2    = new Vec2();
+    private _touchCurrent: Vec2    = new Vec2();
+
+    // ── Allocation-free Vec3 ──────────────────────────────────────────────
     private _pos: Vec3 = new Vec3();
-
-    // Tracks last non-zero vx to preserve facing when velocity damps to 0
-    private _lastFacingRight: boolean = true;
 
     // ─────────────────────────────────────────────────────────────────────
     onLoad(): void {
-        // Grab the view from Chr_Pose_Side child
-        this._view = this.getComponentInChildren(CharacterView);
+        // CharacterView must be on the SAME node (PF_Character root)
+        this._view = this.getComponent(CharacterView);
         if (!this._view) {
-            console.warn('[CharacterController] CharacterView not found on a child node. ' +
-                         'Attach CharacterView.ts to Chr_Pose_Side.');
+            console.warn('[CharacterController] CharacterView not found on this node. ' +
+                         'Attach CharacterView.ts to PF_Character root.');
         }
 
-        // Sync model to where the artist placed the character in the prefab
+        // Sync model to editor-placed position
         this.node.getPosition(this._pos);
         this._model.x = this._pos.x;
         this._model.y = this._pos.y;
@@ -66,7 +82,7 @@ export class CharacterController extends Component {
         input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this);
         input.on(Input.EventType.KEY_UP,   this._onKeyUp,   this);
 
-        // Touch — listen on the whole parent node (the full gameplay area)
+        // Touch — listen on parent so the whole gameplay area responds
         const touchArea = this.node.parent ?? this.node;
         touchArea.on(Input.EventType.TOUCH_START,  this._onTouchStart, this);
         touchArea.on(Input.EventType.TOUCH_MOVE,   this._onTouchMove,  this);
@@ -95,11 +111,12 @@ export class CharacterController extends Component {
 
         this._readInput(dt);
         this._clampToBounds();
+        this._resolveState();
         this._pushToNode();
         this._pushToView();
     }
 
-    /** Read by GameController each frame for AABB collision. */
+    /** Read by GameController each frame for AABB collision checks. */
     getModel(): CharacterModel { return this._model; }
 
     // ── Input → Model ─────────────────────────────────────────────────────
@@ -108,18 +125,18 @@ export class CharacterController extends Component {
         const m   = this._model;
         const spd = m.speed;
 
-        // Keyboard axes
-        const kLeft  = this._keys.has(KeyCode.KEY_A) || this._keys.has(KeyCode.ARROW_LEFT);
-        const kRight = this._keys.has(KeyCode.KEY_D) || this._keys.has(KeyCode.ARROW_RIGHT);
-        const kUp    = this._keys.has(KeyCode.KEY_W) || this._keys.has(KeyCode.ARROW_UP);
-        const kDown  = this._keys.has(KeyCode.KEY_S) || this._keys.has(KeyCode.ARROW_DOWN);
+        // Arrow keys (browser) + WASD
+        const kLeft  = this._keys.has(KeyCode.ARROW_LEFT)  || this._keys.has(KeyCode.KEY_A);
+        const kRight = this._keys.has(KeyCode.ARROW_RIGHT) || this._keys.has(KeyCode.KEY_D);
+        const kUp    = this._keys.has(KeyCode.ARROW_UP)    || this._keys.has(KeyCode.KEY_W);
+        const kDown  = this._keys.has(KeyCode.ARROW_DOWN)  || this._keys.has(KeyCode.KEY_S);
 
-        // Touch drag → proportional velocity (capped at full speed)
+        // Touch drag → virtual joystick feel (drag distance = speed fraction)
         let tVx = 0;
         let tVy = 0;
         if (this._isTouching) {
-            const DEAD   = 15;    // pixels of deadzone before registering drag
-            const SCALE  = 0.014; // drag pixels → speed fraction
+            const DEAD  = 12;    // px deadzone before movement starts
+            const SCALE = 0.013; // drag distance → speed multiplier
             const dx = this._touchCurrent.x - this._touchStart.x;
             const dy = this._touchCurrent.y - this._touchStart.y;
             if (Math.abs(dx) > DEAD) tVx = clamp(dx * SCALE, -1, 1) * spd;
@@ -129,11 +146,11 @@ export class CharacterController extends Component {
         const hasInput = kLeft || kRight || kUp || kDown || this._isTouching;
 
         if (hasInput) {
-            // Keyboard takes priority over touch on any active axis
+            // Keyboard always wins over touch on active axes
             m.vx = kLeft ? -spd : kRight ? spd : tVx;
-            m.vy = kUp   ?  spd : kDown  ? -spd : tVy;
+            m.vy = kDown ? -spd : kUp    ? spd : tVy;
         } else {
-            // No input → hover damping (exponential decay toward zero)
+            // Hover: exponential decay to zero
             m.vx *= m.damping;
             m.vy *= m.damping;
             if (Math.abs(m.vx) < 1.5) m.vx = 0;
@@ -144,10 +161,43 @@ export class CharacterController extends Component {
         m.y += m.vy * dt;
     }
 
+    // ── Bounds (reads collider positions — responsive to screen size) ──────
+
     private _clampToBounds(): void {
         const m = this._model;
-        m.x = clamp(m.x, -this.boundsX,       this.boundsX);
-        m.y = clamp(m.y,  this.boundsYBottom,  this.boundsYTop);
+
+        // Colliders live at GameScene root level so their .position.y is
+        // already in the same local space as the character's movement.
+        const topY    = this.colliderTop    ? (this.colliderTop    as any).position.y : this.fallbackBoundsYTop;
+        const bottomY = this.colliderBottom ? (this.colliderBottom as any).position.y : this.fallbackBoundsYBottom;
+
+        m.x = clamp(m.x, -this.fallbackBoundsX, this.fallbackBoundsX);
+        m.y = clamp(m.y,  bottomY, topY);
+    }
+
+    // ── State machine ─────────────────────────────────────────────────────
+
+    private _resolveState(): void {
+        const { vx, vy } = this._model;
+        const THRESHOLD = 8;
+
+        let next: CharacterState;
+
+        if (Math.abs(vx) > THRESHOLD) {
+            // Horizontal motion takes priority → shows effects
+            next = CharacterState.MoveH;
+        } else if (Math.abs(vy) > THRESHOLD) {
+            // Vertical only → idle animation, no effects
+            next = CharacterState.MoveV;
+        } else {
+            next = CharacterState.Idle;
+        }
+
+        this._state = next;
+
+        // Track facing so sprite flip persists during MoveV / Idle
+        if (this._model.vx > THRESHOLD)  this._lastFacingRight = true;
+        if (this._model.vx < -THRESHOLD) this._lastFacingRight = false;
     }
 
     // ── Model → Node ──────────────────────────────────────────────────────
@@ -161,20 +211,8 @@ export class CharacterController extends Component {
 
     private _pushToView(): void {
         if (!this._view) return;
-        const m = this._model;
-
-        // Facing direction — only update when actually moving horizontally
-        if (m.vx > 0.5)       { this._lastFacingRight = true;  }
-        else if (m.vx < -0.5) { this._lastFacingRight = false; }
+        this._view.applyState(this._state);
         this._view.setFacing(this._lastFacingRight);
-
-        // Animation state
-        const isMoving = Math.abs(m.vx) > 5 || Math.abs(m.vy) > 5;
-        if (isMoving) {
-            this._view.playFly();
-        } else {
-            this._view.playIdle();
-        }
     }
 
     // ── Event handlers ────────────────────────────────────────────────────
@@ -202,7 +240,7 @@ export class CharacterController extends Component {
         this._model.isAlive = false;
         this._model.vx = 0;
         this._model.vy = 0;
-        this._view?.playHit();
+        this._view?.applyState(CharacterState.Hit);
     }
 }
 
