@@ -1,5 +1,6 @@
-import { _decorator, Component, Node, Vec2, Vec3, input, Input, KeyCode, EventTouch, UITransform, view } from 'cc';
+import { _decorator, Component, Vec2, Vec3, input, Input, KeyCode, EventTouch } from 'cc';
 import { CharacterModel } from '../Models/CharacterModel';
+import { CharacterView } from '../Views/CharacterView';
 import { GameManager } from '../Managers/GameManager';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents } from './input/GameEvents';
@@ -7,58 +8,70 @@ import { GameEvents } from './input/GameEvents';
 const { ccclass, property } = _decorator;
 
 /**
- * Attach to the root node of PF_Character prefab.
+ * Attach to the ROOT NODE of PF_Character prefab.
  *
- * Handles:
- *   - Keyboard (WASD / arrows) + touch drag input
- *   - Hover damping when idle
- *   - Position clamped to screen bounds
- *   - Flips sprite to face movement direction
+ * This is the CONTROLLER layer for the character.
+ * It owns the CharacterModel (data) and drives CharacterView (visuals).
  *
- * The node this is attached to IS the character pivot.
- * Sprite lives on the child node (Chr_Pose_Side).
+ * Responsibilities:
+ *   - Reads keyboard (WASD / arrows) and touch drag input
+ *   - Integrates velocity + hover damping each frame
+ *   - Clamps position inside screen bounds
+ *   - Tells CharacterView which animation to play and which way to face
+ *
+ * The character does NOT scroll with the world — it moves freely within
+ * screen bounds while the world (paths, items, NPCs) scrolls past it.
  */
 @ccclass('CharacterController')
 export class CharacterController extends Component {
 
-    /** Drag the Chr_Pose_Side child node here — used only for sprite flip. */
-    @property(Node) spriteNode: Node = null;
+    /** Drag boundsX/Y to tune how far the character can travel from center. */
+    @property boundsX:        number = 460;
+    @property boundsYTop:     number = 480;
+    @property boundsYBottom:  number = -480;
 
-    /** Screen boundary padding in pixels (keeps character from leaving the viewport). */
-    @property boundsX: number = 460;
-    @property boundsYTop: number = 480;
-    @property boundsYBottom: number = -480;
-
+    // Model — pure data, no Cocos
     private _model: CharacterModel = new CharacterModel();
 
-    // ── Keyboard state ────────────────────────────────────────────────────
-    private _keys: Set<number> = new Set();
+    // View — on Chr_Pose_Side child, fetched in onLoad
+    private _view: CharacterView | null = null;
 
-    // ── Touch state ───────────────────────────────────────────────────────
-    private _isTouching: boolean = false;
-    private _touchCurrent: Vec2  = new Vec2();
-    private _touchStart: Vec2    = new Vec2();
+    // ── Input state ───────────────────────────────────────────────────────
+    private _keys:          Set<number> = new Set();
+    private _isTouching:    boolean     = false;
+    private _touchStart:    Vec2        = new Vec2();
+    private _touchCurrent:  Vec2        = new Vec2();
 
-    // ── Reusable Vec3 to avoid per-frame allocation ───────────────────────
+    // Reusable — avoids per-frame Vec3 allocation
     private _pos: Vec3 = new Vec3();
+
+    // Tracks last non-zero vx to preserve facing when velocity damps to 0
+    private _lastFacingRight: boolean = true;
 
     // ─────────────────────────────────────────────────────────────────────
     onLoad(): void {
+        // Grab the view from Chr_Pose_Side child
+        this._view = this.getComponentInChildren(CharacterView);
+        if (!this._view) {
+            console.warn('[CharacterController] CharacterView not found on a child node. ' +
+                         'Attach CharacterView.ts to Chr_Pose_Side.');
+        }
+
+        // Sync model to where the artist placed the character in the prefab
+        this.node.getPosition(this._pos);
+        this._model.x = this._pos.x;
+        this._model.y = this._pos.y;
+
         // Keyboard
         input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this);
         input.on(Input.EventType.KEY_UP,   this._onKeyUp,   this);
 
-        // Touch — listen on the parent (Base_Parent / whole gameplay area)
-        const touchTarget = this.node.parent ?? this.node;
-        touchTarget.on(Input.EventType.TOUCH_START, this._onTouchStart, this);
-        touchTarget.on(Input.EventType.TOUCH_MOVE,  this._onTouchMove,  this);
-        touchTarget.on(Input.EventType.TOUCH_END,   this._onTouchEnd,   this);
-        touchTarget.on(Input.EventType.TOUCH_CANCEL, this._onTouchEnd,  this);
-
-        // Sync model to node's starting position
-        this.node.getPosition(this._pos);
-        this._model.x = this._pos.x;
-        this._model.y = this._pos.y;
+        // Touch — listen on the whole parent node (the full gameplay area)
+        const touchArea = this.node.parent ?? this.node;
+        touchArea.on(Input.EventType.TOUCH_START,  this._onTouchStart, this);
+        touchArea.on(Input.EventType.TOUCH_MOVE,   this._onTouchMove,  this);
+        touchArea.on(Input.EventType.TOUCH_END,    this._onTouchEnd,   this);
+        touchArea.on(Input.EventType.TOUCH_CANCEL, this._onTouchEnd,   this);
 
         GameEventsBus.get().on(GameEvents.GameOver, this._onGameOver, this);
     }
@@ -67,11 +80,11 @@ export class CharacterController extends Component {
         input.off(Input.EventType.KEY_DOWN, this._onKeyDown, this);
         input.off(Input.EventType.KEY_UP,   this._onKeyUp,   this);
 
-        const touchTarget = this.node.parent ?? this.node;
-        touchTarget.off(Input.EventType.TOUCH_START, this._onTouchStart, this);
-        touchTarget.off(Input.EventType.TOUCH_MOVE,  this._onTouchMove,  this);
-        touchTarget.off(Input.EventType.TOUCH_END,   this._onTouchEnd,   this);
-        touchTarget.off(Input.EventType.TOUCH_CANCEL, this._onTouchEnd,  this);
+        const touchArea = this.node.parent ?? this.node;
+        touchArea.off(Input.EventType.TOUCH_START,  this._onTouchStart, this);
+        touchArea.off(Input.EventType.TOUCH_MOVE,   this._onTouchMove,  this);
+        touchArea.off(Input.EventType.TOUCH_END,    this._onTouchEnd,   this);
+        touchArea.off(Input.EventType.TOUCH_CANCEL, this._onTouchEnd,   this);
 
         GameEventsBus.get().off(GameEvents.GameOver, this._onGameOver, this);
     }
@@ -80,58 +93,51 @@ export class CharacterController extends Component {
         const gm = GameManager.getInstance();
         if (!gm?.state.isPlaying || !this._model.isAlive) return;
 
-        this._applyInput(dt);
+        this._readInput(dt);
         this._clampToBounds();
         this._pushToNode();
-        this._updateSpriteFlip();
+        this._pushToView();
     }
 
+    /** Read by GameController each frame for AABB collision. */
     getModel(): CharacterModel { return this._model; }
 
-    // ── Input processing ──────────────────────────────────────────────────
+    // ── Input → Model ─────────────────────────────────────────────────────
 
-    private _applyInput(dt: number): void {
+    private _readInput(dt: number): void {
         const m   = this._model;
         const spd = m.speed;
 
-        // --- Keyboard ---
+        // Keyboard axes
         const kLeft  = this._keys.has(KeyCode.KEY_A) || this._keys.has(KeyCode.ARROW_LEFT);
         const kRight = this._keys.has(KeyCode.KEY_D) || this._keys.has(KeyCode.ARROW_RIGHT);
         const kUp    = this._keys.has(KeyCode.KEY_W) || this._keys.has(KeyCode.ARROW_UP);
         const kDown  = this._keys.has(KeyCode.KEY_S) || this._keys.has(KeyCode.ARROW_DOWN);
 
-        // --- Touch drag (delta from touch start) ---
-        let tDx = 0;
-        let tDy = 0;
+        // Touch drag → proportional velocity (capped at full speed)
+        let tVx = 0;
+        let tVy = 0;
         if (this._isTouching) {
-            const DRAG_THRESHOLD = 15;
-            const DRAG_SCALE     = 0.012; // drag distance → velocity multiplier
+            const DEAD   = 15;    // pixels of deadzone before registering drag
+            const SCALE  = 0.014; // drag pixels → speed fraction
             const dx = this._touchCurrent.x - this._touchStart.x;
             const dy = this._touchCurrent.y - this._touchStart.y;
-            if (Math.abs(dx) > DRAG_THRESHOLD) tDx = dx * DRAG_SCALE * spd;
-            if (Math.abs(dy) > DRAG_THRESHOLD) tDy = dy * DRAG_SCALE * spd;
+            if (Math.abs(dx) > DEAD) tVx = clamp(dx * SCALE, -1, 1) * spd;
+            if (Math.abs(dy) > DEAD) tVy = clamp(dy * SCALE, -1, 1) * spd;
         }
 
-        const hasKbInput = kLeft || kRight || kUp || kDown;
-        const hasTouchInput = this._isTouching;
-        const hasInput = hasKbInput || hasTouchInput;
+        const hasInput = kLeft || kRight || kUp || kDown || this._isTouching;
 
         if (hasInput) {
-            let ax = tDx;
-            let ay = tDy;
-            if (kLeft)  ax = -spd;
-            if (kRight) ax =  spd;
-            if (kUp)    ay =  spd;
-            if (kDown)  ay = -spd;
-
-            m.vx = ax;
-            m.vy = ay;
+            // Keyboard takes priority over touch on any active axis
+            m.vx = kLeft ? -spd : kRight ? spd : tVx;
+            m.vy = kUp   ?  spd : kDown  ? -spd : tVy;
         } else {
-            // Hover: bleed velocity to zero
+            // No input → hover damping (exponential decay toward zero)
             m.vx *= m.damping;
             m.vy *= m.damping;
-            if (Math.abs(m.vx) < 2) m.vx = 0;
-            if (Math.abs(m.vy) < 2) m.vy = 0;
+            if (Math.abs(m.vx) < 1.5) m.vx = 0;
+            if (Math.abs(m.vy) < 1.5) m.vy = 0;
         }
 
         m.x += m.vx * dt;
@@ -140,25 +146,35 @@ export class CharacterController extends Component {
 
     private _clampToBounds(): void {
         const m = this._model;
-        m.x = Math.max(-this.boundsX,   Math.min(this.boundsX,   m.x));
-        m.y = Math.max(this.boundsYBottom, Math.min(this.boundsYTop, m.y));
+        m.x = clamp(m.x, -this.boundsX,       this.boundsX);
+        m.y = clamp(m.y,  this.boundsYBottom,  this.boundsYTop);
     }
+
+    // ── Model → Node ──────────────────────────────────────────────────────
 
     private _pushToNode(): void {
         this._pos.set(this._model.x, this._model.y, 0);
         this.node.setPosition(this._pos);
     }
 
-    private _updateSpriteFlip(): void {
-        if (!this.spriteNode || this._model.vx === 0) return;
-        const s = this.spriteNode.scale;
-        const facingRight = this._model.vx > 0;
-        // Flip by negating scaleX; preserve Y/Z
-        this.spriteNode.setScale(
-            facingRight ? Math.abs(s.x) : -Math.abs(s.x),
-            s.y,
-            s.z,
-        );
+    // ── Model → View ──────────────────────────────────────────────────────
+
+    private _pushToView(): void {
+        if (!this._view) return;
+        const m = this._model;
+
+        // Facing direction — only update when actually moving horizontally
+        if (m.vx > 0.5)       { this._lastFacingRight = true;  }
+        else if (m.vx < -0.5) { this._lastFacingRight = false; }
+        this._view.setFacing(this._lastFacingRight);
+
+        // Animation state
+        const isMoving = Math.abs(m.vx) > 5 || Math.abs(m.vy) > 5;
+        if (isMoving) {
+            this._view.playFly();
+        } else {
+            this._view.playIdle();
+        }
     }
 
     // ── Event handlers ────────────────────────────────────────────────────
@@ -178,7 +194,7 @@ export class CharacterController extends Component {
         this._touchCurrent.set(loc.x, loc.y);
     }
 
-    private _onTouchEnd(_e: EventTouch): void {
+    private _onTouchEnd(): void {
         this._isTouching = false;
     }
 
@@ -186,5 +202,12 @@ export class CharacterController extends Component {
         this._model.isAlive = false;
         this._model.vx = 0;
         this._model.vy = 0;
+        this._view?.playHit();
     }
+}
+
+// ── Module helpers ────────────────────────────────────────────────────────
+
+function clamp(v: number, min: number, max: number): number {
+    return v < min ? min : v > max ? max : v;
 }
