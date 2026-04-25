@@ -39,8 +39,9 @@ export class CharacterController extends Component {
     @property colliderBottom: any = null;
 
     // ── Fallback bounds (used when colliders are not wired) ───────────────
-    @property fallbackBoundsX:       number = 460;
-    @property fallbackBoundsYTop:    number = 300;
+    @property fallbackBoundsXLeft:   number = -460;  // how far left the character can go
+    @property fallbackBoundsXRight:  number =  150;  // keep character left-of-centre so world ahead stays visible
+    @property fallbackBoundsYTop:    number =  300;
     @property fallbackBoundsYBottom: number = -300;
 
     // ── Model (pure data) ─────────────────────────────────────────────────
@@ -181,7 +182,7 @@ export class CharacterController extends Component {
         const topY    = this.colliderTop    ? (this.colliderTop    as any).position.y : this.fallbackBoundsYTop;
         const bottomY = this.colliderBottom ? (this.colliderBottom as any).position.y : this.fallbackBoundsYBottom;
 
-        m.x = clamp(m.x, -this.fallbackBoundsX, this.fallbackBoundsX);
+        m.x = clamp(m.x, this.fallbackBoundsXLeft, this.fallbackBoundsXRight);
         m.y = clamp(m.y,  bottomY, topY);
     }
 
