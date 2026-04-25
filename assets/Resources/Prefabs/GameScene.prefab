@@ -47,10 +47,16 @@
       },
       {
         "__id__": 146
+      },
+      {
+        "__id__": 148
+      },
+      {
+        "__id__": 150
       }
     ],
     "_prefab": {
-      "__id__": 148
+      "__id__": 152
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -2762,6 +2768,62 @@
     "fileId": "9ajHmwXNNF756x9fol6ai0"
   },
   {
+    "__type__": "b1796j6SUNApLKfIcBWhvS+",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 149
+    },
+    "coinPrefab": {
+      "__uuid__": "944b94ef-cddf-4e44-8f78-70665d6e2b81",
+      "__expectedType__": "cc.Prefab"
+    },
+    "flyingCoinPrefab": {
+      "__uuid__": "45314724-9571-44f0-93e4-352ee1e124e7",
+      "__expectedType__": "cc.Prefab"
+    },
+    "bgMoveNode": {
+      "__id__": 2
+    },
+    "poolWarmupCount": 30,
+    "spawnAheadX": 800,
+    "cullBehindX": -900,
+    "cullAheadX": 1200,
+    "spawnInterval": 3,
+    "patternSpacing": 80,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "3awWWTrgxO+agplagHW52d"
+  },
+  {
+    "__type__": "5e0d9qpfkVH8r2lWIijJYE1",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 151
+    },
+    "characterNode": {
+      "__id__": 58
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "ceAnIglgtJMrbnZs2YIFXa"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -2773,10 +2835,10 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 149
+        "__id__": 153
       },
       {
-        "__id__": 151
+        "__id__": 155
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -2813,7 +2875,7 @@
       "__id__": 58
     },
     "targetInfo": {
-      "__id__": 150
+      "__id__": 154
     }
   },
   {
@@ -2835,7 +2897,7 @@
       "__id__": 58
     },
     "targetInfo": {
-      "__id__": 152
+      "__id__": 156
     }
   },
   {
