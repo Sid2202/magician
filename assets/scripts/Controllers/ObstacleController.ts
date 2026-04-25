@@ -40,14 +40,18 @@ export class ObstacleController extends Component {
         this.model.active = true;
         this._poolKey = poolKey;
 
-        // Use view-derived bounds when available so collision matches sprite size.
+        this.node.setPosition(x, y, 0);
+        this.node.active = true;
+
+        if (!this._view) {
+            this._view = this.getComponent(ObstacleView);
+        }
+
         if (this._view) {
             this.model.halfW = this._view.halfW;
             this.model.halfH = this._view.halfH;
         }
 
-        this.node.active = true;
-        this._view?.setPosition(x, y);
         this._behavior?.onActivate?.(this.model);
     }
 

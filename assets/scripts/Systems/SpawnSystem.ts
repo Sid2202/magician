@@ -13,6 +13,10 @@ export interface SpawnConfig {
     originY: number;
     spacing: number;
     grid?:   GridConfig;
+    isUpArc?: boolean;
+    count?: number;
+    ignoreObstacles?: boolean;
+    arcHeight?: number;
 }
 
 const { ccclass, property } = _decorator;
@@ -129,22 +133,22 @@ export class SpawnSystem extends Component {
     }
 
     private _spawnArc(cfg: SpawnConfig): void {
-        const count = 8;
-        const height = 150;
-        const isUp = Math.random() > 0.5;
+        const count = cfg.count ?? 8;
+        const height = cfg.arcHeight ?? 150;
+        const isUp = cfg.isUpArc ?? (Math.random() > 0.5);
         const spacingX = cfg.spacing * 1.5; // wider spread for smoother curves
         for (let i = 0; i < count; i++) {
             const t = (i / (count - 1)) * 2 - 1;
             const yOffset = (1 - t * t) * height;
-            this._place(cfg.originX + i * spacingX, cfg.originY + (isUp ? yOffset : -yOffset));
+            this._place(cfg.originX + i * spacingX, cfg.originY + (isUp ? yOffset : -yOffset), cfg.ignoreObstacles);
         }
     }
 
     // ── Internals ─────────────────────────────────────────────────────────
 
-    private _place(x: number, y: number): void {
+    private _place(x: number, y: number, ignoreObstacles: boolean = false): void {
         // Skip placement if it would land on an obstacle — leaves a natural gap in the pattern.
-        if (this.obstacleSpawn && this.obstacleSpawn.isAreaBlocked(x, y, 24, 24, this.coinObstacleAvoidPadding)) {
+        if (!ignoreObstacles && this.obstacleSpawn && this.obstacleSpawn.isAreaBlocked(x, y, 24, 24, this.coinObstacleAvoidPadding)) {
             return;
         }
         const node = PoolingSystem.get(PoolKey.Coin);
