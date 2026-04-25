@@ -6,50 +6,61 @@ import { GameEvents } from '../gameplay/input/GameEvents';
 const { ccclass, property } = _decorator;
 
 /**
- * Attach to the Canvas node in GameScene.scene.
+ * Attach to: GameScene prefab ROOT NODE (the top-level node of GameScene.prefab).
  *
- * Responsibilities:
- *   - Owns the scene node references (UIParent, SceneParent, PopupParent)
- *   - Kicks off the game session
- *   - Listens for game-over / level-complete to hand off to UI
+ * This is the entry point for the prefab.
+ * It owns references to the two direct children:
+ *   - PF_Character  → the playable character
+ *   - Base_Parent   → the gameplay world (GameController lives here)
  *
- * All gameplay logic lives in GameController (on Base_Parent inside GameScene.prefab).
+ * It does NOT reference UIParent / SceneParent / PopupParent —
+ * those are in the scene (Canvas), outside this prefab.
+ * UI connections will be added later via PopupManager.
  */
 @ccclass('GameScene')
 export class GameScene extends Component {
 
-    @property(Node) sceneParent:  Node = null;  // GameScene.prefab lives here
-    @property(Node) uiParent:     Node = null;  // HUD / score UI goes here
-    @property(Node) popupParent:  Node = null;  // Popups go here
+    /** Drag PF_Character node here (direct child of this prefab root). */
+    @property(Node) characterNode: Node = null;
+
+    /** Drag Base_Parent node here (direct child of this prefab root). */
+    @property(Node) gameWorldNode: Node = null;
 
     onLoad(): void {
+        this._validate();
         this._subscribeEvents();
-    }
-
-    start(): void {
-        // GameController (on Base_Parent) wires itself via GameManager.startSession().
-        // Nothing extra needed here until we add a lobby/loading screen.
     }
 
     onDestroy(): void {
         GameManager.endSession();
     }
 
-    // ── Event handlers ────────────────────────────────────────────────────
+    // ── Validation ────────────────────────────────────────────────────────
+
+    private _validate(): void {
+        if (!this.characterNode) {
+            console.error('[GameScene] characterNode not wired — drag PF_Character here.');
+        }
+        if (!this.gameWorldNode) {
+            console.error('[GameScene] gameWorldNode not wired — drag Base_Parent here.');
+        }
+    }
+
+    // ── Events ────────────────────────────────────────────────────────────
 
     private _subscribeEvents(): void {
         const bus = GameEventsBus.get();
-        bus.on(GameEvents.GameOver,       this._onGameOver,       this);
-        bus.on(GameEvents.LevelComplete,  this._onLevelComplete,  this);
+        bus.on(GameEvents.GameOver,      this._onGameOver,      this);
+        bus.on(GameEvents.LevelComplete, this._onLevelComplete, this);
     }
 
     private _onGameOver(): void {
-        // TODO: show GameOver popup via PopupManager
+        // TODO: show GameOver popup (PopupManager.getInstance().create(...))
         console.log('[GameScene] Game Over');
     }
 
     private _onLevelComplete(): void {
         // TODO: show LevelComplete popup
-        console.log('[GameScene] Level Complete – light fully restored!');
+        console.log('[GameScene] Level Complete');
     }
 }
