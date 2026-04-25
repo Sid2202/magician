@@ -87,6 +87,7 @@ export class GameScene extends Component {
         const bus = GameEventsBus.get();
         bus.on(GameEvents.GameOver,      this._onGameOver,      this);
         bus.on(GameEvents.LevelComplete, this._onLevelComplete, this);
+        bus.on(GameEvents.GameWon,       this._onGameWon,       this);
     }
 
     private _onGameOver(): void {
@@ -97,6 +98,11 @@ export class GameScene extends Component {
     private _onLevelComplete(): void {
         // TODO: show LevelComplete popup
         console.log('[GameScene] Level Complete');
+    }
+
+    private _onGameWon(): void {
+        GameManager.getInstance().pauseGame();
+        console.log('[GameScene] Game Won!');
     }
 
     // ── Scene queries ─────────────────────────────────────────────────────
