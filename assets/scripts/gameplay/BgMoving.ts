@@ -17,6 +17,9 @@ export class BgMoving extends Component {
 
     private direction: Vec3 = new Vec3(0, 0, 0);
 
+    /** Read by SpawnSystem to sync coin scroll with BG scroll. */
+    public getScrollDirX(): number { return this.direction.x; }
+
     start() {
         if (!this.bgNodeA || !this.bgNodeB) {
             console.warn('BgMoving: bgNodeA and bgNodeB must both be assigned');

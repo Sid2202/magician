@@ -16,7 +16,8 @@
       "Bash(git submodule *)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git reset *)"
+      "Bash(git reset *)",
+      "Bash(xargs cat *)"
     ]
   },
   "mcpServers": {

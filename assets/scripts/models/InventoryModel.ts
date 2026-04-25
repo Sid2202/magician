@@ -8,6 +8,12 @@ export class InventoryModel {
         [ItemType.Tool,  0],
     ]);
 
+    // ── Coins ─────────────────────────────────────────────────────────────
+    private _coinCount = 0;
+
+    addCoin(): void             { this._coinCount++;             }
+    getCoinCount(): number      { return this._coinCount;        }
+
     addItem(type: ItemType): void {
         this._counts.set(type, (this._counts.get(type) ?? 0) + 1);
     }
@@ -32,5 +38,6 @@ export class InventoryModel {
         this._counts.set(ItemType.Shard, 0);
         this._counts.set(ItemType.Food,  0);
         this._counts.set(ItemType.Tool,  0);
+        this._coinCount = 0;
     }
 }
