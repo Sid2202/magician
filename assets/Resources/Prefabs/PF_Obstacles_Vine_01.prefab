@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "PF_Obstacles_Wine",
+    "_name": "PF_Obstacles_Vine_01",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PF_Obstacles_Wine",
+    "_name": "PF_Obstacles_Vine_01",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -37,7 +37,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 324,
+      "y": 304,
       "z": 0
     },
     "_lrot": {
@@ -133,8 +133,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 120,
-      "height": 432
+      "width": 168,
+      "height": 472
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -170,7 +170,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "7defe739-4163-4cab-b86c-aaaf0a2fdfa7@f9941",
+      "__uuid__": "ca2d7cf8-d0b3-4987-a75f-6c3c1b9619ca@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -212,13 +212,13 @@
     "_restitution": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 2.6,
-      "y": 14.7
+      "x": 0,
+      "y": 0
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 40,
-      "height": 329
+      "width": 168,
+      "height": 472
     },
     "_id": ""
   },
@@ -289,8 +289,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 120,
-      "height": 432
+      "width": 168,
+      "height": 472
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -348,6 +348,7 @@
       "__id__": 0
     },
     "fileId": "02a/OtXTFNXbI04cHbGP6/",
+    "instance": null,
     "targetOverrides": null
   }
 ]

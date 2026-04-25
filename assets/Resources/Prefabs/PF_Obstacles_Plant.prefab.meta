@@ -2,12 +2,12 @@
   "ver": "1.1.50",
   "importer": "prefab",
   "imported": true,
-  "uuid": "87030485-1030-444a-be5d-5170713e3c8e",
+  "uuid": "2554c9b5-8ecb-4d1d-9b0b-1b4029d18625",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "PF_Obstacles_Rock"
+    "syncNodeName": "PF_Obstacles_Plant"
   }
 }

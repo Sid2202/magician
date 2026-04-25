@@ -2,12 +2,12 @@
   "ver": "1.1.50",
   "importer": "prefab",
   "imported": true,
-  "uuid": "04405c3a-a80b-4420-82fa-cc172d271578",
+  "uuid": "87030485-1030-444a-be5d-5170713e3c8e",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "PF_Obstacles_Wine"
+    "syncNodeName": "PF_Obstacles_Barrel"
   }
 }
