@@ -33,7 +33,7 @@ export class ShardSpawnSystem extends Component {
     /** How far ahead of centre to place a shard when its trigger fires. */
     @property spawnAheadX: number = 900;
     /** Padding around shard to avoid coins and obstacles. */
-    @property avoidPadding: number = 150;
+    @property avoidPadding: number = 300;
 
     /** Distance thresholds (px scrolled) that trigger each shard. */
     @property shard1Distance: number =  4000;

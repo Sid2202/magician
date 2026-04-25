@@ -75,7 +75,7 @@ export class CharacterController extends Component {
     @property shakeDuration: number = 0.4;  // seconds
 
     // ── Respawn safety ────────────────────────────────────────────────────
-    @property respawnBackOffset: number = 250;  // pixels to the left when respawning, so player has space
+    @property respawnBackOffset: number = 100;  // pixels to the left when respawning, so player has space
 
     /** Wire the BgMove node so we can stop scrolling immediately on death. */
     @property(Node) bgMoveNode: Node = null;
