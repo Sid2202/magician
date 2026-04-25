@@ -40,6 +40,9 @@ export class CharacterView extends Component {
 
     // ── Animation clips ───────────────────────────────────────────────────
 
+    @property(Animation)
+    private animation: Animation = null;
+
     /** Hovering / up / down animation. Drag the idle AnimationClip here. */
     @property(AnimationClip) clipIdle:   AnimationClip = null;
 
@@ -82,13 +85,13 @@ export class CharacterView extends Component {
             case CharacterState.Idle:
             case CharacterState.MoveV:
                 // Hovering or vertical-only → idle clip, no effects
-                this._playClip(this.clipIdle);
+                this.animation.play(this.clipIdle.name);
                 this._setEffectsVisible(false);
                 break;
 
             case CharacterState.MoveH:
                 // Horizontal movement → motion clip + show all effects
-                this._playClip(this.clipMotion);
+                this.animation.play(this.clipMotion.name);
                 this._setEffectsVisible(true);
                 break;
 

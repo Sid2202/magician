@@ -29,6 +29,7 @@ export class GameScene extends Component {
     onLoad(): void {
         this._validate();
         this._subscribeEvents();
+        GameManager.startSession(1);  // temp until GameController exists
     }
 
     onDestroy(): void {
