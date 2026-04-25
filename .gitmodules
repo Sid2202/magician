@@ -1,0 +1,3 @@
+[submodule "extensions/cocos3-components"]
+	path = extensions/cocos3-components
+	url = git@bitbucket.org:campersofamadablam/cocos3-components.git
