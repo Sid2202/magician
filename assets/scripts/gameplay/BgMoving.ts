@@ -1,0 +1,129 @@
+import { _decorator, Component, Node, Vec3, input, Input, EventKeyboard, KeyCode, UITransform } from 'cc';
+const { ccclass, property } = _decorator;
+
+@ccclass('BgMoving')
+export class BgMoving extends Component {
+    @property(Node)
+    public bgNodeA: Node = null;
+
+    @property(Node)
+    public bgNodeB: Node = null;
+
+    @property
+    public bgWidth: number = 0;
+
+    @property
+    public speed: number = 200;
+
+    private direction: Vec3 = new Vec3(0, 0, 0);
+
+    start() {
+        if (!this.bgNodeA || !this.bgNodeB) {
+            console.warn('BgMoving: bgNodeA and bgNodeB must both be assigned');
+            return;
+        }
+
+        if (this.bgWidth <= 0) {
+            const transform = this.bgNodeA.getComponent(UITransform);
+            if (transform) {
+                this.bgWidth = transform.width;
+            }
+        }
+
+        if (this.bgWidth <= 0) {
+            console.warn('BgMoving: bgWidth must be set or bgNodeA must have UITransform');
+        }
+
+        this.bgNodeA.setPosition(0, 0, 0);
+        this.bgNodeB.setPosition(this.bgWidth, 0, 0);
+    }
+
+    onEnable() {
+        console.log('BgMoving: enabled and listening for keyboard input');
+        input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
+    }
+
+    onDisable() {
+        console.log('BgMoving: disabled and stopped keyboard input');
+        input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
+        input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
+    }
+
+    update(deltaTime: number) {
+        if (!this.bgNodeA || !this.bgNodeB || this.bgWidth <= 0) {
+            return;
+        }
+
+        const displacement = this.direction.x * this.speed * deltaTime;
+        if (displacement === 0) {
+            return;
+        }
+
+        const posA = this.bgNodeA.position.clone();
+        const posB = this.bgNodeB.position.clone();
+        posA.x += displacement;
+        posB.x += displacement;
+        this.bgNodeA.setPosition(posA);
+        this.bgNodeB.setPosition(posB);
+
+        this.repositionIfNeeded(this.bgNodeA, this.bgNodeB);
+        this.repositionIfNeeded(this.bgNodeB, this.bgNodeA);
+    }
+
+    private repositionIfNeeded(node: Node, other: Node) {
+        const x = node.position.x;
+        if (x <= -this.bgWidth) {
+            node.setPosition(other.position.x + this.bgWidth, node.position.y, node.position.z);
+            console.log('BgMoving: repositioned node to right side');
+        } else if (x >= this.bgWidth) {
+            node.setPosition(other.position.x - this.bgWidth, node.position.y, node.position.z);
+            console.log('BgMoving: repositioned node to left side');
+        }
+    }
+
+    private onKeyDown(event: EventKeyboard) {
+        console.log('BgMoving: key down', event.keyCode);
+        switch (event.keyCode) {
+            case KeyCode.ARROW_LEFT:
+            case KeyCode.KEY_A:
+                this.direction.x = 1;
+                console.log('BgMoving: moving right (reverse input)');
+                break;
+            case KeyCode.ARROW_RIGHT:
+            case KeyCode.KEY_D:
+                this.direction.x = -1;
+                console.log('BgMoving: moving left (reverse input)');
+                break;
+        }
+    }
+
+    private onKeyUp(event: EventKeyboard) {
+        console.log('BgMoving: key up', event.keyCode);
+        switch (event.keyCode) {
+            case KeyCode.ARROW_LEFT:
+            case KeyCode.KEY_A:
+                if (this.direction.x > 0) {
+                    this.direction.x = 0;
+                    console.log('BgMoving: stop moving right');
+                }
+                break;
+            case KeyCode.ARROW_RIGHT:
+            case KeyCode.KEY_D:
+                if (this.direction.x < 0) {
+                    this.direction.x = 0;
+                    console.log('BgMoving: stop moving left');
+                }
+                break;
+        }
+    }
+
+    public setBgWidth(width: number) {
+        this.bgWidth = width;
+    }
+
+    public setSpeed(value: number) {
+        this.speed = value;
+    }
+}
+
