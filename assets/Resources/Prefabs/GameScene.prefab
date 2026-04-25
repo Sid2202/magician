@@ -309,7 +309,7 @@
     "value": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -412,
+      "y": 0,
       "z": 0
     }
   },
@@ -494,7 +494,6 @@
       "__id__": 0
     },
     "fileId": "76SG3GxsVGoZk8/tOW5C1n",
-    "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": [
       {
