@@ -1,0 +1,39 @@
+{
+    "version": "1.0.1",
+    "data": {
+        "paths": [
+            "scripts",
+            "scripts/controllers",
+            "scripts/core",
+            "scripts/models",
+            "scripts/systems",
+            "scripts/utils",
+            "scripts/views",
+            "scripts/controllers/GameController.ts",
+            "scripts/controllers/ItemController.ts",
+            "scripts/controllers/NPCController.ts",
+            "scripts/controllers/PlayerController.ts",
+            "scripts/core/Constants.ts",
+            "scripts/core/EventBus.ts",
+            "scripts/core/GameManager.ts",
+            "scripts/models/GameStateModel.ts",
+            "scripts/models/InventoryModel.ts",
+            "scripts/models/ItemModel.ts",
+            "scripts/models/LightPointModel.ts",
+            "scripts/models/NPCModel.ts",
+            "scripts/models/PlayerModel.ts",
+            "scripts/systems/CollisionSystem.ts",
+            "scripts/systems/InputSystem.ts",
+            "scripts/systems/LightSystem.ts",
+            "scripts/systems/MovementSystem.ts",
+            "scripts/systems/PoolingSystem.ts",
+            "scripts/systems/SpawnSystem.ts",
+            "scripts/systems/TradeSystem.ts",
+            "scripts/utils/MathUtil.ts",
+            "scripts/views/ItemView.ts",
+            "scripts/views/LightPointView.ts",
+            "scripts/views/NPCView.ts",
+            "scripts/views/PlayerView.ts"
+        ]
+    }
+}

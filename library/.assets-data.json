@@ -1,0 +1,162 @@
+{
+  "0f6f1915-f5d1-4d98-907a-743b473bb7ea": {
+    "url": "db://assets/scripts",
+    "value": {},
+    "versionCode": 1
+  },
+  "92f67dba-0a5c-43b0-8f38-f707fab36d05": {
+    "url": "db://assets/scripts/controllers",
+    "value": {},
+    "versionCode": 1
+  },
+  "d32c24be-2b9c-41d6-8f76-eb7ab02aee25": {
+    "url": "db://assets/scripts/core",
+    "value": {},
+    "versionCode": 1
+  },
+  "2d9ec85f-2229-4e21-82ca-6ba89104586e": {
+    "url": "db://assets/scripts/models",
+    "value": {},
+    "versionCode": 1
+  },
+  "306bb750-e374-4614-bb06-a14430d68b76": {
+    "url": "db://assets/scripts/systems",
+    "value": {},
+    "versionCode": 1
+  },
+  "23fdc062-f85b-4e46-a331-a386a37d7792": {
+    "url": "db://assets/scripts/utils",
+    "value": {},
+    "versionCode": 1
+  },
+  "be85f226-60ed-450a-8fa5-208cfe0d43d6": {
+    "url": "db://assets/scripts/views",
+    "value": {},
+    "versionCode": 1
+  },
+  "8ef01e98-54ce-42f1-840d-a2ca826f70f6": {
+    "url": "db://assets/scripts/controllers/GameController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "727f45c1-7c3a-42f4-939a-739f1fa70f47": {
+    "url": "db://assets/scripts/controllers/ItemController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "666ac370-a1f2-4bfd-a08a-55f16ed179b9": {
+    "url": "db://assets/scripts/controllers/NPCController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "96276308-afb9-4500-bac6-79b773ea7451": {
+    "url": "db://assets/scripts/controllers/PlayerController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "f484c66e-dba1-46da-8435-e56f297a77b0": {
+    "url": "db://assets/scripts/core/Constants.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "b53dd54f-a161-4718-bb36-272d8693daa2": {
+    "url": "db://assets/scripts/core/EventBus.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "a5f9b173-33f7-469c-b9ee-7b1e1a47d689": {
+    "url": "db://assets/scripts/core/GameManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "38e1a277-4f16-4427-b4a4-ef4d65cf9f00": {
+    "url": "db://assets/scripts/models/GameStateModel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "ee6b838f-dd5f-49ff-8e42-ac93f478f5bd": {
+    "url": "db://assets/scripts/models/InventoryModel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7bbb3503-9b1d-4a7d-bae8-d695c53ea6b7": {
+    "url": "db://assets/scripts/models/ItemModel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "23a72d83-320c-4183-80b7-6e49f734f001": {
+    "url": "db://assets/scripts/models/LightPointModel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "e805c70e-e6c3-480a-b67e-bd6e6ad17b1c": {
+    "url": "db://assets/scripts/models/NPCModel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "a04e42bc-d044-49ec-8739-677fc5ca3ffe": {
+    "url": "db://assets/scripts/models/PlayerModel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "93845404-45e9-44ff-8bd6-33810bb53dd3": {
+    "url": "db://assets/scripts/systems/CollisionSystem.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "29184918-6382-4d1f-8d52-165e4fe4a4c5": {
+    "url": "db://assets/scripts/systems/InputSystem.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "30e679b7-9201-4bc3-9159-26eb50fc720a": {
+    "url": "db://assets/scripts/systems/LightSystem.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "5c0a93e4-d46e-41ee-b7c4-0e21602e68c7": {
+    "url": "db://assets/scripts/systems/MovementSystem.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "80c21bc9-3d46-4533-b851-961828bc0427": {
+    "url": "db://assets/scripts/systems/PoolingSystem.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "5d075ebb-b80a-4ed3-8fd6-63c4de8fa80a": {
+    "url": "db://assets/scripts/systems/SpawnSystem.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "a0801b95-f177-4556-95fd-ed68072d831a": {
+    "url": "db://assets/scripts/systems/TradeSystem.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "b764b9ba-3dee-43aa-99fe-9bcad99342e0": {
+    "url": "db://assets/scripts/utils/MathUtil.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "b2f6addf-b5ab-4fb7-8319-47064a1916d5": {
+    "url": "db://assets/scripts/views/ItemView.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "8f1e2d5f-7cdc-4588-b84e-7a1d0952eeff": {
+    "url": "db://assets/scripts/views/LightPointView.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7d6528ea-874e-4f09-8172-5cb99c479c1b": {
+    "url": "db://assets/scripts/views/NPCView.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "11b8ad05-aa9e-4ddb-b0be-525a6fed1013": {
+    "url": "db://assets/scripts/views/PlayerView.ts",
+    "value": {},
+    "versionCode": 1
+  }
+}

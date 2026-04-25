@@ -1,0 +1,230 @@
+{
+  "version": "1.0.1",
+  "map": {
+    "scripts": {
+      "time": 1777104266067.5762,
+      "uuid": "0f6f1915-f5d1-4d98-907a-743b473bb7ea"
+    },
+    "scripts/controllers": {
+      "time": 1777104266068.0925,
+      "uuid": "92f67dba-0a5c-43b0-8f38-f707fab36d05"
+    },
+    "scripts/core": {
+      "time": 1777104266068.3994,
+      "uuid": "d32c24be-2b9c-41d6-8f76-eb7ab02aee25"
+    },
+    "scripts/models": {
+      "time": 1777104266069.035,
+      "uuid": "2d9ec85f-2229-4e21-82ca-6ba89104586e"
+    },
+    "scripts/systems": {
+      "time": 1777104266069.7395,
+      "uuid": "306bb750-e374-4614-bb06-a14430d68b76"
+    },
+    "scripts/utils": {
+      "time": 1777104266069.8591,
+      "uuid": "23fdc062-f85b-4e46-a331-a386a37d7792"
+    },
+    "scripts/views": {
+      "time": 1777104266070.3477,
+      "uuid": "be85f226-60ed-450a-8fa5-208cfe0d43d6"
+    },
+    "scripts/controllers/GameController.ts": {
+      "time": 1777102523019.859,
+      "uuid": "8ef01e98-54ce-42f1-840d-a2ca826f70f6"
+    },
+    "scripts/controllers/ItemController.ts": {
+      "time": 1777102502673.5657,
+      "uuid": "727f45c1-7c3a-42f4-939a-739f1fa70f47"
+    },
+    "scripts/controllers/NPCController.ts": {
+      "time": 1777102509334.9114,
+      "uuid": "666ac370-a1f2-4bfd-a08a-55f16ed179b9"
+    },
+    "scripts/controllers/PlayerController.ts": {
+      "time": 1777102495201.9646,
+      "uuid": "96276308-afb9-4500-bac6-79b773ea7451"
+    },
+    "scripts/core/Constants.ts": {
+      "time": 1777102397306.0713,
+      "uuid": "f484c66e-dba1-46da-8435-e56f297a77b0"
+    },
+    "scripts/core/EventBus.ts": {
+      "time": 1777102402411.69,
+      "uuid": "b53dd54f-a161-4718-bb36-272d8693daa2"
+    },
+    "scripts/core/GameManager.ts": {
+      "time": 1777102415947.2854,
+      "uuid": "a5f9b173-33f7-469c-b9ee-7b1e1a47d689"
+    },
+    "scripts/models/GameStateModel.ts": {
+      "time": 1777102448626.866,
+      "uuid": "38e1a277-4f16-4427-b4a4-ef4d65cf9f00"
+    },
+    "scripts/models/InventoryModel.ts": {
+      "time": 1777102430284.315,
+      "uuid": "ee6b838f-dd5f-49ff-8e42-ac93f478f5bd"
+    },
+    "scripts/models/ItemModel.ts": {
+      "time": 1777102424075.4543,
+      "uuid": "7bbb3503-9b1d-4a7d-bae8-d695c53ea6b7"
+    },
+    "scripts/models/LightPointModel.ts": {
+      "time": 1777102442058.8706,
+      "uuid": "23a72d83-320c-4183-80b7-6e49f734f001"
+    },
+    "scripts/models/NPCModel.ts": {
+      "time": 1777102436542.1714,
+      "uuid": "e805c70e-e6c3-480a-b67e-bd6e6ad17b1c"
+    },
+    "scripts/models/PlayerModel.ts": {
+      "time": 1777102420720.7344,
+      "uuid": "a04e42bc-d044-49ec-8739-677fc5ca3ffe"
+    },
+    "scripts/systems/CollisionSystem.ts": {
+      "time": 1777102572556.9414,
+      "uuid": "93845404-45e9-44ff-8bd6-33810bb53dd3"
+    },
+    "scripts/systems/InputSystem.ts": {
+      "time": 1777102546055.7341,
+      "uuid": "29184918-6382-4d1f-8d52-165e4fe4a4c5"
+    },
+    "scripts/systems/LightSystem.ts": {
+      "time": 1777102619095.1804,
+      "uuid": "30e679b7-9201-4bc3-9159-26eb50fc720a"
+    },
+    "scripts/systems/MovementSystem.ts": {
+      "time": 1777102561680.1462,
+      "uuid": "5c0a93e4-d46e-41ee-b7c4-0e21602e68c7"
+    },
+    "scripts/systems/PoolingSystem.ts": {
+      "time": 1777102582713.6052,
+      "uuid": "80c21bc9-3d46-4533-b851-961828bc0427"
+    },
+    "scripts/systems/SpawnSystem.ts": {
+      "time": 1777102603509.4167,
+      "uuid": "5d075ebb-b80a-4ed3-8fd6-63c4de8fa80a"
+    },
+    "scripts/systems/TradeSystem.ts": {
+      "time": 1777102613325.0947,
+      "uuid": "a0801b95-f177-4556-95fd-ed68072d831a"
+    },
+    "scripts/utils/MathUtil.ts": {
+      "time": 1777102625650.232,
+      "uuid": "b764b9ba-3dee-43aa-99fe-9bcad99342e0"
+    },
+    "scripts/views/ItemView.ts": {
+      "time": 1777102470284.5059,
+      "uuid": "b2f6addf-b5ab-4fb7-8319-47064a1916d5"
+    },
+    "scripts/views/LightPointView.ts": {
+      "time": 1777102482507.713,
+      "uuid": "8f1e2d5f-7cdc-4588-b84e-7a1d0952eeff"
+    },
+    "scripts/views/NPCView.ts": {
+      "time": 1777102476778.7856,
+      "uuid": "7d6528ea-874e-4f09-8172-5cb99c479c1b"
+    },
+    "scripts/views/PlayerView.ts": {
+      "time": 1777102466677.1204,
+      "uuid": "11b8ad05-aa9e-4ddb-b0be-525a6fed1013"
+    },
+    "scripts.meta": {
+      "time": 1777104266071.03
+    },
+    "scripts/controllers.meta": {
+      "time": 1777104266071.1362
+    },
+    "scripts/core.meta": {
+      "time": 1777104266071.2537
+    },
+    "scripts/models.meta": {
+      "time": 1777104266071.3577
+    },
+    "scripts/systems.meta": {
+      "time": 1777104266072.1692
+    },
+    "scripts/utils.meta": {
+      "time": 1777104266072.5361
+    },
+    "scripts/views.meta": {
+      "time": 1777104266072.7356
+    },
+    "scripts/controllers/GameController.ts.meta": {
+      "time": 1777104266074.7598
+    },
+    "scripts/controllers/ItemController.ts.meta": {
+      "time": 1777104266074.9492
+    },
+    "scripts/controllers/NPCController.ts.meta": {
+      "time": 1777104266075.0283
+    },
+    "scripts/controllers/PlayerController.ts.meta": {
+      "time": 1777104266075.105
+    },
+    "scripts/core/Constants.ts.meta": {
+      "time": 1777104266075.1863
+    },
+    "scripts/core/EventBus.ts.meta": {
+      "time": 1777104266075.5327
+    },
+    "scripts/core/GameManager.ts.meta": {
+      "time": 1777104266075.7996
+    },
+    "scripts/models/GameStateModel.ts.meta": {
+      "time": 1777104266076.0217
+    },
+    "scripts/models/InventoryModel.ts.meta": {
+      "time": 1777104266076.448
+    },
+    "scripts/models/ItemModel.ts.meta": {
+      "time": 1777104266076.6006
+    },
+    "scripts/models/LightPointModel.ts.meta": {
+      "time": 1777104266076.6885
+    },
+    "scripts/models/NPCModel.ts.meta": {
+      "time": 1777104266076.7622
+    },
+    "scripts/models/PlayerModel.ts.meta": {
+      "time": 1777104266077.0034
+    },
+    "scripts/systems/CollisionSystem.ts.meta": {
+      "time": 1777104266077.2986
+    },
+    "scripts/systems/InputSystem.ts.meta": {
+      "time": 1777104266077.484
+    },
+    "scripts/systems/LightSystem.ts.meta": {
+      "time": 1777104266077.5627
+    },
+    "scripts/systems/MovementSystem.ts.meta": {
+      "time": 1777104266077.783
+    },
+    "scripts/systems/PoolingSystem.ts.meta": {
+      "time": 1777104266077.856
+    },
+    "scripts/systems/SpawnSystem.ts.meta": {
+      "time": 1777104266078.6494
+    },
+    "scripts/systems/TradeSystem.ts.meta": {
+      "time": 1777104266078.7288
+    },
+    "scripts/utils/MathUtil.ts.meta": {
+      "time": 1777104266078.9417
+    },
+    "scripts/views/ItemView.ts.meta": {
+      "time": 1777104266079.0413
+    },
+    "scripts/views/LightPointView.ts.meta": {
+      "time": 1777104266079.1216
+    },
+    "scripts/views/NPCView.ts.meta": {
+      "time": 1777104266079.9216
+    },
+    "scripts/views/PlayerView.ts.meta": {
+      "time": 1777104266080.0093
+    }
+  },
+  "missing": {}
+}
