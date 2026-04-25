@@ -32,16 +32,17 @@ export class SpawnSystem extends Component {
     @property(Prefab) flyingCoinPrefab: Prefab = null;
     @property(Node)   bgMoveNode:      Node   = null;   // ← wire BgMove node here
     @property         poolWarmupCount: number = 30;
-    @property         spawnAheadX:     number = 800;
+    @property         visibleWidth:    number = 1920;
+    @property         bufferAhead:     number = 900;
+    @property         groupBaseSpacing:    number = 250;
+    @property         groupSpacingVariance: number = 200;
     @property         cullBehindX:     number = -900;
     @property         cullAheadX:      number = 1200;
     @property         patternSpacing:  number = 80;
-    @property         spawnDistanceThreshold: number = 1000;
 
     readonly activeCoins: CoinController[] = [];
 
     private _bgMoving: BgMoving | null       = null;
-    private _distanceAccum = 0;
     private _cull:    CoinController[]       = [];
 
     onLoad(): void {
@@ -55,20 +56,16 @@ export class SpawnSystem extends Component {
         if (!this._bgMoving) console.warn('[SpawnSystem] bgMoveNode not wired — coins will not scroll');
     }
 
+    start(): void {
+        this._fillAhead();
+    }
+
     update(dt: number): void {
-        // Coins only scroll when BG is moving — same direction, same speed
+        // Only advance world fill while the Bg is actually moving.
         const dirX = this._bgMoving?.getScrollDirX() ?? 0;
         if (dirX !== 0) {
-            const speed = this._bgMoving!.speed;
-            const distance = Math.abs(dirX * speed * dt);
-            this._distanceAccum += distance;
             this._scrollAndCull(dirX, dt);
-
-            // Spawn based on distance traveled, only when moving
-            if (this._distanceAccum >= this.spawnDistanceThreshold) {
-                this._distanceAccum = 0;
-                this.spawnNow(this._randomConfig());
-            }
+            this._fillAhead();
         }
     }
 
@@ -130,17 +127,50 @@ export class SpawnSystem extends Component {
         const dx = dirX * speed * dt;
         this._cull.length = 0;
 
+        const screenLeftX = -this.visibleWidth * 0.5;
+        const safeCullMargin = 200;
+        const cullLeftX = screenLeftX - safeCullMargin;
+
         for (let i = 0, n = this.activeCoins.length; i < n; i++) {
             const c = this.activeCoins[i];
             c.scrollBy(-dx);   // scrollBy subtracts, so pass positive = scroll left
             const x = c.model.x;
-            if (x < this.cullBehindX || x > this.cullAheadX) this._cull.push(c);
+            if (x < cullLeftX || x > this.cullAheadX) this._cull.push(c);
         }
 
         for (const c of this._cull) {
             this.removeActive(c);
             c.deactivate();
         }
+    }
+
+    private _fillAhead(): void {
+        const coverageStartX = -this.visibleWidth * 0.5;
+        const coverageEndX = this.visibleWidth + this.bufferAhead;
+        let furthestX = this._getFurthestCoinX();
+        if (furthestX < coverageStartX) {
+            furthestX = 0;
+        }
+
+        while (furthestX < coverageEndX) {
+            const cfg = this._randomConfig();
+            const groupSpacing = this.groupBaseSpacing + Math.random() * this.groupSpacingVariance;
+            cfg.originX = furthestX + groupSpacing;
+            this.spawnNow(cfg);
+            furthestX = cfg.originX + groupSpacing;
+        }
+    }
+
+    private _getFurthestCoinX(): number {
+        if (this.activeCoins.length === 0) {
+            return 0;
+        }
+
+        let maxX = -Infinity;
+        for (const coin of this.activeCoins) {
+            maxX = Math.max(maxX, coin.model.x);
+        }
+        return maxX;
     }
 
     private _randomConfig(): SpawnConfig {
@@ -164,7 +194,7 @@ export class SpawnSystem extends Component {
 
         return {
             pattern,
-            originX: this.spawnAheadX,
+            originX: 0,
             originY: randRange(-150, 150),
             spacing: this.patternSpacing,
             grid,
