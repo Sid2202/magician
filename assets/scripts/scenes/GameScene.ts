@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Light2D } from 'cc';
+import { _decorator, Component, Node, Sprite, Color, tween, Tween } from 'cc';
 import { GameManager } from '../Managers/GameManager';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents } from '../gameplay/input/GameEvents';
@@ -26,15 +26,14 @@ export class GameScene extends Component {
     /** Drag Base_Parent node here (direct child of this prefab root). */
     @property(Node) gameWorldNode: Node = null;
 
-    /** Optional: Light2D on the player character for exploration. */
-    @property(Light2D) playerLight: Light2D = null;
-
     private _candles: {
         node: Node,
         isLit: boolean,
         lastRelativeX: number | null,
         lastX: number | null,
-        light: Light2D | null
+        glow: Node | null,
+        glowSprite: Sprite | null,
+        glowTween: Tween<any> | null
     }[] = [];
 
     onLoad(): void {
@@ -42,15 +41,16 @@ export class GameScene extends Component {
         this._subscribeEvents();
         GameManager.startSession(1);  // temp until GameController exists
 
-        // Try to find player light on character if not wired
-        if (!this.playerLight && this.characterNode) {
-            this.playerLight = this.characterNode.getComponent(Light2D);
-        }
-
         this._findCandles(this.node);
     }
 
     onDestroy(): void {
+        // Clean up glow tweens
+        for (const candle of this._candles) {
+            if (candle.glowTween) {
+                candle.glowTween.stop();
+            }
+        }
         GameManager.endSession();
     }
 
@@ -77,13 +77,25 @@ export class GameScene extends Component {
             candle.lastX = currentX;
             candle.lastRelativeX = currentRelativeX;
 
-            const glow = candle.node.getChildByName('Magician_Glow');
-            if (glow && glow.active !== candle.isLit) {
-                glow.active = candle.isLit;
-            }
+            if (candle.glow && candle.glow.active !== candle.isLit) {
+                candle.glow.active = candle.isLit;
 
-            if (candle.light) {
-                candle.light.intensity = candle.isLit ? 0.8 : 0;
+                // Animate glow brightness pulse when lit
+                if (candle.isLit && candle.glowSprite) {
+                    if (candle.glowTween) {
+                        candle.glowTween.stop();
+                    }
+                    candle.glowSprite.color = new Color(255, 255, 255, 180);
+                    candle.glowTween = tween(candle.glowSprite)
+                        .to(0.6, { color: new Color(255, 255, 200, 220) })
+                        .to(0.6, { color: new Color(255, 255, 255, 180) })
+                        .union()
+                        .repeatForever()
+                        .start();
+                } else if (!candle.isLit && candle.glowTween) {
+                    candle.glowTween.stop();
+                    candle.glowTween = null;
+                }
             }
         }
     }
@@ -127,8 +139,17 @@ export class GameScene extends Component {
 
     private _findCandles(node: Node): void {
         if (node.name.startsWith('PF_Collectible_Candle')) {
-            const light = node.getComponent(Light2D);
-            this._candles.push({ node, isLit: false, lastRelativeX: null, lastX: null, light });
+            const glow = node.getChildByName('Magician_Glow');
+            const glowSprite = glow ? glow.getComponent(Sprite) : null;
+            this._candles.push({
+                node,
+                isLit: false,
+                lastRelativeX: null,
+                lastX: null,
+                glow,
+                glowSprite,
+                glowTween: null
+            });
         }
         for (const child of node.children) {
             this._findCandles(child);
