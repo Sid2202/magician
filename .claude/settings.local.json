@@ -1,10 +1,4 @@
 {
-  "mcpServers": {
-    "graphify": {
-      "command": "/Users/bombayplay/sid/source/magician/.venv/bin/python3",
-      "args": ["-m", "graphify.serve", "graphify-out/graph.json"]
-    }
-  },
   "permissions": {
     "allow": [
       "Bash(cat)",
@@ -16,7 +10,23 @@
       "Bash(/opt/homebrew/bin/python3.11 -m pip install graphifyy -q)",
       "Bash(/opt/homebrew/bin/python3.11 -c \"import graphify; print\\('graphify OK:', graphify.__version__\\)\")",
       "Bash(/opt/homebrew/bin/python3.11 -c \"import graphify; print\\('graphify imported OK'\\)\")",
-      "Bash(/opt/homebrew/bin/python3.11 -c \"import sys; open\\('graphify-out/.graphify_python', 'w'\\).write\\(sys.executable\\)\")"
+      "Bash(/opt/homebrew/bin/python3.11 -c \"import sys; open\\('graphify-out/.graphify_python', 'w'\\).write\\(sys.executable\\)\")",
+      "Read(//Users/bombayplay/sid/source/yatzee-frontend/**)",
+      "Bash(cat .gitmodules)",
+      "Bash(git submodule *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git reset *)"
     ]
+  },
+  "mcpServers": {
+    "graphify": {
+      "command": "/Users/bombayplay/sid/source/magician/.venv/bin/python3",
+      "args": [
+        "-m",
+        "graphify.serve",
+        "graphify-out/graph.json"
+      ]
+    }
   }
 }
