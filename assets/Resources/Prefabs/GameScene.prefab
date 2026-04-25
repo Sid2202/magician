@@ -925,7 +925,7 @@
       "__id__": 25
     },
     "bgWidth": 2902,
-    "speed": 200,
+    "speed": 1000,
     "_id": ""
   },
   {
@@ -1262,7 +1262,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -105.7925,
-      "y": 0,
+      "y": -112,
       "z": 0
     },
     "_lrot": {
@@ -2791,10 +2791,12 @@
       "__id__": 2
     },
     "poolWarmupCount": 30,
-    "spawnAheadX": 800,
+    "visibleWidth": 1920,
+    "bufferAhead": 900,
+    "groupBaseSpacing": 250,
+    "groupSpacingVariance": 200,
     "cullBehindX": -900,
     "cullAheadX": 1200,
-    "spawnInterval": 3,
     "patternSpacing": 80,
     "_id": ""
   },
