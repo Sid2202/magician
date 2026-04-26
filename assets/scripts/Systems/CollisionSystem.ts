@@ -2,6 +2,7 @@ import { _decorator, Component, Node, Vec3, BoxCollider2D } from "cc";
 import { SpawnSystem } from "./SpawnSystem";
 import { ObstacleSpawnSystem } from "./ObstacleSpawnSystem";
 import { ShardSpawnSystem } from "./ShardSpawnSystem";
+import { TeleportSpawnSystem } from "./TeleportSpawnSystem";
 import { CharacterController } from "../gameplay/CharacterController";
 import { EventBus, CoinEvents } from "../core/EventBus";
 import { CoinController } from "../Controllers/CoinController";
@@ -24,6 +25,7 @@ export class CollisionSystem extends Component {
   @property(Node) characterNode: Node = null;
   @property(ObstacleSpawnSystem) obstacleSpawn: ObstacleSpawnSystem = null;
   @property(ShardSpawnSystem) shardSpawn: ShardSpawnSystem = null;
+  @property(TeleportSpawnSystem) teleportSpawn: TeleportSpawnSystem = null;
 
   /** Brief invulnerability window after a hit, so a single contact does not eat all hearts. */
   @property invulnerabilitySeconds: number = 1.2;
@@ -212,6 +214,18 @@ export class CollisionSystem extends Component {
         if (total >= 3) {
           GameEventsBus.get().emit(GameEvents.AllShardsCollected);
         }
+      }
+    }
+
+    // ── Teleport ──────────────────────────────────────────────────────────
+    if (this.teleportSpawn && this.teleportSpawn.activeTeleport) {
+      const teleportNode = this.teleportSpawn.activeTeleport;
+      const twp = teleportNode.worldPosition;
+      
+      // Approximate teleport dimensions
+      const TW = 157, TH = 279; 
+      if (aabb(cx, cy, chw, chh, twp.x, twp.y, TW, TH)) {
+        this.teleportSpawn.onTeleportEnter();
       }
     }
   }

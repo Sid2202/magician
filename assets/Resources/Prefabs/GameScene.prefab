@@ -65,10 +65,13 @@
       },
       {
         "__id__": 203
+      },
+      {
+        "__id__": 205
       }
     ],
     "_prefab": {
-      "__id__": 205
+      "__id__": 207
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3444,6 +3447,9 @@
     "shardSpawn": {
       "__id__": 203
     },
+    "teleportSpawn": {
+      "__id__": 205
+    },
     "invulnerabilitySeconds": 1.2,
     "_id": ""
   },
@@ -3563,6 +3569,39 @@
     "fileId": "97FOS/MF9LvadlnryLn4Qr"
   },
   {
+    "__type__": "28438QANa1AOoqGdR31ODxB",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 206
+    },
+    "teleportPrefab": {
+      "__uuid__": "b78dbf8f-b068-414f-9431-82bae9d310ce",
+      "__expectedType__": "cc.Prefab"
+    },
+    "resultPrefab": {
+      "__uuid__": "1c7eb622-241c-46c8-8968-12b9b07b1d27",
+      "__expectedType__": "cc.Prefab"
+    },
+    "bgMoveNode": {
+      "__id__": 2
+    },
+    "characterNode": {
+      "__id__": 58
+    },
+    "spawnAheadX": 1000,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "7aXn9ZvHRFqK6kfevy5EhT"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -3574,10 +3613,10 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 206
+        "__id__": 208
       },
       {
-        "__id__": 208
+        "__id__": 210
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -3620,7 +3659,7 @@
       "__id__": 58
     },
     "targetInfo": {
-      "__id__": 207
+      "__id__": 209
     }
   },
   {
@@ -3642,7 +3681,7 @@
       "__id__": 58
     },
     "targetInfo": {
-      "__id__": 209
+      "__id__": 211
     }
   },
   {

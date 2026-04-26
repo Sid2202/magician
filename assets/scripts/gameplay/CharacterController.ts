@@ -82,6 +82,7 @@ export class CharacterController extends Component {
     @property(Node) bgMoveNode: Node = null;
 
     private _bgMoving: BgMoving | null = null;
+    private _isControllable: boolean = true;
 
     // ─────────────────────────────────────────────────────────────────────
     onLoad(): void {
@@ -141,7 +142,14 @@ export class CharacterController extends Component {
         const gm = GameManager.getInstance();
         if (!gm?.state.isPlaying || !this._model.isAlive) return;
 
-        this._readInput(dt);
+        if (this._isControllable) {
+            this._readInput(dt);
+        } else {
+            // Force idle velocities if not controllable (unless TeleportSpawnSystem overrides them)
+            this._model.vx *= this._model.damping;
+            this._model.vy *= this._model.damping;
+        }
+
         this._clampToBounds();
         this._resolveState();
         this._pushToNode();
@@ -232,6 +240,7 @@ export class CharacterController extends Component {
     // ── Bounds (reads collider positions — responsive to screen size) ──────
 
     private _clampToBounds(): void {
+        if (!this._isControllable) return;
         const m = this._model;
 
         // Colliders live at GameScene root level so their .position.y is
@@ -288,10 +297,15 @@ export class CharacterController extends Component {
 
     // ── Event handlers ────────────────────────────────────────────────────
 
-    private _onKeyDown(e: { keyCode: number }): void { this._keys.add(e.keyCode);    }
-    private _onKeyUp(e: { keyCode: number }): void   { this._keys.delete(e.keyCode); }
+    private _onKeyDown(e: { keyCode: number }): void { 
+        if (this._isControllable) this._keys.add(e.keyCode);    
+    }
+    private _onKeyUp(e: { keyCode: number }): void   { 
+        this._keys.delete(e.keyCode); 
+    }
 
     private _onTouchStart(e: EventTouch): void {
+        if (!this._isControllable) return;
         this._isTouching = true;
         const loc = e.getUILocation();
         this._touchStart.set(loc.x, loc.y);
@@ -426,6 +440,15 @@ export class CharacterController extends Component {
         };
 
         shake();
+    }
+
+    /** Called by TeleportSpawnSystem to disable input during win sequence. */
+    public setControllable(value: boolean): void {
+        this._isControllable = value;
+        if (!value) {
+            this._keys.clear();
+            this._isTouching = false;
+        }
     }
 }
 

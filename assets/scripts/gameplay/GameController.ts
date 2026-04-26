@@ -8,8 +8,6 @@ import { BgMoving } from './BgMoving';
 import { SpawnSystem } from '../Systems/SpawnSystem';
 import { ObstacleSpawnSystem } from '../Systems/ObstacleSpawnSystem';
 import { ShardSpawnSystem } from '../Systems/ShardSpawnSystem';
-import { TeleportController } from '../Controllers/TeleportController';
-import { ResultController } from '../Controllers/ResultController';
 
 const { ccclass, property } = _decorator;
 
@@ -46,8 +44,6 @@ export class GameController extends Component {
     @property(Prefab) pfFood:   Prefab = null;  // Food collectible prefab
     @property(Prefab) pfTool:   Prefab = null;  // Tool collectible prefab
     @property(Prefab) pfNpc:    Prefab = null;  // NPC prefab
-    @property(Prefab) pfTeleport: Prefab = null; // Teleport prefab
-    @property(Prefab) pfResult: Prefab = null;   // ResultScene prefab
 
     /** Wire the BgMove node (has BgMoving component) to sync world scroll. */
     @property(Node) bgMoveNode: Node = null;
@@ -67,7 +63,6 @@ export class GameController extends Component {
     /** Each entry: { node, type (ItemType | 'NPC'), x, y, wantsItem?, givesReward? } */
     private _activeItems: ActiveItem[] = [];
     private _activeNpcs:  ActiveNpc[]  = [];
-    private _activeTeleport: Node | null = null;
 
     // ── Spawn timers ──────────────────────────────────────────────────────
     private _itemTimer:    number = 0;
@@ -102,7 +97,6 @@ export class GameController extends Component {
         GameEventsBus.get().off(GameEvents.GameOver, this._onGameOver, this);
         GameEventsBus.get().off(GameEvents.TradeSuccess, this._onTradeSuccess, this);
         GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
-        GameEventsBus.get().off(GameEvents.AllShardsCollected, this._spawnTeleport, this);
         this._itemPool.clear();
         this._npcPool.clear();
     }
@@ -112,7 +106,6 @@ export class GameController extends Component {
 
         const dirX  = this._bgMoving?.getScrollDirX() ?? 0;
         const speed = this._bgMoving?.speed ?? 0;
-        // if dirX is -1 (scrolling left), the world components must move by +dx
         const dx = -dirX * speed * dt;
 
         if (dx !== 0) {
@@ -123,18 +116,14 @@ export class GameController extends Component {
         }
     }
 
-    // ── Setup ─────────────────────────────────────────────────────────────
-
     private _setupPathTiles(): void {
         if (!this.pfPath) return;
 
-        // Sample tile width from prefab's UITransform
         const sample = instantiate(this.pfPath);
         const ut = sample.getComponent(UITransform);
         if (ut) this._tileWidth = ut.contentSize.width;
         sample.destroy();
 
-        // Spawn PATH_TILE_COUNT tiles laid end-to-end from left of screen
         for (let i = 0; i < PATH_TILE_COUNT; i++) {
             const tileNode = instantiate(this.pfPath);
             this.node.addChild(tileNode);
@@ -142,7 +131,6 @@ export class GameController extends Component {
             const ctrl = tileNode.getComponent(PathController);
             if (ctrl) {
                 ctrl.tileWidth = this._tileWidth;
-                // Lay tiles starting at -tileWidth to just off right edge
                 ctrl.setPositionX(-this._tileWidth + i * this._tileWidth);
                 this._pathTiles.push(ctrl);
             }
@@ -158,7 +146,6 @@ export class GameController extends Component {
                 pool.put(n);
             }
         };
-        // Items share one pool — each node carries its ItemType as userData
         seed(this._itemPool, this.pfShard, 15);
         seed(this._itemPool, this.pfFood,  10);
         seed(this._itemPool, this.pfTool,  10);
@@ -169,23 +156,16 @@ export class GameController extends Component {
         GameEventsBus.get().off(GameEvents.GameOver, this._onGameOver, this);
         GameEventsBus.get().off(GameEvents.TradeSuccess, this._onTradeSuccess, this);
         GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
-        GameEventsBus.get().off(GameEvents.AllShardsCollected, this._spawnTeleport, this);
         
         GameEventsBus.get().on(GameEvents.GameOver, this._onGameOver, this);
         GameEventsBus.get().on(GameEvents.TradeSuccess, this._onTradeSuccess, this);
         GameEventsBus.get().on(GameEvents.WorldRewind, this._onWorldRewind, this);
-        GameEventsBus.get().on(GameEvents.AllShardsCollected, this._spawnTeleport, this);
     }
-
-    // ── Path scrolling ────────────────────────────────────────────────────
 
     private _scrollPathTiles(dx: number): void {
         for (const tile of this._pathTiles) {
             tile.scrollBy(dx);
-
-            // Recycle: if the tile's right edge is off-screen left, jump it to the right
             if (tile.getRightEdgeX() < -this._tileWidth) {
-                // Find the rightmost tile's right edge and place after it
                 let maxRight = -Infinity;
                 for (const t of this._pathTiles) {
                     if (t.getRightEdgeX() > maxRight) maxRight = t.getRightEdgeX();
@@ -195,12 +175,9 @@ export class GameController extends Component {
         }
     }
 
-    // ── Spawn timers ──────────────────────────────────────────────────────
-
     private _tickSpawners(dt: number): void {
         if (ShardSpawnSystem.instance) {
             const d = ShardSpawnSystem.instance.distanceScrolled;
-            // Shard 3 is at 18000. Create a massive empty stretch stretching slightly before and long after it.
             if (d > 14500 && d < 22000) return;
         }
 
@@ -267,8 +244,6 @@ export class GameController extends Component {
         this._activeNpcs.push({ node, wantsItem, givesReward, x, y, traded: false });
     }
 
-    // ── Scroll active objects ─────────────────────────────────────────────
-
     private _scrollActiveObjects(dx: number): void {
         const CULL_X = -SPAWN_X_AHEAD;
 
@@ -283,82 +258,47 @@ export class GameController extends Component {
             if (npc.x < CULL_X) this._recycleNpcs.push(npc);
         }
 
-        if (this._activeTeleport) {
-            const rx = this._activeTeleport.position.x - dx;
-            this._activeTeleport.setPosition(new Vec3(rx, 0, 0));
-        }
-
-        // Recycle culled objects
         for (const item of this._recycleItems) this._returnItem(item);
         for (const npc  of this._recycleNpcs)  this._returnNpc(npc);
         this._recycleItems.length = 0;
         this._recycleNpcs.length  = 0;
     }
 
-    // ── Collision detection (AABB) ─────────────────────────────────────────
-
     private _checkCollisions(): void {
         if (!this._charCtrl) return;
-
         const cm = this._charCtrl.getModel();
         if (!cm.isAlive) return;
 
         const CW = cm.halfW;
         const CH = cm.halfH;
 
-        // Items
         for (const item of this._activeItems) {
-            const IW = 28, IH = 28;
-            if (aabb(cm.x, cm.y, CW, CH, item.x, item.y, IW, IH)) {
+            if (aabb(cm.x, cm.y, CW, CH, item.x, item.y, 28, 28)) {
                 GameManager.getInstance().onItemCollected(item.type);
                 this._recycleItems.push(item);
             }
         }
-
-        // NPCs
         for (const npc of this._activeNpcs) {
             if (npc.traded) continue;
-            const NW = 52, NH = 52;
-            if (aabb(cm.x, cm.y, CW, CH, npc.x, npc.y, NW, NH)) {
+            if (aabb(cm.x, cm.y, CW, CH, npc.x, npc.y, 52, 52)) {
                 this._tryTrade(npc);
             }
         }
-
-        // Teleport
-        if (this._activeTeleport) {
-            const TW = 157, TH = 279; // Teleport dimensions (314x559 / 2)
-            if (aabb(cm.x, cm.y, CW, CH, this._activeTeleport.position.x, this._activeTeleport.position.y, TW, TH)) {
-                // Character enters teleport
-                this._onTeleportEnter();
-            }
-        }
-
-        // Flush collision-triggered recycles
         for (const item of this._recycleItems) this._returnItem(item);
         this._recycleItems.length = 0;
     }
 
-    // ── Trade logic ────────────────────────────────────────────────────────
-
     private _tryTrade(npc: ActiveNpc): void {
         const gm = GameManager.getInstance();
         if (!gm.inventory.hasItem(npc.wantsItem)) return;
-
         gm.inventory.consumeItem(npc.wantsItem);
         GameEventsBus.get().emit(GameEvents.ItemConsumed, npc.wantsItem);
-
         npc.traded = true;
         GameEventsBus.get().emit(GameEvents.TradeSuccess, npc.givesReward);
         GameEventsBus.get().emit(GameEvents.NpcInteract, npc.givesReward);
     }
 
-    private _onTradeSuccess(reward: string): void {
-        // A trade reward may activate a light point
-        // GameController doesn't own light points directly —
-        // individual LightPointController nodes listen for TradeSuccess.
-    }
-
-    // ── Recycling helpers ──────────────────────────────────────────────────
+    private _onTradeSuccess(reward: string): void {}
 
     private _returnItem(item: ActiveItem): void {
         const idx = this._activeItems.indexOf(item);
@@ -384,43 +324,31 @@ export class GameController extends Component {
     }
 
     private _isSpaceBlocked(x: number, halfW: number, padding: number): boolean {
-        // Items
         for (const item of this._activeItems) {
             if (Math.abs(item.x - x) < 28 + halfW + padding) return true;
         }
         for (const npc of this._activeNpcs) {
             if (Math.abs(npc.x - x) < 52 + halfW + padding) return true;
         }
-        // Obstacles
         if (ObstacleSpawnSystem.instance) {
             for (const obs of ObstacleSpawnSystem.instance.activeObstacles) {
                 if (Math.abs(obs.model.x - x) < obs.model.halfW + halfW + padding) return true;
             }
         }
-        // Coins
         if (SpawnSystem.instance) {
             for (const coin of SpawnSystem.instance.activeCoins) {
                 if (Math.abs(coin.model.x - x) < coin.model.halfW + halfW + padding) return true;
             }
         }
-        // Shards
         if (ShardSpawnSystem.instance) {
             for (const shard of ShardSpawnSystem.instance.activeShards) {
                 if (Math.abs(shard.model.x - x) < shard.model.halfW + halfW + padding + 800) return true;
             }
         }
-        
-        // Active Teleport
-        if (this._activeTeleport) {
-            if (Math.abs(this._activeTeleport.position.x - x) < 300 + halfW + padding) return true;
-        }
-        
         return false;
     }
 
-    private _onGameOver(): void {
-        // Timers stop because update() checks isPlaying
-    }
+    private _onGameOver(): void {}
 
     private _onWorldRewind(amount: number): void {
         this._scrollPathTiles(-amount);
@@ -432,54 +360,8 @@ export class GameController extends Component {
             npc.x += amount;
             npc.node.setPosition(new Vec3(npc.x, npc.y, 0));
         }
-        if (this._activeTeleport) {
-            const rx = this._activeTeleport.position.x + amount;
-            this._activeTeleport.setPosition(new Vec3(rx, 0, 0));
-        }
-    }
-
-    private _spawnTeleport(): void {
-        // Only spawn once
-        if (!this.pfTeleport || this._activeTeleport) return;
-
-        let node = instantiate(this.pfTeleport);
-        this.node.addChild(node);
-
-        let x = SPAWN_X_AHEAD + 400; // further out to anticipate
-        node.setPosition(new Vec3(x, 0, 0));
-
-        this._activeTeleport = node;
-    }
-
-    private _onTeleportEnter(): void {
-        if (!this._activeTeleport) return;
-
-        // Hide teleport and character or perform visual effect
-        this._activeTeleport.active = false;
-        if (this.characterNode) this.characterNode.active = false;
-
-        // Pause the game mechanics
-        GameManager.getInstance().winGame(); 
-        if (this._bgMoving) this._bgMoving.stopScroll();
-
-        // Slight pause before showing the result scene
-        this.scheduleOnce(() => {
-            if (this.pfResult) {
-                const resultNode = instantiate(this.pfResult);
-                // Attach to current scene root or UI canvas. 
-                // Since this is Base_Parent, we'll add to parent (GameScene root)
-                this.node.parent?.addChild(resultNode);
-                
-                // Reset position to center if it's a UI/Overlay prefab
-                resultNode.setPosition(Vec3.ZERO);
-            } else {
-                console.warn('[GameController] pfResult not wired');
-            }
-        }, 0.5); // 0.5s pause
     }
 }
-
-// ── Internal types ────────────────────────────────────────────────────────
 
 interface ActiveItem {
     node: Node;
@@ -496,8 +378,6 @@ interface ActiveNpc {
     y: number;
     traded: boolean;
 }
-
-// ── Module-level helpers ──────────────────────────────────────────────────
 
 const NPC_WANTS:   ItemType[]   = [ItemType.Food,   ItemType.Tool,        ItemType.Shard         ];
 const NPC_REWARDS: NpcReward[]  = ['KEY',           'UNLOCK_PATH',        'REVEAL_SHORTCUT'      ];
