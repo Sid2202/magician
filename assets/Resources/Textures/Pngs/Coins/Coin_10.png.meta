@@ -127,8 +127,12 @@
   },
   "userData": {
     "type": "sprite-frame",
-    "fixAlphaTransparencyArtifacts": false,
+    "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "c38d43e8-0e4b-4747-9af8-6f83b84fa1d4@6c48a"
+    "redirect": "c38d43e8-0e4b-4747-9af8-6f83b84fa1d4@6c48a",
+    "compressSettings": {
+      "useCompressTexture": true,
+      "presetId": "194DdHm59LsIGizk+Wh3LJ"
+    }
   }
 }
