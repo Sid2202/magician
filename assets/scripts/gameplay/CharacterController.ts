@@ -2,12 +2,13 @@ import {
     _decorator, Component, Node, Vec2, Vec3,
     input, Input, KeyCode, EventTouch, UITransform, view
 } from 'cc';
-import { CharacterModel }  from '../models/CharacterModel';
+import { CharacterModel } from '../models/CharacterModel';
 import { CharacterView, CharacterState } from '../Views/CharacterView';
-import { GameManager }     from '../Managers/GameManager';
-import { GameEventsBus }   from '../common/event/GlobalEventTarget';
-import { GameEvents }      from './input/GameEvents';
-import { BgMoving }        from './BgMoving';
+import { GameManager } from '../Managers/GameManager';
+import { GameEventsBus } from '../common/event/GlobalEventTarget';
+import { GameEvents } from './input/GameEvents';
+import { BgMoving } from './BgMoving';
+import { SoundController } from '../Managers/SoundController';
 
 const { ccclass, property } = _decorator;
 
@@ -36,13 +37,13 @@ export class CharacterController extends Component {
 
     // ── Boundary nodes ────────────────────────────────────────────────────
     /** Drag Collider_Top node here (must be at GameScene root level, NOT inside PF_Character). */
-    @property colliderTop:    any = null;
+    @property colliderTop: any = null;
     @property colliderBottom: any = null;
 
     // ── Fallback bounds (used when colliders are not wired) ───────────────
-    @property fallbackBoundsXLeft:   number = -460;  // how far left the character can go
-    @property fallbackBoundsXRight:  number =  150;  // keep character left-of-centre so world ahead stays visible
-    @property fallbackBoundsYTop:    number =  300;
+    @property fallbackBoundsXLeft: number = -460;  // how far left the character can go
+    @property fallbackBoundsXRight: number = 150;  // keep character left-of-centre so world ahead stays visible
+    @property fallbackBoundsYTop: number = 300;
     @property fallbackBoundsYBottom: number = -300;
 
     // ── Model (pure data) ─────────────────────────────────────────────────
@@ -52,16 +53,16 @@ export class CharacterController extends Component {
     private _view: CharacterView | null = null;
 
     // ── State ─────────────────────────────────────────────────────────────
-    private _state:          CharacterState = CharacterState.Idle;
-    private _lastFacingRight: boolean        = true;
+    private _state: CharacterState = CharacterState.Idle;
+    private _lastFacingRight: boolean = true;
 
     // ── Keyboard ──────────────────────────────────────────────────────────
     private _keys: Set<number> = new Set();
 
     // ── Touch ─────────────────────────────────────────────────────────────
-    private _isTouching:   boolean = false;
-    private _touchStart:   Vec2    = new Vec2();
-    private _touchCurrent: Vec2    = new Vec2();
+    private _isTouching: boolean = false;
+    private _touchStart: Vec2 = new Vec2();
+    private _touchCurrent: Vec2 = new Vec2();
 
     // ── Allocation-free Vec3 ──────────────────────────────────────────────
     private _pos: Vec3 = new Vec3();
@@ -90,7 +91,7 @@ export class CharacterController extends Component {
         this._view = this.getComponent(CharacterView);
         if (!this._view) {
             console.warn('[CharacterController] CharacterView not found on this node. ' +
-                         'Attach CharacterView.ts to PF_Character root.');
+                'Attach CharacterView.ts to PF_Character root.');
         }
 
         // Get BgMoving component so we can hard-stop scrolling on death
@@ -105,37 +106,37 @@ export class CharacterController extends Component {
 
         // Keyboard
         input.on(Input.EventType.KEY_DOWN, this._onKeyDown, this);
-        input.on(Input.EventType.KEY_UP,   this._onKeyUp,   this);
+        input.on(Input.EventType.KEY_UP, this._onKeyUp, this);
 
         // Touch — listen on parent so the whole gameplay area responds
         const touchArea = this.node.parent ?? this.node;
-        touchArea.on(Input.EventType.TOUCH_START,  this._onTouchStart, this);
-        touchArea.on(Input.EventType.TOUCH_MOVE,   this._onTouchMove,  this);
-        touchArea.on(Input.EventType.TOUCH_END,    this._onTouchEnd,   this);
-        touchArea.on(Input.EventType.TOUCH_CANCEL, this._onTouchEnd,   this);
+        touchArea.on(Input.EventType.TOUCH_START, this._onTouchStart, this);
+        touchArea.on(Input.EventType.TOUCH_MOVE, this._onTouchMove, this);
+        touchArea.on(Input.EventType.TOUCH_END, this._onTouchEnd, this);
+        touchArea.on(Input.EventType.TOUCH_CANCEL, this._onTouchEnd, this);
 
         // Capture spawn position so PlayerRespawn can return us here.
         this._spawnX = this._model.x;
         this._spawnY = this._model.y;
 
-        GameEventsBus.get().on(GameEvents.PlayerHit,     this._onPlayerHit, this);
-        GameEventsBus.get().on(GameEvents.GameOver,     this._onGameOver, this);
+        GameEventsBus.get().on(GameEvents.PlayerHit, this._onPlayerHit, this);
+        GameEventsBus.get().on(GameEvents.GameOver, this._onGameOver, this);
         GameEventsBus.get().on(GameEvents.PlayerRespawn, this._onRespawn, this);
     }
 
     onDestroy(): void {
         input.off(Input.EventType.KEY_DOWN, this._onKeyDown, this);
-        input.off(Input.EventType.KEY_UP,   this._onKeyUp,   this);
+        input.off(Input.EventType.KEY_UP, this._onKeyUp, this);
 
         const touchArea = this.node.parent ?? this.node;
-        touchArea.off(Input.EventType.TOUCH_START,  this._onTouchStart, this);
-        touchArea.off(Input.EventType.TOUCH_MOVE,   this._onTouchMove,  this);
-        touchArea.off(Input.EventType.TOUCH_END,    this._onTouchEnd,   this);
-        touchArea.off(Input.EventType.TOUCH_CANCEL, this._onTouchEnd,   this);
+        touchArea.off(Input.EventType.TOUCH_START, this._onTouchStart, this);
+        touchArea.off(Input.EventType.TOUCH_MOVE, this._onTouchMove, this);
+        touchArea.off(Input.EventType.TOUCH_END, this._onTouchEnd, this);
+        touchArea.off(Input.EventType.TOUCH_CANCEL, this._onTouchEnd, this);
 
-        GameEventsBus.get().off(GameEvents.PlayerHit,     this._onPlayerHit, this);
-        GameEventsBus.get().off(GameEvents.GameOver,     this._onGameOver, this);
-        GameEventsBus.get().off(GameEvents.PlayerRespawn, this._onRespawn,  this);
+        GameEventsBus.get().off(GameEvents.PlayerHit, this._onPlayerHit, this);
+        GameEventsBus.get().off(GameEvents.GameOver, this._onGameOver, this);
+        GameEventsBus.get().off(GameEvents.PlayerRespawn, this._onRespawn, this);
     }
 
     update(dt: number): void {
@@ -162,14 +163,14 @@ export class CharacterController extends Component {
     // ── Input → Model ─────────────────────────────────────────────────────
 
     private _readInput(dt: number): void {
-        const m   = this._model;
+        const m = this._model;
         const spd = m.speed;
 
         // Arrow keys (browser) + WASD
-        const kLeft  = this._keys.has(KeyCode.ARROW_LEFT)  || this._keys.has(KeyCode.KEY_A);
+        const kLeft = this._keys.has(KeyCode.ARROW_LEFT) || this._keys.has(KeyCode.KEY_A);
         const kRight = this._keys.has(KeyCode.ARROW_RIGHT) || this._keys.has(KeyCode.KEY_D);
-        const kUp    = this._keys.has(KeyCode.ARROW_UP)    || this._keys.has(KeyCode.KEY_W);
-        const kDown  = this._keys.has(KeyCode.ARROW_DOWN)  || this._keys.has(KeyCode.KEY_S);
+        const kUp = this._keys.has(KeyCode.ARROW_UP) || this._keys.has(KeyCode.KEY_W);
+        const kDown = this._keys.has(KeyCode.ARROW_DOWN) || this._keys.has(KeyCode.KEY_S);
 
         // Touch position-based controls:
         //   left half  of screen → move left
@@ -184,13 +185,13 @@ export class CharacterController extends Component {
             // coordinates. Adding half the visible size gives the true screen center —
             // works whether the canvas anchor is center (0,0 origin) or corner (0,0 = BL).
             const origin = view.getVisibleOrigin();
-            const size   = view.getVisibleSize();
-            const centerX = origin.x + size.width  * 0.5;
+            const size = view.getVisibleSize();
+            const centerX = origin.x + size.width * 0.5;
             const centerY = origin.y + size.height * 0.5;
             tVx = this._touchCurrent.x < centerX ? -spd : spd;
             const vSpd = spd * 1.5; // Multiply vertical velocity for responsive pacing
             tVy = this._touchCurrent.y < centerY ? -vSpd : vSpd;
-            
+
             console.log(`[InputDebug] touch.x: ${this._touchCurrent.x}, centerX: ${centerX} -> tVx: ${tVx}`);
         }
 
@@ -201,7 +202,7 @@ export class CharacterController extends Component {
             const vSpd = spd * 1.5;
             // Keyboard always wins over touch on active axes
             m.vx = kLeft ? -spd : kRight ? spd : tVx;
-            m.vy = kDown ? -vSpd : kUp    ? vSpd : (this._isTouching ? tVy : 0);
+            m.vy = kDown ? -vSpd : kUp ? vSpd : (this._isTouching ? tVy : 0);
             if (this._isTouching) {
                 console.log(`[InputDebug] Model Velocity: vx: ${m.vx}, model.x before dt: ${m.x}`);
             }
@@ -245,11 +246,11 @@ export class CharacterController extends Component {
 
         // Colliders live at GameScene root level so their .position.y is
         // already in the same local space as the character's movement.
-        const topY    = this.colliderTop    ? (this.colliderTop    as any).position.y : this.fallbackBoundsYTop;
+        const topY = this.colliderTop ? (this.colliderTop as any).position.y : this.fallbackBoundsYTop;
         const bottomY = this.colliderBottom ? (this.colliderBottom as any).position.y : this.fallbackBoundsYBottom;
 
         m.x = clamp(m.x, this.fallbackBoundsXLeft, this.fallbackBoundsXRight);
-        m.y = clamp(m.y,  bottomY, topY);
+        m.y = clamp(m.y, bottomY, topY);
     }
 
     // ── State machine ─────────────────────────────────────────────────────
@@ -273,7 +274,7 @@ export class CharacterController extends Component {
         this._state = next;
 
         // Track facing so sprite flip persists during MoveV / Idle
-        if (this._model.vx > THRESHOLD)  this._lastFacingRight = true;
+        if (this._model.vx > THRESHOLD) this._lastFacingRight = true;
         if (this._model.vx < -THRESHOLD) this._lastFacingRight = false;
     }
 
@@ -297,11 +298,11 @@ export class CharacterController extends Component {
 
     // ── Event handlers ────────────────────────────────────────────────────
 
-    private _onKeyDown(e: { keyCode: number }): void { 
-        if (this._isControllable) this._keys.add(e.keyCode);    
+    private _onKeyDown(e: { keyCode: number }): void {
+        if (this._isControllable) this._keys.add(e.keyCode);
     }
-    private _onKeyUp(e: { keyCode: number }): void   { 
-        this._keys.delete(e.keyCode); 
+    private _onKeyUp(e: { keyCode: number }): void {
+        this._keys.delete(e.keyCode);
     }
 
     private _onTouchStart(e: EventTouch): void {
@@ -353,6 +354,7 @@ export class CharacterController extends Component {
         // Hard-stop the scroll immediately — BgMoving won't respond to keys during pause
         this._bgMoving?.stopScroll();
         GameManager.getInstance().pauseGame();
+        SoundController.getInstance()?.playSFX('character_die');
 
         // Shake the gameplay content node (not camera) to avoid black border issue
         this._shakeScreen();
@@ -379,22 +381,22 @@ export class CharacterController extends Component {
         // doesn't immediately fling the player back into the obstacle.
         this._model.vx = 0;
         this._model.vy = 0;
-        
+
         let targetX = this._respawnTargetX;
         let deficit = 0;
         const clampLeft = this.fallbackBoundsXLeft;
-        
+
         if (targetX < clampLeft) {
             deficit = clampLeft - targetX;
             targetX = clampLeft;
         }
-        
+
         // Respawn slightly behind the obstacle it collided with (recorded in _respawnTargetX)
         // If it breached the boundary, we halt the character at the boundary and command the world to rewind instead!
         this._model.x = targetX;
         this._model.y = this._spawnY;
         this._model.isAlive = true;
-        
+
         if (deficit > 0) {
             GameEventsBus.get().emit(GameEvents.WorldRewind, deficit);
         }
