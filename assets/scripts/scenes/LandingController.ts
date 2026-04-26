@@ -32,7 +32,7 @@ export class LandingController extends Component {
     }
 
     onDestroy(): void {
-        if (this.playButton) {
+        if (this.playButton?.isValid) {
             this.playButton.off(Node.EventType.TOUCH_END, this._onPlayTapped, this);
         }
     }
