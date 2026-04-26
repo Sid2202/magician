@@ -1794,6 +1794,16 @@
     "animationComponent": {
       "__id__": 82
     },
+    "introClip1": {
+      "__uuid__": "fd1d5f91-e013-420d-aed7-23bd93a3a067",
+      "__expectedType__": "cc.AnimationClip"
+    },
+    "introClip2": {
+      "__uuid__": "9759dbe2-aab5-4b0c-8e13-5727edcb43b6",
+      "__expectedType__": "cc.AnimationClip"
+    },
+    "characterNode": null,
+    "characterEntryTarget": null,
     "_id": ""
   },
   {

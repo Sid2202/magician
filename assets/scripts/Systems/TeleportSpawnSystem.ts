@@ -4,6 +4,7 @@ import { GameEvents } from '../gameplay/input/GameEvents';
 import { BgMoving } from '../gameplay/BgMoving';
 import { GameManager } from '../Managers/GameManager';
 import { TeleportController } from '../Controllers/TeleportController';
+import { ResultController } from '../Controllers/ResultController';
 
 const { ccclass, property } = _decorator;
 
@@ -162,9 +163,14 @@ export class TeleportSpawnSystem extends Component {
         this.scheduleOnce(() => {
             if (this.resultPrefab) {
                 const result = instantiate(this.resultPrefab);
-                // Add to scene root (parent of this system node)
                 this.node.parent?.addChild(result);
                 result.setPosition(Vec3.ZERO);
+
+                // Pass character reference if ResultController exists
+                const resCtrl = result.getComponent(ResultController);
+                if (resCtrl && this.characterNode) {
+                    resCtrl.characterNode = this.characterNode;
+                }
             } else {
                 console.warn('[TeleportSpawnSystem] resultPrefab not wired');
             }
