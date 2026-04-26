@@ -41,9 +41,9 @@ export class CollisionSystem extends Component {
   update(_dt: number): void {
     if (!this._charCtrl || !this._spawn) return;
     if (!this._charCtrl.getModel().isAlive) {
-        this._isInitialFrame = true;
-        this._invulnTimer = 0;
-        return;
+      this._isInitialFrame = true;
+      this._invulnTimer = 0;
+      return;
     }
     if (this._invulnTimer > 0) this._invulnTimer -= _dt;
 
@@ -70,7 +70,7 @@ export class CollisionSystem extends Component {
       chw = (charCollider.size.width / 2) * Math.abs(charScale.x) + Math.abs(moveX) / 2;
       chh = (charCollider.size.height / 2) * Math.abs(charScale.y) + Math.abs(moveY) / 2;
     }
-    
+
     this._prevCharWP.set(this._charWP);
 
     const bgMoving = this._spawn.bgMoveNode?.getComponent(BgMoving);
@@ -111,7 +111,7 @@ export class CollisionSystem extends Component {
       GameManager.getInstance().inventory.addCoin();
       this._spawn.removeActive(coin);
       EventBus.emit(CoinEvents.CoinCollected, { x: coin.worldX, y: coin.worldY, index: i });
-      SoundController.getInstance()?.playSFX('coin_collect');
+      SoundController.getInstance()?.playSFX('coin_collect', false, 0.3);
       coin.deactivate();
     });
 
@@ -135,7 +135,7 @@ export class CollisionSystem extends Component {
       if (oCol) {
         ox += oCol.offset.x * Math.abs(oScale.x);
         oy += oCol.offset.y * Math.abs(oScale.y);
-        ohw = (oCol.size.width  / 2) * Math.abs(oScale.x) * cs;
+        ohw = (oCol.size.width / 2) * Math.abs(oScale.x) * cs;
         ohh = (oCol.size.height / 2) * Math.abs(oScale.y) * cs;
       } else {
         ohw = o.model.halfW * Math.abs(oScale.x) * cs;

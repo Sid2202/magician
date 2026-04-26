@@ -55,7 +55,7 @@ export class SoundController extends Component {
 
     private _playSound(clip: AudioClip, loop: boolean, volume: number) {
         if (!this._audioSource) return;
-        
+
         if (loop) {
             this._audioSource.stop();
             this._audioSource.clip = clip;
