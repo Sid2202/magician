@@ -1,34 +1,19 @@
-import { _decorator, Component, Node, Sprite, Color, tween, Tween } from 'cc';
+import { _decorator, Component, Node, Sprite, Color, tween, Tween, JsonAsset } from 'cc';
 import { BgMoving } from '../gameplay/BgMoving';
 import { GameManager } from '../Managers/GameManager';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents } from '../gameplay/input/GameEvents';
+import { SoundController } from '../Managers/SoundController';
 
 const { ccclass, property } = _decorator;
 
-/**
- * Attach to: GameScene prefab ROOT NODE (the top-level node of GameScene.prefab).
- *
- * This is the entry point for the prefab.
- * It owns references to the two direct children:
- *   - PF_Character  → the playable character
- *   - Base_Parent   → the gameplay world (GameController lives here)
- *
- * It does NOT reference UIParent / SceneParent / PopupParent —
- * those are in the scene (Canvas), outside this prefab.
- * UI connections will be added later via PopupManager.
- */
 @ccclass('GameScene')
 export class GameScene extends Component {
 
-    /** Drag PF_Character node here (direct child of this prefab root). */
     @property(Node) characterNode: Node = null;
-
-    /** Drag Base_Parent node here (direct child of this prefab root). */
     @property(Node) gameWorldNode: Node = null;
-
-    /** Drag the BgMove node here to allow the win handler to stop scrolling. */
     @property(Node) bgMoveNode: Node = null;
+    @property(JsonAsset) soundConfig: JsonAsset = null;
 
     private _candles: {
         node: Node,
@@ -42,13 +27,25 @@ export class GameScene extends Component {
 
     onLoad(): void {
         this._validate();
+        this._initSound();
         this._subscribeEvents();
         GameManager.startSession(1);
+
         this._findCandles(this.node);
     }
 
+    private _initSound(): void {
+        let sc = this.node.getComponent(SoundController);
+        if (!sc) {
+            sc = this.node.addComponent(SoundController);
+        }
+
+        if (this.soundConfig) {
+            sc.init(this.soundConfig);
+        }
+    }
+
     onDestroy(): void {
-        // Clean up glow tweens
         for (const candle of this._candles) {
             if (candle.glowTween) {
                 candle.glowTween.stop();
@@ -67,11 +64,9 @@ export class GameScene extends Component {
             const currentRelativeX = currentX - charX;
 
             if (candle.lastX !== null && candle.lastRelativeX !== null) {
-                // Detect a large jump in world space (background looping)
                 if (Math.abs(currentX - candle.lastX) > 300) {
                     candle.isLit = false;
-                } 
-                // Detect passing: candle was ahead of player, now at or behind player
+                }
                 else if (candle.lastRelativeX > 0 && currentRelativeX <= 0) {
                     candle.isLit = true;
                 }
@@ -83,7 +78,6 @@ export class GameScene extends Component {
             if (candle.glow && candle.glow.active !== candle.isLit) {
                 candle.glow.active = candle.isLit;
 
-                // Animate glow brightness pulse when lit
                 if (candle.isLit && candle.glowSprite) {
                     if (candle.glowTween) {
                         candle.glowTween.stop();
@@ -103,58 +97,33 @@ export class GameScene extends Component {
         }
     }
 
-    // ── Validation ────────────────────────────────────────────────────────
-
     private _validate(): void {
-        if (!this.characterNode) {
-            console.error('[GameScene] characterNode not wired — drag PF_Character here.');
-        }
-        if (!this.gameWorldNode) {
-            console.error('[GameScene] gameWorldNode not wired — drag Base_Parent here.');
-        }
+        if (!this.characterNode) console.error('[GameScene] characterNode not wired');
+        if (!this.gameWorldNode) console.error('[GameScene] gameWorldNode not wired');
     }
-
-    // ── Events ────────────────────────────────────────────────────────────
 
     private _subscribeEvents(): void {
         const bus = GameEventsBus.get();
-        bus.on(GameEvents.GameOver,      this._onGameOver,      this);
+        bus.on(GameEvents.GameOver, this._onGameOver, this);
         bus.on(GameEvents.LevelComplete, this._onLevelComplete, this);
-        bus.on(GameEvents.GameWon,       this._onGameWon,       this);
+        bus.on(GameEvents.GameWon, this._onGameWon, this);
     }
 
-    private _onGameOver(): void {
-        // TODO: show GameOver popup (PopupManager.getInstance().create(...))
-        console.log('[GameScene] Game Over');
-    }
-
-    private _onLevelComplete(): void {
-        // TODO: show LevelComplete popup
-        console.log('[GameScene] Level Complete');
-    }
+    private _onGameOver(): void { console.log('[GameScene] Game Over'); }
+    private _onLevelComplete(): void { console.log('[GameScene] Level Complete'); }
 
     private _onGameWon(): void {
-        // winGame() already set phase to LevelComplete — immune to resumeGame().
-        // Explicitly stop scroll so mobile touch can't restart it.
         const bgMoving = this.bgMoveNode?.getComponent(BgMoving);
         bgMoving?.stopScroll();
-        console.log('[GameScene] Game Won!');
     }
-
-    // ── Scene queries ─────────────────────────────────────────────────────
 
     private _findCandles(node: Node): void {
         if (node.name.startsWith('PF_Collectible_Candle')) {
             const glow = node.getChildByName('Magician_Glow');
             const glowSprite = glow ? glow.getComponent(Sprite) : null;
             this._candles.push({
-                node,
-                isLit: false,
-                lastRelativeX: null,
-                lastX: null,
-                glow,
-                glowSprite,
-                glowTween: null
+                node, isLit: false, lastRelativeX: null, lastX: null,
+                glow, glowSprite, glowTween: null
             });
         }
         for (const child of node.children) {

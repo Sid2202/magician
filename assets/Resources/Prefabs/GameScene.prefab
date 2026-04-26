@@ -3384,6 +3384,10 @@
     "bgMoveNode": {
       "__id__": 2
     },
+    "soundConfig": {
+      "__uuid__": "b186e79f-b538-43df-8cba-cb821a8dd4be",
+      "__expectedType__": "cc.JsonAsset"
+    },
     "_id": ""
   },
   {
@@ -3598,6 +3602,8 @@
       "__id__": 58
     },
     "spawnAheadX": 240,
+    "minAheadFromCharacterX": 280,
+    "enterPortalDuration": 0.45,
     "_id": ""
   },
   {

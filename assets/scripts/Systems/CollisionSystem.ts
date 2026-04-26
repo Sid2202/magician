@@ -11,15 +11,10 @@ import { GameEventsBus } from "../common/event/GlobalEventTarget";
 import { GameEvents } from "../gameplay/input/GameEvents";
 import { BgMoving } from "../gameplay/BgMoving";
 import { ObstacleView } from "../Views/ObstacleView";
+import { SoundController } from "../Managers/SoundController";
 
 const { ccclass, property } = _decorator;
 
-/**
- * Attach to: same node as SpawnSystem.
- *
- * Uses WORLD positions for AABB so it is immune to coordinate-space
- * differences between PF_Character's parent and SpawnSystem's parent.
- */
 @ccclass("CollisionSystem")
 export class CollisionSystem extends Component {
   @property(Node) characterNode: Node = null;
@@ -27,7 +22,6 @@ export class CollisionSystem extends Component {
   @property(ShardSpawnSystem) shardSpawn: ShardSpawnSystem = null;
   @property(TeleportSpawnSystem) teleportSpawn: TeleportSpawnSystem = null;
 
-  /** Brief invulnerability window after a hit, so a single contact does not eat all hearts. */
   @property invulnerabilitySeconds: number = 1.2;
 
   private _charCtrl: CharacterController | null = null;
@@ -35,33 +29,24 @@ export class CollisionSystem extends Component {
   private _hits: CoinController[] = [];
   private _invulnTimer = 0;
 
-  // Reused Vec3 — avoids per-frame allocation for character world pos
   private readonly _charWP = new Vec3();
   private readonly _prevCharWP = new Vec3();
   private _isInitialFrame = true;
 
   onLoad(): void {
-    this._charCtrl =
-      this.characterNode?.getComponent(CharacterController) ?? null;
+    this._charCtrl = this.characterNode?.getComponent(CharacterController) ?? null;
     this._spawn = this.getComponent(SpawnSystem);
-
-    if (!this._charCtrl)
-      console.error("[CollisionSystem] characterNode not wired");
-    if (!this._spawn)
-      console.error("[CollisionSystem] SpawnSystem not found on this node");
   }
 
   update(_dt: number): void {
     if (!this._charCtrl || !this._spawn) return;
     if (!this._charCtrl.getModel().isAlive) {
-        // Reset sweep state if dead so respawn doesn't sweep across the map
         this._isInitialFrame = true;
         this._invulnTimer = 0;
         return;
     }
     if (this._invulnTimer > 0) this._invulnTimer -= _dt;
 
-    // World position — valid regardless of node hierarchy
     this.characterNode.getWorldPosition(this._charWP);
     const charScale = this.characterNode.worldScale;
 
@@ -70,7 +55,6 @@ export class CollisionSystem extends Component {
       this._isInitialFrame = false;
     }
 
-    // Swept AABB: extend the bounding box across the entire path traveled since last frame
     const moveX = this._charWP.x - this._prevCharWP.x;
     const moveY = this._charWP.y - this._prevCharWP.y;
 
@@ -81,17 +65,14 @@ export class CollisionSystem extends Component {
 
     const charCollider = this.characterNode.getComponent(BoxCollider2D);
     if (charCollider) {
-      // Respect the collider's offset and size scaled by the node's world scale, plus the sweep stretch
       cx += charCollider.offset.x * Math.abs(charScale.x);
       cy += charCollider.offset.y * Math.abs(charScale.y);
       chw = (charCollider.size.width / 2) * Math.abs(charScale.x) + Math.abs(moveX) / 2;
       chh = (charCollider.size.height / 2) * Math.abs(charScale.y) + Math.abs(moveY) / 2;
     }
     
-    // Store current pos for next frame's sweep
     this._prevCharWP.set(this._charWP);
 
-    // Calculate dynamic world sweep to stretch scrolling elements
     const bgMoving = this._spawn.bgMoveNode?.getComponent(BgMoving);
     const worldMoveX = (bgMoving?.getScrollDirX() ?? 0) * (bgMoving?.speed ?? 0) * _dt;
     const worldStretchX = Math.abs(worldMoveX) / 2;
@@ -119,7 +100,6 @@ export class CollisionSystem extends Component {
         coinHH = (coinCollider.size.height / 2) * Math.abs(coinScale.y);
       }
 
-      // Apply CCD Sweep
       coinX -= worldMoveX / 2;
       coinHW += worldStretchX;
 
@@ -130,16 +110,11 @@ export class CollisionSystem extends Component {
     this._hits.forEach((coin, i) => {
       GameManager.getInstance().inventory.addCoin();
       this._spawn.removeActive(coin);
-      EventBus.emit(CoinEvents.CoinCollected, {
-        x: coin.worldX,
-        y: coin.worldY,
-        index: i,
-      });
-
+      EventBus.emit(CoinEvents.CoinCollected, { x: coin.worldX, y: coin.worldY, index: i });
+      SoundController.getInstance()?.playSFX('coin_collect');
       coin.deactivate();
     });
 
-    // ── Obstacles ──────────────────────────────────────────────────────
     if (this._invulnTimer > 0) return;
     if (!this.obstacleSpawn) return;
 
@@ -147,33 +122,26 @@ export class CollisionSystem extends Component {
     for (let i = 0, n = obstacles.length; i < n; i++) {
       const o = obstacles[i];
       if (!o.model.active) continue;
-      // Obstacles live in the same local space as coins (same parent), so
-      // we can compare against character world position via the same offset
-      // logic — but here we approximate by using their local x/y directly,
-      // matching how coin AABB is computed (worldPosition of the node).
       const owp = o.node.worldPosition;
       const oScale = o.node.worldScale;
       let ox = owp.x;
       let oy = owp.y;
-      let ohw = o.model.halfW * Math.abs(oScale.x);
-      let ohh = o.model.halfH * Math.abs(oScale.y);
 
-      // collisionScale lets each prefab shrink its effective hitbox via Inspector slider
       const obstacleView = o.node.getComponent(ObstacleView);
       const cs = obstacleView ? obstacleView.collisionScale : 1.0;
 
       const oCol = o.node.getComponent(BoxCollider2D);
+      let ohw, ohh;
       if (oCol) {
         ox += oCol.offset.x * Math.abs(oScale.x);
         oy += oCol.offset.y * Math.abs(oScale.y);
         ohw = (oCol.size.width  / 2) * Math.abs(oScale.x) * cs;
         ohh = (oCol.size.height / 2) * Math.abs(oScale.y) * cs;
       } else {
-        ohw *= cs;
-        ohh *= cs;
+        ohw = o.model.halfW * Math.abs(oScale.x) * cs;
+        ohh = o.model.halfH * Math.abs(oScale.y) * cs;
       }
 
-      // Apply CCD Sweep
       ox -= worldMoveX / 2;
       ohw += worldStretchX;
 
@@ -184,7 +152,6 @@ export class CollisionSystem extends Component {
       }
     }
 
-    // ── Shards ────────────────────────────────────────────────────────────
     if (!this.shardSpawn) return;
     const shards = this.shardSpawn.activeShards;
     for (let i = shards.length - 1; i >= 0; i--) {
@@ -197,49 +164,24 @@ export class CollisionSystem extends Component {
       let shw = s.model.halfW;
       let shh = s.model.halfH;
 
-      // Apply CCD Sweep
       shx -= worldMoveX / 2;
       shw += worldStretchX;
 
       if (aabb(cx, cy, chw, chh, shx, shy, shw, shh)) {
-        // Collect shard
         const shardIndex = s.model.index;
         GameManager.getInstance().inventory.addShard();
         this.shardSpawn.removeShard(s);
+        SoundController.getInstance()?.playSFX('shard_collect');
         s.deactivate();
-
-        const total = GameManager.getInstance().inventory.getShardCount();
         GameEventsBus.get().emit(GameEvents.ShardCollected, shardIndex);
-
-        if (total >= 3) {
+        if (GameManager.getInstance().inventory.getShardCount() >= 3) {
           GameEventsBus.get().emit(GameEvents.AllShardsCollected);
         }
-      }
-    }
-
-    // ── Teleport ──────────────────────────────────────────────────────────
-    if (this.teleportSpawn && this.teleportSpawn.activeTeleport && !this.teleportSpawn.isAutoSequenceActive) {
-      const teleportNode = this.teleportSpawn.activeTeleport;
-      const twp = teleportNode.worldPosition;
-      
-      // Approximate teleport dimensions
-      const TW = 157, TH = 279; 
-      if (aabb(cx, cy, chw, chh, twp.x, twp.y, TW, TH)) {
-        this.teleportSpawn.onTeleportEnter();
       }
     }
   }
 }
 
-function aabb(
-  ax: number,
-  ay: number,
-  ahw: number,
-  ahh: number,
-  bx: number,
-  by: number,
-  bhw: number,
-  bhh: number,
-): boolean {
+function aabb(ax: number, ay: number, ahw: number, ahh: number, bx: number, by: number, bhw: number, bhh: number): boolean {
   return Math.abs(ax - bx) < ahw + bhw && Math.abs(ay - by) < ahh + bhh;
 }
