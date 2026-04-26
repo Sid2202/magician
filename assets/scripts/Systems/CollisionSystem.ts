@@ -9,6 +9,7 @@ import { GameManager } from "../Managers/GameManager";
 import { GameEventsBus } from "../common/event/GlobalEventTarget";
 import { GameEvents } from "../gameplay/input/GameEvents";
 import { BgMoving } from "../gameplay/BgMoving";
+import { ObstacleView } from "../Views/ObstacleView";
 
 const { ccclass, property } = _decorator;
 
@@ -155,12 +156,19 @@ export class CollisionSystem extends Component {
       let ohw = o.model.halfW * Math.abs(oScale.x);
       let ohh = o.model.halfH * Math.abs(oScale.y);
 
+      // collisionScale lets each prefab shrink its effective hitbox via Inspector slider
+      const obstacleView = o.node.getComponent(ObstacleView);
+      const cs = obstacleView ? obstacleView.collisionScale : 1.0;
+
       const oCol = o.node.getComponent(BoxCollider2D);
       if (oCol) {
         ox += oCol.offset.x * Math.abs(oScale.x);
         oy += oCol.offset.y * Math.abs(oScale.y);
-        ohw = (oCol.size.width  / 2) * Math.abs(oScale.x);
-        ohh = (oCol.size.height / 2) * Math.abs(oScale.y);
+        ohw = (oCol.size.width  / 2) * Math.abs(oScale.x) * cs;
+        ohh = (oCol.size.height / 2) * Math.abs(oScale.y) * cs;
+      } else {
+        ohw *= cs;
+        ohh *= cs;
       }
 
       // Apply CCD Sweep

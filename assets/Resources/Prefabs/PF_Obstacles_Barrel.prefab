@@ -321,6 +321,7 @@
     "__prefab": {
       "__id__": 15
     },
+    "collisionScale": 0.8,
     "_id": ""
   },
   {

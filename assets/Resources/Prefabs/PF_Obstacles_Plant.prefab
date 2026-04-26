@@ -222,7 +222,7 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": -40
     },
     "_size": {
       "__type__": "cc.Size",
@@ -353,6 +353,7 @@
     "__prefab": {
       "__id__": 17
     },
+    "collisionScale": 0.7,
     "_id": ""
   },
   {
@@ -398,7 +399,7 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 150
+      "y": 140
     },
     "_size": {
       "__type__": "cc.Size",
