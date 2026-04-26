@@ -1,77 +1,138 @@
-import { _decorator, Component, Animation, AnimationClip, Node, Vec3, tween, Prefab, instantiate } from 'cc';
+import {
+    _decorator, Component, Animation, AnimationClip,
+    Node, Vec3, tween, Prefab, instantiate, director
+} from 'cc';
+import { CharacterView, CharacterState } from '../Views/CharacterView';
+
 const { ccclass, property } = _decorator;
 
 /**
- * Controller for the ResultScene prefab.
- * Handles the sequential playback of introduction animations and character entry.
+ * Attach to: root node of ResultScene.scene (or the ResultScene prefab root inside it).
+ *
+ * Wire up:
+ *   animationComponent  → Animation component for the two result clips
+ *   introClip1          → first AnimationClip
+ *   introClip2          → second AnimationClip (plays after introClip1)
+ *   replayButton        → replay button Node (starts inactive)
+ *   characterPrefab     → PF_Character prefab
+ *   characterTargetNode → empty Node placed where the character should stop
  */
 @ccclass('ResultController')
 export class ResultController extends Component {
-    @property(Animation) 
+
+    @property(Animation)
     public animationComponent: Animation = null;
 
     @property(AnimationClip)
     public introClip1: AnimationClip = null;
+
     @property(AnimationClip)
     public introClip2: AnimationClip = null;
 
+    @property(Node)
+    public replayButton: Node = null;
+
     @property(Prefab)
-    public characterNode: Prefab = null
+    public characterPrefab: Prefab = null;
 
     @property(Node)
-    public characterEntryTarget: Node = null;
+    public characterTargetNode: Node = null;
+
+    private _characterInstance: Node = null;
+    private _animListenerBound = false;
 
     onLoad(): void {
-        if (!this.animationComponent) {
-            this.animationComponent = this.getComponent(Animation);
+        if (this.replayButton) {
+            this.replayButton.active = false;
+            this.replayButton.on(Node.EventType.TOUCH_END, this._onReplayTapped, this);
         }
 
-        if (this.animationComponent) {
-            this.animationComponent.on(Animation.EventType.FINISHED, this._onAnimationFinished, this);
-            
-            // Play introClip1 first
-            if (this.introClip1) {
-                // Ensure clip is added
-                const hasClip = this.animationComponent.clips.some(c => c && c.name === this.introClip1.name);
-                if (!hasClip) {
-                    this.animationComponent.addClip(this.introClip1, this.introClip1.name);
-                }
-                this.animationComponent.play(this.introClip1.name);
-            }
-        }
-
-        this._startCharacterEntry();
+        this._spawnCharacter();
     }
 
-    private _startCharacterEntry(): void {
-        if (!this.characterNode) return;
+    onDestroy(): void {
+        if (this.replayButton) {
+            this.replayButton.off(Node.EventType.TOUCH_END, this._onReplayTapped, this);
+        }
+        if (this.animationComponent && this._animListenerBound) {
+            this.animationComponent.off(Animation.EventType.FINISHED, this._onAnimFinished, this);
+        }
+    }
 
-        // Instantiate character from Prefab
-        const node = instantiate(this.characterNode);
-        this.node.addChild(node);
+    // ── Character entry ───────────────────────────────────────────────────
 
-        // Position it bottom-left off-screen
-        const startPos = new Vec3(-700, -500, 0);
-        node.setPosition(startPos);
+    private _spawnCharacter(): void {
+        if (!this.characterPrefab) return;
 
-        // Move to a central offset (e.g., -100, -200)
-        const targetPos = new Vec3(-100, -200, 0);
-        tween(node)
-            .to(1.2, { position: targetPos }, { easing: 'sineOut' })
+        this._characterInstance = instantiate(this.characterPrefab);
+        this.node.addChild(this._characterInstance);
+
+        // Disable input — display only.
+        const ctrl = this._characterInstance.getComponent('CharacterController') as any;
+        if (ctrl) {
+            if (ctrl.setControllable) ctrl.setControllable(false);
+            ctrl.enabled = false;
+        }
+
+        const targetPos = this.characterTargetNode
+            ? this.characterTargetNode.position.clone()
+            : new Vec3(0, -200, 0);
+
+        const startPos = new Vec3(-900, targetPos.y, targetPos.z);
+        this._characterInstance.setPosition(startPos);
+
+        const view = this._characterInstance.getComponent(CharacterView);
+        if (view) {
+            view.setFacing(true);
+            view.applyState(CharacterState.MoveH);
+        }
+
+        tween(this._characterInstance)
+            .to(1.4, { position: targetPos }, { easing: 'sineOut' })
             .call(() => {
-                console.log('[ResultController] Character entered and standing.');
+                if (view) view.applyState(CharacterState.Idle);
+                this._beginAnimationSequence();
             })
             .start();
     }
 
-    private _onAnimationFinished(type: Animation.EventType, state: any): void {
-        // Sequential animation handling
-        if (this.introClip1 && state.name === this.introClip1.name && this.introClip2) {
-            const hasClip = this.animationComponent.clips.some(c => c && c.name === this.introClip2.name);
-            if (!hasClip) {
-                this.animationComponent.addClip(this.introClip2, this.introClip2.name);
-            }
-            this.animationComponent.play(this.introClip2.name);
+    // ── Animation sequence ────────────────────────────────────────────────
+
+    private _beginAnimationSequence(): void {
+        if (!this.animationComponent) {
+            this._showReplayButton();
+            return;
         }
+
+        this.animationComponent.on(Animation.EventType.FINISHED, this._onAnimFinished, this);
+        this._animListenerBound = true;
+        this._playClip(this.introClip1);
+    }
+
+    private _onAnimFinished(type: Animation.EventType, state: any): void {
+        if (this.introClip1 && state.name === this.introClip1.name && this.introClip2) {
+            this._playClip(this.introClip2);
+        } else {
+            this.animationComponent.off(Animation.EventType.FINISHED, this._onAnimFinished, this);
+            this._animListenerBound = false;
+            this._showReplayButton();
+        }
+    }
+
+    private _playClip(clip: AnimationClip | null): void {
+        if (!clip || !this.animationComponent) return;
+        const already = this.animationComponent.clips.some(c => c?.name === clip.name);
+        if (!already) this.animationComponent.addClip(clip, clip.name);
+        this.animationComponent.play(clip.name);
+    }
+
+    private _showReplayButton(): void {
+        if (this.replayButton) this.replayButton.active = true;
+    }
+
+    // ── Replay ────────────────────────────────────────────────────────────
+
+    private _onReplayTapped(): void {
+        director.loadScene('GameScene');
     }
 }

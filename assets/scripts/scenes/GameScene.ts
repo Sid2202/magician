@@ -43,8 +43,7 @@ export class GameScene extends Component {
     onLoad(): void {
         this._validate();
         this._subscribeEvents();
-        GameManager.startSession(1);  // temp until GameController exists
-
+        GameManager.startSession(1);
         this._findCandles(this.node);
     }
 

@@ -154,7 +154,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920,
+      "width": 1920.0000000000002,
       "height": 1080
     },
     "_anchorPoint": {
@@ -1790,7 +1790,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920,
+      "width": 1920.0000000000002,
       "height": 1080
     },
     "_anchorPoint": {
@@ -1893,11 +1893,16 @@
       "__uuid__": "9759dbe2-aab5-4b0c-8e13-5727edcb43b6",
       "__expectedType__": "cc.AnimationClip"
     },
-    "characterNode": {
+    "replayButton": {
+      "__id__": 64
+    },
+    "characterPrefab": {
       "__uuid__": "2064f728-b55c-4fd6-9004-c3d794a3466e",
       "__expectedType__": "cc.Prefab"
     },
-    "characterEntryTarget": null,
+    "characterTargetNode": {
+      "__id__": 78
+    },
     "_id": ""
   },
   {
