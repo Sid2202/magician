@@ -352,13 +352,20 @@ export class CharacterController extends Component {
             GameEventsBus.get().emit(GameEvents.WorldRewind, deficit);
         }
         this._keys.clear();
-        this._isTouching = false;
+        // On mobile: don't clear _isTouching — finger may still be down.
+        // Reset the drag anchor instead so there's no velocity jump on resume.
+        if (this._isTouching) {
+            this._touchStart.set(this._touchCurrent);
+        } else {
+            this._isTouching = false;
+        }
         this._pushToNode();
         this._view?.applyState(CharacterState.Idle);
 
         // Resume game after brief respawn appearance so player sees character return
         this.scheduleOnce(() => {
             GameManager.getInstance().resumeGame();
+            this._bgMoving?.resumeScroll();
         }, 0.2);
     }
 

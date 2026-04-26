@@ -18,7 +18,15 @@ export class BgMoving extends Component {
     @property
     public speed: number = 200;
 
+    /** Mobile-only: speed at game start before ramping to full speed. */
+    @property mobileStartSpeed:    number = 80;
+    /** Mobile-only: seconds to ramp from mobileStartSpeed to speed. */
+    @property mobileRampDuration:  number = 3;
+
     private direction: Vec3 = new Vec3(0, 0, 0);
+    private _rampActive  = false;
+    private _rampTimer   = 0;
+    private _rampTarget  = 0;
 
     /** Read by SpawnSystem to sync coin scroll with BG scroll. */
     public getScrollDirX(): number { return this.direction.x; }
@@ -46,6 +54,11 @@ export class BgMoving extends Component {
         // Mobile has no keyboard, so auto-scroll. PC scrolls only while RIGHT is held.
         if (sys.isMobile) {
             this.direction.x = -1;
+            // Ramp speed from mobileStartSpeed up to full speed over mobileRampDuration.
+            this._rampTarget = this.speed;
+            this.speed       = this.mobileStartSpeed;
+            this._rampTimer  = 0;
+            this._rampActive = true;
         }
     }
 
@@ -80,6 +93,13 @@ export class BgMoving extends Component {
         }
 
         if (!GameManager.getInstance()?.state.isPlaying) return;
+
+        if (this._rampActive) {
+            this._rampTimer += deltaTime;
+            const t = Math.min(this._rampTimer / this.mobileRampDuration, 1);
+            this.speed = this.mobileStartSpeed + (this._rampTarget - this.mobileStartSpeed) * t;
+            if (t >= 1) this._rampActive = false;
+        }
 
         const displacement = this.direction.x * this.speed * deltaTime;
         if (displacement === 0) {
