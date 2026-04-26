@@ -1371,7 +1371,7 @@
         "__id__": 67
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 73
@@ -1479,7 +1479,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 191.1328125,
+      "width": 236.23046875,
       "height": 100.8
     },
     "_anchorPoint": {
@@ -1515,11 +1515,11 @@
       "b": 255,
       "a": 255
     },
-    "_string": "Retry",
+    "_string": "Next Level",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 80,
-    "_fontSize": 80,
+    "_actualFontSize": 50,
+    "_fontSize": 50,
     "_fontFamily": "Arial",
     "_lineHeight": 80,
     "_overflow": 0,

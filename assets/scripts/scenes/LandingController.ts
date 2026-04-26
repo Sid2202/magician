@@ -55,8 +55,6 @@ export class LandingController extends Component {
             return;
         }
 
-        SoundController.getInstance()?.playSFX('intro_01');
-
         const clipName = clip.name;
         if (!anim.getState(clipName)) {
             anim.addClip(clip, clipName);
