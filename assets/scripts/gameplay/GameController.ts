@@ -44,6 +44,7 @@ export class GameController extends Component {
     @property(Prefab) pfFood:   Prefab = null;  // Food collectible prefab
     @property(Prefab) pfTool:   Prefab = null;  // Tool collectible prefab
     @property(Prefab) pfNpc:    Prefab = null;  // NPC prefab
+    @property(Prefab) pfTeleport: Prefab = null; // Teleport prefab
 
     /** Wire the BgMove node (has BgMoving component) to sync world scroll. */
     @property(Node) bgMoveNode: Node = null;
@@ -63,6 +64,7 @@ export class GameController extends Component {
     /** Each entry: { node, type (ItemType | 'NPC'), x, y, wantsItem?, givesReward? } */
     private _activeItems: ActiveItem[] = [];
     private _activeNpcs:  ActiveNpc[]  = [];
+    private _activeTeleport: Node | null = null;
 
     // ── Spawn timers ──────────────────────────────────────────────────────
     private _itemTimer:    number = 0;
@@ -97,6 +99,7 @@ export class GameController extends Component {
         GameEventsBus.get().off(GameEvents.GameOver, this._onGameOver, this);
         GameEventsBus.get().off(GameEvents.TradeSuccess, this._onTradeSuccess, this);
         GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
+        GameEventsBus.get().off(GameEvents.AllShardsCollected, this._spawnTeleport, this);
         this._itemPool.clear();
         this._npcPool.clear();
     }
@@ -163,10 +166,12 @@ export class GameController extends Component {
         GameEventsBus.get().off(GameEvents.GameOver, this._onGameOver, this);
         GameEventsBus.get().off(GameEvents.TradeSuccess, this._onTradeSuccess, this);
         GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
+        GameEventsBus.get().off(GameEvents.AllShardsCollected, this._spawnTeleport, this);
         
         GameEventsBus.get().on(GameEvents.GameOver, this._onGameOver, this);
         GameEventsBus.get().on(GameEvents.TradeSuccess, this._onTradeSuccess, this);
         GameEventsBus.get().on(GameEvents.WorldRewind, this._onWorldRewind, this);
+        GameEventsBus.get().on(GameEvents.AllShardsCollected, this._spawnTeleport, this);
     }
 
     // ── Path scrolling ────────────────────────────────────────────────────
@@ -269,6 +274,11 @@ export class GameController extends Component {
             if (npc.x < CULL_X) this._recycleNpcs.push(npc);
         }
 
+        if (this._activeTeleport) {
+            const rx = this._activeTeleport.position.x - dx;
+            this._activeTeleport.setPosition(new Vec3(rx, 0, 0));
+        }
+
         // Recycle culled objects
         for (const item of this._recycleItems) this._returnItem(item);
         for (const npc  of this._recycleNpcs)  this._returnNpc(npc);
@@ -302,6 +312,17 @@ export class GameController extends Component {
             const NW = 52, NH = 52;
             if (aabb(cm.x, cm.y, CW, CH, npc.x, npc.y, NW, NH)) {
                 this._tryTrade(npc);
+            }
+        }
+
+        // Teleport
+        if (this._activeTeleport) {
+            const TW = 157, TH = 279; // Teleport dimensions (314x559 / 2)
+            if (aabb(cm.x, cm.y, CW, CH, this._activeTeleport.position.x, this._activeTeleport.position.y, TW, TH)) {
+                this._activeTeleport.active = false;
+                this._activeTeleport.removeFromParent();
+                this._activeTeleport = null;
+                GameManager.getInstance().winGame();
             }
         }
 
@@ -381,6 +402,12 @@ export class GameController extends Component {
                 if (Math.abs(shard.model.x - x) < shard.model.halfW + halfW + padding + 800) return true;
             }
         }
+        
+        // Active Teleport
+        if (this._activeTeleport) {
+            if (Math.abs(this._activeTeleport.position.x - x) < 300 + halfW + padding) return true;
+        }
+        
         return false;
     }
 
@@ -398,6 +425,23 @@ export class GameController extends Component {
             npc.x += amount;
             npc.node.setPosition(new Vec3(npc.x, npc.y, 0));
         }
+        if (this._activeTeleport) {
+            const rx = this._activeTeleport.position.x + amount;
+            this._activeTeleport.setPosition(new Vec3(rx, 0, 0));
+        }
+    }
+
+    private _spawnTeleport(): void {
+        // Only spawn once
+        if (!this.pfTeleport || this._activeTeleport) return;
+
+        let node = instantiate(this.pfTeleport);
+        this.node.addChild(node);
+
+        let x = SPAWN_X_AHEAD + 400; // further out to anticipate
+        node.setPosition(new Vec3(x, 0, 0));
+
+        this._activeTeleport = node;
     }
 }
 

@@ -68,7 +68,7 @@ export class CharacterView extends Component {
                          'Add an Animation component and assign clips.');
         } else {
             // Listen for vanish animation completion (used during death sequence)
-            this._anim.on('finished', this._onVanishFinished, this);
+            this._anim.on(Animation.EventType.FINISHED, this._onVanishFinished, this);
         }
 
         if (!this.effectNode)   console.warn('[CharacterView] effectNode not wired.');
@@ -80,7 +80,7 @@ export class CharacterView extends Component {
 
     onDestroy(): void {
         if (this._anim) {
-            this._anim.off('finished', this._onVanishFinished, this);
+            this._anim.off(Animation.EventType.FINISHED, this._onVanishFinished, this);
         }
     }
 

@@ -25,7 +25,11 @@
       "Bash(git commit -m 'Implement dynamic lighting with candle lights *)",
       "Bash(git commit -m 'Implement enhanced glow effects for candles *)",
       "Bash(git commit -m 'Fix mobile controls: auto-scroll world and improve touch responsiveness *)",
-      "Bash(git commit -m 'Mobile auto-scroll, PC keeps press-to-scroll behavior *)"
+      "Bash(git commit -m 'Mobile auto-scroll, PC keeps press-to-scroll behavior *)",
+      "Bash(git commit -m 'Fix post-respawn touch lock and add mobile slow start *)",
+      "Bash(git commit -m 'Unify controls: hold-to-scroll on both mobile and PC *)",
+      "Bash(git commit -m 'Switch mobile to position-based touch controls *)",
+      "Bash(git commit -m 'Fix mobile left movement and win-state scroll bug *)"
     ]
   },
   "mcpServers": {

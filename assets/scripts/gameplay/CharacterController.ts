@@ -180,21 +180,49 @@ export class CharacterController extends Component {
             const centerX = origin.x + size.width  * 0.5;
             const centerY = origin.y + size.height * 0.5;
             tVx = this._touchCurrent.x < centerX ? -spd : spd;
-            tVy = this._touchCurrent.y < centerY ? -spd : spd;
+            const vSpd = spd * 1.5; // Multiply vertical velocity for responsive pacing
+            tVy = this._touchCurrent.y < centerY ? -vSpd : vSpd;
+            
+            console.log(`[InputDebug] touch.x: ${this._touchCurrent.x}, centerX: ${centerX} -> tVx: ${tVx}`);
         }
 
         const hasInput = kLeft || kRight || kUp || kDown || this._isTouching;
 
+        let activeX = 0; // The true horizontal input direction (-1, 0, 1)
         if (hasInput) {
+            const vSpd = spd * 1.5;
             // Keyboard always wins over touch on active axes
             m.vx = kLeft ? -spd : kRight ? spd : tVx;
-            m.vy = kDown ? -spd : kUp    ? spd : tVy;
+            m.vy = kDown ? -vSpd : kUp    ? vSpd : (this._isTouching ? tVy : 0);
+            if (this._isTouching) {
+                console.log(`[InputDebug] Model Velocity: vx: ${m.vx}, model.x before dt: ${m.x}`);
+            }
+            if (m.vx < -1.5) activeX = -1;
+            else if (m.vx > 1.5) activeX = 1;
         } else {
             // Hover: exponential decay to zero
             m.vx *= m.damping;
             m.vy *= m.damping;
             if (Math.abs(m.vx) < 1.5) m.vx = 0;
             if (Math.abs(m.vy) < 1.5) m.vy = 0;
+        }
+
+        // Only synchronize world scrolling if we haven't died/paused. 
+        // Sync world movement dynamically to character input logic!
+        if (this._bgMoving) {
+            if (activeX === 1) {
+                this._bgMoving.resumeScroll(); // Scrolls world mapping left
+            } else if (activeX === -1) {
+                // To move backwards through the world, world mapping must scroll right!
+                // Wait! Does BgMoving have a reverseScroll? We just assign direction.x natively if exposed, 
+                // but we can just use setReverse if it exists. 
+                // BgMoving's direction property is private: "private direction: Vec3".
+                // I will use any to bypass if necessary, or just call resumeScroll and manually set it via any bypass here.
+                (this._bgMoving as any).direction.x = 1;
+            } else {
+                // No horizontal input -> stop playing the world
+                this._bgMoving.stopScroll();
+            }
         }
 
         m.x += m.vx * dt;
@@ -245,6 +273,9 @@ export class CharacterController extends Component {
     private _pushToNode(): void {
         this._pos.set(this._model.x, this._model.y, 0);
         this.node.setPosition(this._pos);
+        if (this._isTouching) {
+            console.log(`[InputDebug] Pushed Node Pos: x=${this._pos.x}`);
+        }
     }
 
     // ── Model → View ──────────────────────────────────────────────────────
@@ -265,8 +296,6 @@ export class CharacterController extends Component {
         const loc = e.getUILocation();
         this._touchStart.set(loc.x, loc.y);
         this._touchCurrent.set(loc.x, loc.y);
-        // Finger down = world scrolls (mirrors holding RIGHT on PC)
-        this._bgMoving?.resumeScroll();
     }
 
     private _onTouchMove(e: EventTouch): void {
@@ -276,8 +305,6 @@ export class CharacterController extends Component {
 
     private _onTouchEnd(): void {
         this._isTouching = false;
-        // Finger lifted = world pauses (mirrors releasing RIGHT on PC)
-        this._bgMoving?.stopScroll();
     }
 
     private _onGameOver(): void {
@@ -359,9 +386,6 @@ export class CharacterController extends Component {
         }
         this._keys.clear();
         this._isTouching = false;
-        // World stays stopped after respawn — player must re-touch (mobile) or
-        // re-hold RIGHT (PC) to advance. This gives time to react to obstacles.
-        this._bgMoving?.stopScroll();
         this._pushToNode();
         this._view?.applyState(CharacterState.Idle);
 

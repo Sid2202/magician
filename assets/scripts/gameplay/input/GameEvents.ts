@@ -27,6 +27,7 @@ export class GameEvents {
     // ── Shards / win condition ────────────────────────────────────────────
     static readonly ShardCollected  = 'ShardCollected';  // payload: number (shards collected so far)
     static readonly GameWon         = 'GameWon';         // all 3 shards collected
+    static readonly AllShardsCollected = 'AllShardsCollected';
 
     // ── Speed ─────────────────────────────────────────────────────────────
     static readonly SpeedChanged    = 'SpeedChanged';    // payload: number (new speed px/s)
