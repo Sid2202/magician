@@ -1,6 +1,7 @@
 import { _decorator, Component, Node, Vec3, BoxCollider2D } from "cc";
 import { SpawnSystem } from "./SpawnSystem";
 import { ObstacleSpawnSystem } from "./ObstacleSpawnSystem";
+import { ShardSpawnSystem } from "./ShardSpawnSystem";
 import { CharacterController } from "../gameplay/CharacterController";
 import { EventBus, CoinEvents } from "../core/EventBus";
 import { CoinController } from "../Controllers/CoinController";
@@ -20,6 +21,7 @@ const { ccclass, property } = _decorator;
 export class CollisionSystem extends Component {
   @property(Node) characterNode: Node = null;
   @property(ObstacleSpawnSystem) obstacleSpawn: ObstacleSpawnSystem = null;
+  @property(ShardSpawnSystem) shardSpawn: ShardSpawnSystem = null;
 
   /** Brief invulnerability window after a hit, so a single contact does not eat all hearts. */
   @property invulnerabilitySeconds: number = 1.2;
@@ -136,6 +138,35 @@ export class CollisionSystem extends Component {
         this._invulnTimer = this.invulnerabilitySeconds;
         GameEventsBus.get().emit(GameEvents.PlayerHit, { x: ox, y: oy });
         break;
+      }
+    }
+
+    // ── Shards ────────────────────────────────────────────────────────────
+    if (!this.shardSpawn) return;
+    const shards = this.shardSpawn.activeShards;
+    for (let i = shards.length - 1; i >= 0; i--) {
+      const s = shards[i];
+      if (!s.model.active) continue;
+
+      const swp = s.node.worldPosition;
+      const shx = swp.x;
+      const shy = swp.y;
+      const shw = s.model.halfW;
+      const shh = s.model.halfH;
+
+      if (aabb(cx, cy, chw, chh, shx, shy, shw, shh)) {
+        // Collect shard
+        const shardIndex = s.model.index;
+        GameManager.getInstance().inventory.addShard();
+        this.shardSpawn.removeShard(s);
+        s.deactivate();
+
+        const total = GameManager.getInstance().inventory.getShardCount();
+        GameEventsBus.get().emit(GameEvents.ShardCollected, shardIndex);
+
+        if (total >= 3) {
+          GameEventsBus.get().emit(GameEvents.GameWon);
+        }
       }
     }
   }

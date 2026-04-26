@@ -4,16 +4,17 @@ import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents, ItemType, NpcReward } from './input/GameEvents';
 import { CharacterController } from './CharacterController';
 import { PathController } from './PathController';
+import { BgMoving } from './BgMoving';
 
 const { ccclass, property } = _decorator;
 
 // ── Spawn timing constants ────────────────────────────────────────────────
 const SCROLL_SPEED_PX_S  = 220;  // world scroll speed in pixels/second
 const PATH_TILE_COUNT    = 3;    // number of looping background tiles
-const ITEM_INTERVAL_MIN  = 1.8;
-const ITEM_INTERVAL_MAX  = 3.2;
-const NPC_INTERVAL_MIN   = 8.0;
-const NPC_INTERVAL_MAX   = 16.0;
+const ITEM_INTERVAL_MIN  = 4.5;  // Spaced out shards horizontally
+const ITEM_INTERVAL_MAX  = 8.0;
+const NPC_INTERVAL_MIN   = 15.0; // Rare NPC spawns
+const NPC_INTERVAL_MAX   = 25.0;
 const SPAWN_X_AHEAD      = 700;  // spawn off-screen to the right (pixels from center)
 const HALF_SCREEN_H      = 480;  // half-height of gameplay area for random Y
 
@@ -40,6 +41,9 @@ export class GameController extends Component {
     @property(Prefab) pfFood:   Prefab = null;  // Food collectible prefab
     @property(Prefab) pfTool:   Prefab = null;  // Tool collectible prefab
     @property(Prefab) pfNpc:    Prefab = null;  // NPC prefab
+
+    /** Wire the BgMove node (has BgMoving component) to sync world scroll. */
+    @property(Node) bgMoveNode: Node = null;
 
     /** Total light points in this level. Passed to GameManager.startSession(). */
     @property totalLightPoints: number = 5;
@@ -70,10 +74,16 @@ export class GameController extends Component {
     private _recycleItems: ActiveItem[] = [];
     private _recycleNpcs:  ActiveNpc[]  = [];
 
+    private _bgMoving: BgMoving | null = null;
+
     // ─────────────────────────────────────────────────────────────────────
     onLoad(): void {
         GameManager.startSession(this.totalLightPoints);
         this._charCtrl = this.characterNode?.getComponent(CharacterController);
+
+        if (this.bgMoveNode) {
+            this._bgMoving = this.bgMoveNode.getComponent(BgMoving);
+        }
 
         this._setupPathTiles();
         this._seedPools();
@@ -89,12 +99,17 @@ export class GameController extends Component {
     update(dt: number): void {
         if (!GameManager.getInstance()?.state.isPlaying) return;
 
-        const dx = SCROLL_SPEED_PX_S * dt;
+        const dirX  = this._bgMoving?.getScrollDirX() ?? 0;
+        const speed = this._bgMoving?.speed ?? 0;
+        // if dirX is -1 (scrolling left), the world components must move by +dx
+        const dx = -dirX * speed * dt;
 
-        this._scrollPathTiles(dx);
-        this._tickSpawners(dt);
-        this._scrollActiveObjects(dx);
-        this._checkCollisions();
+        if (dx !== 0) {
+            this._scrollPathTiles(dx);
+            this._tickSpawners(dt);
+            this._scrollActiveObjects(dx);
+            this._checkCollisions();
+        }
     }
 
     // ── Setup ─────────────────────────────────────────────────────────────

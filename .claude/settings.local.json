@@ -18,7 +18,12 @@
       "Bash(git commit -m ' *)",
       "Bash(git reset *)",
       "Bash(xargs cat *)",
-      "Bash(npx -y typescript@5 --noEmit -p .)"
+      "Bash(npx -y typescript@5 --noEmit -p .)",
+      "Bash(npm run *)",
+      "Bash(git commit -m 'Implement shard avoidance and game win condition *)",
+      "Bash(git commit -m 'Reduce respawn distance and increase shard avoidance padding *)",
+      "Bash(git commit -m 'Implement dynamic lighting with candle lights *)",
+      "Bash(git commit -m 'Implement enhanced glow effects for candles *)"
     ]
   },
   "mcpServers": {

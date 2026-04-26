@@ -3,6 +3,7 @@ import { NodePool, Prefab, Node, instantiate } from 'cc';
 export const enum PoolKey {
     Coin = 'Coin',
     FlyingCoin = 'FlyingCoin',
+    Shard = 'Shard',
     ObstacleGhost   = 'ObstacleGhost',
     ObstacleBarrel  = 'ObstacleBarrel',
     ObstaclePlant   = 'ObstaclePlant',

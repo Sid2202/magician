@@ -2,6 +2,7 @@ import { _decorator, Component, Node, Prefab } from 'cc';
 import { PoolingSystem, PoolKey } from './PoolingSystem';
 import { SpawnSystem } from './SpawnSystem';
 import { ShardController } from '../Controllers/ShardController';
+import { ObstacleSpawnSystem } from './ObstacleSpawnSystem';
 import { BgMoving } from '../gameplay/BgMoving';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents } from '../gameplay/input/GameEvents';
@@ -29,6 +30,7 @@ export class ShardSpawnSystem extends Component {
     @property(Prefab) shardPrefab:  Prefab = null;
     @property(Node)   bgMoveNode:   Node   = null;
     @property(SpawnSystem) spawnSystem: SpawnSystem = null;
+    @property(ObstacleSpawnSystem) obstacleSpawn: ObstacleSpawnSystem = null;
 
     /** How far ahead of centre to place a shard when its trigger fires. */
     @property spawnAheadX: number = 900;
@@ -109,36 +111,24 @@ export class ShardSpawnSystem extends Component {
     }
 
     private _isAreaBlocked(x: number, y: number): boolean {
-        const halfW = this.avoidPadding;
-        const halfH = this.avoidPadding;
+        const pad = this.avoidPadding;
 
-        // Check coins
+        // Use model.x/y — same local space as spawnAheadX. worldPosition would mismatch.
         if (this.spawnSystem) {
             for (const coin of this.spawnSystem.activeCoins) {
                 if (!coin.model.active) continue;
-                const cwp = coin.node.worldPosition;
-                const coinX = cwp.x;
-                const coinY = cwp.y;
-                const coinHW = coin.model.halfW + this.avoidPadding;
-                const coinHH = coin.model.halfH + this.avoidPadding;
-
-                if (Math.abs(x - coinX) < halfW + coinHW && Math.abs(y - coinY) < halfH + coinHH) {
+                if (Math.abs(x - coin.model.x) < coin.model.halfW + pad &&
+                    Math.abs(y - coin.model.y) < coin.model.halfH + pad) {
                     return true;
                 }
             }
         }
 
-        // Check obstacles
         if (this.obstacleSpawn) {
             for (const obs of this.obstacleSpawn.activeObstacles) {
                 if (!obs.model.active) continue;
-                const owp = obs.node.worldPosition;
-                const obsX = owp.x;
-                const obsY = owp.y;
-                const obsHW = obs.model.halfW + this.avoidPadding;
-                const obsHH = obs.model.halfH + this.avoidPadding;
-
-                if (Math.abs(x - obsX) < halfW + obsHW && Math.abs(y - obsY) < halfH + obsHH) {
+                if (Math.abs(x - obs.model.x) < obs.model.halfW + pad &&
+                    Math.abs(y - obs.model.y) < obs.model.halfH + pad) {
                     return true;
                 }
             }

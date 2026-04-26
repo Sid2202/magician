@@ -43,30 +43,30 @@ export class HeartCounterController extends Component {
 
         const bus = GameEventsBus.get();
         bus.on(GameEvents.PlayerHit, this._onPlayerHit, this);
+        bus.on(GameEvents.PlayerRespawn, this._onPlayerRespawn, this);
     }
 
     onDestroy(): void {
         const bus = GameEventsBus.get();
         bus.off(GameEvents.PlayerHit, this._onPlayerHit, this);
+        bus.off(GameEvents.PlayerRespawn, this._onPlayerRespawn, this);
     }
 
     private _onPlayerHit(): void {
-        // Consume one heart and update display immediately (visual feedback)
         this._hearts = Math.max(0, this._hearts - 1);
         this._refreshIcons();
         GameEventsBus.get().emit(GameEvents.HeartsChanged, this._hearts);
+    }
 
+    private _onPlayerRespawn(): void {
         if (this._hearts <= 0) {
-            // Out of hearts: clear obstacles and restart the session.
-            // Hearts are restored to full, and CharacterController will respawn after vanish animation.
+            // Full restart: clear obstacles, restore session + hearts, then respawn.
             this.obstacleSpawn?.clearAll();
             GameManager.startSession(GameManager.getInstance().state.totalLightPoints || 1);
             this._hearts = this.maxHearts;
             this._refreshIcons();
             GameEventsBus.get().emit(GameEvents.HeartsChanged, this._hearts);
         }
-        // NOTE: CharacterController emits PlayerRespawn after the vanish animation plays,
-        // so all respawn logic happens as part of the unified death sequence.
     }
 
     private _refreshIcons(): void {

@@ -22,6 +22,13 @@ export class GameEvents {
     static readonly PlayerHit       = 'PlayerHit';       // payload: { x, y } world hit point
     static readonly PlayerRespawn   = 'PlayerRespawn';   // emitted after a hit when hearts > 0 remain
     static readonly HeartsChanged   = 'HeartsChanged';   // payload: number remaining
+
+    // ── Shards / win condition ────────────────────────────────────────────
+    static readonly ShardCollected  = 'ShardCollected';  // payload: number (shards collected so far)
+    static readonly GameWon         = 'GameWon';         // all 3 shards collected
+
+    // ── Speed ─────────────────────────────────────────────────────────────
+    static readonly SpeedChanged    = 'SpeedChanged';    // payload: number (new speed px/s)
 }
 
 /** All collectible item types. */

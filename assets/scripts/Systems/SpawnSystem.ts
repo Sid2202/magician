@@ -43,8 +43,8 @@ export class SpawnSystem extends Component {
     @property         poolWarmupCount: number = 30;
     @property         visibleWidth:    number = 1920;
     @property         bufferAhead:     number = 900;
-    @property         groupBaseSpacing:    number = 250;
-    @property         groupSpacingVariance: number = 200;
+    @property         groupBaseSpacing:    number = 800; // More horizontal air between coin patterns
+    @property         groupSpacingVariance: number = 500;
     @property         cullBehindX:     number = -900;
     @property         cullAheadX:      number = 1200;
     @property         patternSpacing:  number = 80;
@@ -252,8 +252,7 @@ export class SpawnSystem extends Component {
             pattern,
             originX: 0,
             originY: randRange(-120, 120),
-            spacing: Math.max(100, this.patternSpacing * 1.2), // Increase spacing between individual coins
-            grid,
+            spacing: Math.max(80, this.patternSpacing)
         };
     }
 }

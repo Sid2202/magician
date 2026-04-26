@@ -62,10 +62,13 @@
       },
       {
         "__id__": 201
+      },
+      {
+        "__id__": 203
       }
     ],
     "_prefab": {
-      "__id__": 203
+      "__id__": 205
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3433,6 +3436,9 @@
     "obstacleSpawn": {
       "__id__": 201
     },
+    "shardSpawn": {
+      "__id__": 203
+    },
     "invulnerabilitySeconds": 1.2,
     "_id": ""
   },
@@ -3513,6 +3519,45 @@
     "fileId": "981BPW0o5DLYzH9CboA2EB"
   },
   {
+    "__type__": "c8c05nI+eJFt64KDeRkXekb",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 204
+    },
+    "shardPrefab": {
+      "__uuid__": "96b641c7-6633-4ffa-83a1-362d3e817d50",
+      "__expectedType__": "cc.Prefab"
+    },
+    "bgMoveNode": {
+      "__id__": 2
+    },
+    "spawnSystem": {
+      "__id__": 197
+    },
+    "obstacleSpawn": {
+      "__id__": 201
+    },
+    "spawnAheadX": 900,
+    "avoidPadding": 150,
+    "shard1Distance": 4000,
+    "shard2Distance": 10000,
+    "shard3Distance": 18000,
+    "shard1Y": 0,
+    "shard2Y": 120,
+    "shard3Y": -100,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "97FOS/MF9LvadlnryLn4Qr"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -3524,10 +3569,10 @@
     "instance": null,
     "targetOverrides": [
       {
-        "__id__": 204
+        "__id__": 206
       },
       {
-        "__id__": 206
+        "__id__": 208
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -3570,7 +3615,7 @@
       "__id__": 58
     },
     "targetInfo": {
-      "__id__": 205
+      "__id__": 207
     }
   },
   {
@@ -3592,7 +3637,7 @@
       "__id__": 58
     },
     "targetInfo": {
-      "__id__": 207
+      "__id__": 209
     }
   },
   {

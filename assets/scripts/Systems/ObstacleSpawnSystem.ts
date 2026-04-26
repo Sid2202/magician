@@ -1,7 +1,7 @@
 import { _decorator, Component, Node, Prefab } from 'cc';
 import { PoolingSystem } from './PoolingSystem';
 import { ObstacleController } from '../Controllers/ObstacleController';
-import { ObstacleType } from '../Models/ObstacleModel';
+import { ObstacleType } from '../models/ObstacleModel';
 import { BgMoving } from '../gameplay/BgMoving';
 import { SpawnSystem } from './SpawnSystem';
 import {
@@ -48,8 +48,8 @@ export class ObstacleSpawnSystem extends Component {
     @property cullAheadX:      number = 4000;
 
     // Spread groups much farther apart — game was too dense.
-    @property groupBaseSpacing:    number = 1100;
-    @property groupSpacingVariance: number = 700;
+    @property groupBaseSpacing:    number = 2200; // Significantly more horizontal gap
+    @property groupSpacingVariance: number = 1000;
 
     /** Pixels of padding required between any obstacle and any coin. */
     @property coinAvoidPadding: number = 60;

@@ -1,5 +1,5 @@
 import { _decorator, Component } from 'cc';
-import { CoinModel }            from '../Models/CoinModel';
+import { CoinModel }            from '../models/CoinModel';
 import { CoinView }             from '../Views/CoinView';
 import { PoolKey, PoolingSystem } from '../Systems/PoolingSystem';
 
