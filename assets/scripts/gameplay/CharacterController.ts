@@ -1,6 +1,6 @@
 import {
     _decorator, Component, Node, Vec2, Vec3,
-    input, Input, KeyCode, EventTouch,
+    input, Input, KeyCode, EventTouch, UITransform
 } from 'cc';
 import { CharacterModel }  from '../models/CharacterModel';
 import { CharacterView, CharacterState } from '../Views/CharacterView';
@@ -69,13 +69,14 @@ export class CharacterController extends Component {
     // ── Spawn point captured at onLoad, used on respawn ───────────────────
     private _spawnX = 0;
     private _spawnY = 0;
+    private _respawnTargetX = 0;
 
     // ── Screen shake on hit ───────────────────────────────────────────────
     @property shakeIntensity: number = 12;  // pixels
     @property shakeDuration: number = 0.4;  // seconds
 
     // ── Respawn safety ────────────────────────────────────────────────────
-    @property respawnBackOffset: number = 100;  // pixels to the left when respawning, so player has space
+    @property respawnBackOffset: number = 600;  // pixels to the left when respawning, so player has space
 
     /** Wire the BgMove node so we can stop scrolling immediately on death. */
     @property(Node) bgMoveNode: Node = null;
@@ -280,11 +281,27 @@ export class CharacterController extends Component {
         this._view?.applyState(CharacterState.Hit);
     }
 
-    private _onPlayerHit(): void {
+    private _onPlayerHit(payload?: { x: number, y: number }): void {
         // Death sequence: pause → shake → vanish → respawn → resume
         this._model.isAlive = false;
         this._model.vx = 0;
         this._model.vy = 0;
+
+        // Enforce exactly 600 pixels distance. Cocos Creator serialization can cache the old inspector value (100)
+        // and override the defaults defined in the TypeScript attributes, ruining the math.
+        const enforceOffset = 600;
+
+        if (payload && this.node.parent) {
+            const uiTrans = this.node.parent.getComponent(UITransform);
+            if (uiTrans) {
+                const localPos = uiTrans.convertToNodeSpaceAR(new Vec3(payload.x, payload.y, 0));
+                this._respawnTargetX = localPos.x - enforceOffset;
+            } else {
+                this._respawnTargetX = this._model.x - enforceOffset;
+            }
+        } else {
+            this._respawnTargetX = this._model.x - enforceOffset;
+        }
 
         // Hard-stop the scroll immediately — BgMoving won't respond to keys during pause
         this._bgMoving?.stopScroll();
@@ -315,10 +332,25 @@ export class CharacterController extends Component {
         // doesn't immediately fling the player back into the obstacle.
         this._model.vx = 0;
         this._model.vy = 0;
-        // Respawn slightly behind (to the left) of spawn point so player has space before next obstacle
-        this._model.x = this._spawnX - this.respawnBackOffset;
+        
+        let targetX = this._respawnTargetX;
+        let deficit = 0;
+        const clampLeft = this.fallbackBoundsXLeft;
+        
+        if (targetX < clampLeft) {
+            deficit = clampLeft - targetX;
+            targetX = clampLeft;
+        }
+        
+        // Respawn slightly behind the obstacle it collided with (recorded in _respawnTargetX)
+        // If it breached the boundary, we halt the character at the boundary and command the world to rewind instead!
+        this._model.x = targetX;
         this._model.y = this._spawnY;
         this._model.isAlive = true;
+        
+        if (deficit > 0) {
+            GameEventsBus.get().emit(GameEvents.WorldRewind, deficit);
+        }
         this._keys.clear();
         this._isTouching = false;
         this._pushToNode();

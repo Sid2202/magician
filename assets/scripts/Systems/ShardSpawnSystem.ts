@@ -68,10 +68,19 @@ export class ShardSpawnSystem extends Component {
         }
 
         GameEventsBus.get().on(GameEvents.GameStart, this._onGameStart, this);
+        GameEventsBus.get().on(GameEvents.WorldRewind, this._onWorldRewind, this);
     }
 
     onDestroy(): void {
         GameEventsBus.get().off(GameEvents.GameStart, this._onGameStart, this);
+        GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
+    }
+
+    private _onWorldRewind(amount: number): void {
+        this._distanceScrolled -= amount;
+        for (const s of this.activeShards) {
+            s.scrollBy(-amount);
+        }
     }
 
     update(dt: number): void {

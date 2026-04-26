@@ -21,6 +21,7 @@ export class GameEvents {
     // ── Player damage / hearts ────────────────────────────────────────────
     static readonly PlayerHit       = 'PlayerHit';       // payload: { x, y } world hit point
     static readonly PlayerRespawn   = 'PlayerRespawn';   // emitted after a hit when hearts > 0 remain
+    static readonly WorldRewind     = 'WorldRewind';     // payload: number (px amount to push world forward)
     static readonly HeartsChanged   = 'HeartsChanged';   // payload: number remaining
 
     // ── Shards / win condition ────────────────────────────────────────────

@@ -8,6 +8,7 @@ import { CoinController } from "../Controllers/CoinController";
 import { GameManager } from "../Managers/GameManager";
 import { GameEventsBus } from "../common/event/GlobalEventTarget";
 import { GameEvents } from "../gameplay/input/GameEvents";
+import { BgMoving } from "../gameplay/BgMoving";
 
 const { ccclass, property } = _decorator;
 
@@ -52,6 +53,7 @@ export class CollisionSystem extends Component {
     if (!this._charCtrl.getModel().isAlive) {
         // Reset sweep state if dead so respawn doesn't sweep across the map
         this._isInitialFrame = true;
+        this._invulnTimer = 0;
         return;
     }
     if (this._invulnTimer > 0) this._invulnTimer -= _dt;
@@ -86,6 +88,11 @@ export class CollisionSystem extends Component {
     // Store current pos for next frame's sweep
     this._prevCharWP.set(this._charWP);
 
+    // Calculate dynamic world sweep to stretch scrolling elements
+    const bgMoving = this._spawn.bgMoveNode?.getComponent(BgMoving);
+    const worldMoveX = (bgMoving?.getScrollDirX() ?? 0) * (bgMoving?.speed ?? 0) * _dt;
+    const worldStretchX = Math.abs(worldMoveX) / 2;
+
     const coins = this._spawn.activeCoins;
     this._hits.length = 0;
 
@@ -108,6 +115,10 @@ export class CollisionSystem extends Component {
         coinHW = (coinCollider.size.width / 2) * Math.abs(coinScale.x);
         coinHH = (coinCollider.size.height / 2) * Math.abs(coinScale.y);
       }
+
+      // Apply CCD Sweep
+      coinX -= worldMoveX / 2;
+      coinHW += worldStretchX;
 
       if (aabb(cx, cy, chw, chh, coinX, coinY, coinHW, coinHH)) {
         this._hits.push(coin);
@@ -152,6 +163,10 @@ export class CollisionSystem extends Component {
         ohh = (oCol.size.height / 2) * Math.abs(oScale.y);
       }
 
+      // Apply CCD Sweep
+      ox -= worldMoveX / 2;
+      ohw += worldStretchX;
+
       if (aabb(cx, cy, chw, chh, ox, oy, ohw, ohh)) {
         this._invulnTimer = this.invulnerabilitySeconds;
         GameEventsBus.get().emit(GameEvents.PlayerHit, { x: ox, y: oy });
@@ -167,10 +182,14 @@ export class CollisionSystem extends Component {
       if (!s.model.active) continue;
 
       const swp = s.node.worldPosition;
-      const shx = swp.x;
-      const shy = swp.y;
-      const shw = s.model.halfW;
-      const shh = s.model.halfH;
+      let shx = swp.x;
+      let shy = swp.y;
+      let shw = s.model.halfW;
+      let shh = s.model.halfH;
+
+      // Apply CCD Sweep
+      shx -= worldMoveX / 2;
+      shw += worldStretchX;
 
       if (aabb(cx, cy, chw, chh, shx, shy, shw, shh)) {
         // Collect shard

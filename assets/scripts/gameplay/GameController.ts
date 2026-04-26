@@ -95,6 +95,8 @@ export class GameController extends Component {
 
     onDestroy(): void {
         GameEventsBus.get().off(GameEvents.GameOver, this._onGameOver, this);
+        GameEventsBus.get().off(GameEvents.TradeSuccess, this._onTradeSuccess, this);
+        GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
         this._itemPool.clear();
         this._npcPool.clear();
     }
@@ -158,8 +160,13 @@ export class GameController extends Component {
     }
 
     private _subscribeEvents(): void {
+        GameEventsBus.get().off(GameEvents.GameOver, this._onGameOver, this);
+        GameEventsBus.get().off(GameEvents.TradeSuccess, this._onTradeSuccess, this);
+        GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
+        
         GameEventsBus.get().on(GameEvents.GameOver, this._onGameOver, this);
         GameEventsBus.get().on(GameEvents.TradeSuccess, this._onTradeSuccess, this);
+        GameEventsBus.get().on(GameEvents.WorldRewind, this._onWorldRewind, this);
     }
 
     // ── Path scrolling ────────────────────────────────────────────────────
@@ -379,6 +386,18 @@ export class GameController extends Component {
 
     private _onGameOver(): void {
         // Timers stop because update() checks isPlaying
+    }
+
+    private _onWorldRewind(amount: number): void {
+        this._scrollPathTiles(-amount);
+        for (const item of this._activeItems) {
+            item.x += amount;
+            item.node.setPosition(new Vec3(item.x, item.y, 0));
+        }
+        for (const npc of this._activeNpcs) {
+            npc.x += amount;
+            npc.node.setPosition(new Vec3(npc.x, npc.y, 0));
+        }
     }
 }
 

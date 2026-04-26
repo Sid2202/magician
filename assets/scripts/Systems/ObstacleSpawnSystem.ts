@@ -9,6 +9,8 @@ import {
     OBSTACLE_POOL_KEYS,
 } from './ObstacleFactory';
 import { ShardSpawnSystem } from './ShardSpawnSystem';
+import { GameEventsBus } from '../common/event/GlobalEventTarget';
+import { GameEvents } from '../gameplay/input/GameEvents';
 
 const { ccclass, property } = _decorator;
 
@@ -81,6 +83,12 @@ export class ObstacleSpawnSystem extends Component {
         this._warmup();
         if (this.bgMoveNode) this._bgMoving = this.bgMoveNode.getComponent(BgMoving);
         if (!this._bgMoving) console.warn('[ObstacleSpawnSystem] bgMoveNode not wired — obstacles will not scroll');
+        
+        GameEventsBus.get().on(GameEvents.WorldRewind, this._onWorldRewind, this);
+    }
+
+    onDestroy(): void {
+        GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
     }
 
     start(): void {
@@ -271,6 +279,13 @@ export class ObstacleSpawnSystem extends Component {
     private _removeActive(o: ObstacleController): void {
         const i = this._active.indexOf(o);
         if (i !== -1) this._active.splice(i, 1);
+    }
+
+    private _onWorldRewind(amount: number): void {
+        this._highestSpawnX += amount;
+        for (const obs of this._active) {
+            obs.scrollBy(-amount);
+        }
     }
 
     /** Read-only accessor for CollisionSystem. */

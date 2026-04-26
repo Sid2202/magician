@@ -1,5 +1,7 @@
 import { _decorator, Component, Node, Vec3, input, Input, EventKeyboard, KeyCode, UITransform, sys } from 'cc';
 import { GameManager } from '../Managers/GameManager';
+import { GameEventsBus } from '../common/event/GlobalEventTarget';
+import { GameEvents } from './input/GameEvents';
 const { ccclass, property } = _decorator;
 
 @ccclass('BgMoving')
@@ -50,11 +52,26 @@ export class BgMoving extends Component {
     onEnable() {
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
+        GameEventsBus.get().on(GameEvents.WorldRewind, this._onWorldRewind, this);
     }
 
     onDisable() {
         input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
+        GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
+    }
+
+    private _onWorldRewind(amount: number): void {
+        if (!this.bgNodeA || !this.bgNodeB) return;
+        
+        let posA = this.bgNodeA.position.clone();
+        let posB = this.bgNodeB.position.clone();
+        posA.x += amount;
+        posB.x += amount;
+        this.bgNodeA.setPosition(posA);
+        this.bgNodeB.setPosition(posB);
+        this.repositionIfNeeded(this.bgNodeA, this.bgNodeB);
+        this.repositionIfNeeded(this.bgNodeB, this.bgNodeA);
     }
 
     update(deltaTime: number) {

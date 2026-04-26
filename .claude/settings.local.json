@@ -24,7 +24,8 @@
       "Bash(git commit -m 'Reduce respawn distance and increase shard avoidance padding *)",
       "Bash(git commit -m 'Implement dynamic lighting with candle lights *)",
       "Bash(git commit -m 'Implement enhanced glow effects for candles *)",
-      "Bash(git commit -m 'Fix mobile controls: auto-scroll world and improve touch responsiveness *)"
+      "Bash(git commit -m 'Fix mobile controls: auto-scroll world and improve touch responsiveness *)",
+      "Bash(git commit -m 'Mobile auto-scroll, PC keeps press-to-scroll behavior *)"
     ]
   },
   "mcpServers": {

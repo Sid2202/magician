@@ -4,6 +4,8 @@ import { CoinController }                      from '../Controllers/CoinControll
 import { BgMoving }                            from '../gameplay/BgMoving';
 import { ObstacleSpawnSystem }                 from './ObstacleSpawnSystem';
 import { ShardSpawnSystem }                    from './ShardSpawnSystem';
+import { GameEventsBus }                       from '../common/event/GlobalEventTarget';
+import { GameEvents }                          from '../gameplay/input/GameEvents';
 
 export const enum SpawnPattern { LINE = 'LINE', ZIGZAG = 'ZIGZAG', GRID = 'GRID', SINE = 'SINE', ARC = 'ARC' }
 
@@ -64,10 +66,15 @@ export class SpawnSystem extends Component {
         PoolingSystem.warmup(PoolKey.Coin, this.coinPrefab, this.poolWarmupCount);
         PoolingSystem.warmup(PoolKey.FlyingCoin, this.flyingCoinPrefab, 20);
 
-        if (this.bgMoveNode) {
-            this._bgMoving = this.bgMoveNode.getComponent(BgMoving);
-        }
+        if (this.bgMoveNode) this._bgMoving = this.bgMoveNode.getComponent(BgMoving);
+        
+        GameEventsBus.get().on(GameEvents.WorldRewind, this._onWorldRewind, this);
+
         if (!this._bgMoving) console.warn('[SpawnSystem] bgMoveNode not wired — coins will not scroll');
+    }
+
+    onDestroy(): void {
+        GameEventsBus.get().off(GameEvents.WorldRewind, this._onWorldRewind, this);
     }
 
     start(): void {
@@ -75,6 +82,17 @@ export class SpawnSystem extends Component {
     }
 
     update(dt: number): void {
+        this._generateBatch(dt);
+    }
+
+    private _onWorldRewind(amount: number): void {
+        this._highestSpawnX += amount;
+        for (const coin of this.activeCoins) {
+            coin.scrollBy(-amount);
+        }
+    }
+
+    private _generateBatch(dt: number): void {
         // Only advance world fill while the Bg is actually moving.
         const dirX = this._bgMoving?.getScrollDirX() ?? 0;
         if (dirX !== 0) {
