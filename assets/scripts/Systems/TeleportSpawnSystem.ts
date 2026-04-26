@@ -5,6 +5,7 @@ import { BgMoving } from '../gameplay/BgMoving';
 import { GameManager } from '../Managers/GameManager';
 import { TeleportController } from '../Controllers/TeleportController';
 import { ResultController } from '../Controllers/ResultController';
+import { SoundController } from '../Managers/SoundController';
 
 const { ccclass, property } = _decorator;
 
@@ -139,6 +140,7 @@ export class TeleportSpawnSystem extends Component {
         const spawnX = Math.max(this.spawnAheadX, charX + this.minAheadFromCharacterX);
         this._activeTeleport.setPosition(new Vec3(spawnX, 0, 0));
         this._teleportCtrl = this._activeTeleport.getComponent(TeleportController);
+        SoundController.getInstance()?.playSFX('teleport');
         
         this._isWinSequence = true;
         this._isTeleportEntering = false;

@@ -5,6 +5,7 @@
         "gameplay": "SFX/GamePlay",
         "intro_01": "SFX/Intro_01",
         "intro_02": "SFX/Intro_02",
-        "shard_collect": "SFX/ShardCollect"
+        "shard_collect": "SFX/ShardCollect",
+        "teleport": "SFX/Teleport"
     }
 }
