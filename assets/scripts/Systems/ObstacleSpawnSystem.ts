@@ -1,7 +1,7 @@
 import { _decorator, Component, Node, Prefab } from 'cc';
 import { PoolingSystem } from './PoolingSystem';
 import { ObstacleController } from '../Controllers/ObstacleController';
-import { ObstacleType } from '../models/ObstacleModel';
+import { ObstacleType } from '../Models/ObstacleModel';
 import { BgMoving } from '../gameplay/BgMoving';
 import {
     ObstacleFactory, ObstacleGroup, ObstacleKind, ObstacleAnchor,

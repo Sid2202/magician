@@ -1,5 +1,5 @@
-import { GameStateModel, GamePhase } from '../models/GameStateModel';
-import { InventoryModel } from '../models/InventoryModel';
+import { GameStateModel, GamePhase } from '../Models/GameStateModel';
+import { InventoryModel } from '../Models/InventoryModel';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents, ItemType } from '../gameplay/input/GameEvents';
 

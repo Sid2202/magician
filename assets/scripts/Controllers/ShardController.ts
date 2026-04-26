@@ -1,5 +1,5 @@
 import { _decorator, Component } from 'cc';
-import { ShardModel } from '../models/ShardModel';
+import { ShardModel } from '../Models/ShardModel';
 import { ShardView } from '../Views/ShardView';
 import { PoolingSystem, PoolKey } from '../Systems/PoolingSystem';
 

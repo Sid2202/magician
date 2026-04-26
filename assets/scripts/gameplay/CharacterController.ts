@@ -2,7 +2,7 @@ import {
     _decorator, Component, Node, Vec2, Vec3,
     input, Input, KeyCode, EventTouch, UITransform, view
 } from 'cc';
-import { CharacterModel } from '../models/CharacterModel';
+import { CharacterModel }  from '../Models/CharacterModel';
 import { CharacterView, CharacterState } from '../Views/CharacterView';
 import { GameManager } from '../Managers/GameManager';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';

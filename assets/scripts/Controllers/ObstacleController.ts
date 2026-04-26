@@ -1,5 +1,5 @@
 import { _decorator, Component } from 'cc';
-import { ObstacleModel, ObstacleType } from '../models/ObstacleModel';
+import { ObstacleModel, ObstacleType } from '../Models/ObstacleModel';
 import { ObstacleView } from '../Views/ObstacleView';
 import { PoolingSystem } from '../Systems/PoolingSystem';
 

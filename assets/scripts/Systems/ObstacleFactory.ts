@@ -1,4 +1,4 @@
-import { ObstacleType } from '../models/ObstacleModel';
+import { ObstacleType } from '../Models/ObstacleModel';
 import { PoolKey } from './PoolingSystem';
 
 /** A single placement within a group, relative to the group's origin point. */
