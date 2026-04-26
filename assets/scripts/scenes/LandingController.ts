@@ -1,11 +1,8 @@
-import { _decorator, Component, Animation, AnimationClip, Node, director } from 'cc';
+import { _decorator, Component, Animation, AnimationClip, Node, JsonAsset } from 'cc';
+import { SoundController } from '../Managers/SoundController';
 
 const { ccclass, property } = _decorator;
 
-/**
- * Attach to: root node of LandingScene.scene (or the LandingScene prefab root inside it).
- * Wire: introAnimation, introClip, playButton.
- */
 @ccclass('LandingController')
 export class LandingController extends Component {
 
@@ -16,73 +13,77 @@ export class LandingController extends Component {
     public introClip: AnimationClip = null;
 
     @property(Node)
-    public playButton: Node = null;
+    public gameSceneNode: Node = null;
 
-    private _buttonShown = false;
+    @property(JsonAsset)
+    public soundConfig: JsonAsset = null;
 
     onLoad(): void {
-        this._buttonShown = false;
-
-        if (this.playButton) {
-            this.playButton.active = false;
-            this.playButton.on(Node.EventType.TOUCH_END, this._onPlayTapped, this);
+        this._initSound();
+        
+        // Ensure game scene starts hidden
+        if (this.gameSceneNode) {
+            this.gameSceneNode.active = false;
         }
 
-        // Delay intro slightly to ensure Cocos Animation system is fully ready
+        // Start intro after short delay
         this.scheduleOnce(() => {
             this._playIntro();
-        }, 0.1);
+        }, 0.2);
     }
 
-    onDestroy(): void {
-        if (this.playButton) {
-            this.playButton.off(Node.EventType.TOUCH_END, this._onPlayTapped, this);
+    private _initSound(): void {
+        let sc = this.node.getComponent(SoundController);
+        if (!sc) {
+            sc = this.node.addComponent(SoundController);
+        }
+        if (this.soundConfig) {
+            sc.init(this.soundConfig);
         }
     }
 
     private _playIntro(): void {
         const anim = this.introAnimation || this.getComponent(Animation);
-        
         if (!anim) {
-            console.warn('[LandingController] No Animation component found.');
-            this._showButton();
+            this._transitionToGame();
             return;
         }
 
-        // Use introClip if wired, otherwise fallback to the first clip in the component
         const clip = this.introClip || (anim.clips.length > 0 ? anim.clips[0] : null);
-        
         if (!clip) {
-            console.warn('[LandingController] No AnimationClip found to play.');
-            this._showButton();
+            this._transitionToGame();
             return;
         }
 
-        // Ensure clip is added to the component
+        SoundController.getInstance()?.playSFX('intro_01');
+
         const clipName = clip.name;
         if (!anim.getState(clipName)) {
             anim.addClip(clip, clipName);
         }
 
-        anim.on(Animation.EventType.FINISHED, this._showButton, this);
+        // Switch automatically when finished
+        anim.on(Animation.EventType.FINISHED, this._transitionToGame, this);
         anim.play(clipName);
 
-        // Safety fallback: if FINISHED doesn't fire (looping clip or engine bug), show button after clip duration
+        // Safety fallback timer
         const state = anim.getState(clipName);
         const duration = state ? state.duration : 3;
-        this.scheduleOnce(() => this._showButton(), duration + 0.1);
+        this.scheduleOnce(() => this._transitionToGame(), duration + 0.1);
     }
 
-    private _showButton(): void {
-        if (this._buttonShown) return;
-        this._buttonShown = true;
-        this.unscheduleAllCallbacks();
-        if (this.playButton) {
-            this.playButton.active = true;
+    private _transitionToGame(): void {
+        console.log('[LandingController] Auto-transitioning to Game Scene node');
+        
+        if (this.gameSceneNode) {
+            // Hide landing, show game
+            this.gameSceneNode.active = true;
+            this.node.active = false;
+            
+            // Play a transition sound if desired
+            SoundController.getInstance()?.playSFX('intro_02');
+        } else {
+            console.error('[LandingController] gameSceneNode NOT assigned in Inspector!');
         }
-    }
-
-    private _onPlayTapped(): void {
-        director.loadScene('GameScene');
     }
 }
