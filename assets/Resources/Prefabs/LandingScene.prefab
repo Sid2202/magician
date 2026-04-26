@@ -1839,7 +1839,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": -108.124,
       "z": 0
     },
     "_lrot": {
@@ -2036,7 +2036,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": -1334.323,
-      "y": 0,
+      "y": -108.124,
       "z": 0
     },
     "_lrot": {
@@ -2326,7 +2326,8 @@
       "__uuid__": "b9c619db-9ca4-424d-81ea-d3649cad5ebf",
       "__expectedType__": "cc.AnimationClip"
     },
-    "playButton": null,
+    "gameSceneNode": null,
+    "soundConfig": null,
     "_id": ""
   },
   {
