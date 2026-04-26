@@ -1,4 +1,5 @@
 import { _decorator, Component, Node, Sprite, Color, tween, Tween } from 'cc';
+import { BgMoving } from '../gameplay/BgMoving';
 import { GameManager } from '../Managers/GameManager';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents } from '../gameplay/input/GameEvents';
@@ -25,6 +26,9 @@ export class GameScene extends Component {
 
     /** Drag Base_Parent node here (direct child of this prefab root). */
     @property(Node) gameWorldNode: Node = null;
+
+    /** Drag the BgMove node here to allow the win handler to stop scrolling. */
+    @property(Node) bgMoveNode: Node = null;
 
     private _candles: {
         node: Node,
@@ -131,7 +135,10 @@ export class GameScene extends Component {
     }
 
     private _onGameWon(): void {
-        GameManager.getInstance().pauseGame();
+        // winGame() already set phase to LevelComplete — immune to resumeGame().
+        // Explicitly stop scroll so mobile touch can't restart it.
+        const bgMoving = this.bgMoveNode?.getComponent(BgMoving);
+        bgMoving?.stopScroll();
         console.log('[GameScene] Game Won!');
     }
 

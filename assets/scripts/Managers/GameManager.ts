@@ -68,12 +68,20 @@ export class GameManager {
     }
 
     pauseGame(): void {
-        this._state.phase = GamePhase.Paused;
+        if (this._state.phase === GamePhase.Playing) {
+            this._state.phase = GamePhase.Paused;
+        }
     }
 
     resumeGame(): void {
         if (this._state.phase === GamePhase.Paused) {
             this._state.phase = GamePhase.Playing;
         }
+    }
+
+    winGame(): void {
+        // LevelComplete is terminal — resumeGame() will NOT override it.
+        this._state.phase = GamePhase.LevelComplete;
+        GameEventsBus.get().emit(GameEvents.GameWon);
     }
 }

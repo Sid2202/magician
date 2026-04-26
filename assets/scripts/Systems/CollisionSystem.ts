@@ -202,7 +202,7 @@ export class CollisionSystem extends Component {
         GameEventsBus.get().emit(GameEvents.ShardCollected, shardIndex);
 
         if (total >= 3) {
-          GameEventsBus.get().emit(GameEvents.GameWon);
+          GameManager.getInstance().winGame();
         }
       }
     }

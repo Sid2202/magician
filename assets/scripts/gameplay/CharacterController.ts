@@ -172,12 +172,15 @@ export class CharacterController extends Component {
         let tVx = 0;
         let tVy = 0;
         if (this._isTouching) {
-            const vis  = view.getVisibleSize();
-            const halfW = vis.width  * 0.5;
-            const halfH = vis.height * 0.5;
-            // getUILocation() is bottom-left origin; y increases upward
-            tVx = this._touchCurrent.x < halfW ? -spd : spd;
-            tVy = this._touchCurrent.y < halfH ? -spd : spd;
+            // getVisibleOrigin() gives the bottom-left corner of the canvas in UI
+            // coordinates. Adding half the visible size gives the true screen center —
+            // works whether the canvas anchor is center (0,0 origin) or corner (0,0 = BL).
+            const origin = view.getVisibleOrigin();
+            const size   = view.getVisibleSize();
+            const centerX = origin.x + size.width  * 0.5;
+            const centerY = origin.y + size.height * 0.5;
+            tVx = this._touchCurrent.x < centerX ? -spd : spd;
+            tVy = this._touchCurrent.y < centerY ? -spd : spd;
         }
 
         const hasInput = kLeft || kRight || kUp || kDown || this._isTouching;
