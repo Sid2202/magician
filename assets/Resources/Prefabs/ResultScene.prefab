@@ -1802,7 +1802,10 @@
       "__uuid__": "9759dbe2-aab5-4b0c-8e13-5727edcb43b6",
       "__expectedType__": "cc.AnimationClip"
     },
-    "characterNode": null,
+    "characterNode": {
+      "__uuid__": "2064f728-b55c-4fd6-9004-c3d794a3466e",
+      "__expectedType__": "cc.Prefab"
+    },
     "characterEntryTarget": null,
     "_id": ""
   },
