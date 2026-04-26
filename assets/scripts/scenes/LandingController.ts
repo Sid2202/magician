@@ -28,48 +28,58 @@ export class LandingController extends Component {
             this.playButton.on(Node.EventType.TOUCH_END, this._onPlayTapped, this);
         }
 
-        this._playIntro();
+        // Delay intro slightly to ensure Cocos Animation system is fully ready
+        this.scheduleOnce(() => {
+            this._playIntro();
+        }, 0.1);
     }
 
     onDestroy(): void {
-        if (this.playButton?.isValid) {
+        if (this.playButton) {
             this.playButton.off(Node.EventType.TOUCH_END, this._onPlayTapped, this);
         }
     }
 
     private _playIntro(): void {
-        if (!this.introAnimation) {
+        const anim = this.introAnimation || this.getComponent(Animation);
+        
+        if (!anim) {
+            console.warn('[LandingController] No Animation component found.');
             this._showButton();
             return;
         }
 
-        const clip = this.introClip ?? this.introAnimation.clips[0];
+        // Use introClip if wired, otherwise fallback to the first clip in the component
+        const clip = this.introClip || (anim.clips.length > 0 ? anim.clips[0] : null);
+        
         if (!clip) {
+            console.warn('[LandingController] No AnimationClip found to play.');
             this._showButton();
             return;
         }
 
-        this.introAnimation.on(Animation.EventType.FINISHED, this._showButton, this);
-
-        if (this.introClip) {
-            const already = this.introAnimation.clips.some(c => c?.name === this.introClip.name);
-            if (!already) this.introAnimation.addClip(this.introClip, this.introClip.name);
-            this.introAnimation.play(this.introClip.name);
-        } else {
-            this.introAnimation.play();
+        // Ensure clip is added to the component
+        const clipName = clip.name;
+        if (!anim.getState(clipName)) {
+            anim.addClip(clip, clipName);
         }
 
-        // Fallback timer in case the clip is looping or FINISHED doesn't fire.
-        const state = this.introAnimation.getState(clip.name);
+        anim.on(Animation.EventType.FINISHED, this._showButton, this);
+        anim.play(clipName);
+
+        // Safety fallback: if FINISHED doesn't fire (looping clip or engine bug), show button after clip duration
+        const state = anim.getState(clipName);
         const duration = state ? state.duration : 3;
-        this.scheduleOnce(() => this._showButton(), duration + 0.2);
+        this.scheduleOnce(() => this._showButton(), duration + 0.1);
     }
 
     private _showButton(): void {
         if (this._buttonShown) return;
         this._buttonShown = true;
         this.unscheduleAllCallbacks();
-        if (this.playButton) this.playButton.active = true;
+        if (this.playButton) {
+            this.playButton.active = true;
+        }
     }
 
     private _onPlayTapped(): void {
