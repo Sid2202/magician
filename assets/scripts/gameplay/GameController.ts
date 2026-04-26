@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, NodePool, Prefab, instantiate, UITransform, Vec3 } from 'cc';
+import { _decorator, Component, Node, NodePool, Prefab, instantiate, UITransform, Vec3, resources, director } from 'cc';
 import { GameManager } from '../Managers/GameManager';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents, ItemType, NpcReward } from './input/GameEvents';
@@ -8,6 +8,8 @@ import { BgMoving } from './BgMoving';
 import { SpawnSystem } from '../Systems/SpawnSystem';
 import { ObstacleSpawnSystem } from '../Systems/ObstacleSpawnSystem';
 import { ShardSpawnSystem } from '../Systems/ShardSpawnSystem';
+import { TeleportController } from '../Controllers/TeleportController';
+import { ResultController } from '../Controllers/ResultController';
 
 const { ccclass, property } = _decorator;
 
@@ -45,6 +47,7 @@ export class GameController extends Component {
     @property(Prefab) pfTool:   Prefab = null;  // Tool collectible prefab
     @property(Prefab) pfNpc:    Prefab = null;  // NPC prefab
     @property(Prefab) pfTeleport: Prefab = null; // Teleport prefab
+    @property(Prefab) pfResult: Prefab = null;   // ResultScene prefab
 
     /** Wire the BgMove node (has BgMoving component) to sync world scroll. */
     @property(Node) bgMoveNode: Node = null;
@@ -195,6 +198,12 @@ export class GameController extends Component {
     // ── Spawn timers ──────────────────────────────────────────────────────
 
     private _tickSpawners(dt: number): void {
+        if (ShardSpawnSystem.instance) {
+            const d = ShardSpawnSystem.instance.distanceScrolled;
+            // Shard 3 is at 18000. Create a massive empty stretch stretching slightly before and long after it.
+            if (d > 14500 && d < 22000) return;
+        }
+
         this._itemTimer += dt;
         if (this._itemTimer >= this._itemInterval) {
             this._itemTimer = 0;
@@ -319,10 +328,8 @@ export class GameController extends Component {
         if (this._activeTeleport) {
             const TW = 157, TH = 279; // Teleport dimensions (314x559 / 2)
             if (aabb(cm.x, cm.y, CW, CH, this._activeTeleport.position.x, this._activeTeleport.position.y, TW, TH)) {
-                this._activeTeleport.active = false;
-                this._activeTeleport.removeFromParent();
-                this._activeTeleport = null;
-                GameManager.getInstance().winGame();
+                // Character enters teleport
+                this._onTeleportEnter();
             }
         }
 
@@ -442,6 +449,33 @@ export class GameController extends Component {
         node.setPosition(new Vec3(x, 0, 0));
 
         this._activeTeleport = node;
+    }
+
+    private _onTeleportEnter(): void {
+        if (!this._activeTeleport) return;
+
+        // Hide teleport and character or perform visual effect
+        this._activeTeleport.active = false;
+        if (this.characterNode) this.characterNode.active = false;
+
+        // Pause the game mechanics
+        GameManager.getInstance().winGame(); 
+        if (this._bgMoving) this._bgMoving.stopScroll();
+
+        // Slight pause before showing the result scene
+        this.scheduleOnce(() => {
+            if (this.pfResult) {
+                const resultNode = instantiate(this.pfResult);
+                // Attach to current scene root or UI canvas. 
+                // Since this is Base_Parent, we'll add to parent (GameScene root)
+                this.node.parent?.addChild(resultNode);
+                
+                // Reset position to center if it's a UI/Overlay prefab
+                resultNode.setPosition(Vec3.ZERO);
+            } else {
+                console.warn('[GameController] pfResult not wired');
+            }
+        }, 0.5); // 0.5s pause
     }
 }
 

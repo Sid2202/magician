@@ -55,6 +55,10 @@ export class ShardSpawnSystem extends Component {
 
     public static instance: ShardSpawnSystem = null;
 
+    public get distanceScrolled(): number {
+        return this._distanceScrolled;
+    }
+
     onLoad(): void {
         ShardSpawnSystem.instance = this;
         if (!this.shardPrefab) {

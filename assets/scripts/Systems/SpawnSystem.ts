@@ -97,7 +97,16 @@ export class SpawnSystem extends Component {
         const dirX = this._bgMoving?.getScrollDirX() ?? 0;
         if (dirX !== 0) {
             this._scrollAndCull(dirX, dt);
-            this._fillAhead();
+
+            let inQuietZone = false;
+            if (ShardSpawnSystem.instance) {
+                const d = ShardSpawnSystem.instance.distanceScrolled;
+                if (d > 14500 && d < 22000) inQuietZone = true;
+            }
+            
+            if (!inQuietZone) {
+                this._fillAhead();
+            }
         }
     }
 
