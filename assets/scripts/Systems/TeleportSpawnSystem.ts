@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, Vec3 } from 'cc';
+import { _decorator, Component, Node, Prefab, instantiate, Vec3, tween } from 'cc';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents } from '../gameplay/input/GameEvents';
 import { BgMoving } from '../gameplay/BgMoving';
@@ -21,17 +21,27 @@ export class TeleportSpawnSystem extends Component {
 
     /** Distance ahead to spawn the portal when triggered. */
     @property spawnAheadX: number = 200;
+    /** Ensures the portal does not overlap the character on spawn. */
+    @property minAheadFromCharacterX: number = 280;
+    /** Seconds for the final "enter portal" motion. */
+    @property enterPortalDuration: number = 0.45;
 
     private _bgMoving: BgMoving | null = null;
     private _activeTeleport: Node | null = null;
     private _teleportCtrl: TeleportController | null = null;
     private _isWinSequence: boolean = false;
+    private _isTeleportEntering: boolean = false;
     private _targetCharacterPos: Vec3 = new Vec3();
+    private _tmpDir: Vec3 = new Vec3();
+    private _tmpNextPos: Vec3 = new Vec3();
 
     public static instance: TeleportSpawnSystem = null;
 
     public get activeTeleport(): Node | null {
         return this._activeTeleport;
+    }
+    public get isAutoSequenceActive(): boolean {
+        return this._isWinSequence || this._isTeleportEntering;
     }
 
     onLoad(): void {
@@ -67,20 +77,25 @@ export class TeleportSpawnSystem extends Component {
                     this._isWinSequence = false;
                     this.onTeleportEnter();
                 } else {
-                    const dir = new Vec3();
-                    Vec3.subtract(dir, target, current);
-                    dir.normalize();
+                    Vec3.subtract(this._tmpDir, target, current);
+                    this._tmpDir.normalize();
                     const moveSpeed = 400; // pixels per second
-                    const nextPos = current.clone().add(dir.multiplyScalar(moveSpeed * dt));
+                    this._tmpNextPos.set(
+                        current.x + this._tmpDir.x * moveSpeed * dt,
+                        current.y + this._tmpDir.y * moveSpeed * dt,
+                        current.z
+                    );
                     
                     // Sync with CharacterController's model so it doesn't overwrite position
                     const ctrl = char.getComponent('CharacterController') as any;
                     if (ctrl && ctrl.getModel) {
                         const m = ctrl.getModel();
-                        m.x = nextPos.x;
-                        m.y = nextPos.y;
+                        m.x = this._tmpNextPos.x;
+                        m.y = this._tmpNextPos.y;
+                        m.vx = this._tmpDir.x * moveSpeed;
+                        m.vy = this._tmpDir.y * moveSpeed;
                     } else {
-                        char.setPosition(nextPos);
+                        char.setPosition(this._tmpNextPos);
                     }
                 }
             }
@@ -119,16 +134,20 @@ export class TeleportSpawnSystem extends Component {
         this._activeTeleport = instantiate(this.teleportPrefab);
         this.node.addChild(this._activeTeleport);
 
-        // Spawn it stationary at a fixed position
-        this._activeTeleport.setPosition(new Vec3(this.spawnAheadX, 0, 0));
+        // Spawn with a guaranteed visible gap ahead of the character.
+        const charX = this.characterNode ? this.characterNode.position.x : 0;
+        const spawnX = Math.max(this.spawnAheadX, charX + this.minAheadFromCharacterX);
+        this._activeTeleport.setPosition(new Vec3(spawnX, 0, 0));
         this._teleportCtrl = this._activeTeleport.getComponent(TeleportController);
         
         this._isWinSequence = true;
-        console.log('[TeleportSpawnSystem] Starting win sequence. Portal at x=' + this.spawnAheadX);
+        this._isTeleportEntering = false;
+        console.log('[TeleportSpawnSystem] Starting win sequence. Portal at x=' + spawnX);
     }
 
     private _onGameStart(): void {
         this._isWinSequence = false;
+        this._isTeleportEntering = false;
         if (this._activeTeleport) {
             this._activeTeleport.destroy();
             this._activeTeleport = null;
@@ -149,25 +168,54 @@ export class TeleportSpawnSystem extends Component {
 
     /** Called by CollisionSystem when player hits the teleport. */
     public onTeleportEnter(): void {
-        if (!this._activeTeleport) return;
+        if (!this._activeTeleport || this._isTeleportEntering) return;
 
-        // Visual feedback
-        this._activeTeleport.active = false;
-        if (this.characterNode) this.characterNode.active = false;
+        this._isWinSequence = false;
+        this._isTeleportEntering = true;
 
-        // Stop game mechanics
+        // Stop game mechanics first, then run entry cinematic.
         GameManager.getInstance().winGame();
         if (this._bgMoving) this._bgMoving.stopScroll();
 
-        // Slight pause before result screen
-        this.scheduleOnce(() => {
-            if (this.resultPrefab) {
-                const result = instantiate(this.resultPrefab);
-                this.node.parent?.addChild(result);
-                result.setPosition(Vec3.ZERO);
-            } else {
-                console.warn('[TeleportSpawnSystem] resultPrefab not wired');
-            }
-        }, 0.5);
+        const finalizeEntry = () => {
+            if (!this._activeTeleport) return;
+            this._activeTeleport.active = false;
+            if (this.characterNode) this.characterNode.active = false;
+            this._isTeleportEntering = false;
+
+            // Slight pause before result screen
+            this.scheduleOnce(() => {
+                if (this.resultPrefab) {
+                    const result = instantiate(this.resultPrefab);
+                    this.node.parent?.addChild(result);
+                    result.setPosition(Vec3.ZERO);
+                } else {
+                    console.warn('[TeleportSpawnSystem] resultPrefab not wired');
+                }
+            }, 0.35);
+        };
+
+        if (!this.characterNode) {
+            finalizeEntry();
+            return;
+        }
+
+        const char = this.characterNode;
+        const ctrl = char.getComponent('CharacterController') as any;
+        if (ctrl && ctrl.getModel) {
+            const m = ctrl.getModel();
+            m.vx = 0;
+            m.vy = 0;
+        }
+
+        const target = this._activeTeleport.position.clone();
+        const startScale = char.scale.clone();
+        tween(char)
+            .to(this.enterPortalDuration, {
+                position: target,
+                scale: new Vec3(startScale.x * 0.15, startScale.y * 0.15, startScale.z)
+            }, { easing: 'quadIn' })
+            .call(finalizeEntry)
+            .start();
     }
 }

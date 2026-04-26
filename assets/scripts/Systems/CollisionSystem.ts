@@ -218,7 +218,7 @@ export class CollisionSystem extends Component {
     }
 
     // ── Teleport ──────────────────────────────────────────────────────────
-    if (this.teleportSpawn && this.teleportSpawn.activeTeleport) {
+    if (this.teleportSpawn && this.teleportSpawn.activeTeleport && !this.teleportSpawn.isAutoSequenceActive) {
       const teleportNode = this.teleportSpawn.activeTeleport;
       const twp = teleportNode.worldPosition;
       
