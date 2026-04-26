@@ -40,16 +40,17 @@ export class BgMoving extends Component {
 
         this.bgNodeA.setPosition(0, 0, 0);
         this.bgNodeB.setPosition(this.bgWidth, 0, 0);
+
+        // Always auto-scroll forward — direction is overridden by keyboard temporarily
+        this.direction.x = -1;
     }
 
     onEnable() {
-        console.log('BgMoving: enabled and listening for keyboard input');
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
     }
 
     onDisable() {
-        console.log('BgMoving: disabled and stopped keyboard input');
         input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
     }
@@ -106,19 +107,18 @@ export class BgMoving extends Component {
         switch (event.keyCode) {
             case KeyCode.ARROW_LEFT:
             case KeyCode.KEY_A:
-                if (this.direction.x > 0) this.direction.x = 0;
+                // Restore auto-scroll forward when left is released
+                if (this.direction.x > 0) this.direction.x = -1;
                 break;
-            case KeyCode.ARROW_RIGHT:
-            case KeyCode.KEY_D:
-                if (this.direction.x < 0) this.direction.x = 0;
-                break;
+            // Right key was already -1 (auto-scroll), releasing it changes nothing
         }
     }
 
     /** Called by CharacterController on death to immediately stop scrolling. */
-    public stopScroll(): void {
-        this.direction.x = 0;
-    }
+    public stopScroll(): void { this.direction.x = 0; }
+
+    /** Called on respawn to restore forward auto-scroll. */
+    public resumeScroll(): void { this.direction.x = -1; }
 
     public setBgWidth(width: number) {
         this.bgWidth = width;

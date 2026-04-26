@@ -8,6 +8,7 @@ import {
     ObstacleFactory, ObstacleGroup, ObstacleKind, ObstacleAnchor,
     OBSTACLE_POOL_KEYS,
 } from './ObstacleFactory';
+import { ShardSpawnSystem } from './ShardSpawnSystem';
 
 const { ccclass, property } = _decorator;
 
@@ -52,7 +53,7 @@ export class ObstacleSpawnSystem extends Component {
     @property groupSpacingVariance: number = 1000;
 
     /** Pixels of padding required between any obstacle and any coin. */
-    @property coinAvoidPadding: number = 60;
+    @property coinAvoidPadding: number = 120;
 
     // ── Vertical insets from the colliders, per anchor ────────────────────
     /** Distance above Collider_Bottom where a ground obstacle's CENTER sits. */
@@ -73,7 +74,10 @@ export class ObstacleSpawnSystem extends Component {
 
     private _ghostActive = false;
 
+    public static instance: ObstacleSpawnSystem = null;
+
     onLoad(): void {
+        ObstacleSpawnSystem.instance = this;
         this._warmup();
         if (this.bgMoveNode) this._bgMoving = this.bgMoveNode.getComponent(BgMoving);
         if (!this._bgMoving) console.warn('[ObstacleSpawnSystem] bgMoveNode not wired — obstacles will not scroll');
@@ -111,8 +115,7 @@ export class ObstacleSpawnSystem extends Component {
             const o = this._active[i];
             if (!o.model.active) continue;
             const dx = Math.abs(o.model.x - x);
-            const dy = Math.abs(o.model.y - y);
-            if (dx < o.model.halfW + halfW + pad && dy < o.model.halfH + halfH + pad) {
+            if (dx < o.model.halfW + halfW + pad) {
                 return true;
             }
         }
@@ -225,20 +228,34 @@ export class ObstacleSpawnSystem extends Component {
 
     private _wouldOverlapCoins(originX: number, originY: number, group: ObstacleGroup): boolean {
         const coins = this.spawnSystem?.activeCoins;
-        if (!coins || coins.length === 0) return false;
 
-        const pad = this.coinAvoidPadding;
         for (const p of group.placements) {
-            const ohw = 60, ohh = 60;
+            const ohw = 60; // obstacle half-width
             const ox = originX + p.dx;
-            const oy = originY + p.dy;
-            for (let i = 0; i < coins.length; i++) {
-                const c = coins[i];
-                if (!c.model.active) continue;
-                const dx = Math.abs(c.model.x - ox);
-                const dy = Math.abs(c.model.y - oy);
-                if (dx < ohw + c.model.halfW + pad && dy < ohh + c.model.halfH + pad) {
-                    return true;
+            
+            // Check coins
+            if (coins && coins.length > 0) {
+                const pad = this.coinAvoidPadding;
+                for (let i = 0; i < coins.length; i++) {
+                    const c = coins[i];
+                    if (!c.model.active) continue;
+                    const dx = Math.abs(c.model.x - ox);
+                    if (dx < ohw + c.model.halfW + pad) {
+                        return true;
+                    }
+                }
+            }
+
+            // Check shards
+            if (ShardSpawnSystem.instance) {
+                const shards = ShardSpawnSystem.instance.activeShards;
+                for (let i = 0; i < shards.length; i++) {
+                    const s = shards[i];
+                    if (!s.model.active) continue;
+                    const dx = Math.abs(s.model.x - ox);
+                    if (dx < ohw + s.model.halfW + 800) {
+                        return true;
+                    }
                 }
             }
         }

@@ -5,6 +5,9 @@ import { GameEvents, ItemType, NpcReward } from './input/GameEvents';
 import { CharacterController } from './CharacterController';
 import { PathController } from './PathController';
 import { BgMoving } from './BgMoving';
+import { SpawnSystem } from '../Systems/SpawnSystem';
+import { ObstacleSpawnSystem } from '../Systems/ObstacleSpawnSystem';
+import { ShardSpawnSystem } from '../Systems/ShardSpawnSystem';
 
 const { ccclass, property } = _decorator;
 
@@ -208,10 +211,15 @@ export class GameController extends Component {
         node.active = true;
         this.node.addChild(node);
 
-        const y = randRange(-HALF_SCREEN_H * 0.7, HALF_SCREEN_H * 0.7);
-        node.setPosition(new Vec3(SPAWN_X_AHEAD, y, 0));
+        let x = SPAWN_X_AHEAD;
+        while (this._isSpaceBlocked(x, 28, 120)) {
+            x += 80;
+        }
 
-        this._activeItems.push({ node, type, x: SPAWN_X_AHEAD, y });
+        const y = randRange(-HALF_SCREEN_H * 0.7, HALF_SCREEN_H * 0.7);
+        node.setPosition(new Vec3(x, y, 0));
+
+        this._activeItems.push({ node, type, x, y });
     }
 
     private _spawnNpc(): void {
@@ -226,10 +234,16 @@ export class GameController extends Component {
 
         const wantsItem  = NPC_WANTS[Math.floor(Math.random() * NPC_WANTS.length)];
         const givesReward: NpcReward = NPC_REWARDS[NPC_WANTS.indexOf(wantsItem)];
-        const y = randRange(-HALF_SCREEN_H * 0.6, HALF_SCREEN_H * 0.6);
-        node.setPosition(new Vec3(SPAWN_X_AHEAD, y, 0));
 
-        this._activeNpcs.push({ node, wantsItem, givesReward, x: SPAWN_X_AHEAD, y, traded: false });
+        let x = SPAWN_X_AHEAD;
+        while (this._isSpaceBlocked(x, 52, 120)) {
+            x += 80;
+        }
+
+        const y = randRange(-HALF_SCREEN_H * 0.6, HALF_SCREEN_H * 0.6);
+        node.setPosition(new Vec3(x, y, 0));
+
+        this._activeNpcs.push({ node, wantsItem, givesReward, x, y, traded: false });
     }
 
     // ── Scroll active objects ─────────────────────────────────────────────
@@ -332,6 +346,35 @@ export class GameController extends Component {
         if (type === ItemType.Food)  return this.pfFood;
         if (type === ItemType.Tool)  return this.pfTool;
         return null;
+    }
+
+    private _isSpaceBlocked(x: number, halfW: number, padding: number): boolean {
+        // Items
+        for (const item of this._activeItems) {
+            if (Math.abs(item.x - x) < 28 + halfW + padding) return true;
+        }
+        for (const npc of this._activeNpcs) {
+            if (Math.abs(npc.x - x) < 52 + halfW + padding) return true;
+        }
+        // Obstacles
+        if (ObstacleSpawnSystem.instance) {
+            for (const obs of ObstacleSpawnSystem.instance.activeObstacles) {
+                if (Math.abs(obs.model.x - x) < obs.model.halfW + halfW + padding) return true;
+            }
+        }
+        // Coins
+        if (SpawnSystem.instance) {
+            for (const coin of SpawnSystem.instance.activeCoins) {
+                if (Math.abs(coin.model.x - x) < coin.model.halfW + halfW + padding) return true;
+            }
+        }
+        // Shards
+        if (ShardSpawnSystem.instance) {
+            for (const shard of ShardSpawnSystem.instance.activeShards) {
+                if (Math.abs(shard.model.x - x) < shard.model.halfW + halfW + padding + 800) return true;
+            }
+        }
+        return false;
     }
 
     private _onGameOver(): void {

@@ -35,7 +35,7 @@ export class ShardSpawnSystem extends Component {
     /** How far ahead of centre to place a shard when its trigger fires. */
     @property spawnAheadX: number = 900;
     /** Padding around shard to avoid coins and obstacles. */
-    @property avoidPadding: number = 300;
+    @property avoidPadding: number = 800;
 
     /** Distance thresholds (px scrolled) that trigger each shard. */
     @property shard1Distance: number =  4000;
@@ -53,7 +53,10 @@ export class ShardSpawnSystem extends Component {
     private _distanceScrolled = 0;
     private _triggered = [false, false, false];  // one per shard
 
+    public static instance: ShardSpawnSystem = null;
+
     onLoad(): void {
+        ShardSpawnSystem.instance = this;
         if (!this.shardPrefab) {
             console.warn('[ShardSpawnSystem] shardPrefab not wired');
             return;
@@ -97,11 +100,12 @@ export class ShardSpawnSystem extends Component {
         const yPositions  = [this.shard1Y, this.shard2Y, this.shard3Y];
         for (let i = 0; i < 3; i++) {
             if (!this._triggered[i] && this._distanceScrolled >= thresholds[i]) {
-                // Only mark as triggered if we can successfully spawn (no obstruction)
-                if (!this._isAreaBlocked(this.spawnAheadX, yPositions[i])) {
-                    this._triggered[i] = true;
-                    this._spawnShard(i + 1, this.spawnAheadX, yPositions[i]);
+                this._triggered[i] = true;
+                let sx = this.spawnAheadX;
+                while (this._isAreaBlocked(sx, yPositions[i])) {
+                    sx += 80;
                 }
+                this._spawnShard(i + 1, sx, yPositions[i]);
             }
         }
     }
@@ -117,8 +121,7 @@ export class ShardSpawnSystem extends Component {
         if (this.spawnSystem) {
             for (const coin of this.spawnSystem.activeCoins) {
                 if (!coin.model.active) continue;
-                if (Math.abs(x - coin.model.x) < coin.model.halfW + pad &&
-                    Math.abs(y - coin.model.y) < coin.model.halfH + pad) {
+                if (Math.abs(x - coin.model.x) < coin.model.halfW + pad) {
                     return true;
                 }
             }
@@ -127,8 +130,7 @@ export class ShardSpawnSystem extends Component {
         if (this.obstacleSpawn) {
             for (const obs of this.obstacleSpawn.activeObstacles) {
                 if (!obs.model.active) continue;
-                if (Math.abs(x - obs.model.x) < obs.model.halfW + pad &&
-                    Math.abs(y - obs.model.y) < obs.model.halfH + pad) {
+                if (Math.abs(x - obs.model.x) < obs.model.halfW + pad) {
                     return true;
                 }
             }

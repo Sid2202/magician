@@ -162,16 +162,22 @@ export class CharacterController extends Component {
         const kUp    = this._keys.has(KeyCode.ARROW_UP)    || this._keys.has(KeyCode.KEY_W);
         const kDown  = this._keys.has(KeyCode.ARROW_DOWN)  || this._keys.has(KeyCode.KEY_S);
 
-        // Touch drag → virtual joystick feel (drag distance = speed fraction)
+        // Touch drag → responsive virtual joystick
         let tVx = 0;
         let tVy = 0;
         if (this._isTouching) {
-            const DEAD  = 12;    // px deadzone before movement starts
-            const SCALE = 0.013; // drag distance → speed multiplier
+            const DEAD  = 8;     // smaller deadzone — more responsive
+            const SCALE = 0.022; // higher scale — less drag needed for full speed
+            const MAX_DRAG = 60; // clamp at this drag distance for full speed
             const dx = this._touchCurrent.x - this._touchStart.x;
             const dy = this._touchCurrent.y - this._touchStart.y;
-            if (Math.abs(dx) > DEAD) tVx = clamp(dx * SCALE, -1, 1) * spd;
-            if (Math.abs(dy) > DEAD) tVy = clamp(dy * SCALE, -1, 1) * spd;
+            if (Math.abs(dx) > DEAD) tVx = clamp(dx / MAX_DRAG, -1, 1) * spd;
+            if (Math.abs(dy) > DEAD) tVy = clamp(dy / MAX_DRAG, -1, 1) * spd;
+
+            // Slide the anchor so the player never needs a huge drag to keep moving
+            const ANCHOR_SLIP = 0.25;
+            if (Math.abs(dx) > MAX_DRAG) this._touchStart.x += (dx - Math.sign(dx) * MAX_DRAG) * ANCHOR_SLIP;
+            if (Math.abs(dy) > MAX_DRAG) this._touchStart.y += (dy - Math.sign(dy) * MAX_DRAG) * ANCHOR_SLIP;
         }
 
         const hasInput = kLeft || kRight || kUp || kDown || this._isTouching;

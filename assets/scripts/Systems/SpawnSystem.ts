@@ -3,6 +3,7 @@ import { PoolKey, PoolingSystem }              from './PoolingSystem';
 import { CoinController }                      from '../Controllers/CoinController';
 import { BgMoving }                            from '../gameplay/BgMoving';
 import { ObstacleSpawnSystem }                 from './ObstacleSpawnSystem';
+import { ShardSpawnSystem }                    from './ShardSpawnSystem';
 
 export const enum SpawnPattern { LINE = 'LINE', ZIGZAG = 'ZIGZAG', GRID = 'GRID', SINE = 'SINE', ARC = 'ARC' }
 
@@ -39,7 +40,7 @@ export class SpawnSystem extends Component {
     /** Optional — when wired, coins won't spawn on top of active obstacles. */
     @property(ObstacleSpawnSystem) obstacleSpawn: ObstacleSpawnSystem = null;
     /** Padding around obstacles when avoiding them with coins. */
-    @property coinObstacleAvoidPadding: number = 40;
+    @property coinObstacleAvoidPadding: number = 150;
     @property         poolWarmupCount: number = 30;
     @property         visibleWidth:    number = 1920;
     @property         bufferAhead:     number = 900;
@@ -55,7 +56,10 @@ export class SpawnSystem extends Component {
     private _cull:    CoinController[]       = [];
     private _highestSpawnX: number = -Infinity;
 
+    public static instance: SpawnSystem = null;
+
     onLoad(): void {
+        SpawnSystem.instance = this;
         if (!this.coinPrefab) { console.error('[SpawnSystem] coinPrefab not wired'); return; }
         PoolingSystem.warmup(PoolKey.Coin, this.coinPrefab, this.poolWarmupCount);
         PoolingSystem.warmup(PoolKey.FlyingCoin, this.flyingCoinPrefab, 20);
@@ -151,6 +155,19 @@ export class SpawnSystem extends Component {
         if (!ignoreObstacles && this.obstacleSpawn && this.obstacleSpawn.isAreaBlocked(x, y, 24, 24, this.coinObstacleAvoidPadding)) {
             return;
         }
+
+        // Avoid shards distantly
+        if (ShardSpawnSystem.instance) {
+            const shards = ShardSpawnSystem.instance.activeShards;
+            for (let i = 0; i < shards.length; i++) {
+                const s = shards[i];
+                if (!s.model.active) continue;
+                if (Math.abs(s.model.x - x) < s.model.halfW + 24 + 800) {
+                    return; // Skip coin to create gap for shard
+                }
+            }
+        }
+
         const node = PoolingSystem.get(PoolKey.Coin);
         if (!node) return;
         this.node.addChild(node);
