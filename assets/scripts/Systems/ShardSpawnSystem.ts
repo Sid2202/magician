@@ -118,8 +118,9 @@ export class ShardSpawnSystem extends Component {
         const pad = this.avoidPadding;
 
         // Use model.x/y — same local space as spawnAheadX. worldPosition would mismatch.
-        if (this.spawnSystem) {
-            for (const coin of this.spawnSystem.activeCoins) {
+        const spawnSys = this.spawnSystem || SpawnSystem.instance;
+        if (spawnSys) {
+            for (const coin of spawnSys.activeCoins) {
                 if (!coin.model.active) continue;
                 if (Math.abs(x - coin.model.x) < coin.model.halfW + pad) {
                     return true;
@@ -127,8 +128,9 @@ export class ShardSpawnSystem extends Component {
             }
         }
 
-        if (this.obstacleSpawn) {
-            for (const obs of this.obstacleSpawn.activeObstacles) {
+        const obsSys = this.obstacleSpawn || ObstacleSpawnSystem.instance;
+        if (obsSys) {
+            for (const obs of obsSys.activeObstacles) {
                 if (!obs.model.active) continue;
                 if (Math.abs(x - obs.model.x) < obs.model.halfW + pad) {
                     return true;

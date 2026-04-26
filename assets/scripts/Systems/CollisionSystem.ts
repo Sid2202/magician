@@ -33,6 +33,8 @@ export class CollisionSystem extends Component {
 
   // Reused Vec3 — avoids per-frame allocation for character world pos
   private readonly _charWP = new Vec3();
+  private readonly _prevCharWP = new Vec3();
+  private _isInitialFrame = true;
 
   onLoad(): void {
     this._charCtrl =
@@ -47,26 +49,42 @@ export class CollisionSystem extends Component {
 
   update(_dt: number): void {
     if (!this._charCtrl || !this._spawn) return;
-    if (!this._charCtrl.getModel().isAlive) return;
+    if (!this._charCtrl.getModel().isAlive) {
+        // Reset sweep state if dead so respawn doesn't sweep across the map
+        this._isInitialFrame = true;
+        return;
+    }
     if (this._invulnTimer > 0) this._invulnTimer -= _dt;
 
     // World position — valid regardless of node hierarchy
     this.characterNode.getWorldPosition(this._charWP);
     const charScale = this.characterNode.worldScale;
 
-    let cx = this._charWP.x;
-    let cy = this._charWP.y;
-    let chw = this._charCtrl.getModel().halfW;
-    let chh = this._charCtrl.getModel().halfH;
+    if (this._isInitialFrame) {
+      this._prevCharWP.set(this._charWP);
+      this._isInitialFrame = false;
+    }
+
+    // Swept AABB: extend the bounding box across the entire path traveled since last frame
+    const moveX = this._charWP.x - this._prevCharWP.x;
+    const moveY = this._charWP.y - this._prevCharWP.y;
+
+    let cx = (this._charWP.x + this._prevCharWP.x) / 2;
+    let cy = (this._charWP.y + this._prevCharWP.y) / 2;
+    let chw = this._charCtrl.getModel().halfW + Math.abs(moveX) / 2;
+    let chh = this._charCtrl.getModel().halfH + Math.abs(moveY) / 2;
 
     const charCollider = this.characterNode.getComponent(BoxCollider2D);
     if (charCollider) {
-      // Respect the collider's offset and size scaled by the node's world scale
+      // Respect the collider's offset and size scaled by the node's world scale, plus the sweep stretch
       cx += charCollider.offset.x * Math.abs(charScale.x);
       cy += charCollider.offset.y * Math.abs(charScale.y);
-      chw = (charCollider.size.width / 2) * Math.abs(charScale.x);
-      chh = (charCollider.size.height / 2) * Math.abs(charScale.y);
+      chw = (charCollider.size.width / 2) * Math.abs(charScale.x) + Math.abs(moveX) / 2;
+      chh = (charCollider.size.height / 2) * Math.abs(charScale.y) + Math.abs(moveY) / 2;
     }
+    
+    // Store current pos for next frame's sweep
+    this._prevCharWP.set(this._charWP);
 
     const coins = this._spawn.activeCoins;
     this._hits.length = 0;

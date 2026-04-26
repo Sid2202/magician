@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Vec3, input, Input, EventKeyboard, KeyCode, UITransform } from 'cc';
+import { _decorator, Component, Node, Vec3, input, Input, EventKeyboard, KeyCode, UITransform, sys } from 'cc';
 import { GameManager } from '../Managers/GameManager';
 const { ccclass, property } = _decorator;
 
@@ -41,8 +41,10 @@ export class BgMoving extends Component {
         this.bgNodeA.setPosition(0, 0, 0);
         this.bgNodeB.setPosition(this.bgWidth, 0, 0);
 
-        // Always auto-scroll forward — direction is overridden by keyboard temporarily
-        this.direction.x = -1;
+        // Mobile has no keyboard, so auto-scroll. PC scrolls only while RIGHT is held.
+        if (sys.isMobile) {
+            this.direction.x = -1;
+        }
     }
 
     onEnable() {
@@ -107,18 +109,22 @@ export class BgMoving extends Component {
         switch (event.keyCode) {
             case KeyCode.ARROW_LEFT:
             case KeyCode.KEY_A:
-                // Restore auto-scroll forward when left is released
-                if (this.direction.x > 0) this.direction.x = -1;
+                if (this.direction.x > 0) this.direction.x = 0;
                 break;
-            // Right key was already -1 (auto-scroll), releasing it changes nothing
+            case KeyCode.ARROW_RIGHT:
+            case KeyCode.KEY_D:
+                if (this.direction.x < 0) this.direction.x = 0;
+                break;
         }
     }
 
     /** Called by CharacterController on death to immediately stop scrolling. */
     public stopScroll(): void { this.direction.x = 0; }
 
-    /** Called on respawn to restore forward auto-scroll. */
-    public resumeScroll(): void { this.direction.x = -1; }
+    /** Called on respawn — restores auto-scroll on mobile; PC waits for key press. */
+    public resumeScroll(): void {
+        if (sys.isMobile) this.direction.x = -1;
+    }
 
     public setBgWidth(width: number) {
         this.bgWidth = width;

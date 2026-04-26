@@ -152,7 +152,8 @@ export class SpawnSystem extends Component {
 
     private _place(x: number, y: number, ignoreObstacles: boolean = false): void {
         // Skip placement if it would land on an obstacle — leaves a natural gap in the pattern.
-        if (!ignoreObstacles && this.obstacleSpawn && this.obstacleSpawn.isAreaBlocked(x, y, 24, 24, this.coinObstacleAvoidPadding)) {
+        const obsSys = this.obstacleSpawn || ObstacleSpawnSystem.instance;
+        if (!ignoreObstacles && obsSys && obsSys.isAreaBlocked(x, y, 24, 24, this.coinObstacleAvoidPadding)) {
             return;
         }
 

@@ -81,7 +81,6 @@ export class ObstacleSpawnSystem extends Component {
         this._warmup();
         if (this.bgMoveNode) this._bgMoving = this.bgMoveNode.getComponent(BgMoving);
         if (!this._bgMoving) console.warn('[ObstacleSpawnSystem] bgMoveNode not wired — obstacles will not scroll');
-        if (!this.spawnSystem) console.warn('[ObstacleSpawnSystem] spawnSystem not wired — obstacles may overlap coins');
     }
 
     start(): void {
@@ -227,7 +226,8 @@ export class ObstacleSpawnSystem extends Component {
     }
 
     private _wouldOverlapCoins(originX: number, originY: number, group: ObstacleGroup): boolean {
-        const coins = this.spawnSystem?.activeCoins;
+        const obsSystem = this.spawnSystem || SpawnSystem.instance;
+        const coins = obsSystem?.activeCoins;
 
         for (const p of group.placements) {
             const ohw = 60; // obstacle half-width
