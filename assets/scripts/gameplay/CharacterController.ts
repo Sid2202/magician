@@ -263,6 +263,8 @@ export class CharacterController extends Component {
         const loc = e.getUILocation();
         this._touchStart.set(loc.x, loc.y);
         this._touchCurrent.set(loc.x, loc.y);
+        // Finger down = world scrolls (mirrors holding RIGHT on PC)
+        this._bgMoving?.resumeScroll();
     }
 
     private _onTouchMove(e: EventTouch): void {
@@ -272,6 +274,8 @@ export class CharacterController extends Component {
 
     private _onTouchEnd(): void {
         this._isTouching = false;
+        // Finger lifted = world pauses (mirrors releasing RIGHT on PC)
+        this._bgMoving?.stopScroll();
     }
 
     private _onGameOver(): void {
@@ -352,20 +356,16 @@ export class CharacterController extends Component {
             GameEventsBus.get().emit(GameEvents.WorldRewind, deficit);
         }
         this._keys.clear();
-        // On mobile: don't clear _isTouching — finger may still be down.
-        // Reset the drag anchor instead so there's no velocity jump on resume.
-        if (this._isTouching) {
-            this._touchStart.set(this._touchCurrent);
-        } else {
-            this._isTouching = false;
-        }
+        this._isTouching = false;
+        // World stays stopped after respawn — player must re-touch (mobile) or
+        // re-hold RIGHT (PC) to advance. This gives time to react to obstacles.
+        this._bgMoving?.stopScroll();
         this._pushToNode();
         this._view?.applyState(CharacterState.Idle);
 
         // Resume game after brief respawn appearance so player sees character return
         this.scheduleOnce(() => {
             GameManager.getInstance().resumeGame();
-            this._bgMoving?.resumeScroll();
         }, 0.2);
     }
 

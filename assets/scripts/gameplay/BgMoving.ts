@@ -51,10 +51,8 @@ export class BgMoving extends Component {
         this.bgNodeA.setPosition(0, 0, 0);
         this.bgNodeB.setPosition(this.bgWidth, 0, 0);
 
-        // Mobile has no keyboard, so auto-scroll. PC scrolls only while RIGHT is held.
+        // Mobile: prime the speed ramp so first touch starts slow then ramps up.
         if (sys.isMobile) {
-            this.direction.x = -1;
-            // Ramp speed from mobileStartSpeed up to full speed over mobileRampDuration.
             this._rampTarget = this.speed;
             this.speed       = this.mobileStartSpeed;
             this._rampTimer  = 0;
@@ -158,10 +156,8 @@ export class BgMoving extends Component {
     /** Called by CharacterController on death to immediately stop scrolling. */
     public stopScroll(): void { this.direction.x = 0; }
 
-    /** Called on respawn — restores auto-scroll on mobile; PC waits for key press. */
-    public resumeScroll(): void {
-        if (sys.isMobile) this.direction.x = -1;
-    }
+    /** Restore forward scroll — called when player actively provides input. */
+    public resumeScroll(): void { this.direction.x = -1; }
 
     public setBgWidth(width: number) {
         this.bgWidth = width;
