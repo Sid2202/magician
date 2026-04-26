@@ -1,8 +1,6 @@
 import { _decorator, Component, Node, Prefab } from 'cc';
 import { PoolingSystem, PoolKey } from './PoolingSystem';
-import { SpawnSystem } from './SpawnSystem';
 import { ShardController } from '../Controllers/ShardController';
-import { ObstacleSpawnSystem } from './ObstacleSpawnSystem';
 import { BgMoving } from '../gameplay/BgMoving';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents } from '../gameplay/input/GameEvents';
@@ -29,8 +27,10 @@ const { ccclass, property } = _decorator;
 export class ShardSpawnSystem extends Component {
     @property(Prefab) shardPrefab:  Prefab = null;
     @property(Node)   bgMoveNode:   Node   = null;
-    @property(SpawnSystem) spawnSystem: SpawnSystem = null;
-    @property(ObstacleSpawnSystem) obstacleSpawn: ObstacleSpawnSystem = null;
+    private _spawnSys: any = null;
+    private _obsSys:   any = null;
+    private _getSpawnSys(): any { return this._spawnSys ??= this.node.getComponent('SpawnSystem'); }
+    private _getObsSys():   any { return this._obsSys   ??= this.node.getComponent('ObstacleSpawnSystem'); }
 
     /** How far ahead of centre to place a shard when its trigger fires. */
     @property spawnAheadX: number = 900;
@@ -131,7 +131,7 @@ export class ShardSpawnSystem extends Component {
         const pad = this.avoidPadding;
 
         // Use model.x/y — same local space as spawnAheadX. worldPosition would mismatch.
-        const spawnSys = this.spawnSystem || SpawnSystem.instance;
+        const spawnSys = this._getSpawnSys();
         if (spawnSys) {
             for (const coin of spawnSys.activeCoins) {
                 if (!coin.model.active) continue;
@@ -141,7 +141,7 @@ export class ShardSpawnSystem extends Component {
             }
         }
 
-        const obsSys = this.obstacleSpawn || ObstacleSpawnSystem.instance;
+        const obsSys = this._getObsSys();
         if (obsSys) {
             for (const obs of obsSys.activeObstacles) {
                 if (!obs.model.active) continue;

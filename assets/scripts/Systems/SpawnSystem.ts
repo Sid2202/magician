@@ -2,8 +2,6 @@ import { _decorator, Component, Node, Prefab } from 'cc';
 import { PoolKey, PoolingSystem }              from './PoolingSystem';
 import { CoinController }                      from '../Controllers/CoinController';
 import { BgMoving }                            from '../gameplay/BgMoving';
-import { ObstacleSpawnSystem }                 from './ObstacleSpawnSystem';
-import { ShardSpawnSystem }                    from './ShardSpawnSystem';
 import { GameEventsBus }                       from '../common/event/GlobalEventTarget';
 import { GameEvents }                          from '../gameplay/input/GameEvents';
 
@@ -39,10 +37,13 @@ export class SpawnSystem extends Component {
     @property(Prefab) coinPrefab:      Prefab = null;
     @property(Prefab) flyingCoinPrefab: Prefab = null;
     @property(Node)   bgMoveNode:      Node   = null;   // ← wire BgMove node here
-    /** Optional — when wired, coins won't spawn on top of active obstacles. */
-    @property(ObstacleSpawnSystem) obstacleSpawn: ObstacleSpawnSystem = null;
     /** Padding around obstacles when avoiding them with coins. */
     @property coinObstacleAvoidPadding: number = 150;
+
+    private _obsSys:   any = null;
+    private _shardSys: any = null;
+    private _getObsSys():   any { return this._obsSys   ??= this.node.getComponent('ObstacleSpawnSystem'); }
+    private _getShardSys(): any { return this._shardSys ??= this.node.getComponent('ShardSpawnSystem'); }
     @property         poolWarmupCount: number = 30;
     @property         visibleWidth:    number = 1920;
     @property         bufferAhead:     number = 900;
@@ -99,8 +100,9 @@ export class SpawnSystem extends Component {
             this._scrollAndCull(dirX, dt);
 
             let inQuietZone = false;
-            if (ShardSpawnSystem.instance) {
-                const d = ShardSpawnSystem.instance.distanceScrolled;
+            const shardSys = this._getShardSys();
+            if (shardSys) {
+                const d = shardSys.distanceScrolled;
                 if (d > 14500 && d < 22000) inQuietZone = true;
             }
             
@@ -179,14 +181,15 @@ export class SpawnSystem extends Component {
 
     private _place(x: number, y: number, ignoreObstacles: boolean = false): void {
         // Skip placement if it would land on an obstacle — leaves a natural gap in the pattern.
-        const obsSys = this.obstacleSpawn || ObstacleSpawnSystem.instance;
+        const obsSys = this._getObsSys();
         if (!ignoreObstacles && obsSys && obsSys.isAreaBlocked(x, y, 24, 24, this.coinObstacleAvoidPadding)) {
             return;
         }
 
         // Avoid shards distantly
-        if (ShardSpawnSystem.instance) {
-            const shards = ShardSpawnSystem.instance.activeShards;
+        const shardSys = this._getShardSys();
+        if (shardSys) {
+            const shards = shardSys.activeShards;
             for (let i = 0; i < shards.length; i++) {
                 const s = shards[i];
                 if (!s.model.active) continue;

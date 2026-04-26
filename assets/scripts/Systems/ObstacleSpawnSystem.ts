@@ -3,12 +3,10 @@ import { PoolingSystem } from './PoolingSystem';
 import { ObstacleController } from '../Controllers/ObstacleController';
 import { ObstacleType } from '../models/ObstacleModel';
 import { BgMoving } from '../gameplay/BgMoving';
-import { SpawnSystem } from './SpawnSystem';
 import {
     ObstacleFactory, ObstacleGroup, ObstacleKind, ObstacleAnchor,
     OBSTACLE_POOL_KEYS,
 } from './ObstacleFactory';
-import { ShardSpawnSystem } from './ShardSpawnSystem';
 import { GameEventsBus } from '../common/event/GlobalEventTarget';
 import { GameEvents } from '../gameplay/input/GameEvents';
 
@@ -36,8 +34,12 @@ export class ObstacleSpawnSystem extends Component {
     @property(Prefab) vine02Prefab:  Prefab = null;
     @property(Prefab) vine03Prefab:  Prefab = null;
 
-    @property(Node)         bgMoveNode:     Node = null;
-    @property(SpawnSystem)  spawnSystem:    SpawnSystem = null;
+    @property(Node) bgMoveNode: Node = null;
+
+    private _spawnSys: any = null;
+    private _shardSys: any = null;
+    private _getSpawnSys(): any { return this._spawnSys ??= this.node.getComponent('SpawnSystem'); }
+    private _getShardSys(): any { return this._shardSys ??= this.node.getComponent('ShardSpawnSystem'); }
 
     /** Drag Collider_Top here (root-level node, same as CharacterController uses). */
     @property(Node) colliderTop:    Node = null;
@@ -101,8 +103,9 @@ export class ObstacleSpawnSystem extends Component {
             this._scrollAndCull(dirX, dt);
             
             let inQuietZone = false;
-            if (ShardSpawnSystem.instance) {
-                const d = ShardSpawnSystem.instance.distanceScrolled;
+            const shardSys = this._getShardSys();
+            if (shardSys) {
+                const d = shardSys.distanceScrolled;
                 if (d > 14500 && d < 22000) inQuietZone = true;
             }
             
@@ -243,8 +246,7 @@ export class ObstacleSpawnSystem extends Component {
     }
 
     private _wouldOverlapCoins(originX: number, originY: number, group: ObstacleGroup): boolean {
-        const obsSystem = this.spawnSystem || SpawnSystem.instance;
-        const coins = obsSystem?.activeCoins;
+        const coins = this._getSpawnSys()?.activeCoins;
 
         for (const p of group.placements) {
             const ohw = 60; // obstacle half-width
@@ -264,8 +266,9 @@ export class ObstacleSpawnSystem extends Component {
             }
 
             // Check shards
-            if (ShardSpawnSystem.instance) {
-                const shards = ShardSpawnSystem.instance.activeShards;
+            const shardSys = this._getShardSys();
+            if (shardSys) {
+                const shards = shardSys.activeShards;
                 for (let i = 0; i < shards.length; i++) {
                     const s = shards[i];
                     if (!s.model.active) continue;
