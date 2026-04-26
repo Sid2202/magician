@@ -531,7 +531,7 @@
     "__prefab": {
       "__id__": 25
     },
-    "playOnLoad": false,
+    "playOnLoad": true,
     "_clips": [
       {
         "__uuid__": "cae82ce6-8824-44d8-9d19-e84551129c6a",
@@ -560,6 +560,7 @@
     "__prefab": {
       "__id__": 27
     },
+    "collisionScale": 0.65,
     "_id": ""
   },
   {
@@ -604,13 +605,13 @@
     "_restitution": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -70
+      "x": -1.7,
+      "y": -44.5
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 130,
-      "height": 130
+      "width": 156.5,
+      "height": 197.9
     },
     "_id": ""
   },

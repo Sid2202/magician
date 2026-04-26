@@ -937,7 +937,9 @@
       "__id__": 25
     },
     "bgWidth": 2902,
-    "speed": 1500,
+    "speed": 1000,
+    "mobileStartSpeed": 80,
+    "mobileRampDuration": 3,
     "_id": ""
   },
   {
@@ -2241,7 +2243,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920.0000000000002,
+      "width": 1920,
       "height": 200
     },
     "_anchorPoint": {
@@ -2453,7 +2455,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920.0000000000002,
+      "width": 1920,
       "height": 200
     },
     "_anchorPoint": {
@@ -3305,7 +3307,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920.0000000000002,
+      "width": 1920,
       "height": 1080
     },
     "_anchorPoint": {
@@ -3373,6 +3375,7 @@
     "gameWorldNode": {
       "__id__": 125
     },
+    "bgMoveNode": null,
     "_id": ""
   },
   {
